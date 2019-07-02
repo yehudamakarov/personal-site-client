@@ -17,8 +17,8 @@ steps:
     id: Switch to keys project
     args:
      - config
-     - project
      - set
+     - project
      - $_KEYS_PROJECT_ID
 
   - name: gcr.io/cloud-builders/gcloud
