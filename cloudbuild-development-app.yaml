@@ -17,7 +17,7 @@ steps:
     id: Switch to keys project
     args:
      - config
-     - projects
+     - project
      - set
      - $_KEYS_PROJECT_ID
 
