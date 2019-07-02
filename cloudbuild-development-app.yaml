@@ -1,0 +1,106 @@
+steps:
+  - name: gcr.io/cloud-builders/docker
+    id: Build Image
+    args: 
+      - build
+      - t
+      - gcr.io/$_CONTAINER_PROJECT_ID/$REPO_NAME:$SHORT_SHA
+      - .
+
+  - name: gcr.io/cloud-builders/docker
+    id: Push Image
+    args: 
+      - push 
+      - gcr.io/$_CONTAINER_PROJECT_ID/$REPO_NAME
+
+  - name: gcr.io/cloud-builders/gcloud
+    id: Switch to keys project
+    args:
+     - config
+     - projects
+     - set
+     - $_KEYS_PROJECT_ID
+
+  - name: gcr.io/cloud-builders/gcloud
+    id: Decrypt key
+    args:
+     - kms
+     - decrypt
+     - --ciphertext-file=id_rsa_gcloud.enc
+     - --plaintext-file=/root/.ssh/id_rsa
+     - --location=global
+     - --keyring=personal-site
+     - --key=personal-site-git-private-key 
+    volumes:
+      - name: ssh
+        path: /root/.ssh
+
+  - name: gcr.io/cloud-builders/gcloud
+    id: Switch back to current project
+    args:
+      - config
+      - projects
+      - set
+      - $PROJECT_ID
+  
+  - name: gcr.io/cloud-builders/gcloud
+    id: Give git permissions
+    entrypoint: /bin/sh
+    args:
+      - -c
+      - |
+        chmod 600 /root/.ssh/id_rsa
+        cat <<EOF > /root/.ssh/config
+        Hostname github.com
+        IdentityFile /root/.ssh/id_rsa
+        EOF
+        mv known_hosts /root/.ssh/known_hosts
+    volumes:
+      - name: ssh
+        path: /root/.ssh
+  
+  - name: gcr.io/cloud-builders/gcloud
+    id: Clone the ENV repository
+    entrypoint: /bin/sh
+    args:
+      - -c
+      - |
+        git clone $_ENV_REPOSITORY_URL
+        cd $_ENV_REPOSITORY_NAME
+        git checkout $_ENV_REPOSITORY_BRANCH
+        git config user.email $_GITHUB_EMAIL_ADDRESS
+    volumes:
+      - name: ssh
+        path: /root/.ssh
+
+  - name: gcr.io/cloud-builders/gcloud
+    id: Genreate new manifest
+    entrypoint: /bin/sh
+    args:
+      - -c
+      - |
+        mkdir -p $_ENV_REPOSITORY_NAME/k8s
+        sed "s/_CONTAINER_PROJECT_ID/$_CONTAINER_PROJECT_ID/g" k8s/kubernetes-deployment.yaml.tpl | \
+        sed "s/_REPO_NAME/$REPO_NAME/g" | \
+        sed "s/_SHORT_SHA/$SHORT_SHA/g" > $_ENV_REPOSITORY_NAME/k8s/$REPO_NAME-deployment.yaml
+  
+  - name: gcr.io/cloud-builders/gcloud
+    id: Push new manifest
+    entrypoint: /bin/sh
+    args: 
+      - -c
+      - |
+        set -x
+        cd $_ENV_REPOSITORY_NAME
+        git add k8s/$REPONAME-deployment.yaml
+        git commit -m "Deploying image gcr.io/$_CONTAINER_PROJECT_ID/$REPO_NAME:$SHORT_SHA
+        Build from commit $COMMIT_SHA of repository $REPO_NAME
+        Author $(git log --format='%an <%ae>' -n 1 HEAD)"
+        git push origin $_ENV_REPOSITORY_BRANCH
+    volumes: 
+      - name: ssh
+        path: /root/.ssh
+images: 
+  - gcr.io/$_CONTAINER_PROJECT_ID/$REPO_NAME:$SHORT_SHA
+
+
