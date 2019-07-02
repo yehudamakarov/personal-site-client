@@ -39,8 +39,8 @@ steps:
     id: Switch back to current project
     args:
       - config
-      - projects
       - set
+      - project
       - $PROJECT_ID
   
   - name: gcr.io/cloud-builders/gcloud
