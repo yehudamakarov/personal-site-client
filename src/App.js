@@ -10,6 +10,9 @@ function App() {
                 <p>
                     <code>Under Construction...</code>
                 </p>
+                <p>
+                    <sub>with CD.</sub>
+                </p>
             </header>
         </div>
     );
