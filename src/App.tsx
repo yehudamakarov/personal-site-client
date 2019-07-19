@@ -3,6 +3,7 @@ import { CssBaseline, createMuiTheme } from "@material-ui/core";
 import Root from './Root/Root';
 import { ThemeProvider } from '@material-ui/styles';
 
+// https://coolors.co/dce6ea-0e3b43-1e4571-3e505b-357266
 const theme = createMuiTheme({
     palette: {
         common: {
