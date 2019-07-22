@@ -1,27 +1,28 @@
 import React from 'react';
 import { CssBaseline, createMuiTheme } from "@material-ui/core";
-import Root from './Root/Root';
+import Background from './Root/Background';
+import Root from "./Root/Root"
 import { ThemeProvider } from '@material-ui/styles';
 
 // https://coolors.co/dce6ea-0e3b43-1e4571-3e505b-357266
 const theme = createMuiTheme({
     palette: {
         common: {
-            black: "#000",
-            white: "#fff"
+            black: "#0B2B31",
+            white: "#E8EFF1"
         },
         type: "light",
         primary: {
-            main: "#1976d2",
-            light: "rgb(71, 145, 219)",
-            dark: "rgb(17, 82, 147)",
-            contrastText: "#fff"
+            main: "#1E4571",
+            // light: "rgb(71, 145, 219)",
+            // dark: "rgb(17, 82, 147)",
+            contrastText: "#E8EFF1"
         },
         secondary: {
-            main: "rgb(220, 0, 78)",
-            light: "rgb(227, 51, 113)",
-            dark: "rgb(154, 0, 54)",
-            contrastText: "#fff"
+            main: "#357266",
+            // light: "rgb(227, 51, 113)",
+            // dark: "rgb(154, 0, 54)",
+            contrastText: "#E8EFF1"
         },
         error: {
             light: "#e57373",
@@ -46,7 +47,7 @@ const theme = createMuiTheme({
             A700: "#616161"
         },
         contrastThreshold: 3,
-        tonalOffset: 0.2,
+        tonalOffset: 0.3,
         text: {
             primary: "rgba(0, 0, 0, 0.87)",
             secondary: "rgba(0, 0, 0, 0.54)",
@@ -75,6 +76,7 @@ function App() {
         <ThemeProvider theme={theme}>
             < React.Fragment >
                 <CssBaseline />
+                <Background />
                 <Root />
             </React.Fragment >
         </ThemeProvider>
