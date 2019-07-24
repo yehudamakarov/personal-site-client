@@ -2,10 +2,11 @@ import React from 'react'
 import { Tooltip, TextField, Container, Drawer, Button, AppBar, Toolbar, IconButton, Typography, makeStyles, createStyles, Theme, Link } from "@material-ui/core"
 import MenuIcon from "@material-ui/icons/Menu";
 import CodeIcon from "@material-ui/icons/Code"
-import BrandLogo from "./BrandLogo"
-import githubLogo from "../../../src/assets/PNG/GitHub-Mark-Light-120px-plus.png"
+import BrandLogo from "./brandLogo"
+import githubLogo from "../../../assets/png/GitHub-Mark-Light-120px-plus.png"
 import { useDispatch } from 'react-redux';
-import { openDrawer } from '../../store/reducers/uiReducer';
+import { openDrawer } from "../../../store/reducers/uiReducer"
+
 
 const useStyles = makeStyles((theme: Theme) => {
     return createStyles({

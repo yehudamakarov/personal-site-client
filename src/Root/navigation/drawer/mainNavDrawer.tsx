@@ -1,7 +1,7 @@
 import React from 'react'
 import { Drawer, List, Paper, createStyles, Theme, makeStyles, ListItem, ListItemText } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
-import { ApplicationState, closeDrawer } from "../../store/reducers/uiReducer";
+import { ApplicationState, closeDrawer } from "../../../store/reducers/uiReducer";
 import { width } from '@material-ui/system';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     }
 }))
 
-export default function MainNavBar() {
+export default function MainNavDrawer() {
     const drawerOpen = useSelector((state: ApplicationState) => state.ui.drawerOpen
     )
     const dispatch = useDispatch();

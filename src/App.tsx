@@ -1,7 +1,7 @@
 import React from 'react';
 import { CssBaseline, createMuiTheme } from "@material-ui/core";
-import Background from './Root/Background';
-import Root from "./Root/Root"
+import Background from './root/background';
+import Root from "./root/root"
 import { ThemeProvider } from '@material-ui/styles';
 import { Provider } from "react-redux"
 import store from './store/storeConfig';
