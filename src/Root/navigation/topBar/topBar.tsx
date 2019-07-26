@@ -26,7 +26,7 @@ export default function TopBar() {
     const dispatch = useDispatch();
     const handleDrawerOpen = () => dispatch(openDrawer())
     return (
-        <AppBar color="primary">
+        <AppBar color="primary" position="sticky" >
             <Container >
                 <Toolbar disableGutters >
                     <Tooltip title="Navigation" placement="bottom-start" >
