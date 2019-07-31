@@ -11,20 +11,20 @@ const theme = createMuiTheme({
     palette: {
         common: {
             black: "#0B2B31",
-            white: "#E8EFF1"
+            white: "#F2F2F2"
         },
         type: "light",
         primary: {
             main: "#1E4571",
             // light: "rgb(71, 145, 219)",
             // dark: "rgb(17, 82, 147)",
-            contrastText: "#E8EFF1"
+            contrastText: "#F4F7F8"
         },
         secondary: {
             main: "#357266",
             // light: "rgb(227, 51, 113)",
             // dark: "rgb(154, 0, 54)",
-            contrastText: "#E8EFF1"
+            contrastText: "#F4F7F8"
         },
         error: {
             light: "#e57373",
@@ -58,7 +58,7 @@ const theme = createMuiTheme({
         },
         divider: "rgba(0, 0, 0, 0.12)",
         background: {
-            paper: "#DCE6EA",
+            paper: "#F2F2F2",
             default: "#fff"
         },
         action: {
@@ -79,7 +79,7 @@ function App() {
             <Provider store={store}>
                 <React.Fragment>
                     <CssBaseline />
-                    <Background />
+                    {/* <Background /> */}
                     <Root />
                 </React.Fragment>
             </Provider>

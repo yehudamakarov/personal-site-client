@@ -1,15 +1,15 @@
 import React from 'react'
-import { Button } from "@material-ui/core"
+import { Button, Typography } from "@material-ui/core"
 import TopBar from "./navigation/topBar/topBar";
 import MainNavDrawer from "./navigation/drawer/mainNavDrawer"
-import Home from './home/home';
+import MainContainer from './home/home';
+import Navigation from './navigation/navigation';
 
 export default function Root() {
     return (
         <React.Fragment>
-            <TopBar />
-            <MainNavDrawer />
-            <Home />
+            <Navigation />
+            <MainContainer />
         </React.Fragment>
     )
 }
