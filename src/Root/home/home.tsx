@@ -1,7 +1,7 @@
 import React from 'react'
 import quarry from "../../assets/jpeg/quarry.jpeg"
 import { Grid, Typography, makeStyles, Theme, createStyles, Paper, Container } from '@material-ui/core';
-import { minHeight } from '@material-ui/system';
+import LinkedInIconButton from "./icons/linkedInIconButton"
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     container: {
@@ -21,8 +21,10 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             backgroundPosition: "left"
         },
         display: "flex",
-        flexDirection: "column-reverse",
-        color: theme.palette.common.white
+        flexDirection: "column",
+        justifyContent: "flex-end",
+        color: theme.palette.common.white,
+        marginBottom: theme.spacing(8)
     },
     overlay: {
         position: "absolute",
@@ -34,8 +36,13 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     },
     overlayText: {
         position: "relative",
-        textAlign: "end",
-        padding: theme.spacing(2)
+        // textAlign: "end",
+        // paddingRight: theme.spacing(4),
+        paddingBottom: theme.spacing(4)
+    },
+    iconGrid: {
+        // textAlign: "end",
+        // paddingRight: theme.spacing(2)
     }
 }))
 
@@ -45,18 +52,25 @@ export default function MainContainer() {
         <Paper className={classes.paper}>
             {<img style={{ display: "none" }} src={quarry} />}
             <div className={classes.overlay} />
-            <Grid className={classes.overlayText} container direction="column" >
-                <Grid item >
-                    <Typography variant="h3">
-                        Software Guy
-                        </Typography>
+            <Container>
+                <Grid className={classes.iconGrid} item container direction="column" alignItems="flex-end">
+                    <Grid item>
+                        <LinkedInIconButton />
+                    </Grid>
                 </Grid>
-                <Grid item>
-                    <Typography variant="subtitle1" >
-                        Making good software for people to use.
+                <Grid className={classes.overlayText} container direction="column" alignItems="flex-end" >
+                    <Grid item >
+                        <Typography variant="h3">
+                            Software Guy
                         </Typography>
+                    </Grid>
+                    <Grid item>
+                        <Typography variant="subtitle1" >
+                            Making good software for people to use.
+                        </Typography>
+                    </Grid>
                 </Grid>
-            </Grid>
+            </Container>
         </Paper>
     )
 }
