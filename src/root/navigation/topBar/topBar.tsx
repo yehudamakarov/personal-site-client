@@ -7,6 +7,7 @@ import { GithubIconButton } from "../../home/icons/githubIconButton"
 import { useDispatch } from 'react-redux';
 import { openDrawer } from "../../../store/reducers/uiReducer"
 import { MyIconButtonBase } from '../../home/icons/base/myIconButtonBase';
+import { ApiIconButton } from '../../home/icons/apiIconButton';
 
 
 const useStyles = makeStyles((theme: Theme) => {
@@ -36,6 +37,13 @@ export const TopBar = () => {
                         </MyIconButtonBase>
                     </Tooltip>
                     <BrandLogo />
+                    {/* ********** */}
+                    {/* RIGHT SIDE */}
+                    <Link target="_blank" href={process.env.REACT_APP_API_URL}>
+                        <Tooltip title="Backend API" placement="bottom" >
+                            <ApiIconButton />
+                        </Tooltip>
+                    </Link>
                     <Link target="_blank" href={process.env.REACT_APP_GITHUB_PROJECT_URL}>
                         <Tooltip title="Github Repository" placement="bottom-end" >
                             <GithubIconButton />
