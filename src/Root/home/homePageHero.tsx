@@ -105,7 +105,7 @@ export const HomepageHero = () => {
                 action={[
                     <Button
                         key="got-it"
-                        onClick={handleClick} 
+                        onClick={handleClick}
                         size="small"
                         variant="contained"
                         color="secondary"

@@ -2,7 +2,7 @@ import React from 'react'
 import { Tooltip, TextField, Container, Drawer, Button, AppBar, Toolbar, IconButton, Typography, makeStyles, createStyles, Theme, Link } from "@material-ui/core"
 import MenuIcon from "@material-ui/icons/Menu";
 import CodeIcon from "@material-ui/icons/Code"
-import {BrandLogo} from "./brandLogo"
+import { BrandLogo } from "./brandLogo"
 import { GithubIconButton } from "../../home/icons/githubIconButton"
 import { useDispatch } from 'react-redux';
 import { openDrawer } from "../../../store/reducers/uiReducer"
