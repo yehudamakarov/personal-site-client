@@ -4,16 +4,18 @@ import { SvgIcon, makeStyles, createStyles, Theme, IconButton, Tooltip } from '@
 const useStyles = makeStyles((theme: Theme) => {
     return createStyles({
         iconButton: {
-            transition: "background-color 300ms cubic-bezier(0, 0.91, 0.46, 0.77)",
+            transition: "background-color 500ms ease-out",
             '& svg': {
                 fill: theme.palette.common.white,
-                transition: "fill 500ms cubic-bezier(0, 0.91, 0.46, 0.77)"
+                transition: "fill 300ms ease-out"
             },
             '&:hover': {
                 '& svg': {
                     fill: theme.palette.common.black,
+                    transition: "fill 300ms ease-in"
                 },
-                backgroundColor: theme.palette.common.white
+                backgroundColor: theme.palette.common.white,
+                transition: "background-color 100ms ease-in",
             },
         }
     })
@@ -21,18 +23,18 @@ const useStyles = makeStyles((theme: Theme) => {
 
 type OwnProps = {
     children: React.ReactNode;
-    viewBox?: string;
     edge?: false | "end" | "start";
+    onClick?: () => void;
+    styleProp?: string;
+    disabled?: boolean;
 }
 
-export const MyIconButtonBase = React.forwardRef((props: OwnProps, ref: any) => {
+export const MyIconButtonBase = React.forwardRef((props: OwnProps, ref: React.Ref<HTMLButtonElement>) => {
+    const { children, edge, styleProp, ...rest } = props;
     const classes = useStyles();
-    const { viewBox, children, edge, ...rest } = props;
     return (
-        <IconButton {...rest} ref={ref} className={classes.iconButton} edge={edge ? edge : false} >
-            <SvgIcon viewBox={viewBox ? viewBox : '0 0 24 24'} >
-                {children}
-            </SvgIcon>
+        <IconButton {...rest} ref={ref} className={classes.iconButton + " " + styleProp} edge={edge ? edge : false} >
+            {children}
         </IconButton>
     )
 })

@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme: Theme) =>
         }
     )
 )
-export default function BrandLogo() {
+export const BrandLogo = () => {
     const classes = useStyles();
 
     return (

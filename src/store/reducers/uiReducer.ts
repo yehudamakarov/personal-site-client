@@ -31,7 +31,7 @@ export const closeDrawer = (): CloseDrawerAction => ({
 
 
 
-const uiReducer = (state = INITIAL_STATE, action: UiActionTypes): UiState => {
+export const uiReducer = (state = INITIAL_STATE, action: UiActionTypes): UiState => {
     switch (action.type) {
         case OPEN_DRAWER:
             return { ...state, drawerOpen: true }
@@ -41,6 +41,3 @@ const uiReducer = (state = INITIAL_STATE, action: UiActionTypes): UiState => {
             return state;
     }
 }
-
-
-export default uiReducer

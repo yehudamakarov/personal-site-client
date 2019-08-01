@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     }
 }))
 
-export default function MainNavDrawer() {
+export const MainNavDrawer = () => {
     const drawerOpen = useSelector((state: ApplicationState) => state.ui.drawerOpen
     )
     const dispatch = useDispatch();
@@ -29,7 +29,7 @@ export default function MainNavDrawer() {
             <Paper onClick={handleDrawerClose} className={classes.drawerBackground}>
                 <List>
                     <ListItem button >
-                        <ListItemText>Nav Item</ListItemText>
+                        <ListItemText>Placeholder Nav Item</ListItemText>
                     </ListItem>
                 </List>
             </Paper>

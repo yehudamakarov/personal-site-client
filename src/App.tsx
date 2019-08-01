@@ -1,10 +1,10 @@
 import React from 'react';
 import { CssBaseline, createMuiTheme } from "@material-ui/core";
-import Background from './root/background';
-import Root from "./root/root"
+import { Background } from './root/background';
+import { Root } from "./root/root"
 import { ThemeProvider } from '@material-ui/styles';
 import { Provider } from "react-redux"
-import store from './store/storeConfig';
+import { store } from './store/storeConfig';
 
 // https://coolors.co/dce6ea-0e3b43-1e4571-3e505b-357266
 const theme = createMuiTheme({
@@ -73,7 +73,7 @@ const theme = createMuiTheme({
 })
 
 
-function App() {
+export const App = () => {
     return (
         <ThemeProvider theme={theme}>
             <Provider store={store}>
@@ -87,4 +87,3 @@ function App() {
     );
 }
 
-export default App;

@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
     )
 )
 
-function Background() {
+export const Background = () => {
     const classes = useStyles();
     return (
         <React.Fragment>
@@ -26,5 +26,3 @@ function Background() {
         </React.Fragment>
     )
 }
-
-export default Background
