@@ -1,9 +1,10 @@
 import React from 'react'
 import quarry from "../../assets/jpeg/quarry.jpeg"
-import { Grid, Typography, makeStyles, Theme, createStyles, Paper, Container, Tooltip, Link, Snackbar, Button } from '@material-ui/core';
+import { Grid, Typography, makeStyles, Theme, createStyles, Paper, Container, Tooltip, Link, Snackbar, Button, Slide } from '@material-ui/core';
 import { LinkedInIconButton } from "./icons/linkedInIconButton"
 import { GithubIconButton } from "./icons/githubIconButton"
 import { ResumeButton } from "./icons/resumeIconButton"
+import { TransitionProps } from '@material-ui/core/transitions/transition';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     container: {
@@ -43,9 +44,12 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     }
 }))
 
+const SlideTransition = (props: TransitionProps) => <Slide {...props} direction="right" timeout={200} />
+
 export const HomepageHero = () => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
+
     const handleClick = () => {
         setOpen(true);
     }
@@ -97,6 +101,7 @@ export const HomepageHero = () => {
                 </Grid>
             </Container>
             <Snackbar
+                TransitionComponent={SlideTransition}
                 anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
                 open={open}
                 autoHideDuration={4000}
