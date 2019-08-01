@@ -1,7 +1,9 @@
 import React from 'react'
 import quarry from "../../assets/jpeg/quarry.jpeg"
-import { Grid, Typography, makeStyles, Theme, createStyles, Paper, Container } from '@material-ui/core';
-import LinkedInIconButton from "./icons/linkedInIconButton"
+import { Grid, Typography, makeStyles, Theme, createStyles, Paper, Container, Tooltip } from '@material-ui/core';
+import { LinkedInIconButton } from "./icons/linkedInIconButton"
+import { GithubIconButton } from "./icons/githubIconButton"
+import { ResumeButton } from "./icons/resumeIconButton"
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     container: {
@@ -36,14 +38,9 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     },
     overlayText: {
         position: "relative",
-        // textAlign: "end",
-        // paddingRight: theme.spacing(4),
+        textAlign: "end",
         paddingBottom: theme.spacing(4)
     },
-    iconGrid: {
-        // textAlign: "end",
-        // paddingRight: theme.spacing(2)
-    }
 }))
 
 export default function MainContainer() {
@@ -53,9 +50,21 @@ export default function MainContainer() {
             {<img style={{ display: "none" }} src={quarry} />}
             <div className={classes.overlay} />
             <Container>
-                <Grid className={classes.iconGrid} item container direction="column" alignItems="flex-end">
+                <Grid item container direction="column" alignItems="flex-end">
                     <Grid item>
-                        <LinkedInIconButton />
+                        <Tooltip title="My LinkedIn Homepage" placement="left">
+                            <LinkedInIconButton />
+                        </Tooltip>
+                    </Grid>
+                    <Grid item>
+                        <Tooltip title="My Github Profile" placement="left">
+                            <GithubIconButton />
+                        </Tooltip>
+                    </Grid>
+                    <Grid item>
+                        <Tooltip title="My Resume" placement="left">
+                            <ResumeButton />
+                        </Tooltip>
                     </Grid>
                 </Grid>
                 <Grid className={classes.overlayText} container direction="column" alignItems="flex-end" >

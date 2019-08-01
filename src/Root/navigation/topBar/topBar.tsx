@@ -3,7 +3,7 @@ import { Tooltip, TextField, Container, Drawer, Button, AppBar, Toolbar, IconBut
 import MenuIcon from "@material-ui/icons/Menu";
 import CodeIcon from "@material-ui/icons/Code"
 import BrandLogo from "./brandLogo"
-import githubLogo from "../../../assets/png/GitHub-Mark-Light-120px-plus.png"
+import { GithubIconButton } from "../../home/icons/githubIconButton"
 import { useDispatch } from 'react-redux';
 import { openDrawer } from "../../../store/reducers/uiReducer"
 
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) => {
         githubLogo: {
             maxWidth: 26,
             maxHeight: 26
-        }
+        },
     })
 })
 
@@ -36,11 +36,11 @@ export default function TopBar() {
                     </Tooltip>
                     <BrandLogo />
                     <Link target="_blank" href={process.env.REACT_APP_GITHUB_PROJECT_URL}>
-                        <Tooltip title="Github Repo" placement="bottom-end">
-                            <IconButton edge="end" color="inherit">
-                                <img className={classes.githubLogo} src={githubLogo} />
-                            </IconButton>
+
+                        <Tooltip title="Github Repository" placement="bottom-end" >
+                            <GithubIconButton />
                         </Tooltip>
+
                     </Link>
                 </Toolbar>
             </Container>
