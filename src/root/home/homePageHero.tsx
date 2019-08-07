@@ -75,6 +75,9 @@ export const HomepageHero = () => {
     const hadnleHeroLoaded = () => {
         setHeroLoaded(true);
     }
+    const hadnleHeroLoaded = () => {
+        setHeroLoaded(true);
+    }
     return (
         <div className={classes.root}>
             {<img onLoad={hadnleHeroLoaded} style={{ display: "none" }} src={quarry} />}
