@@ -72,15 +72,12 @@ export const HomepageHero = () => {
     const classes = useStyles();
     const [heroLoaded, setHeroLoaded] = React.useState(false);
 
-    const hadnleHeroLoaded = () => {
-        setHeroLoaded(true);
-    }
-    const hadnleHeroLoaded = () => {
+    const handleHeroLoaded = () => {
         setHeroLoaded(true);
     }
     return (
         <div className={classes.root}>
-            {<img onLoad={hadnleHeroLoaded} style={{ display: "none" }} src={quarry} />}
+            {<img onLoad={handleHeroLoaded} style={{ display: "none" }} src={quarry} />}
             <Fade in={!heroLoaded}>
                 <Paper className={classes.overlayEverything}>
                     <div className={classes.loadingOverlay}>
