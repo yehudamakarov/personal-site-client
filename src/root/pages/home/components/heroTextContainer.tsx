@@ -1,8 +1,8 @@
 import React from 'react'
 import { Container, Grid, Link, Tooltip, Typography, makeStyles, Theme, createStyles, Snackbar, Button, Slide } from "@material-ui/core"
-import { LinkedInIconButton } from "./icons/linkedInIconButton";
-import { GithubIconButton } from "./icons/githubIconButton";
-import { ResumeButton } from "./icons/resumeIconButton";
+import { LinkedInIconButton } from "../../../iconButtons/buttons/linkedInIconButton";
+import { GithubIconButton } from "../../../iconButtons/buttons/githubIconButton";
+import { ResumeButton } from "../../../iconButtons/buttons/resumeIconButton";
 import { TransitionProps } from '@material-ui/core/transitions/transition';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({

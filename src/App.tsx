@@ -1,6 +1,5 @@
 import React from 'react';
 import { CssBaseline, createMuiTheme } from "@material-ui/core";
-import { Background } from './root/background';
 import { Root } from "./root/root"
 import { ThemeProvider } from '@material-ui/styles';
 import { Provider } from "react-redux"
@@ -11,7 +10,7 @@ const theme = createMuiTheme({
     palette: {
         common: {
             black: "#0B2B31",
-            white: "#F2F2F2"
+            white: "#EDEFF0"
         },
         type: "light",
         primary: {
@@ -51,15 +50,15 @@ const theme = createMuiTheme({
         contrastThreshold: 3,
         tonalOffset: 0.3,
         text: {
-            primary: "rgba(0, 0, 0, 0.87)",
-            secondary: "rgba(0, 0, 0, 0.54)",
-            disabled: "rgba(0, 0, 0, 0.38)",
-            hint: "rgba(0, 0, 0, 0.38)"
+            primary: "#3E505B",
+            secondary: "#616F78",
+            disabled: "#959FA5",
+            hint: "#959FA5"
         },
         divider: "rgba(0, 0, 0, 0.12)",
         background: {
-            paper: "#F2F2F2",
-            default: "#fff"
+            paper: "#EDEFF0",
+            default: "#EDEFF0"
         },
         action: {
             active: "rgba(0, 0, 0, 0.54)",

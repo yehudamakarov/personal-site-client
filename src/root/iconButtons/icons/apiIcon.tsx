@@ -1,11 +1,9 @@
 import React from 'react'
-import { MyIconButtonBase } from './base/myIconButtonBase';
-import { SvgIcon } from '@material-ui/core';
+import {SvgIcon} from "@material-ui/core"
 
-export const ApiIconButton = React.forwardRef((props, ref: React.Ref<HTMLButtonElement>) => {
+export const ApiIcon = () => {
     return (
-        <MyIconButtonBase {...props} ref={ref} >
-            <SvgIcon viewBox="0 0 380 380">
+        <SvgIcon viewBox="0 0 380 380">
             <g>
 	<path d="M91.425,157.435c-1.065-2.297-3.366-3.767-5.897-3.767c-0.005,0-0.01,0-0.015,0c-2.537,0.006-4.839,1.487-5.895,3.794
 		L47.402,227.83c-1.494,3.264-0.06,7.122,3.204,8.616c0.877,0.401,1.797,0.591,2.702,0.591c2.464,0,4.821-1.409,5.914-3.796
@@ -33,7 +31,5 @@ export const ApiIconButton = React.forwardRef((props, ref: React.Ref<HTMLButtonE
 		C21.714,315,21.27,314.556,21.27,314.01z"/>
     </g>
             </SvgIcon>
-        </MyIconButtonBase>
     )
-})
-
+}
