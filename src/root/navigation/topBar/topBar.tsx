@@ -3,11 +3,11 @@ import { Tooltip, TextField, Container, Drawer, Button, AppBar, Toolbar, IconBut
 import MenuIcon from "@material-ui/icons/Menu";
 import CodeIcon from "@material-ui/icons/Code"
 import { BrandLogo } from "./brandLogo"
-import { GithubIconButton } from "../../home/icons/githubIconButton"
+import { GithubIconButton } from "../../iconButtons/buttons/githubIconButton"
 import { useDispatch } from 'react-redux';
 import { openDrawer } from "../../../store/reducers/uiReducer"
-import { MyIconButtonBase } from '../../home/icons/base/myIconButtonBase';
-import { ApiIconButton } from '../../home/icons/apiIconButton';
+import { MyIconButtonBase } from '../../iconButtons/base/myIconButtonBase';
+import { ApiIconButton } from '../../iconButtons/buttons/apiIconButton';
 
 
 const useStyles = makeStyles((theme: Theme) => {

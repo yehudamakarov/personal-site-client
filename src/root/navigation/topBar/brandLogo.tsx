@@ -1,6 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles';
-import { Theme, createStyles, Typography } from '@material-ui/core';
+import { Theme, createStyles, Typography, Link } from '@material-ui/core';
+import { Link as RouterLink } from "@reach/router"
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles(
@@ -15,6 +16,13 @@ export const BrandLogo = () => {
     const classes = useStyles();
 
     return (
-        <Typography variant="h6" className={classes.iconPush}>YM</Typography>
+        <Link
+            color="inherit"
+            component={RouterLink}
+            to="/"
+            variant="h6"
+            className={classes.iconPush}>
+            YM
+        </Link>
     )
 }

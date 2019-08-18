@@ -1,9 +1,9 @@
 import React from 'react'
-import quarry from "../../assets/jpeg/quarry.jpeg"
+import quarry from "../../../../assets/jpeg/quarry.jpeg"
 import { Grid, Typography, makeStyles, Theme, createStyles, Paper, Container, Tooltip, Link, Snackbar, Button, Slide, Grow, Fade, CircularProgress } from '@material-ui/core';
-import { LinkedInIconButton } from "./icons/linkedInIconButton"
-import { GithubIconButton } from "./icons/githubIconButton"
-import { ResumeButton } from "./icons/resumeIconButton"
+import { LinkedInIconButton } from "../../../iconButtons/buttons/linkedInIconButton"
+import { GithubIconButton } from "../../../iconButtons/buttons/githubIconButton"
+import { ResumeButton } from "../../../iconButtons/buttons/resumeIconButton"
 import { TransitionProps } from '@material-ui/core/transitions/transition';
 import { HeroTextContainer } from './heroTextContainer';
 
