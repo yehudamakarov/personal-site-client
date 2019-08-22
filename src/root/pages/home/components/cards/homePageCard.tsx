@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         flex: 1
     },
     cardButton: {
+        [theme.breakpoints.down("xs")]: {
+            width: theme.spacing(10),
+        },
         width: theme.spacing(16),
         display: "flex",
         alignItems: "center",

@@ -59,12 +59,12 @@ export const HeroTextContainer = () => {
                 <Grid item >
                     <Typography variant="h3">
                         Full Stack Engineer
-                                </Typography>
+                    </Typography>
                 </Grid>
                 <Grid item xs={12} md={6} >
-                    <Typography variant="subtitle1" >
+                    <Typography variant="overline" >
                         My name is Yehuda Makarov, and I make software that is fun to maintain and pleasant to use.
-                                </Typography>
+                    </Typography>
                 </Grid>
             </Grid>
             <Snackbar
