@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         position: "relative",
-        height: "80vh",
+        height: "60vh",
         [theme.breakpoints.down("sm")]: {
             backgroundPosition: "left"
         },
