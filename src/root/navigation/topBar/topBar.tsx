@@ -5,9 +5,9 @@ import CodeIcon from "@material-ui/icons/Code"
 import { BrandLogo } from "./brandLogo"
 import { GithubIconButton } from "../../iconButtons/buttons/githubIconButton"
 import { useDispatch } from 'react-redux';
-import { openDrawer } from "../../../store/reducers/uiReducer"
 import { MyIconButtonBase } from '../../iconButtons/base/myIconButtonBase';
 import { ApiIconButton } from '../../iconButtons/buttons/apiIconButton';
+import { openDrawerAction } from '../../../store/actions/ui/uiActions';
 
 
 const useStyles = makeStyles((theme: Theme) => {
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) => {
 export const TopBar = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
-    const handleDrawerOpen = () => dispatch(openDrawer())
+    const handleDrawerOpen = () => dispatch(openDrawerAction())
     return (
         <AppBar color="primary" position="sticky" >
             <Container >
