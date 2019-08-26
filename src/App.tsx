@@ -3,7 +3,12 @@ import { CssBaseline, createMuiTheme } from "@material-ui/core";
 import { Root } from "./root/root"
 import { ThemeProvider } from '@material-ui/styles';
 import { Provider } from "react-redux"
+
+import axios from "axios"
+
 import { store } from './store/storeConfig';
+// axios.defaults.baseURL = process.env.REACT_APP_API_URL
+
 
 // https://coolors.co/dce6ea-0e3b43-1e4571-3e505b-357266
 const theme = createMuiTheme({

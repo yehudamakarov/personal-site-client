@@ -5,9 +5,10 @@ import PortraitIcon from '@material-ui/icons/Portrait';
 import WorkIcon from '@material-ui/icons/Work';
 import NotesRoundedIcon from '@material-ui/icons/NotesRounded';
 import { useSelector, useDispatch } from 'react-redux';
-import { ApplicationState, closeDrawer } from "../../../store/reducers/uiReducer";
 import { Link } from '@reach/router';
 import { ApiIcon } from '../../iconButtons/icons/apiIcon';
+import { ApplicationState } from '../../../store/reducers/rootReducer';
+import { closeDrawerAction } from '../../../store/actions/ui/uiActions';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     drawerBackground: {
@@ -21,10 +22,10 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 }))
 
 export const MainNavDrawer = () => {
-    const drawerOpen = useSelector((state: ApplicationState) => state.ui.drawerOpen
-    )
+    const drawerOpen = useSelector((state: ApplicationState) => state.ui.drawerOpen);
     const dispatch = useDispatch();
-    const handleDrawerClose = () => dispatch(closeDrawer())
+    const handleDrawerClose = () => dispatch(closeDrawerAction());
+
     const classes = useStyles()
 
 
