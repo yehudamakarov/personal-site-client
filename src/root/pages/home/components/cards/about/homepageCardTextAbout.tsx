@@ -3,7 +3,7 @@ import { Typography, Grid } from '@material-ui/core';
 
 const HomepageCardTextAbout = () => {
     return (
-        <Grid container spacing={1}>
+        <Grid container spacing={3}>
             {/* Top Header */}
             <Grid item xs={12}>
                 <Typography variant="h3">

@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Typography, Paper, Grid, CardActionArea, CardContent, Card, CardMedia, Theme } from '@material-ui/core';
 import { HomepageCard } from './cards/homePageCard';
 import { HomepageCardTextAbout } from './cards/about/homepageCardTextAbout';
-import { HomeCardTextProjects } from './cards/projects/HomeCardTextProjects';
+import { HomepageCardTextProjects } from './cards/projects/HomeCardTextProjects';
 
 
 
@@ -20,7 +20,7 @@ export const HomepageBody = () => {
                 {/* Projects card */}
                 <Grid item xs={12}>
                     <HomepageCard to="projects">
-                        <HomeCardTextProjects />
+                        <HomepageCardTextProjects />
                     </HomepageCard>
                 </Grid>
             </Grid>

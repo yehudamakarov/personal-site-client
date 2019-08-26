@@ -9,7 +9,7 @@ export interface GetProjectsLoadingAction {
 }
 
 export const GET_PROJECTS_SUCCESS = "GET_PROJECTS_SUCCESS";
-export const getProjectsSuccess = (projects: Project[]): GetProjectsSuccessAction => ({
+export const getProjectsSuccessAction = (projects: Project[]): GetProjectsSuccessAction => ({
     type: GET_PROJECTS_SUCCESS,
     payload: projects
 })

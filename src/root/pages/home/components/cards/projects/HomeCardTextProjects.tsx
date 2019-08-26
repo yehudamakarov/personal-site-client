@@ -1,29 +1,37 @@
 import React, { useEffect } from 'react'
-import { Typography, Grid } from '@material-ui/core';
-import { useDispatch } from 'react-redux';
+import { Typography, Grid, Card } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
 import { getProjectsLoadingAction } from '../../../../../../store/actions/projects/projectsActions';
+import { ApplicationState } from '../../../../../../store/reducers/rootReducer';
+import HomeProjectCard from './homeProjectCard';
 
-const HomeCardTextProjects = () => {
+const HomepageCardTextProjects = () => {
     const dispatch = useDispatch();
+    const { isLoading, isError, projects } = useSelector((state: ApplicationState) => state.projects)
 
     useEffect(() => {
-        dispatch(getProjectsLoadingAction);
+        dispatch(getProjectsLoadingAction());
     }, [])
 
     return (
-        <Grid spacing={1}>
-            <Grid item >
+        <Grid container spacing={3}>
+            <Grid item xs={12}>
                 <Typography variant="h3">
                     Projects
                 </Typography>
             </Grid>
-            <Grid item>
-                <Typography variant="subtitle1">
-                    Projects here
-                </Typography>
+            <Grid item xs={12}>
+                <Grid container spacing={2} direction="column">
+                    {projects.map((project) =>
+                        <Grid item key={project.name}>
+                            <HomeProjectCard project={project} />
+                        </Grid>
+
+                    )}
+                </Grid>
             </Grid>
         </Grid>
     )
 }
 
-export { HomeCardTextProjects }
+export { HomepageCardTextProjects }

@@ -39,7 +39,7 @@ export const TopBar = () => {
                     <BrandLogo />
                     {/* ********** */}
                     {/* RIGHT SIDE */}
-                    <Link target="_blank" href={process.env.REACT_APP_API_URL}>
+                    <Link target="_blank" href={`${process.env.REACT_APP_API_URL}/swagger`}>
                         <Tooltip title="Backend API" placement="bottom" >
                             <ApiIconButton />
                         </Tooltip>

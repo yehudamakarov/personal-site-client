@@ -1,5 +1,5 @@
-import React from 'react'
-import { Card, CardContent, Typography, CardActionArea, CardMedia, Theme, Tooltip } from '@material-ui/core';
+import React, { useState } from 'react'
+import { Card, CardContent, Typography, CardActionArea, CardMedia, Theme, Tooltip, Grow } from '@material-ui/core';
 import { makeStyles, createStyles } from '@material-ui/styles';
 
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
@@ -19,20 +19,26 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         },
         width: theme.spacing(16),
         display: "flex",
+        flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "space-between",
         backgroundColor: theme.palette.secondary.main,
+        color: theme.palette.getContrastText(theme.palette.secondary.main),
         '& svg': { fill: theme.palette.common.white },
         '&:hover': {
             backgroundColor: theme.palette.secondary.dark,
         }
     },
+    dummyTop: {
+        minHeight: theme.spacing(4)
+    }
 }))
 
 type OwnProps = { children: any, to: string }
 
 export const HomepageCard = (props: OwnProps) => {
     const classes = useStyles();
+    const [hovered, setHovered] = useState(false)
     const { children, to } = props;
     return (
         <Card className={classes.card}>
@@ -41,13 +47,19 @@ export const HomepageCard = (props: OwnProps) => {
                     {children}
                 </CardContent>
             </div>
-            <Tooltip title="More" placement="left">
-                <CardActionArea component={Link} to={to} className={classes.cardButton}>
-                    <CardMedia>
-                        <ArrowForwardIosIcon />
-                    </CardMedia>
-                </CardActionArea>
-            </Tooltip>
+            <CardActionArea onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} component={Link} to={to} className={classes.cardButton}>
+                <div className={classes.dummyTop} />
+                <CardMedia>
+                    <ArrowForwardIosIcon />
+                </CardMedia>
+                <div>
+                    <Grow in={hovered} timeout={400}>
+                        <Typography variant="button">
+                            More
+                        </Typography>
+                    </Grow>
+                </div>
+            </CardActionArea>
         </Card>
     )
 }
