@@ -76,7 +76,9 @@ const HomeProjectCard = (props: OwnProps) => {
                     </CardActions>
                 </div>
                 <CardActionArea component={Link} to={`/projects/${project.name}`} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className={hovered ? classes.cardSideButton + " " + classes.cardSideButtonHover : classes.cardSideButton}>
-                    <div className={classes.dummyTop} />
+                    <Hidden xsDown>
+                        <div className={classes.dummyTop} />
+                    </Hidden>
                     <div>
                         <ArrowForwardIosIcon />
                     </div>
