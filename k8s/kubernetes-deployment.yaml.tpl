@@ -17,7 +17,4 @@ spec:
           image: gcr.io/_CONTAINER_PROJECT_ID/_REPO_NAME:_SHORT_SHA
           ports:
             - containerPort: 3000
-          env:
-            - name: REACT_APP_API_URL
-              value: _REACT_APP_API_URL
         
