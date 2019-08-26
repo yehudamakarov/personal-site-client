@@ -9,7 +9,7 @@ interface PinnedReposResponse {
 }
 
 const projectsApi = {
-    getProjectsRequest: () => axios.get<PinnedReposResponse>('https://yehudamakarov.com/api/repos/pinnedrepos')
+    getProjectsRequest: () => axios.get<PinnedReposResponse>(`${process.env.REACT_APP_API_URL}repos/pinnedrepos`)
 }
 
 function* getProjectsRequest() {
