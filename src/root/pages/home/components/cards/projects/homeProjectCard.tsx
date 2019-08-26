@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         [theme.breakpoints.down("xs")]: {
             width: theme.spacing(6),
         },
-        width: theme.spacing(10),
+        width: theme.spacing(14),
         backgroundColor: theme.palette.action.hover,
         display: "flex",
         flexDirection: "column",
@@ -37,13 +37,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         backgroundColor: theme.palette.action.selected
     },
     dummyTop: {
-        minHeight: theme.spacing(4)
+        [theme.breakpoints.up("sm")]: { minHeight: theme.spacing(4) }
     },
-    loading: {
-        [theme.breakpoints.up("sm")]: {
-            minHeight: theme.spacing(5)
-        }
-    }
 }))
 
 type OwnProps = {
@@ -76,18 +71,15 @@ const HomeProjectCard = (props: OwnProps) => {
                     </CardActions>
                 </div>
                 <CardActionArea component={Link} to={`/projects/${project.name}`} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className={hovered ? classes.cardSideButton + " " + classes.cardSideButtonHover : classes.cardSideButton}>
-                    <Hidden xsDown>
-                        <div className={classes.dummyTop} />
-                    </Hidden>
+                    <div className={classes.dummyTop} />
                     <div>
                         <ArrowForwardIosIcon />
                     </div>
                     <div>
                         <Hidden xsDown>
-                            <Grow in={hovered}>
+                            <Grow in={hovered} timeout={500} >
                                 <Typography variant="button">See More</Typography>
                             </Grow>
-
                         </Hidden>
                     </div>
                 </CardActionArea>
