@@ -82,6 +82,7 @@ steps:
         mkdir -p $_ENV_REPOSITORY_NAME/k8s
         sed "s/_CONTAINER_PROJECT_ID/$_CONTAINER_PROJECT_ID/g" k8s/kubernetes-deployment.yaml.tpl | \
         sed "s/_REPO_NAME/$REPO_NAME/g" | \
+        sed "s/_REACT_APP_API_URL/$_REACT_APP_API_URL/g" | \
         sed "s/_SHORT_SHA/$SHORT_SHA/g" > $_ENV_REPOSITORY_NAME/k8s/$REPO_NAME-deployment.yaml
   
   - name: gcr.io/cloud-builders/gcloud
