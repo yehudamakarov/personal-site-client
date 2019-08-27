@@ -23,10 +23,12 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         alignItems: "center",
         justifyContent: "space-between",
         backgroundColor: theme.palette.secondary.main,
-        color: theme.palette.getContrastText(theme.palette.secondary.main),
-        '& svg': { fill: theme.palette.common.white },
+        // color: theme.palette.getContrastText(theme.palette.secondary.main),
+        '& svg': { fill: theme.palette.secondary.contrastText },
         '&:hover': {
+            color: theme.palette.secondary.contrastText,
             backgroundColor: theme.palette.secondary.dark,
+            '& svg': { fill: theme.palette.secondary.contrastText },
         }
     },
     dummyTop: {
@@ -41,13 +43,19 @@ export const HomepageCard = (props: OwnProps) => {
     const [hovered, setHovered] = useState(false)
     const { children, to } = props;
     return (
-        <Card className={classes.card}>
+        <Card square elevation={hovered ? 1 : 4} className={classes.card}>
             <div className={classes.cardFace}>
                 <CardContent>
                     {children}
                 </CardContent>
             </div>
-            <CardActionArea onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} component={Link} to={to} className={classes.cardButton}>
+            <CardActionArea
+                onMouseEnter={() => setHovered(true)}
+                onMouseLeave={() => setHovered(false)}
+                component={Link}
+                to={to}
+                className={classes.cardButton}
+            >
                 <div className={classes.dummyTop} />
                 <CardMedia>
                     <ArrowForwardIosIcon />

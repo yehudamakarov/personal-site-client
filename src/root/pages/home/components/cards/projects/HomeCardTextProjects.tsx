@@ -26,7 +26,6 @@ const HomepageCardTextProjects = () => {
                         <Grid item key={project.name}>
                             <HomeProjectCard project={project} />
                         </Grid>
-
                     )}
                 </Grid>
             </Grid>

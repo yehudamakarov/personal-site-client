@@ -16,8 +16,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         [theme.breakpoints.down("xs")]: {
             width: theme.spacing(6),
         },
-        width: theme.spacing(10),
-        backgroundColor: theme.palette.action.hover,
+        width: theme.spacing(14),
+        // backgroundColor: theme.palette.action.hover,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -37,13 +37,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         backgroundColor: theme.palette.action.selected
     },
     dummyTop: {
-        minHeight: theme.spacing(4)
+        [theme.breakpoints.up("sm")]: { minHeight: theme.spacing(4) }
     },
-    loading: {
-        [theme.breakpoints.up("sm")]: {
-            minHeight: theme.spacing(5)
-        }
-    }
 }))
 
 type OwnProps = {
@@ -57,7 +52,20 @@ const HomeProjectCard = (props: OwnProps) => {
     const { project } = props;
     return (
         <div>
-            <Card elevation={hovered ? 1 : 8} square className={classes.card}>
+            <Card elevation={hovered ? 1 : 0} square className={classes.card}>
+                <CardActionArea component={Link} to={`/projects/${project.name}`} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className={hovered ? classes.cardSideButton + " " + classes.cardSideButtonHover : classes.cardSideButton}>
+                    <div className={classes.dummyTop} />
+                    <div>
+                        <ArrowForwardIosIcon />
+                    </div>
+                    <div>
+                        <Hidden xsDown>
+                            <Grow in={hovered} timeout={500} >
+                                <Typography variant="button">See More</Typography>
+                            </Grow>
+                        </Hidden>
+                    </div>
+                </CardActionArea>
                 <div className={classes.cardFace}>
                     <CardContent>
                         <Typography variant="h6">{project.name}</Typography>
@@ -70,29 +78,15 @@ const HomeProjectCard = (props: OwnProps) => {
                                     Github
                                     <GithubIcon className={classes.iconRight} />
                                 </Button>
-
                             </Grid>
                         </Grid>
                     </CardActions>
                 </div>
-                <CardActionArea component={Link} to={`/projects/${project.name}`} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className={hovered ? classes.cardSideButton + " " + classes.cardSideButtonHover : classes.cardSideButton}>
-                    <Hidden xsDown>
-                        <div className={classes.dummyTop} />
-                    </Hidden>
-                    <div>
-                        <ArrowForwardIosIcon />
-                    </div>
-                    <div>
-                        <Hidden xsDown>
-                            <Grow in={hovered}>
-                                <Typography variant="button">See More</Typography>
-                            </Grow>
 
-                        </Hidden>
-                    </div>
-                </CardActionArea>
             </Card>
-            {pressed && <LinearProgress variant="query" />}
+            <Grow in={pressed}>
+                <LinearProgress variant="query" />
+            </Grow>
         </div>
     )
 }
