@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             width: theme.spacing(6),
         },
         width: theme.spacing(14),
-        backgroundColor: theme.palette.action.hover,
+        // backgroundColor: theme.palette.action.hover,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -52,24 +52,7 @@ const HomeProjectCard = (props: OwnProps) => {
     const { project } = props;
     return (
         <div>
-            <Card elevation={hovered ? 1 : 8} square className={classes.card}>
-                <div className={classes.cardFace}>
-                    <CardContent>
-                        <Typography variant="h6">{project.name}</Typography>
-                        <Typography variant="body2">{project.description}</Typography>
-                    </CardContent>
-                    <CardActions>
-                        <Grid container spacing={1}>
-                            <Grid item xs={12}>
-                                <Button onClick={() => setPressed(true)} size="small" color="primary" href={project.url} >
-                                    Github
-                                    <GithubIcon className={classes.iconRight} />
-                                </Button>
-
-                            </Grid>
-                        </Grid>
-                    </CardActions>
-                </div>
+            <Card elevation={hovered ? 1 : 0} square className={classes.card}>
                 <CardActionArea component={Link} to={`/projects/${project.name}`} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className={hovered ? classes.cardSideButton + " " + classes.cardSideButtonHover : classes.cardSideButton}>
                     <div className={classes.dummyTop} />
                     <div>
@@ -83,8 +66,27 @@ const HomeProjectCard = (props: OwnProps) => {
                         </Hidden>
                     </div>
                 </CardActionArea>
+                <div className={classes.cardFace}>
+                    <CardContent>
+                        <Typography variant="h6">{project.name}</Typography>
+                        <Typography variant="body2">{project.description}</Typography>
+                    </CardContent>
+                    <CardActions>
+                        <Grid container spacing={1}>
+                            <Grid item xs={12}>
+                                <Button onClick={() => setPressed(true)} size="small" color="primary" href={project.url} >
+                                    Github
+                                    <GithubIcon className={classes.iconRight} />
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </CardActions>
+                </div>
+
             </Card>
-            {pressed && <LinearProgress variant="query" />}
+            <Grow in={pressed}>
+                <LinearProgress variant="query" />
+            </Grow>
         </div>
     )
 }
