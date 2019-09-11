@@ -2,7 +2,7 @@ import {
     CLOSE_DRAWER,
     OPEN_DRAWER,
     UiActionTypes,
-} from "../../actions/ui/uiActions";
+} from "../actions/ui/uiActions";
 
 export interface IUiState {
     drawerOpen: boolean;

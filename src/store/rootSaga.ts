@@ -5,10 +5,10 @@ import {
     getPinnedRepositoriesErrorAction,
     getPinnedRepositoriesSuccessAction,
 } from "./actions/pinnedRepositories/pinnedRepositoriesActions";
-import { IProject } from "./reducers/pinnedRepositories/pinnedRepositoriesReducer";
+import { IPinnedRepository } from "./reducers/pinnedRepositoriesReducer";
 
 interface IPinnedReposResponse {
-    data: IProject[];
+    data: IPinnedRepository[];
     reason: any;
 }
 

@@ -3,9 +3,9 @@ import {
     GET_PINNED_REPOSITORIES_LOADING,
     GET_PINNED_REPOSITORIES_SUCCESS,
     PinnedRepositoriesActionTypes,
-} from "../../actions/pinnedRepositories/pinnedRepositoriesActions";
+} from "../actions/pinnedRepositories/pinnedRepositoriesActions";
 
-export interface IProject {
+export interface IPinnedRepository {
     databaseId: string;
     timeFetched: string;
     current: boolean;
@@ -25,12 +25,12 @@ const INITIAL_STATE: IPinnedRepositoriesState = {
 export interface IPinnedRepositoriesState {
     isLoading: boolean;
     isError: boolean;
-    pinnedRepositories: IProject[];
+    pinnedRepositories: IPinnedRepository[];
 }
 
-export const PinnedRepositoriesReducer = (
+export const pinnedRepositoriesReducer = (
     state = INITIAL_STATE,
-    action: PinnedRepositoriesActionTypes,
+    action: PinnedRepositoriesActionTypes
 ): IPinnedRepositoriesState => {
     switch (action.type) {
         case GET_PINNED_REPOSITORIES_LOADING:

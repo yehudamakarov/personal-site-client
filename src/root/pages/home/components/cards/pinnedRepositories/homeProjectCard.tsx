@@ -19,7 +19,7 @@ import {
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { Link } from "@reach/router";
 import React, { useState } from "react";
-import { IProject } from "../../../../../../store/reducers/pinnedRepositories/pinnedRepositoriesReducer";
+import { IPinnedRepository } from "../../../../../../store/reducers/pinnedRepositoriesReducer";
 import { GithubIcon } from "../../../../../iconButtons/icons/githubIcon";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface IOwnProps {
-    project: IProject;
+    project: IPinnedRepository;
 }
 
 const HomeProjectCard = (props: IOwnProps) => {
