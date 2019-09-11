@@ -8,6 +8,6 @@ export interface IApplicationState {
 }
 
 export const rootReducer = combineReducers({
-    ui: uiReducer,
     projects: projectsReducer,
+    ui: uiReducer,
 });

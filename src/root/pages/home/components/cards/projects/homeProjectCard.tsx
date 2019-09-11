@@ -24,6 +24,9 @@ import { GithubIcon } from "../../../../../iconButtons/icons/githubIcon";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
+        avatar: {
+            backgroundColor: theme.palette.primary.main,
+        },
         card: {
             display: "flex",
         },
@@ -34,17 +37,11 @@ const useStyles = makeStyles((theme: Theme) =>
             [theme.breakpoints.down("xs")]: {
                 width: theme.spacing(6),
             },
-            width: theme.spacing(14),
+            alignItems: "center",
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
             justifyContent: "space-between",
-        },
-        avatar: {
-            backgroundColor: theme.palette.primary.main,
-        },
-        iconRight: {
-            marginLeft: theme.spacing(1),
+            width: theme.spacing(14),
         },
         cardSideButtonHover: {
             "& svg": {
@@ -54,6 +51,9 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         dummyTop: {
             [theme.breakpoints.up("sm")]: { minHeight: theme.spacing(4) },
+        },
+        iconRight: {
+            marginLeft: theme.spacing(1),
         },
     })
 );
@@ -67,14 +67,17 @@ const HomeProjectCard = (props: IOwnProps) => {
     const [hovered, setHovered] = useState(false);
     const [pressed, setPressed] = useState(false);
     const { project } = props;
+    const setHoveredTrue = () => setHovered(true);
+    const setHoveredFalse = () => setHovered(false);
+    const setPressedTrue = () => setPressed(true);
     return (
         <div>
             <Card elevation={hovered ? 1 : 0} square className={classes.card}>
                 <CardActionArea
                     component={Link}
                     to={`/projects/${project.name}`}
-                    onMouseEnter={() => setHovered(true)}
-                    onMouseLeave={() => setHovered(false)}
+                    onMouseEnter={setHoveredTrue}
+                    onMouseLeave={setHoveredFalse}
                     className={
                         hovered
                             ? classes.cardSideButton +
@@ -108,7 +111,7 @@ const HomeProjectCard = (props: IOwnProps) => {
                         <Grid container spacing={1}>
                             <Grid item xs={12}>
                                 <Button
-                                    onClick={() => setPressed(true)}
+                                    onClick={setPressedTrue}
                                     size="small"
                                     color="primary"
                                     href={project.url}
