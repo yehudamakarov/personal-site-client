@@ -1,13 +1,16 @@
 import { combineReducers } from "redux-starter-kit";
-import { IProjectsState, projectsReducer } from "./projects/projectsReducer";
+import {
+    IPinnedRepositoriesState,
+    PinnedRepositoriesReducer,
+} from "./pinnedRepositories/pinnedRepositoriesReducer";
 import { IUiState, uiReducer } from "./ui/uiReducer";
 
 export interface IApplicationState {
     ui: IUiState;
-    projects: IProjectsState;
+    PinnedRepositories: IPinnedRepositoriesState;
 }
 
 export const rootReducer = combineReducers({
-    projects: projectsReducer,
+    PinnedRepositories: PinnedRepositoriesReducer,
     ui: uiReducer,
 });

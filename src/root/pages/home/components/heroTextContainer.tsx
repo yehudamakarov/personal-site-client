@@ -20,9 +20,9 @@ import { ResumeButton } from "../../../iconButtons/buttons/resumeIconButton";
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         overlayText: {
+            paddingBottom: theme.spacing(2),
             position: "relative",
             textAlign: "end",
-            paddingBottom: theme.spacing(2),
         },
     })
 );

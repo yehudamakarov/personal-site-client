@@ -12,7 +12,7 @@ import {
 import React from "react";
 import { HomepageCardTextAbout } from "./cards/about/homepageCardTextAbout";
 import { HomepageCard } from "./cards/homePageCard";
-import { HomepageCardTextProjects } from "./cards/projects/homeCardTextProjects";
+import { HomepageCardTextPinnedRepositories } from "./cards/pinnedRepositories/homeCardTextPinnedRepositories";
 
 export const HomepageBody = () => {
     return (
@@ -24,10 +24,10 @@ export const HomepageBody = () => {
                         <HomepageCardTextAbout />
                     </HomepageCard>
                 </Grid>
-                {/* Projects card */}
+                {/* PinnedRepositories card */}
                 <Grid item xs={12}>
                     <HomepageCard to="projects">
-                        <HomepageCardTextProjects />
+                        <HomepageCardTextPinnedRepositories />
                     </HomepageCard>
                 </Grid>
             </Grid>

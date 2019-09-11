@@ -1,38 +1,46 @@
 import axios, { AxiosResponse } from "axios";
 import { all, call, fork, put, takeEvery } from "redux-saga/effects";
 import {
-    GET_PROJECTS_LOADING,
-    getProjectsErrorAction,
-    getProjectsSuccessAction,
-} from "./actions/projects/projectsActions";
-import { IProject } from "./reducers/projects/projectsReducer";
+    GET_PINNED_REPOSITORIES_LOADING,
+    getPinnedRepositoriesErrorAction,
+    getPinnedRepositoriesSuccessAction,
+} from "./actions/pinnedRepositories/pinnedRepositoriesActions";
+import { IProject } from "./reducers/pinnedRepositories/pinnedRepositoriesReducer";
 
 interface IPinnedReposResponse {
     data: IProject[];
     reason: any;
 }
 
-const projectsApi = {
-    getProjectsRequest: () => axios.get<IPinnedReposResponse>(`${process.env.REACT_APP_API_URL}repos/pinnedrepos`),
+const PinnedRepositoriesApi = {
+    getPinnedRepositoriesRequest: () =>
+        axios.get<IPinnedReposResponse>(
+            `${process.env.REACT_APP_API_URL}repos/pinnedrepos`
+        ),
 };
 
-function* getProjectsRequest() {
+function* getPinnedRepositoriesRequest() {
     try {
-        const response: AxiosResponse<IPinnedReposResponse> = yield call(projectsApi.getProjectsRequest);
+        const response: AxiosResponse<IPinnedReposResponse> = yield call(
+            PinnedRepositoriesApi.getPinnedRepositoriesRequest
+        );
         const pinnedRepoResponse = response.data;
-        yield put(getProjectsSuccessAction(pinnedRepoResponse.data));
+        yield put(getPinnedRepositoriesSuccessAction(pinnedRepoResponse.data));
     } catch (error) {
-        yield put(getProjectsErrorAction());
+        yield put(getPinnedRepositoriesErrorAction());
         console.error(error);
     }
 }
 
-function* watchGetProjectsRequest() {
-    yield takeEvery(GET_PROJECTS_LOADING, getProjectsRequest);
+function* watchGetPinnedRepositoriesRequest() {
+    yield takeEvery(
+        GET_PINNED_REPOSITORIES_LOADING,
+        getPinnedRepositoriesRequest
+    );
 }
 
-const projectsSagas = [fork(watchGetProjectsRequest)];
+const PinnedRepositoriesSagas = [fork(watchGetPinnedRepositoriesRequest)];
 
 export function* rootSaga() {
-    yield all([...projectsSagas]);
+    yield all([...PinnedRepositoriesSagas]);
 }

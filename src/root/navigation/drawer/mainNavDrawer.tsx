@@ -38,7 +38,9 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export const MainNavDrawer = () => {
-    const drawerOpen = useSelector((state: IApplicationState) => state.ui.drawerOpen);
+    const drawerOpen = useSelector(
+        (state: IApplicationState) => state.ui.drawerOpen
+    );
     const dispatch = useDispatch();
     const handleDrawerClose = () => dispatch(closeDrawerAction());
 
@@ -46,38 +48,61 @@ export const MainNavDrawer = () => {
 
     return (
         <Drawer open={drawerOpen} onClose={handleDrawerClose}>
-            <Paper onClick={handleDrawerClose} className={classes.drawerBackground}>
+            <Paper
+                onClick={handleDrawerClose}
+                className={classes.drawerBackground}
+            >
                 <List>
                     <ListItem button component={Link} to="/">
                         <ListItemIcon>
                             <HomeRoundedIcon />
                         </ListItemIcon>
-                        <ListItemText primaryTypographyProps={{ variant: "h6" }}>Home</ListItemText>
+                        <ListItemText
+                            primaryTypographyProps={{ variant: "h6" }}
+                        >
+                            Home
+                        </ListItemText>
                     </ListItem>
                     <Divider />
                     <ListItem button component={Link} to="about">
                         <ListItemIcon>
                             <PortraitIcon />
                         </ListItemIcon>
-                        <ListItemText primaryTypographyProps={{ variant: "h6" }}>About</ListItemText>
+                        <ListItemText
+                            primaryTypographyProps={{ variant: "h6" }}
+                        >
+                            About
+                        </ListItemText>
                     </ListItem>
                     <ListItem button component={Link} to="projects">
                         <ListItemIcon>
                             <WorkIcon />
                         </ListItemIcon>
-                        <ListItemText primaryTypographyProps={{ variant: "h6" }}>Projects</ListItemText>
+                        <ListItemText
+                            primaryTypographyProps={{ variant: "h6" }}
+                        >
+                            Projects
+                        </ListItemText>
                     </ListItem>
                     <ListItem button component={Link} to="blog">
                         <ListItemIcon>
                             <NotesRoundedIcon />
                         </ListItemIcon>
-                        <ListItemText primaryTypographyProps={{ variant: "h6" }}>Blog</ListItemText>
+                        <ListItemText
+                            primaryTypographyProps={{ variant: "h6" }}
+                        >
+                            Blog
+                        </ListItemText>
                     </ListItem>
                     <ListItem button component="a" href="/api/swagger">
                         <ListItemIcon>
                             <ApiIcon />
                         </ListItemIcon>
-                        <ListItemText primaryTypographyProps={{ variant: "h6" }}>API</ListItemText>
+                        <ListItemText
+                            primaryTypographyProps={{ variant: "h6" }}
+                        >
+                            API
+                        </ListItemText>
                     </ListItem>
                 </List>
             </Paper>

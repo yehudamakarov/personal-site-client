@@ -19,26 +19,26 @@ const useStyles = makeStyles((theme: Theme) =>
         card: {
             display: "flex",
         },
-        cardFace: {
-            flex: 1,
-        },
         cardButton: {
+            "& svg": { fill: theme.palette.secondary.contrastText },
+            "&:hover": {
+                "& svg": { fill: theme.palette.secondary.contrastText },
+                backgroundColor: theme.palette.secondary.dark,
+                color: theme.palette.secondary.contrastText,
+            },
             [theme.breakpoints.down("xs")]: {
                 width: theme.spacing(10),
             },
-            width: theme.spacing(16),
+            alignItems: "center",
+            backgroundColor: theme.palette.secondary.main,
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
             justifyContent: "space-between",
-            backgroundColor: theme.palette.secondary.main,
             // color: theme.palette.getContrastText(theme.palette.secondary.main),
-            "& svg": { fill: theme.palette.secondary.contrastText },
-            "&:hover": {
-                color: theme.palette.secondary.contrastText,
-                backgroundColor: theme.palette.secondary.dark,
-                "& svg": { fill: theme.palette.secondary.contrastText },
-            },
+            width: theme.spacing(16),
+        },
+        cardFace: {
+            flex: 1,
         },
         dummyTop: {
             minHeight: theme.spacing(4),
