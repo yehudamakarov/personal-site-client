@@ -1,18 +1,16 @@
-import React from 'react'
-import { RouteComponentProps } from '@reach/router';
-import { BasePage } from '../basePage';
-import { Typography } from '@material-ui/core';
+import { Typography } from "@material-ui/core";
+import { RouteComponentProps } from "@reach/router";
+import React from "react";
+import { BasePage } from "../basePage";
 
-interface OwnProps extends RouteComponentProps<{ projectName?: string }> { };
+interface IOwnProps extends RouteComponentProps<{ projectName?: string }> {}
 
-const ProjectPage = (props: OwnProps) => {
+const ProjectPage = (props: IOwnProps) => {
     return (
         <BasePage>
-            <Typography variant="h3">
-                {props.projectName}
-            </Typography>
+            <Typography variant="h3">{props.projectName}</Typography>
         </BasePage>
-    )
-}
+    );
+};
 
-export default ProjectPage
+export default ProjectPage;

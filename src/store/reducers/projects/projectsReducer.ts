@@ -1,6 +1,11 @@
-import { ProjectsActionTypes, GET_PROJECTS_SUCCESS, GET_PROJECTS_LOADING, GET_PROJECTS_ERROR } from "../../actions/projects/projectsActions";
+import {
+    GET_PROJECTS_ERROR,
+    GET_PROJECTS_LOADING,
+    GET_PROJECTS_SUCCESS,
+    ProjectsActionTypes,
+} from "../../actions/projects/projectsActions";
 
-export interface Project {
+export interface IProject {
     databaseId: string;
     timeFetched: string;
     current: boolean;
@@ -11,38 +16,38 @@ export interface Project {
     updatedAt: string;
 }
 
-const INITIAL_STATE: ProjectsState = {
+const INITIAL_STATE: IProjectsState = {
     isLoading: false,
     isError: false,
-    projects: []
-}
-export interface ProjectsState {
+    projects: [],
+};
+export interface IProjectsState {
     isLoading: boolean;
     isError: boolean;
-    projects: Project[];
+    projects: IProject[];
 }
 
-export const projectsReducer = (state = INITIAL_STATE, action: ProjectsActionTypes): ProjectsState => {
+export const projectsReducer = (state = INITIAL_STATE, action: ProjectsActionTypes): IProjectsState => {
     switch (action.type) {
         case GET_PROJECTS_LOADING:
             return {
                 ...state,
                 isLoading: true,
-                isError: false
+                isError: false,
             };
         case GET_PROJECTS_SUCCESS:
             return {
                 isLoading: false,
                 isError: false,
-                projects: action.payload
-            }
+                projects: action.payload,
+            };
         case GET_PROJECTS_ERROR:
             return {
                 ...state,
                 isError: true,
-                isLoading: false
+                isLoading: false,
             };
         default:
-            return state
+            return state;
     }
-}
+};

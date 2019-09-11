@@ -1,34 +1,38 @@
-import { all, fork, call, put, takeEvery } from "redux-saga/effects"
-import { GET_PROJECTS_LOADING, getProjectsSuccessAction, getProjectsErrorAction, } from "./actions/projects/projectsActions";
 import axios, { AxiosResponse } from "axios";
-import { Project } from "./reducers/projects/projectsReducer";
+import { all, call, fork, put, takeEvery } from "redux-saga/effects";
+import {
+    GET_PROJECTS_LOADING,
+    getProjectsErrorAction,
+    getProjectsSuccessAction,
+} from "./actions/projects/projectsActions";
+import { IProject } from "./reducers/projects/projectsReducer";
 
-interface PinnedReposResponse {
-    data: Project[],
-    reason: any
+interface IPinnedReposResponse {
+    data: IProject[];
+    reason: any;
 }
 
 const projectsApi = {
-    getProjectsRequest: () => axios.get<PinnedReposResponse>(`${process.env.REACT_APP_API_URL}repos/pinnedrepos`)
-}
+    getProjectsRequest: () => axios.get<IPinnedReposResponse>(`${process.env.REACT_APP_API_URL}repos/pinnedrepos`),
+};
 
 function* getProjectsRequest() {
     try {
-        const response: AxiosResponse<PinnedReposResponse> = yield call(projectsApi.getProjectsRequest);
+        const response: AxiosResponse<IPinnedReposResponse> = yield call(projectsApi.getProjectsRequest);
         const pinnedRepoResponse = response.data;
-        yield put(getProjectsSuccessAction(pinnedRepoResponse.data))
+        yield put(getProjectsSuccessAction(pinnedRepoResponse.data));
     } catch (error) {
-        yield put(getProjectsErrorAction())
+        yield put(getProjectsErrorAction());
         console.error(error);
     }
 }
 
 function* watchGetProjectsRequest() {
-    yield takeEvery(GET_PROJECTS_LOADING, getProjectsRequest)
+    yield takeEvery(GET_PROJECTS_LOADING, getProjectsRequest);
 }
 
-const projectsSagas = [fork(watchGetProjectsRequest)]
+const projectsSagas = [fork(watchGetProjectsRequest)];
 
 export function* rootSaga() {
-    yield all([...projectsSagas])
+    yield all([...projectsSagas]);
 }
