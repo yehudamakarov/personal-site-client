@@ -4,9 +4,13 @@ export interface IProjectsState {
     projectsUi: IProjectsUi;
 }
 
+interface IErrorMap {
+    [index: string]: boolean;
+}
+
 interface IProjectsUi {
     allIsLoading: boolean;
     allIsError: boolean;
-    singleIsError: Map<string, boolean>;
-    singleIsLoading: Map<string, boolean>;
+    singleIsError: IErrorMap;
+    singleIsLoading: IErrorMap;
 }

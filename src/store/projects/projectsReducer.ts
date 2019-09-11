@@ -17,8 +17,8 @@ const INITIAL_STATE: IProjectsState = {
     projectsUi: {
         allIsError: false,
         allIsLoading: false,
-        singleIsError: new Map<string, boolean>(),
-        singleIsLoading: new Map<string, boolean>(),
+        singleIsError: {},
+        singleIsLoading: {},
     },
 };
 
@@ -29,7 +29,7 @@ export const projectsReducer = (
     action: ProjectsActionTypes
 ): IProjectsState => {
     switch (action.type) {
-        case GET_PROJECTS_LOADING:
+        case GET_PROJECTS_LOADING: {
             return {
                 ...state,
                 projectsUi: {
@@ -38,7 +38,8 @@ export const projectsReducer = (
                     allIsLoading: true,
                 },
             };
-        case GET_PROJECTS_SUCCESS:
+        }
+        case GET_PROJECTS_SUCCESS: {
             return {
                 projectsData: action.payload,
                 projectsUi: {
@@ -47,7 +48,8 @@ export const projectsReducer = (
                     allIsLoading: false,
                 },
             };
-        case GET_PROJECTS_ERROR:
+        }
+        case GET_PROJECTS_ERROR: {
             return {
                 ...state,
                 projectsUi: {
@@ -56,12 +58,69 @@ export const projectsReducer = (
                     allIsLoading: false,
                 },
             };
-        case GET_PROJECT_BY_NAME_ERROR:
-            return state;
-        case GET_PROJECT_BY_NAME_LOADING:
-            return state;
-        case GET_PROJECT_BY_NAME_SUCCESS:
-            return state;
+        }
+        case GET_PROJECT_BY_NAME_ERROR: {
+            const erroredProjectId = action.payload.projectName;
+            const errorMap = { ...state.projectsUi.singleIsError };
+            if (erroredProjectId) {
+                errorMap[erroredProjectId] = true;
+            }
+
+            return {
+                ...state,
+                projectsUi: {
+                    ...state.projectsUi,
+                    singleIsError: errorMap,
+                },
+            };
+        }
+        case GET_PROJECT_BY_NAME_LOADING: {
+            const projectName = action.payload;
+            const loadingMap = { ...state.projectsUi.singleIsLoading };
+            if (projectName) {
+                loadingMap[projectName] = true;
+            }
+
+            const newState = {
+                ...state,
+                projectsUi: {
+                    ...state.projectsUi,
+                    singleIsLoading: loadingMap,
+                },
+            };
+            return newState;
+        }
+        case GET_PROJECT_BY_NAME_SUCCESS: {
+            const projects = state.projectsData;
+            const incomingProject = action.payload.data;
+            const incomingProjectName = incomingProject.projectName;
+            const errorMap = { ...state.projectsUi.singleIsError };
+            const loadingMap = { ...state.projectsUi.singleIsLoading };
+
+            delete errorMap[incomingProjectName];
+            delete loadingMap[incomingProjectName];
+
+            const projectAlreadyInState = projects.some((project) => {
+                return (
+                    project.githubRepoDatabaseId ===
+                    incomingProject.githubRepoDatabaseId
+                );
+            });
+            if (projectAlreadyInState) {
+                return state;
+            } else {
+                return {
+                    ...state,
+                    projectsData: [...state.projectsData, incomingProject],
+                    projectsUi: {
+                        ...state.projectsUi,
+                        singleIsError: errorMap,
+                        singleIsLoading: loadingMap,
+                    },
+                };
+            }
+        }
+
         default:
             return state;
     }

@@ -1,23 +1,16 @@
-import axios, { AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
 import { call, fork, put, takeEvery } from "redux-saga/effects";
-import { IPinnedReposResponse } from "../../pinnedRepositories/types";
 import {
     GET_PINNED_REPOSITORIES_LOADING,
     getPinnedRepositoriesErrorAction,
     getPinnedRepositoriesSuccessAction,
 } from "../actions/getPinnedRepositories";
-
-export const PinnedRepositoriesApi = {
-    getPinnedRepositoriesRequest: () =>
-        axios.get<IPinnedReposResponse>(
-            `${process.env.REACT_APP_API_URL}repos/pinnedrepos`
-        ),
-};
+import { IPinnedReposResponse, pinnedRepositoriesApi } from "../api";
 
 function* getPinnedRepositoriesRequest() {
     try {
         const response: AxiosResponse<IPinnedReposResponse> = yield call(
-            PinnedRepositoriesApi.getPinnedRepositoriesRequest
+            pinnedRepositoriesApi.getPinnedRepositoriesRequest
         );
         const pinnedRepoResponse = response.data;
         yield put(getPinnedRepositoriesSuccessAction(pinnedRepoResponse.data));
