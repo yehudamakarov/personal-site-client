@@ -6,11 +6,11 @@ import {
 import { IUiState, uiReducer } from "./ui/uiReducer";
 
 export interface IApplicationState {
+    pinnedRepositories: IPinnedRepositoriesState;
     ui: IUiState;
-    PinnedRepositories: IPinnedRepositoriesState;
 }
 
-export const rootReducer = combineReducers({
-    PinnedRepositories: PinnedRepositoriesReducer,
+export const rootReducer = combineReducers<IApplicationState>({
+    pinnedRepositories: PinnedRepositoriesReducer,
     ui: uiReducer,
 });

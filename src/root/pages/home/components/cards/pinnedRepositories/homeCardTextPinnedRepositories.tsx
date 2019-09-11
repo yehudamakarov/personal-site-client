@@ -14,7 +14,7 @@ import HomeProjectCard from "./homeProjectCard";
 const HomepageCardTextPinnedRepositories = () => {
     const dispatch = useDispatch();
     const { isLoading, isError, pinnedRepositories } = useSelector(
-        (state: IApplicationState) => state.PinnedRepositories
+        (state: IApplicationState) => state.pinnedRepositories
     );
 
     useEffect(() => {
@@ -39,9 +39,9 @@ const HomepageCardTextPinnedRepositories = () => {
                     )}
                     {!isLoading &&
                         !isError &&
-                        pinnedRepositories.map((project) => (
-                            <Grid item key={project.name}>
-                                <HomeProjectCard project={project} />
+                        pinnedRepositories.map((pinnedRepository) => (
+                            <Grid item key={pinnedRepository.name}>
+                                <HomeProjectCard project={pinnedRepository} />
                             </Grid>
                         ))}
                 </Grid>
