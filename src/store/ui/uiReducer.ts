@@ -1,12 +1,5 @@
-import {
-    CLOSE_DRAWER,
-    OPEN_DRAWER,
-    UiActionTypes,
-} from "../actions/ui/uiActions";
-
-export interface IUiState {
-    drawerOpen: boolean;
-}
+import { IUiState } from "./IUiState";
+import { CLOSE_DRAWER, OPEN_DRAWER, UiActionTypes } from "./uiActions";
 
 const INITIAL_STATE: IUiState = {
     drawerOpen: false,

@@ -7,8 +7,8 @@ import {
 } from "@material-ui/core";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPinnedRepositoriesLoadingAction } from "../../../../../../store/actions/pinnedRepositories/pinnedRepositoriesActions";
-import { IApplicationState } from "../../../../../../store/reducers/rootReducer";
+import { getPinnedRepositoriesLoadingAction } from "../../../../../../store/pinnedRepositories/actions/getPinnedRepositories";
+import { IApplicationState } from "../../../../../../store/rootReducer";
 import HomeProjectCard from "./homeProjectCard";
 
 const HomepageCardTextPinnedRepositories = () => {
@@ -19,12 +19,17 @@ const HomepageCardTextPinnedRepositories = () => {
 
     useEffect(() => {
         dispatch(getPinnedRepositoriesLoadingAction());
-    }, [dispatch]);
+    }, []);
 
     return (
         <Grid container spacing={3}>
             <Grid item xs={12}>
-                <Typography variant="h3">PinnedRepositories</Typography>
+                <Typography variant="h3">Some Projects</Typography>
+            </Grid>
+            <Grid item xs={12} sm={8} md={6}>
+                <Typography variant="subtitle2">
+                    These are my pinned repositories on Github.
+                </Typography>
             </Grid>
             <Grid item xs={12}>
                 <Grid container spacing={2} direction="column">

@@ -1,4 +1,4 @@
-import { IProject } from "../../reducers/projectsReducer";
+import { IProject } from "../../types";
 
 export const GET_PROJECTS_LOADING = "GET_PROJECTS_LOADING";
 export const getProjectsLoadingAction = (): IGetProjectsLoadingAction => ({
@@ -31,7 +31,7 @@ export interface IGetProjectsErrorAction {
     type: typeof GET_PROJECTS_ERROR;
 }
 
-export type ProjectsActionTypes =
+export type GetProjectsActionTypes =
     | IGetProjectsLoadingAction
     | IGetProjectsSuccessAction
     | IGetProjectsErrorAction;

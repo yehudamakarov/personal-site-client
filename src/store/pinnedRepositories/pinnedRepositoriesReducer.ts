@@ -3,30 +3,15 @@ import {
     GET_PINNED_REPOSITORIES_LOADING,
     GET_PINNED_REPOSITORIES_SUCCESS,
     PinnedRepositoriesActionTypes,
-} from "../actions/pinnedRepositories/pinnedRepositoriesActions";
+} from "./actions/getPinnedRepositories";
 
-export interface IPinnedRepository {
-    databaseId: string;
-    timeFetched: string;
-    current: boolean;
-    name: string;
-    description: string;
-    url: string;
-    createdAt: string;
-    updatedAt: string;
-}
+import { IPinnedRepositoriesState } from "./types/IPinnedRepositoriesState";
 
 const INITIAL_STATE: IPinnedRepositoriesState = {
     isError: false,
     isLoading: false,
     pinnedRepositories: [],
 };
-
-export interface IPinnedRepositoriesState {
-    isLoading: boolean;
-    isError: boolean;
-    pinnedRepositories: IPinnedRepository[];
-}
 
 export const pinnedRepositoriesReducer = (
     state = INITIAL_STATE,

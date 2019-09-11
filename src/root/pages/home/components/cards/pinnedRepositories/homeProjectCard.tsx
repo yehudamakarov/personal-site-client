@@ -19,7 +19,7 @@ import {
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { Link } from "@reach/router";
 import React, { useState } from "react";
-import { IPinnedRepository } from "../../../../../../store/reducers/pinnedRepositoriesReducer";
+import { IPinnedRepository } from "../../../../../../store/pinnedRepositories/types/IPinnedRepository";
 import { GithubIcon } from "../../../../../iconButtons/icons/githubIcon";
 
 const useStyles = makeStyles((theme: Theme) =>
