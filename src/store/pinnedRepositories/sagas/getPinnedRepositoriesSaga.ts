@@ -16,7 +16,6 @@ function* getPinnedRepositoriesRequest() {
         yield put(getPinnedRepositoriesSuccessAction(pinnedRepoResponse.data));
     } catch (error) {
         yield put(getPinnedRepositoriesErrorAction());
-        console.error(error);
     }
 }
 

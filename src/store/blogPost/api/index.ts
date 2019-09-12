@@ -8,12 +8,12 @@ export type IBlogPostsResponse = IApiResponse<IBlogPost[]>;
 export const blogPostsApi = {
     getBlogPostById: (blogPostId: string) =>
         axios.get<IBlogPostResponse>(
-            `${process.env.REACT_APP_API_URL}blogPosts/blogPostByName`,
+            `${process.env.REACT_APP_API_URL}blogPosts/blogPostById`,
             { params: { blogPostId } }
         ),
     getBlogPostsByProjectId: (projectId: string) =>
         axios.get<IBlogPostsResponse>(
-            `${process.env.REACT_APP_API_URL}blogPosts/blogPostByName`,
+            `${process.env.REACT_APP_API_URL}blogPosts/BlogPostsByProjectId`,
             { params: { projectId } }
         ),
 };

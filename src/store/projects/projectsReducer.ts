@@ -96,7 +96,6 @@ export const projectsReducer = (
             const incomingProjectName = incomingProject.projectName;
             const errorMap = { ...state.projectsUi.singleIsError };
             const loadingMap = { ...state.projectsUi.singleIsLoading };
-
             delete errorMap[incomingProjectName];
             delete loadingMap[incomingProjectName];
 
@@ -107,7 +106,14 @@ export const projectsReducer = (
                 );
             });
             if (projectAlreadyInState) {
-                return state;
+                return {
+                    ...state,
+                    projectsUi: {
+                        ...state.projectsUi,
+                        singleIsError: errorMap,
+                        singleIsLoading: loadingMap,
+                    },
+                };
             } else {
                 return {
                     ...state,

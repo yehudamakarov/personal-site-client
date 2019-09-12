@@ -32,10 +32,23 @@ export const blogPostsReducer = (
 ): IBlogPostState => {
     switch (action.type) {
         case GET_BLOG_POSTS_BY_PROJECT_ID_LOADING: {
-            return state;
+            return {
+                ...state,
+                blogPostUi: {
+                    ...state.blogPostUi,
+                    allIsLoading: true,
+                },
+            };
         }
         case GET_BLOG_POSTS_BY_PROJECT_ID_SUCCESS: {
-            return state;
+            const incomingBlogPosts = action.payload.data;
+            return {
+                blogPostData: incomingBlogPosts,
+                blogPostUi: {
+                    ...state.blogPostUi,
+                    allIsLoading: false,
+                },
+            };
         }
         case GET_BLOG_POSTS_BY_PROJECT_ID_ERROR: {
             return state;
