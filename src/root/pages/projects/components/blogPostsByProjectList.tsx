@@ -11,7 +11,9 @@ import {
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { Grid } from "mauerwerk";
 import { getBlogPostsByProjectIdLoadingAction } from "../../../../store/blogPost/actions/getBlogPostsByProjectId";
+import { IBlogPost } from "../../../../store/blogPost/types";
 import { IProject } from "../../../../store/projects/types";
 import { IApplicationState } from "../../../../store/rootReducer";
 import { BlogPostByProjectComponent } from "./blogPostByProjectComponent";
@@ -19,24 +21,9 @@ interface IOwnProps {
     project?: IProject;
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        listDiv: {
-            paddingTop: theme.spacing(2),
-        },
-        listTitle: {
-            marginBottom: theme.spacing(2),
-        },
-    })
-);
-
-
 export const BlogPostsByProjectList = (props: IOwnProps) => {
-    const theme = useTheme();
-
-    const classes = useStyles();
-    const dispatch = useDispatch();
     const { project } = props;
+    const dispatch = useDispatch();
     useEffect(() => {
         if (project) {
             dispatch(
@@ -59,16 +46,33 @@ export const BlogPostsByProjectList = (props: IOwnProps) => {
         }
     });
 
-    const gridItems = blogPostsForProject.map((blogPost, i) => {
-        return <div key={i}><Card><Typography variant="h6">{blogPost.title}</Typography></Card></div>;
-    });
-
     return (
-        <div >
-            <Typography variant="h5">
-                Posts for this project:
-            </Typography>
-            {gridItems}
+        <div>
+            <div>
+                <Typography variant="h5">Posts for this project:</Typography>
+            </div>
+            <div>
+                <Grid
+                    heights={200}
+                    data={blogPostsForProject}
+                    keys={(d: IBlogPost) => d.id}
+                    columns={2}
+                    margin={0}
+                    lockScroll={false}
+                    closeDelay={500}
+                    transitionMount={true}
+                >
+                    {(data: IBlogPost, open: any, toggle: any) => (
+                        <Card>
+                            {data.title}
+                            {open && <div>Opened/maximized content here</div>}
+                            <button onClick={toggle}>
+                                {open ? "Close" : "Open"}
+                            </button>
+                        </Card>
+                    )}
+                </Grid>
+            </div>
         </div>
     );
 };
