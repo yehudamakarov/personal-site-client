@@ -1,7 +1,7 @@
 export interface IBlogPost {
-    Id: string;
+    id: string;
     title: string;
-    Description: string;
-    Content: string;
+    description: string;
+    content: string;
     projectId: string;
 }
