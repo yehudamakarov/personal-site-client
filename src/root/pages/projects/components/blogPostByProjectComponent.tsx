@@ -31,7 +31,6 @@ export const BlogPostByProjectComponent = React.memo(withSize({
     const { blogPost, setSingleHeight, size } = props;
     const classes = useStyles();
     const memo = useCallback(() => {
-        console.log("memo fired")
         if (size.height) {
             setSingleHeight(blogPost.id, size.height);
         }
@@ -39,7 +38,6 @@ export const BlogPostByProjectComponent = React.memo(withSize({
     useLayoutEffect(() => {
         memo();
     }, [size.height]);
-    console.log("redering single cell");
     return (
         <Card className={classes.root} square>
             <Grid container direction="column" spacing={1}>

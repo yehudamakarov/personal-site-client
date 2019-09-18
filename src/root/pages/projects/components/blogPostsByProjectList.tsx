@@ -27,9 +27,11 @@ interface IOwnProps extends SizeMeProps {
 }
 
 const AnimatedLinearProgress = animated(LinearProgress);
-const AnimatedGrid = animated(Grid);
 
-export const BlogPostsByProjectList = withSize()((props: IOwnProps) => {
+export const BlogPostsByProjectList = withSize({
+    monitorHeight: false,
+    monitorWidth: true,
+})((props: IOwnProps) => {
     const { project, size } = props;
     const dispatch = useDispatch();
     const theme = useTheme();
@@ -69,7 +71,6 @@ export const BlogPostsByProjectList = withSize()((props: IOwnProps) => {
     );
 
     const setSingleHeight = (blogPostId: string, height: number) => {
-        console.log("setting height of: ", blogPostId);
         setCellHeights((prevState) => {
             const newState = { ...prevState, [blogPostId]: height };
             return newState;
@@ -92,10 +93,7 @@ export const BlogPostsByProjectList = withSize()((props: IOwnProps) => {
     const { opacity } = useSpring({
         from: { opacity: 0 },
         opacity: blogPostsAreLoading ? 0 : 1,
-        delay: 400,
     });
-
-    console.log("rendering parent!");
 
     return (
         <div>
