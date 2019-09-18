@@ -27,6 +27,7 @@ function* getProjectByName(action: IGetProjectByNameLoadingAction) {
         yield put(getProjectByNameSuccessAction(projectResponse));
     } catch (error) {
         const projectName = action.payload;
+        debugger;
         yield put(getProjectByNameErrorAction(error, projectName));
     }
 }

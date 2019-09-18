@@ -8,22 +8,32 @@ import {
     Typography,
     useTheme,
 } from "@material-ui/core";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { sizeHeight } from "@material-ui/system";
+import { throttle } from "lodash";
 import { Grid } from "mauerwerk";
+import { SizeMeProps, withSize } from "react-sizeme";
+import { animated, useSpring } from "react-spring";
 import { getBlogPostsByProjectIdLoadingAction } from "../../../../store/blogPost/actions/getBlogPostsByProjectId";
 import { IBlogPost } from "../../../../store/blogPost/types";
 import { IProject } from "../../../../store/projects/types";
 import { IApplicationState } from "../../../../store/rootReducer";
 import { BlogPostByProjectComponent } from "./blogPostByProjectComponent";
-interface IOwnProps {
+
+interface IOwnProps extends SizeMeProps {
     project?: IProject;
 }
 
-export const BlogPostsByProjectList = (props: IOwnProps) => {
-    const { project } = props;
+const AnimatedLinearProgress = animated(LinearProgress);
+const AnimatedGrid = animated(Grid);
+
+export const BlogPostsByProjectList = withSize()((props: IOwnProps) => {
+    const { project, size } = props;
     const dispatch = useDispatch();
+    const theme = useTheme();
+
     useEffect(() => {
         if (project) {
             dispatch(
@@ -33,9 +43,11 @@ export const BlogPostsByProjectList = (props: IOwnProps) => {
             );
         }
     }, [project]);
+
     const blogPostsAreLoading = useSelector((state: IApplicationState) => {
         return state.blogPosts.blogPostUi.allIsLoading;
     });
+
     const blogPostsForProject = useSelector((state: IApplicationState) => {
         if (project) {
             return state.blogPosts.blogPostData.filter((blogPost) => {
@@ -46,33 +58,79 @@ export const BlogPostsByProjectList = (props: IOwnProps) => {
         }
     });
 
+    const [cellHeights, setCellHeights] = useState(
+        blogPostsForProject.reduce(
+            (result: { [index: string]: number }, blogPost) => {
+                result[blogPost.id] = 200;
+                return result;
+            },
+            {} as { [index: string]: number }
+        )
+    );
+
+    const setSingleHeight = (blogPostId: string, height: number) => {
+        console.log("setting height of: ", blogPostId);
+        setCellHeights((prevState) => {
+            const newState = { ...prevState, [blogPostId]: height };
+            return newState;
+        });
+    };
+
+    const calculateHeights = (d: IBlogPost) => {
+        const num = cellHeights[d.id];
+        return num ? num : 300;
+    };
+
+    const calculateKeys = (d: IBlogPost) => d.id;
+
+    const columns = size.width
+        ? size.width >= theme.breakpoints.width("sm")
+            ? 2
+            : 1
+        : 2;
+
+    const { opacity } = useSpring({
+        from: { opacity: 0 },
+        opacity: blogPostsAreLoading ? 0 : 1,
+        delay: 400,
+    });
+
+    console.log("rendering parent!");
+
     return (
         <div>
             <div>
                 <Typography variant="h5">Posts for this project:</Typography>
             </div>
             <div>
-                <Grid
-                    heights={200}
-                    data={blogPostsForProject}
-                    keys={(d: IBlogPost) => d.id}
-                    columns={2}
-                    margin={0}
-                    lockScroll={false}
-                    closeDelay={500}
-                    transitionMount={true}
-                >
-                    {(data: IBlogPost, open: any, toggle: any) => (
-                        <Card>
-                            {data.title}
-                            {open && <div>Opened/maximized content here</div>}
-                            <button onClick={toggle}>
-                                {open ? "Close" : "Open"}
-                            </button>
-                        </Card>
-                    )}
-                </Grid>
+                {blogPostsAreLoading ? (
+                    <AnimatedLinearProgress
+                        style={{
+                            opacity: opacity.interpolate((o) => {
+                                return 1 - (o as number);
+                            }),
+                        }}
+                        variant="query"
+                    />
+                ) : (
+                    <Grid
+                        heights={calculateHeights}
+                        data={blogPostsForProject}
+                        keys={calculateKeys}
+                        columns={columns}
+                        margin={32}
+                        lockScroll={true}
+                        transitionMount={true}
+                    >
+                        {(data: IBlogPost, open: any, toggle: any) => (
+                            <BlogPostByProjectComponent
+                                blogPost={data}
+                                setSingleHeight={setSingleHeight}
+                            />
+                        )}
+                    </Grid>
+                )}
             </div>
         </div>
     );
-};
+});
