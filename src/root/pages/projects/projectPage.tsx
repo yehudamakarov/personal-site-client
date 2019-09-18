@@ -9,7 +9,7 @@ import { IApplicationState } from "../../../store/rootReducer";
 import { BasePage } from "../basePage";
 import { BlogPostsByProjectList } from "./components/blogPostsByProjectList";
 
-interface IOwnProps extends RouteComponentProps<{ projectName?: string }> {}
+interface IOwnProps extends RouteComponentProps<{ projectName?: string }> { }
 
 const AnimatedTypography = animated(Typography);
 const AnimatedLinearProgress = animated(LinearProgress);
@@ -46,6 +46,7 @@ const ProjectPage = (props: IOwnProps) => {
     return (
         <BasePage>
             <Grid container spacing={4}>
+                {/* Title */}
                 <Grid item xs={12}>
                     <AnimatedLinearProgress
                         style={{
@@ -61,6 +62,20 @@ const ProjectPage = (props: IOwnProps) => {
                             : projectNameFromRoute}
                     </AnimatedTypography>
                 </Grid>
+
+                {/* Highlights */}
+                {/* Tags */}
+
+                {/* About */}
+                {currentProject && currentProject.projectDescription && <Grid item xs={12}>
+                    <Typography variant="h3">
+                        About
+                    </Typography>
+                    <Typography variant="body1">
+                        {currentProject.projectDescription}
+                    </Typography>
+                </Grid>}
+                {/* Post List */}
                 <Grid item xs={12}>
                     <BlogPostsByProjectList project={currentProject} />
                 </Grid>
