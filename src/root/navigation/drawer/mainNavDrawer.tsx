@@ -84,7 +84,7 @@ export const MainNavDrawer = () => {
                             Projects
                         </ListItemText>
                     </ListItem>
-                    <ListItem button component={Link} to="blog">
+                    <ListItem button component={Link} to="blogPosts">
                         <ListItemIcon>
                             <NotesRoundedIcon />
                         </ListItemIcon>

@@ -52,7 +52,7 @@ export const BlogPostByProjectComponent = React.memo(
                         </Typography>
                     </Grid>
                     <Grid item>
-                        <TagsComponent rtl tags={blogPost.tags} />
+                        <TagsComponent rtl tags={blogPost.tagIds} />
                     </Grid>
                 </Grid>
             </Card>

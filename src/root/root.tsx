@@ -8,7 +8,7 @@ import { AboutPage } from "./pages/about/aboutPage";
 import { BlogPage } from "./pages/blog/blogPage";
 import { Homepage } from "./pages/home/homepage";
 import ProjectPage from "./pages/projects/projectPage";
-import { ProjectsPage } from "./pages/projects/projectsPage";
+import { IndexViewPage } from "./pages/indexView/indexViewPage";
 
 export const Root = () => {
     return (
@@ -17,9 +17,9 @@ export const Root = () => {
             <Router>
                 <Homepage path="/" />
                 <AboutPage path="about" />
-                <ProjectsPage path="projects" />
+                <IndexViewPage path="projects" />
                 <ProjectPage path="projects/:projectName" />
-                <BlogPage path="blog" />
+                <IndexViewPage path="blogPosts" />
             </Router>
         </React.Fragment>
     );

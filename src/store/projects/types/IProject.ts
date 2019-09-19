@@ -3,7 +3,11 @@ import { IProjectPicture } from "./IProjectPicture";
 export interface IProject {
     githubRepoDatabaseId: string;
     projectName: string;
+    projectTitle: string;
     projectDescription: string;
-    ProjectHighlights: IProjectHighlight[];
-    ProjectPictures: IProjectPicture[];
+    projectOverview: string;
+    tagIds: string[];
+    isPinnedRepo: boolean;
+    projectHighlights: IProjectHighlight[];
+    projectPictures: IProjectPicture[];
 }
