@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, delay, put, takeEvery } from "redux-saga/effects";
 import { IApiResponse } from "../../general/types/IApiResponse";
 import { IResultDetails } from "../../pinnedRepositories/types";
 import {
@@ -24,6 +24,7 @@ function* getProjectByName(action: IGetProjectByNameLoadingAction) {
             projectName
         );
         const projectResponse = response.data;
+        yield delay(1000);
         yield put(getProjectByNameSuccessAction(projectResponse));
     } catch (error) {
         const projectName = action.payload;

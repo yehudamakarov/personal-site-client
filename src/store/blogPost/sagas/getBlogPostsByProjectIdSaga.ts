@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, put, takeEvery, delay } from "redux-saga/effects";
 import {
     GET_BLOG_POSTS_BY_PROJECT_ID_LOADING,
     getBlogPostsByProjectIdErrorAction,
@@ -23,6 +23,7 @@ function* getBlogPostsByProjectId(
             projectId
         );
         const blogPostResponse = response.data;
+        yield delay(1000);
         yield put(getBlogPostsByProjectIdSuccessAction(blogPostResponse));
     } catch (error) {
         yield put(getBlogPostsByProjectIdErrorAction(error, projectId));

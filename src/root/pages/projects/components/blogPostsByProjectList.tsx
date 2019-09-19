@@ -26,6 +26,15 @@ interface IOwnProps extends SizeMeProps {
     project?: IProject;
 }
 
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        cardsGrid: {
+            marginLeft: -theme.spacing(2),
+            marginRight: -theme.spacing(2),
+        },
+    })
+);
+
 const AnimatedLinearProgress = animated(LinearProgress);
 
 export const BlogPostsByProjectList = withSize({
@@ -34,6 +43,7 @@ export const BlogPostsByProjectList = withSize({
 })((props: IOwnProps) => {
     const { project, size } = props;
     const dispatch = useDispatch();
+    const classes = useStyles();
     const theme = useTheme();
 
     useEffect(() => {
@@ -91,32 +101,30 @@ export const BlogPostsByProjectList = withSize({
         : 2;
 
     const { opacity } = useSpring({
-        from: { opacity: 1 },
-        opacity: blogPostsAreLoading ? 0 : 1,
+        opacity: blogPostsAreLoading ? 1 : 0,
     });
 
     return (
         <div>
             <div>
-                <Typography variant="h5">Posts for this project:</Typography>
+                <Typography variant="h5">Posts About This Project</Typography>
             </div>
-            <div>
-                <AnimatedLinearProgress
-                    style={{
-                        opacity: opacity.interpolate((o) => {
-                            return 1 - (o as number);
-                        }),
-                    }}
-                    variant="query"
-                />
+            <AnimatedLinearProgress
+                style={{
+                    opacity,
+                }}
+                variant="query"
+            />
+
+            <div className={classes.cardsGrid}>
                 <Grid
                     heights={calculateHeights}
                     data={blogPostsForProject}
                     keys={calculateKeys}
                     columns={columns}
-                    margin={32}
+                    margin={theme.spacing(2)}
                     lockScroll={true}
-                    transitionMount={true}
+                    transitionMount={false}
                 >
                     {(data: IBlogPost, open: any, toggle: any) => (
                         <BlogPostByProjectComponent
@@ -125,7 +133,6 @@ export const BlogPostsByProjectList = withSize({
                         />
                     )}
                 </Grid>
-
             </div>
         </div>
     );

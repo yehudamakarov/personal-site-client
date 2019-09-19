@@ -2,79 +2,59 @@ import { Grid, LinearProgress, Typography } from "@material-ui/core";
 import { RouteComponentProps } from "@reach/router";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { animated, useSpring } from "react-spring";
 import { getBlogPostsByProjectIdLoadingAction } from "../../../store/blogPost/actions/getBlogPostsByProjectId";
 import { getProjectByNameLoadingAction } from "../../../store/projects/actions/getProjectByName";
+import { IProject } from "../../../store/projects/types";
 import { IApplicationState } from "../../../store/rootReducer";
 import { BasePage } from "../basePage";
 import { BlogPostsByProjectList } from "./components/blogPostsByProjectList";
+import ProjectPageTitle from "./components/projectPageTitle";
 
-interface IOwnProps extends RouteComponentProps<{ projectName?: string }> { }
-
-const AnimatedTypography = animated(Typography);
-const AnimatedLinearProgress = animated(LinearProgress);
+interface IOwnProps extends RouteComponentProps<{ projectName?: string }> {}
 
 const ProjectPage = (props: IOwnProps) => {
     const dispatch = useDispatch();
     const { projectName: projectNameFromRoute } = props;
-    const currentProject = useSelector((state: IApplicationState) => {
-        return state.projects.projectsData.find((project) => {
-            return project.projectName === props.projectName;
-        });
-    });
-    const projectIsLoading = useSelector((state: IApplicationState) => {
-        if (projectNameFromRoute) {
-            return state.projects.projectsUi.singleIsLoading[
-                projectNameFromRoute
-            ];
-        } else {
-            return false;
+    const currentProject: IProject | undefined = useSelector(
+        (state: IApplicationState) => {
+            return state.projects.projectsData.find((project) => {
+                return project.projectName === props.projectName;
+            });
         }
-    });
+    );
 
     useEffect(() => {
         dispatch(getProjectByNameLoadingAction(projectNameFromRoute));
     }, [projectNameFromRoute]);
 
-    const { opacity } = useSpring({
-        from: {
-            opacity: 0,
-        },
-        opacity: projectIsLoading ? 0 : 1,
-    });
+    const currentProjectName = currentProject
+        ? currentProject.projectName
+        : projectNameFromRoute;
+
+    const currentProjectDescription = currentProject
+        ? currentProject.projectDescription
+        : "";
 
     return (
         <BasePage>
             <Grid container spacing={4}>
                 {/* Title */}
                 <Grid item xs={12}>
-                    <AnimatedLinearProgress
-                        style={{
-                            opacity: opacity.interpolate((o) => {
-                                return 1 - (o as number);
-                            }),
-                        }}
-                        variant="query"
+                    <ProjectPageTitle
+                        currentProjectName={currentProjectName}
+                        projectNameFromRoute={projectNameFromRoute}
                     />
-                    <AnimatedTypography style={{ opacity }} variant="h3">
-                        {currentProject
-                            ? currentProject.projectName
-                            : projectNameFromRoute}
-                    </AnimatedTypography>
                 </Grid>
-
                 {/* Highlights */}
                 {/* Tags */}
 
                 {/* About */}
-                {currentProject && currentProject.projectDescription && <Grid item xs={12}>
-                    <Typography variant="h3">
-                        About
-                    </Typography>
+                <Grid item xs={12}>
+                    <Typography variant="h5">Description</Typography>
                     <Typography variant="body1">
-                        {currentProject.projectDescription}
+                        {currentProjectDescription}
                     </Typography>
-                </Grid>}
+                </Grid>
                 {/* Post List */}
                 <Grid item xs={12}>
                     <BlogPostsByProjectList project={currentProject} />
