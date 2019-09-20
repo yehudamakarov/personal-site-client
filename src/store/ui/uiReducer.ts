@@ -9,7 +9,11 @@ import {
 const INITIAL_STATE: IUiState = {
     drawerOpen: false,
     filter: {
-        listingType: "all",
+        listingTypes: {
+            blogPosts: false,
+            projects: false,
+            tags: false,
+        },
         searchText: "",
         tagIds: [],
     },

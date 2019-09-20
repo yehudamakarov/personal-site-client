@@ -17,7 +17,10 @@ export const getProjectsSuccessAction = (
 });
 
 export const GET_PROJECTS_ERROR = "GET_PROJECTS_ERROR";
-export const getProjectsErrorAction = (): IGetProjectsErrorAction => ({
+export const getProjectsErrorAction = (
+    error: Error
+): IGetProjectsErrorAction => ({
+    payload: error,
     type: GET_PROJECTS_ERROR,
 });
 

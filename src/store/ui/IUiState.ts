@@ -1,6 +1,12 @@
+export interface IFilterListingTypes {
+    projects: boolean;
+    blogPosts: boolean;
+    tags: boolean;
+}
+
 export interface IFilter {
     searchText: string;
-    listingType: "projects" | "blogPosts" | "all";
+    listingTypes: IFilterListingTypes;
     tagIds: string[];
 }
 

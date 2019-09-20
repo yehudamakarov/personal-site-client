@@ -1,50 +1,41 @@
-import { FormControlLabel, FormGroup, Switch } from "@material-ui/core";
+import {
+    Checkbox,
+    FormControlLabel,
+    FormGroup,
+    Switch,
+} from "@material-ui/core";
 import React from "react";
+import { useDispatch } from "react-redux";
 import { IFilter } from "../../../store/ui/IUiState";
+import { setFilterAction } from "../../../store/ui/uiActions";
 
-const IndexViewFilter = (props: {
-    filter: IFilter;
-    setFilter: (newFilter: IFilter) => void;
-}) => {
+const IndexViewFilter = React.memo((props: { filter: IFilter }) => {
     const {
-        filter: { listingType },
+        filter: { listingTypes },
         filter,
-        setFilter,
     } = props;
+    const dispatch = useDispatch();
 
     const handleListingTypeChange = (
-        listingTypeSwitched: "projects" | "blogPosts"
+        listingTypeSwitched: "projects" | "blogPosts" | "tags"
     ) => (event: React.ChangeEvent<HTMLInputElement>) => {
         const checked = event.target.checked;
-        if (checked === false) {
-            const calculatedListingType =
-                listingTypeSwitched === "projects"
-                    ? ("blogPosts" as "blogPosts")
-                    : ("projects" as "projects");
-            const newFilter = {
-                ...filter,
-                listingType: calculatedListingType,
-            };
-            setFilter(newFilter);
-        } else if (checked === true) {
-            const newFilter = {
-                ...filter,
-                listingType: "all" as "all",
-            };
-            setFilter(newFilter);
-        }
+        const newFilter: IFilter = {
+            listingTypes: { ...listingTypes, [listingTypeSwitched]: checked },
+            searchText: filter.searchText,
+            tagIds: filter.tagIds,
+        };
+
+        dispatch(setFilterAction(newFilter));
     };
 
     return (
         <div>
-            <FormGroup>
+            <FormGroup row>
                 <FormControlLabel
                     control={
-                        <Switch
-                            checked={
-                                listingType === "projects" ||
-                                listingType === "all"
-                            }
+                        <Checkbox
+                            checked={listingTypes.projects}
                             onChange={handleListingTypeChange("projects")}
                         />
                     }
@@ -52,19 +43,25 @@ const IndexViewFilter = (props: {
                 />
                 <FormControlLabel
                     control={
-                        <Switch
-                            checked={
-                                listingType === "blogPosts" ||
-                                listingType === "all"
-                            }
+                        <Checkbox
+                            checked={listingTypes.blogPosts}
                             onChange={handleListingTypeChange("blogPosts")}
                         />
                     }
                     label="Blog Posts"
                 />
+                <FormControlLabel
+                    control={
+                        <Checkbox
+                            checked={listingTypes.tags}
+                            onChange={handleListingTypeChange("tags")}
+                        />
+                    }
+                    label="Tags"
+                />
             </FormGroup>
         </div>
     );
-};
+});
 
 export default IndexViewFilter;

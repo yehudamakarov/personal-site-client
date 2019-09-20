@@ -8,10 +8,9 @@ import {
     getProjectByNameSuccessAction,
 } from "../actions/getProjectByName";
 import { IGetProjectByNameLoadingAction } from "../actions/getProjectByName/types/IGetProjectByNameLoadingAction";
-import { projectsApi } from "../api";
+import { projectsApi, IProjectResponse } from "../api";
 import { IProject } from "../types";
 
-type IProjectResponse = IApiResponse<IProject>;
 
 function* getProjectByName(action: IGetProjectByNameLoadingAction) {
     try {
