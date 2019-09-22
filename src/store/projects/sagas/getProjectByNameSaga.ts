@@ -8,9 +8,8 @@ import {
     getProjectByNameSuccessAction,
 } from "../actions/getProjectByName";
 import { IGetProjectByNameLoadingAction } from "../actions/getProjectByName/types/IGetProjectByNameLoadingAction";
-import { projectsApi, IProjectResponse } from "../api";
+import { IProjectResponse, projectsApi } from "../api";
 import { IProject } from "../types";
-
 
 function* getProjectByName(action: IGetProjectByNameLoadingAction) {
     try {
@@ -27,7 +26,6 @@ function* getProjectByName(action: IGetProjectByNameLoadingAction) {
         yield put(getProjectByNameSuccessAction(projectResponse));
     } catch (error) {
         const projectName = action.payload;
-        debugger;
         yield put(getProjectByNameErrorAction(error, projectName));
     }
 }

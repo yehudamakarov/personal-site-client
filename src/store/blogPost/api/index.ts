@@ -16,4 +16,5 @@ export const blogPostsApi = {
             `${process.env.REACT_APP_API_URL}blogPosts/BlogPostsByProjectId`,
             { params: { projectId } }
         ),
+        getBlogPosts: () => axios.get<IBlogPostsResponse>(`${process.env.REACT_APP_API_URL}blogPosts/allBlogPosts`)
 };

@@ -29,7 +29,7 @@ export const getBlogPostByIdErrorAction = (
 });
 export const GET_BLOG_POST_BY_ID_ERROR = "GET_BLOG_POST_BY_ID_ERROR";
 
-export type GetBlogPostByIdActionsType =
+export type GetBlogPostByIdActionTypes =
     | IGetBlogPostByIdErrorAction
     | IGetBlogPostByIdLoadingAction
     | IGetBlogPostByIdSuccessAction;

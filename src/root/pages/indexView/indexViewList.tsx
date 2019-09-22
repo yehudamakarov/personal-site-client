@@ -1,4 +1,4 @@
-import { Grid } from "@material-ui/core";
+import { Card, Grid } from "@material-ui/core";
 import _ from "lodash";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,9 +24,13 @@ const IndexViewList = (props: IFilter) => {
                     blogPost.title
                         .toLowerCase()
                         .indexOf(searchText.toLowerCase()) !== -1;
-                const tagsContainAHighlightedTag = blogPost.tagIds.some((tag) =>
-                    tagIds.some((tagId) => tagId === tag)
-                );
+                const tagsContainAHighlightedTag =
+                    tagIds.length > 0
+                        ? blogPost.tagIds.some((tag) =>
+                              tagIds.some((tagId) => tagId === tag)
+                          )
+                        : true;
+
                 return titleContainsSearchText && tagsContainAHighlightedTag;
             });
         } else {
@@ -80,10 +84,16 @@ const IndexViewList = (props: IFilter) => {
 
     const allCards = blogPostCards.concat(projectCards);
     return (
-        <Grid container spacing={2}>
+        <Grid
+            justify="space-around"
+            direction="row"
+            alignItems="stretch"
+            container
+            spacing={4}
+        >
             {allCards.map((card, i) => {
                 return (
-                    <Grid key={i} item>
+                    <Grid xs={12} sm={6} md={4} key={i} item>
                         {card}
                     </Grid>
                 );

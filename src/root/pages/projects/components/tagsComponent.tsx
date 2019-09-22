@@ -15,11 +15,30 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 );
 
-const TagsComponent = (props: { tags: string[]; rtl: boolean }) => {
-    const { rtl, tags } = props;
+const TagsComponent = (props: {
+    tags: string[];
+    rtl: boolean;
+    className?: string;
+}) => {
+    // const { rtl, tags } = props;
+    const { rtl, className } = props;
+    const tags = [
+        "react",
+        "someOther",
+        "another",
+        "react2",
+        "someOther2",
+        "another2",
+    ];
     const direction = rtl ? "row-reverse" : "row";
     return (
-        <Grid container spacing={1} direction={direction}>
+        <Grid
+            className={className}
+            container
+            spacing={1}
+            alignItems="flex-end"
+            direction={direction}
+        >
             {tags &&
                 tags.map((tag) => {
                     return (
