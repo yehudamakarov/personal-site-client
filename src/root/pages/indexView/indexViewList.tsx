@@ -60,6 +60,8 @@ const IndexViewList = (props: IFilter) => {
         ? filteredBlogPosts.map((blogPost) => {
               return (
                   <IndexViewCard
+                      type="blogPost"
+                      link={`/blogPosts/${blogPost.slug}`}
                       key={blogPost.id}
                       title={blogPost.title}
                       subTitle={blogPost.description}
@@ -73,6 +75,8 @@ const IndexViewList = (props: IFilter) => {
         ? filteredProjects.map((project) => {
               return (
                   <IndexViewCard
+                      type="project"
+                      link={`/projects/${project.slug}`}
                       key={project.githubRepoDatabaseId}
                       title={project.projectTitle}
                       subTitle={project.projectDescription}
@@ -93,7 +97,7 @@ const IndexViewList = (props: IFilter) => {
         >
             {allCards.map((card, i) => {
                 return (
-                    <Grid xs={12} sm={6} md={4} key={i} item>
+                    <Grid sm={12} md={6} lg={4} key={i} item>
                         {card}
                     </Grid>
                 );

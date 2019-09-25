@@ -10,4 +10,5 @@ export interface IProject {
     isPinnedRepo: boolean;
     projectHighlights: IProjectHighlight[];
     projectPictures: IProjectPicture[];
+    slug: string;
 }

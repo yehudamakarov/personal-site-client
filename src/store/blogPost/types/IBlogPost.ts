@@ -5,4 +5,5 @@ export interface IBlogPost {
     content: string;
     projectId: string;
     tagIds: string[];
+    slug: string;
 }

@@ -18,10 +18,10 @@ const useStyles = makeStyles((theme: Theme) =>
 const TagsComponent = (props: {
     tags: string[];
     rtl: boolean;
-    className?: string;
+    type: "project" | "blogPost";
 }) => {
     // const { rtl, tags } = props;
-    const { rtl, className } = props;
+    const { rtl, type } = props;
     const tags = [
         "react",
         "someOther",
@@ -32,13 +32,7 @@ const TagsComponent = (props: {
     ];
     const direction = rtl ? "row-reverse" : "row";
     return (
-        <Grid
-            className={className}
-            container
-            spacing={1}
-            alignItems="flex-end"
-            direction={direction}
-        >
+        <Grid container spacing={1} alignItems="flex-end" direction={direction}>
             {tags &&
                 tags.map((tag) => {
                     return (
@@ -49,8 +43,9 @@ const TagsComponent = (props: {
                                 to={`/tags/${tag}`}
                                 clickable
                                 size="small"
-                                color="primary"
-                                variant="outlined"
+                                color={
+                                    type === "project" ? "primary" : "secondary"
+                                }
                             />
                         </Grid>
                     );
