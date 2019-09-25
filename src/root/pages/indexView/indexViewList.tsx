@@ -99,7 +99,7 @@ const IndexViewList = (props: IFilter) => {
         >
             {allCards.map((card, i) => {
                 return (
-                    <Grid sm={12} md={6} lg={4} key={i} item>
+                    <Grid xs={12} md={6} lg={4} key={i} item>
                         {card}
                     </Grid>
                 );
