@@ -1,9 +1,9 @@
-import React from 'react'
-import { HomepageHero } from './components/homePageHero';
-import { HomepageBody } from "./components/homepageBody"
-import { RouteComponentProps } from '@reach/router';
+import { RouteComponentProps } from "@reach/router";
+import React from "react";
+import { HomepageBody } from "./components/homepageBody";
+import { HomepageHero } from "./components/homePageHero";
 
-type OwnProps = RouteComponentProps
+type OwnProps = RouteComponentProps;
 
 export const Homepage = (props: OwnProps) => {
     return (
@@ -13,5 +13,5 @@ export const Homepage = (props: OwnProps) => {
             {/* Everything below the picture */}
             <HomepageBody />
         </React.Fragment>
-    )
-}
+    );
+};

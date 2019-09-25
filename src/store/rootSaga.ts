@@ -1,34 +1,10 @@
-import { all, fork, call, put, takeEvery } from "redux-saga/effects"
-import { GET_PROJECTS_LOADING, getProjectsSuccessAction, getProjectsErrorAction, } from "./actions/projects/projectsActions";
-import axios, { AxiosResponse } from "axios";
-import { Project } from "./reducers/projects/projectsReducer";
-
-interface PinnedReposResponse {
-    data: Project[],
-    reason: any
-}
-
-const projectsApi = {
-    getProjectsRequest: () => axios.get<PinnedReposResponse>(`${process.env.REACT_APP_API_URL}repos/pinnedrepos`)
-}
-
-function* getProjectsRequest() {
-    try {
-        const response: AxiosResponse<PinnedReposResponse> = yield call(projectsApi.getProjectsRequest);
-        const pinnedRepoResponse = response.data;
-        yield put(getProjectsSuccessAction(pinnedRepoResponse.data))
-    } catch (error) {
-        yield put(getProjectsErrorAction())
-        console.error(error);
-    }
-}
-
-function* watchGetProjectsRequest() {
-    yield takeEvery(GET_PROJECTS_LOADING, getProjectsRequest)
-}
-
-const projectsSagas = [fork(watchGetProjectsRequest)]
+import { all } from "redux-saga/effects";
+import { blogPostSagas } from "./blogPost/sagas";
+import { pinnedRepositoriesSagas } from "./pinnedRepositories/sagas";
+import { projectSagas } from "./projects/sagas";
 
 export function* rootSaga() {
-    yield all([...projectsSagas])
+    yield all([...projectSagas]);
+    yield all([...pinnedRepositoriesSagas]);
+    yield all([...blogPostSagas]);
 }

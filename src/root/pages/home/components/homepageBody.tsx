@@ -1,11 +1,18 @@
-import React from 'react'
-import { Container, Typography, Paper, Grid, CardActionArea, CardContent, Card, CardMedia, Theme } from '@material-ui/core';
-import { HomepageCard } from './cards/homePageCard';
-import { HomepageCardTextAbout } from './cards/about/homepageCardTextAbout';
-import { HomepageCardTextProjects } from './cards/projects/HomeCardTextProjects';
-
-
-
+import {
+    Card,
+    CardActionArea,
+    CardContent,
+    CardMedia,
+    Container,
+    Grid,
+    Paper,
+    Theme,
+    Typography,
+} from "@material-ui/core";
+import React from "react";
+import { HomepageCardTextAbout } from "./cards/about/homepageCardTextAbout";
+import { HomepageCard } from "./cards/homePageCard";
+import { HomepageCardTextPinnedRepositories } from "./cards/pinnedRepositories/homeCardTextPinnedRepositories";
 
 export const HomepageBody = () => {
     return (
@@ -17,13 +24,13 @@ export const HomepageBody = () => {
                         <HomepageCardTextAbout />
                     </HomepageCard>
                 </Grid>
-                {/* Projects card */}
+                {/* PinnedRepositories card */}
                 <Grid item xs={12}>
                     <HomepageCard to="projects">
-                        <HomepageCardTextProjects />
+                        <HomepageCardTextPinnedRepositories />
                     </HomepageCard>
                 </Grid>
             </Grid>
         </Container>
-    )
-}
+    );
+};

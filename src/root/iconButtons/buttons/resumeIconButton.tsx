@@ -1,12 +1,20 @@
-import React from 'react'
-import { SvgIcon, makeStyles, createStyles, Theme, IconButton } from '@material-ui/core';
-import { ResumeIcon } from "../icons/resumeIcon"
-import { MyIconButtonBase } from "../base/myIconButtonBase"
+import {
+    createStyles,
+    IconButton,
+    makeStyles,
+    SvgIcon,
+    Theme,
+} from "@material-ui/core";
+import React from "react";
+import { MyIconButtonBase } from "../base/myIconButtonBase";
+import { ResumeIcon } from "../icons/resumeIcon";
 
-export const ResumeButton = React.forwardRef((props: any, ref: React.Ref<HTMLButtonElement>) => {
-    return (
-        <MyIconButtonBase {...props} ref={ref} edge="end">
-            <ResumeIcon />
-        </MyIconButtonBase>
-    )
-})
+export const ResumeButton = React.forwardRef(
+    (props: any, ref: React.Ref<HTMLButtonElement>) => {
+        return (
+            <MyIconButtonBase {...props} ref={ref} edge="end">
+                <ResumeIcon />
+            </MyIconButtonBase>
+        );
+    }
+);

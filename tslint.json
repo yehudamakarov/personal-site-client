@@ -1,0 +1,18 @@
+{
+    "extends": [
+        "tslint:recommended",
+        "tslint-config-standard",
+        "tslint-react",
+        "tslint-config-prettier"
+    ],
+    "rules": {
+        "jsx-no-lambda": true,
+        "jsx-boolean-value": false,
+        "object-literal-sort-keys": true,
+        "jsx-wrap-multiline": true,
+        "jsx-self-close": true,
+        "jsx-space-before-trailing-slash": true,
+        "jsx-alignment": true,
+        "no-unused-variable": true
+    }
+}
