@@ -61,7 +61,8 @@ const IndexViewList = (props: IFilter) => {
               return (
                   <IndexViewCard
                       type="blogPost"
-                      link={`/blogPosts/${blogPost.slug}`}
+                      githubLink={null}
+                      regularLink={`/blogPosts/${blogPost.slug}`}
                       key={blogPost.id}
                       title={blogPost.title}
                       subTitle={blogPost.description}
@@ -76,7 +77,8 @@ const IndexViewList = (props: IFilter) => {
               return (
                   <IndexViewCard
                       type="project"
-                      link={`/projects/${project.slug}`}
+                      githubLink={project.githubUrl}
+                      regularLink={`/projects/${project.slug}`}
                       key={project.githubRepoDatabaseId}
                       title={project.projectTitle}
                       subTitle={project.projectDescription}

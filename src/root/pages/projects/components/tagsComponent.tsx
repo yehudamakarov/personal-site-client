@@ -20,16 +20,16 @@ const TagsComponent = (props: {
     rtl: boolean;
     type: "project" | "blogPost";
 }) => {
-    // const { rtl, tags } = props;
-    const { rtl, type } = props;
-    const tags = [
-        "react",
-        "someOther",
-        "another",
-        "react2",
-        "someOther2",
-        "another2",
-    ];
+    const { rtl, tags, type } = props;
+    // const { rtl, type } = props;
+    // const tags = [
+    //     "react",
+    //     "someOther",
+    //     "another",
+    //     "react2",
+    //     "someOther2",
+    //     "another2",
+    // ];
     const direction = rtl ? "row-reverse" : "row";
     return (
         <Grid container spacing={1} alignItems="flex-end" direction={direction}>

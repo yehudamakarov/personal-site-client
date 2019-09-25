@@ -6,6 +6,7 @@ export interface IProject {
     projectTitle: string;
     projectDescription: string;
     projectOverview: string;
+    githubUrl: string | null;
     tagIds: string[];
     isPinnedRepo: boolean;
     projectHighlights: IProjectHighlight[];

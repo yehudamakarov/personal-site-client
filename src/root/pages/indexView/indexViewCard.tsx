@@ -37,10 +37,11 @@ const IndexViewCard = (props: {
     title: string;
     subTitle: string | null;
     tagIds: string[];
-    link: string;
+    regularLink: string;
+    githubLink: string | null;
     type: "project" | "blogPost";
 }) => {
-    const { title, subTitle, tagIds, link, type } = props;
+    const { title, subTitle, tagIds, regularLink, type, githubLink } = props;
     const classes = useStyles();
 
     const truncateText = (str: string | null, desiredLength: number) => {
@@ -71,7 +72,7 @@ const IndexViewCard = (props: {
         return toLastSpace + "…";
     };
 
-    const truncatedText = truncateText(subTitle, 150);
+    const truncatedText = truncateText(subTitle, 60);
 
     const truncatedTypography = (
         <Typography variant="subtitle2">{truncatedText}</Typography>
@@ -81,18 +82,16 @@ const IndexViewCard = (props: {
         <Card className={classes.root}>
             <div className={classes.div}>
                 <Tooltip
+                    placement="right-start"
                     className={classes.grid}
-                    interactive
-                    enterDelay={300}
-                    leaveDelay={500}
                     title={
                         <Typography variant="subtitle2">
                             {subTitle ? subTitle : title}
                         </Typography>
                     }
                 >
-                    <CardActionArea component={Link} to={link}>
-                        <Grid container direction="column" spacing={1}>
+                    <CardActionArea component={Link} to={regularLink}>
+                        <Grid container direction="column" spacing={2}>
                             <Grid item>
                                 <Typography variant="h6">{title}</Typography>
                             </Grid>
