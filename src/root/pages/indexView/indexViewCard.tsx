@@ -99,9 +99,11 @@ const IndexViewCard = (props: {
                         </Grid>
                     </CardActionArea>
                 </Tooltip>
-                <div className={classes.tags}>
-                    <TagsComponent type={type} rtl tags={tagIds} />
-                </div>
+                {tagIds && (
+                    <div className={classes.tags}>
+                        <TagsComponent type={type} rtl tags={tagIds} />
+                    </div>
+                )}
             </div>
         </Card>
     );
