@@ -16,9 +16,9 @@ import { throttle } from "lodash";
 import { Grid } from "mauerwerk";
 import { SizeMeProps, withSize } from "react-sizeme";
 import { animated, useSpring } from "react-spring";
-import { getBlogPostsByProjectIdLoadingAction } from "../../../../store/blogPost/actions/getBlogPostsByProjectId";
-import { IBlogPost } from "../../../../store/blogPost/types";
-import { IProject } from "../../../../store/projects/types";
+import { IBlogPost } from "../../../../store/actions/blogPost/api";
+import { getBlogPostsByProjectIdLoadingAction } from "../../../../store/actions/blogPost/getBlogPostsByProjectId/actions";
+import { IProject } from "../../../../store/actions/projects/api";
 import { IApplicationState } from "../../../../store/rootReducer";
 import { BlogPostByProjectComponent } from "./blogPostByProjectComponent";
 

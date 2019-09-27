@@ -10,8 +10,8 @@ import {
 } from "@material-ui/core";
 import React, { useCallback, useEffect, useLayoutEffect, useMemo } from "react";
 import { SizeMeProps, withSize } from "react-sizeme";
-import { IBlogPost } from "../../../../store/blogPost/types";
 import TagsComponent from "./tagsComponent";
+import { IBlogPost } from "../../../../store/actions/blogPost/api";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({

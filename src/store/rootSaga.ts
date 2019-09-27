@@ -1,7 +1,7 @@
 import { all } from "redux-saga/effects";
-import { blogPostSagas } from "./blogPost/blogPostSagas";
-import { pinnedRepositoriesSagas } from "./pinnedRepositories/pinnedRepositoriesSagas";
-import { projectSagas } from "./projects/projectsSagas";
+import { blogPostSagas } from "./actions/blogPost/blogPostSagas";
+import { pinnedRepositoriesSagas } from "./actions/pinnedRepositories/pinnedRepositoriesSagas";
+import { projectSagas } from "./actions/projects/projectsSagas";
 
 export function* rootSaga() {
     yield all([...projectSagas]);

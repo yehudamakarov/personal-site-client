@@ -1,10 +1,16 @@
 import { combineReducers } from "redux-starter-kit";
-import { blogPostsReducer } from "./blogPost/blogPostReducer";
-import { IBlogPostState } from "./blogPost/types";
-import { pinnedRepositoriesReducer } from "./pinnedRepositories/pinnedRepositoriesReducer";
-import { IPinnedRepositoriesState } from "./pinnedRepositories/types/IPinnedRepositoriesState";
-import { projectsReducer } from "./projects/projectsReducer";
-import { IProjectsState } from "./projects/types/IProjectsState";
+import {
+    blogPostsReducer,
+    IBlogPostState,
+} from "./actions/blogPost/blogPostReducer";
+import {
+    IPinnedRepositoriesState,
+    pinnedRepositoriesReducer,
+} from "./actions/pinnedRepositories/pinnedRepositoriesReducer";
+import {
+    IProjectsState,
+    projectsReducer,
+} from "./actions/projects/projectsReducer";
 import { IUiState } from "./ui/IUiState";
 import { uiReducer } from "./ui/uiReducer";
 

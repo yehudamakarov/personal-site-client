@@ -7,7 +7,7 @@ import {
 } from "@material-ui/core";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPinnedRepositoriesLoadingAction } from "../../../../../../store/pinnedRepositories/actions/getPinnedRepositories";
+import { getPinnedRepositoriesLoadingAction } from "../../../../../../store/actions/pinnedRepositories/getPinnedRepositories/actions";
 import { IApplicationState } from "../../../../../../store/rootReducer";
 import HomeProjectCard from "./homeProjectCard";
 
