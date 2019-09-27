@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { IApiResponse } from "../../general/types/IApiResponse";
+import { IApiResponse } from "../../types/IApiResponse";
 
 export type IPinnedReposResponse = IApiResponse<IPinnedRepository[]>;
 

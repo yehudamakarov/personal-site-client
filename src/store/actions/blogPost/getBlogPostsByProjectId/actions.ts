@@ -1,4 +1,4 @@
-import { IApiResponse } from "../../../general/types/IApiResponse";
+import { IApiResponse } from "../../../types/IApiResponse";
 import { IBlogPost, IBlogPostsResponse } from "../api";
 
 /* -------------------------------------------------------------------------- */

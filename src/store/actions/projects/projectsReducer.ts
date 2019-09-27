@@ -1,4 +1,5 @@
-import { IBaseCollectionUiState } from "../../general/types/IBaseCollectionUiState";
+import { IBaseCollectionUiState } from "../../types/IBaseCollectionUiState";
+import { IProject } from "./api";
 import {
     GET_PROJECT_BY_NAME_ERROR,
     GET_PROJECT_BY_NAME_LOADING,
@@ -11,7 +12,6 @@ import {
     GET_PROJECTS_SUCCESS,
     GetProjectsActionTypes,
 } from "./getProjects/actions";
-import { IProject } from "./api";
 export interface IProjectsState {
     projectsData: IProject[];
     projectsUi: IProjectsUi;

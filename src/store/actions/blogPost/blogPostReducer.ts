@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { IBaseCollectionUiState } from "../../general/types/IBaseCollectionUiState";
+import { IBaseCollectionUiState } from "../../types/IBaseCollectionUiState";
 import { IBlogPost } from "./api";
 import {
     GET_BLOG_POST_BY_ID_ERROR,
