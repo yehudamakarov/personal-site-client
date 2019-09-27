@@ -3,13 +3,13 @@ import {
     GET_PROJECT_BY_NAME_LOADING,
     GET_PROJECT_BY_NAME_SUCCESS,
     GetProjectByNameActionsType,
-} from "./actions/getProjectByName";
+} from "./actions/getProjectByName/actions";
 import {
     GET_PROJECTS_ERROR,
     GET_PROJECTS_LOADING,
     GET_PROJECTS_SUCCESS,
     GetProjectsActionTypes,
-} from "./actions/getProjects";
+} from "./actions/getProjects/actions";
 import { IProjectsState } from "./types/IProjectsState";
 
 const INITIAL_STATE: IProjectsState = {
