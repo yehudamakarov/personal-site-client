@@ -45,7 +45,7 @@ const HomepageCardTextPinnedRepositories = () => {
                     {!isLoading &&
                         !isError &&
                         pinnedRepositories.map((pinnedRepository) => (
-                            <Grid item key={pinnedRepository.name}>
+                            <Grid xs={12} item key={pinnedRepository.name}>
                                 <HomeProjectCard project={pinnedRepository} />
                             </Grid>
                         ))}
