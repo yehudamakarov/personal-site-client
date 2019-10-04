@@ -46,20 +46,6 @@ export const BlogPostsByProjectList = withSize({
     const classes = useStyles();
     const theme = useTheme();
 
-    useEffect(() => {
-        if (project) {
-            dispatch(
-                getBlogPostsByProjectIdLoadingAction(
-                    project.githubRepoDatabaseId
-                )
-            );
-        }
-    }, [project]);
-
-    const blogPostsAreLoading = useSelector((state: IApplicationState) => {
-        return state.blogPosts.blogPostUi.allIsLoading;
-    });
-
     const blogPostsForProject = useSelector((state: IApplicationState) => {
         if (project) {
             return state.blogPosts.blogPostData.filter((blogPost) => {
@@ -69,6 +55,23 @@ export const BlogPostsByProjectList = withSize({
             return [];
         }
     });
+
+    const blogPostsAreLoading = useSelector((state: IApplicationState) => {
+        return (
+            state.blogPosts.blogPostUi.allIsLoading &&
+            blogPostsForProject.length === 0
+        );
+    });
+
+    useEffect(() => {
+        if (project) {
+            dispatch(
+                getBlogPostsByProjectIdLoadingAction(
+                    project.githubRepoDatabaseId
+                )
+            );
+        }
+    }, [project]);
 
     const [cellHeights, setCellHeights] = useState(
         blogPostsForProject.reduce(
