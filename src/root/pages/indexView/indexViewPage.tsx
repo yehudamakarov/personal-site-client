@@ -18,9 +18,11 @@ export const IndexViewPage = (props: {
     const filterListingTypes = useSelector((state: IApplicationState) => {
         return state.ui.filter.listingTypes;
     }, shallowEqual);
+
     const filterSearchText = useSelector((state: IApplicationState) => {
         return state.ui.filter.searchText;
     });
+
     const filterTagIds = useSelector((state: IApplicationState) => {
         return state.ui.filter.tagIds;
     }, _.isEqual);
@@ -45,8 +47,6 @@ export const IndexViewPage = (props: {
         };
         dispatch(setFilterAction(initialFilterFromRoute));
     }, [path]);
-
-    console.count("IndexViewPage rendered");
 
     return (
         <BasePage>
