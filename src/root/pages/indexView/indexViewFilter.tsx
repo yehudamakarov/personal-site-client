@@ -22,6 +22,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { IFilter, IFilterListingTypes } from "../../../store/ui/IUiState";
 import { setFilterAction } from "../../../store/ui/uiActions";
+import { TagSearch } from "./tagSearch";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -161,7 +162,9 @@ const IndexViewFilter = React.memo((props: { filter: IFilter }) => {
                         }}
                     />
                 </Grid>
-                <Grid item xs={12} />
+                <Grid item xs={12}>
+                    <TagSearch />
+                </Grid>
             </Grid>
         </div>
     );

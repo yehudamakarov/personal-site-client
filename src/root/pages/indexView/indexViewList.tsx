@@ -91,7 +91,7 @@ const IndexViewList = (props: IFilter) => {
     const allCards = blogPostCards.concat(projectCards);
     return (
         <Grid
-            justify="space-around"
+            justify="flex-start"
             direction="row"
             alignItems="stretch"
             container
