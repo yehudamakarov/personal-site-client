@@ -66,8 +66,8 @@ const suggestions: OptionType[] = [
     { label: "British Indian Ocean Territory" },
     { label: "Brunei Darussalam" },
 ].map((suggestion) => ({
-    value: suggestion.label,
     label: suggestion.label,
+    value: suggestion.label,
 }));
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -261,7 +261,7 @@ export const TagSearch = () => {
     const theme = useTheme();
     const [multi, setMulti] = React.useState<ValueType<OptionType>>(null);
 
-    
+
 
     const handleChangeMulti = (value: ValueType<OptionType>) => {
         setMulti(value);
