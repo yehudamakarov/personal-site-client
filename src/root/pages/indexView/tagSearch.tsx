@@ -15,6 +15,7 @@ import CancelIcon from "@material-ui/icons/Cancel";
 import { Omit } from "@material-ui/types";
 import clsx from "clsx";
 import React, { CSSProperties, HTMLAttributes } from "react";
+import { useSelector } from "react-redux";
 import Select from "react-select";
 import { ValueContainerProps } from "react-select/src/components/containers";
 import { ControlProps } from "react-select/src/components/Control";
@@ -24,51 +25,12 @@ import { OptionProps } from "react-select/src/components/Option";
 import { PlaceholderProps } from "react-select/src/components/Placeholder";
 import { SingleValueProps } from "react-select/src/components/SingleValue";
 import { ValueType } from "react-select/src/types";
+import { IApplicationState } from "../../../store/rootReducer";
 
 interface OptionType {
     label: string;
     value: string;
 }
-
-const suggestions: OptionType[] = [
-    { label: "Afghanistan" },
-    { label: "Aland Islands" },
-    { label: "Albania" },
-    { label: "Algeria" },
-    { label: "American Samoa" },
-    { label: "Andorra" },
-    { label: "Angola" },
-    { label: "Anguilla" },
-    { label: "Antarctica" },
-    { label: "Antigua and Barbuda" },
-    { label: "Argentina" },
-    { label: "Armenia" },
-    { label: "Aruba" },
-    { label: "Australia" },
-    { label: "Austria" },
-    { label: "Azerbaijan" },
-    { label: "Bahamas" },
-    { label: "Bahrain" },
-    { label: "Bangladesh" },
-    { label: "Barbados" },
-    { label: "Belarus" },
-    { label: "Belgium" },
-    { label: "Belize" },
-    { label: "Benin" },
-    { label: "Bermuda" },
-    { label: "Bhutan" },
-    { label: "Bolivia, Plurinational State of" },
-    { label: "Bonaire, Sint Eustatius and Saba" },
-    { label: "Bosnia and Herzegovina" },
-    { label: "Botswana" },
-    { label: "Bouvet Island" },
-    { label: "Brazil" },
-    { label: "British Indian Ocean Territory" },
-    { label: "Brunei Darussalam" },
-].map((suggestion) => ({
-    label: suggestion.label,
-    value: suggestion.label,
-}));
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -257,11 +219,16 @@ const components = {
 };
 
 export const TagSearch = () => {
+    const tags = useSelector((state: IApplicationState) => state.tags.tagsData);
+
+    const suggestions: OptionType[] = tags.map((tag) => ({
+        label: tag.tagId,
+        value: tag.tagId,
+    }));
+
     const classes = useStyles();
     const theme = useTheme();
     const [multi, setMulti] = React.useState<ValueType<OptionType>>(null);
-
-
 
     const handleChangeMulti = (value: ValueType<OptionType>) => {
         setMulti(value);
