@@ -1,9 +1,9 @@
-import { Container, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import _ from "lodash";
 import React, { useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { IApplicationState } from "../../../store/rootReducer";
-import { IFilter, IFilterListingTypes } from "../../../store/ui/IUiState";
+import { IFilter } from "../../../store/ui/IUiState";
 import { setFilterAction } from "../../../store/ui/uiActions";
 import { BasePage } from "../basePage";
 import IndexViewFilter from "./indexViewFilter";
@@ -18,9 +18,11 @@ export const IndexViewPage = (props: {
     const filterListingTypes = useSelector((state: IApplicationState) => {
         return state.ui.filter.listingTypes;
     }, shallowEqual);
+
     const filterSearchText = useSelector((state: IApplicationState) => {
         return state.ui.filter.searchText;
     });
+
     const filterTagIds = useSelector((state: IApplicationState) => {
         return state.ui.filter.tagIds;
     }, _.isEqual);
@@ -33,11 +35,14 @@ export const IndexViewPage = (props: {
 
     useEffect(() => {
         const cleanedFilterListTypes: any = {};
-        Object.keys(filterListingTypes).map((listingTypeKey) => {
+        Object.keys(filterListingTypes).forEach(clearOtherListingTypes);
+
+        function clearOtherListingTypes(listingTypeKey: string) {
             if (listingTypeKey !== path) {
                 cleanedFilterListTypes[listingTypeKey] = false;
             }
-        });
+        }
+
         const initialFilterFromRoute: IFilter = {
             listingTypes: { ...cleanedFilterListTypes, [path]: true },
             searchText: filterSearchText,
@@ -45,9 +50,6 @@ export const IndexViewPage = (props: {
         };
         dispatch(setFilterAction(initialFilterFromRoute));
     }, [path]);
-
-    console.count("IndexViewPage rendered");
-
     return (
         <BasePage>
             <Typography variant="h3">Projects and Blog Posts</Typography>

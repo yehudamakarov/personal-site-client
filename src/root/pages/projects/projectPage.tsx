@@ -2,9 +2,9 @@ import { Grid, LinearProgress, Typography } from "@material-ui/core";
 import { RouteComponentProps } from "@reach/router";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getBlogPostsByProjectIdLoadingAction } from "../../../store/blogPost/actions/getBlogPostsByProjectId";
-import { getProjectByNameLoadingAction } from "../../../store/projects/actions/getProjectByName";
-import { IProject } from "../../../store/projects/types";
+import { getBlogPostsByProjectIdLoadingAction } from "../../../store/actions/blogPost/getBlogPostsByProjectId/actions";
+import { IProject } from "../../../store/actions/projects/api";
+import { getProjectByNameLoadingAction } from "../../../store/actions/projects/getProjectByName/actions";
 import { IApplicationState } from "../../../store/rootReducer";
 import { BasePage } from "../basePage";
 import { BlogPostsByProjectList } from "./components/blogPostsByProjectList";
@@ -15,6 +15,7 @@ interface IOwnProps extends RouteComponentProps<{ projectName?: string }> {}
 const ProjectPage = (props: IOwnProps) => {
     const dispatch = useDispatch();
     const { projectName: projectNameFromRoute } = props;
+
     const currentProject: IProject | undefined = useSelector(
         (state: IApplicationState) => {
             return state.projects.projectsData.find((project) => {
@@ -24,7 +25,9 @@ const ProjectPage = (props: IOwnProps) => {
     );
 
     useEffect(() => {
-        dispatch(getProjectByNameLoadingAction(projectNameFromRoute));
+        if (!currentProject) {
+            dispatch(getProjectByNameLoadingAction(projectNameFromRoute));
+        }
     }, [projectNameFromRoute]);
 
     const currentProjectName = currentProject

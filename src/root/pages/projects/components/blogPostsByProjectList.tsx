@@ -1,24 +1,13 @@
-import {
-    Card,
-    createStyles,
-    GridList,
-    LinearProgress,
-    makeStyles,
-    Theme,
-    Typography,
-    useTheme,
-} from "@material-ui/core";
+import { createStyles, LinearProgress, makeStyles, Theme, Typography, useTheme } from "@material-ui/core";
+
+import { Grid } from "mauerwerk";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
-import { sizeHeight } from "@material-ui/system";
-import { throttle } from "lodash";
-import { Grid } from "mauerwerk";
 import { SizeMeProps, withSize } from "react-sizeme";
 import { animated, useSpring } from "react-spring";
-import { getBlogPostsByProjectIdLoadingAction } from "../../../../store/blogPost/actions/getBlogPostsByProjectId";
-import { IBlogPost } from "../../../../store/blogPost/types";
-import { IProject } from "../../../../store/projects/types";
+import { IBlogPost } from "../../../../store/actions/blogPost/api";
+import { getBlogPostsByProjectIdLoadingAction } from "../../../../store/actions/blogPost/getBlogPostsByProjectId/actions";
+import { IProject } from "../../../../store/actions/projects/api";
 import { IApplicationState } from "../../../../store/rootReducer";
 import { BlogPostByProjectComponent } from "./blogPostByProjectComponent";
 
@@ -46,20 +35,6 @@ export const BlogPostsByProjectList = withSize({
     const classes = useStyles();
     const theme = useTheme();
 
-    useEffect(() => {
-        if (project) {
-            dispatch(
-                getBlogPostsByProjectIdLoadingAction(
-                    project.githubRepoDatabaseId
-                )
-            );
-        }
-    }, [project]);
-
-    const blogPostsAreLoading = useSelector((state: IApplicationState) => {
-        return state.blogPosts.blogPostUi.allIsLoading;
-    });
-
     const blogPostsForProject = useSelector((state: IApplicationState) => {
         if (project) {
             return state.blogPosts.blogPostData.filter((blogPost) => {
@@ -69,6 +44,23 @@ export const BlogPostsByProjectList = withSize({
             return [];
         }
     });
+
+    const blogPostsAreLoading = useSelector((state: IApplicationState) => {
+        return (
+            state.blogPosts.blogPostUi.allIsLoading &&
+            blogPostsForProject.length === 0
+        );
+    });
+
+    useEffect(() => {
+        if (project) {
+            dispatch(
+                getBlogPostsByProjectIdLoadingAction(
+                    project.githubRepoDatabaseId
+                )
+            );
+        }
+    }, [project]);
 
     const [cellHeights, setCellHeights] = useState(
         blogPostsForProject.reduce(
@@ -82,8 +74,7 @@ export const BlogPostsByProjectList = withSize({
 
     const setSingleHeight = (blogPostId: string, height: number) => {
         setCellHeights((prevState) => {
-            const newState = { ...prevState, [blogPostId]: height };
-            return newState;
+            return { ...prevState, [blogPostId]: height };
         });
     };
 
@@ -126,7 +117,7 @@ export const BlogPostsByProjectList = withSize({
                     lockScroll={true}
                     transitionMount={false}
                 >
-                    {(data: IBlogPost, open: any, toggle: any) => (
+                    {(data: IBlogPost) => (
                         <BlogPostByProjectComponent
                             blogPost={data}
                             setSingleHeight={setSingleHeight}

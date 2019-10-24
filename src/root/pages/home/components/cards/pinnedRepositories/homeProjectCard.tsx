@@ -19,7 +19,7 @@ import {
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { Link } from "@reach/router";
 import React, { useState } from "react";
-import { IPinnedRepository } from "../../../../../../store/pinnedRepositories/types/IPinnedRepository";
+import { IPinnedRepository } from "../../../../../../store/actions/pinnedRepositories/api";
 import { GithubIcon } from "../../../../../iconButtons/icons/githubIcon";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -72,7 +72,7 @@ const HomeProjectCard = (props: IOwnProps) => {
     const setPressedTrue = () => setPressed(true);
     return (
         <div>
-            <Card elevation={hovered ? 1 : 0} square className={classes.card}>
+            <Card elevation={hovered ? 6 : 1} square className={classes.card}>
                 <CardActionArea
                     component={Link}
                     to={`/projects/${project.name}`}
