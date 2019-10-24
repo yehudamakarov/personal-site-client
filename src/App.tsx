@@ -3,37 +3,34 @@ import { ThemeProvider } from "@material-ui/styles";
 import React from "react";
 import { Provider } from "react-redux";
 import { Root } from "./root/root";
-
-import axios from "axios";
-
 import { store } from "./store/storeConfig";
-// axios.defaults.baseURL = process.env.REACT_APP_API_URL
 
 // https://coolors.co/dce6ea-0e3b43-1e4571-3e505b-357266
 const theme = createMuiTheme({
     palette: {
+        action: {
+            active: "rgba(0, 0, 0, 0.54)",
+            disabled: "rgba(0, 0, 0, 0.26)",
+            disabledBackground: "rgba(0, 0, 0, 0.12)",
+            hover: "rgba(0, 0, 0, 0.08)",
+            hoverOpacity: 0.08,
+            selected: "rgba(0, 0, 0, 0.14)",
+        },
+        background: {
+            default: "#EDEFF0",
+            paper: "#EDEFF0",
+        },
         common: {
             black: "#0B2B31",
             white: "#EDEFF0",
         },
-        type: "light",
-        primary: {
-            main: "#1E4571",
-            // light: "rgb(71, 145, 219)",
-            // dark: "rgb(17, 82, 147)",
-            contrastText: "#F4F7F8",
-        },
-        secondary: {
-            main: "#357266",
-            // light: "rgb(227, 51, 113)",
-            // dark: "rgb(154, 0, 54)",
-            contrastText: "#F4F7F8",
-        },
+        contrastThreshold: 3,
+        divider: "rgba(0, 0, 0, 0.12)",
         error: {
+            contrastText: "#fff",
+            dark: "#d32f2f",
             light: "#e57373",
             main: "#f44336",
-            dark: "#d32f2f",
-            contrastText: "#fff",
         },
         grey: {
             50: "#fafafa",
@@ -51,27 +48,26 @@ const theme = createMuiTheme({
             A400: "#303030",
             A700: "#616161",
         },
-        contrastThreshold: 3,
-        tonalOffset: 0.3,
+        primary: {
+            // dark: "rgb(17, 82, 147)",
+            contrastText: "#F4F7F8",
+            // light: "rgb(71, 145, 219)",
+            main: "#1E4571",
+        },
+        secondary: {
+            // dark: "rgb(154, 0, 54)",
+            contrastText: "#F4F7F8",
+            // light: "rgb(227, 51, 113)",
+            main: "#357266",
+        },
         text: {
-            primary: "#3E505B",
-            secondary: "#616F78",
             disabled: "#959FA5",
             hint: "#959FA5",
+            primary: "#3E505B",
+            secondary: "#616F78",
         },
-        divider: "rgba(0, 0, 0, 0.12)",
-        background: {
-            paper: "#EDEFF0",
-            default: "#EDEFF0",
-        },
-        action: {
-            active: "rgba(0, 0, 0, 0.54)",
-            hover: "rgba(0, 0, 0, 0.08)",
-            hoverOpacity: 0.08,
-            selected: "rgba(0, 0, 0, 0.14)",
-            disabled: "rgba(0, 0, 0, 0.26)",
-            disabledBackground: "rgba(0, 0, 0, 0.12)",
-        },
+        tonalOffset: 0.3,
+        type: "light",
     },
 });
 

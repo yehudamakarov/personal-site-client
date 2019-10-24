@@ -37,6 +37,10 @@ export interface IGetBlogPostByIdSuccessAction {
 /* -------------------------------------------------------------------------- */
 /*                         getBlogPostByIdErrorAction                         */
 /* -------------------------------------------------------------------------- */
+
+export const GET_BLOG_POST_BY_ID_ERROR = "GET_BLOG_POST_BY_ID_ERROR";
+
+
 export interface IGetBlogPostByIdErrorAction {
     type: typeof GET_BLOG_POST_BY_ID_ERROR;
     payload: { error: Error; blogPostId?: string };
@@ -49,7 +53,6 @@ export const getBlogPostByIdErrorAction = (
     payload: { error, blogPostId },
     type: GET_BLOG_POST_BY_ID_ERROR,
 });
-export const GET_BLOG_POST_BY_ID_ERROR = "GET_BLOG_POST_BY_ID_ERROR";
 
 /* -------------------------------------------------------------------------- */
 /*                                Export Types                                */

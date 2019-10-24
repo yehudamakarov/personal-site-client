@@ -2,8 +2,6 @@ import {
     Checkbox,
     createStyles,
     FormControl,
-    FormControlLabel,
-    FormGroup,
     Grid,
     Input,
     InputAdornment,
@@ -12,7 +10,6 @@ import {
     makeStyles,
     MenuItem,
     Select,
-    Switch,
     TextField,
     Theme,
 } from "@material-ui/core";
@@ -53,11 +50,9 @@ const IndexViewFilter = React.memo((props: { filter: IFilter }) => {
         const newListingTypes: IFilterListingTypes = { ...listingTypes };
         for (const listingType in listingTypes) {
             if (listingTypes.hasOwnProperty(listingType)) {
-                if (selectedValues.includes(listingType)) {
-                    newListingTypes[listingType] = true;
-                } else {
-                    newListingTypes[listingType] = false;
-                }
+                newListingTypes[listingType] = selectedValues.includes(
+                    listingType,
+                );
             }
         }
         const newFilter: IFilter = {
@@ -85,19 +80,23 @@ const IndexViewFilter = React.memo((props: { filter: IFilter }) => {
     const listingTypeValues = getArrayOfListingTypesSelected();
 
     const getSelectedAsDisplayString = (selected: any) => {
+        const beautifyListingType = (
+            listingType: "projects" | "blogPosts" | "tags",
+        ) => {
+            switch (listingType) {
+                case "projects":
+                    return "Projects";
+                case "blogPosts":
+                    return "Blog Posts";
+                case "tags":
+                    return "Tags";
+                default:
+                    break;
+            }
+        };
+
         return (selected as ["projects", "blogPosts", "tags"])
-            .map((listingType) => {
-                switch (listingType) {
-                    case "projects":
-                        return "Projects";
-                    case "blogPosts":
-                        return "Blog Posts";
-                    case "tags":
-                        return "Tags";
-                    default:
-                        break;
-                }
-            })
+            .map(beautifyListingType)
             .join(", ");
     };
 
@@ -113,6 +112,16 @@ const IndexViewFilter = React.memo((props: { filter: IFilter }) => {
     const searchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const input = event.target.value;
         setSearch(input);
+    };
+
+    const tagsChange = (values: string[]) => {
+        const newFilter: IFilter = {
+            listingTypes: { ...listingTypes },
+            searchText: filter.searchText,
+            tagIds: [...values],
+        };
+
+        dispatch(setFilterAction(newFilter));
     };
 
     return (
@@ -163,7 +172,7 @@ const IndexViewFilter = React.memo((props: { filter: IFilter }) => {
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <TagSearch />
+                    <TagSearch setTags={tagsChange}/>
                 </Grid>
             </Grid>
         </div>

@@ -1,7 +1,12 @@
-import axios, { AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
 import { call, delay, put, takeEvery } from "redux-saga/effects";
-import { projectsApi, IProjectResponse } from "../api";
-import { IGetProjectByNameLoadingAction, getProjectByNameSuccessAction,  getProjectByNameErrorAction, GET_PROJECT_BY_NAME_LOADING } from "./actions";
+import { IProjectResponse, projectsApi } from "../api";
+import {
+    GET_PROJECT_BY_NAME_LOADING,
+    getProjectByNameErrorAction,
+    getProjectByNameSuccessAction,
+    IGetProjectByNameLoadingAction,
+} from "./actions";
 
 function* getProjectByName(action: IGetProjectByNameLoadingAction) {
     try {

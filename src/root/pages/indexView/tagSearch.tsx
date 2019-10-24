@@ -1,21 +1,14 @@
 import Chip from "@material-ui/core/Chip";
 import MenuItem from "@material-ui/core/MenuItem";
-import NoSsr from "@material-ui/core/NoSsr";
 import Paper from "@material-ui/core/Paper";
-import {
-    createStyles,
-    emphasize,
-    makeStyles,
-    Theme,
-    useTheme,
-} from "@material-ui/core/styles";
+import { createStyles, emphasize, makeStyles, Theme, useTheme } from "@material-ui/core/styles";
 import TextField, { BaseTextFieldProps } from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import CancelIcon from "@material-ui/icons/Cancel";
 import { Omit } from "@material-ui/types";
 import clsx from "clsx";
-import React, { CSSProperties, HTMLAttributes } from "react";
-import { useSelector } from "react-redux";
+import React, { CSSProperties, HTMLAttributes, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
 import { ValueContainerProps } from "react-select/src/components/containers";
 import { ControlProps } from "react-select/src/components/Control";
@@ -24,10 +17,11 @@ import { MultiValueProps } from "react-select/src/components/MultiValue";
 import { OptionProps } from "react-select/src/components/Option";
 import { PlaceholderProps } from "react-select/src/components/Placeholder";
 import { SingleValueProps } from "react-select/src/components/SingleValue";
-import { ValueType } from "react-select/src/types";
+import { OptionsType, ValueType } from "react-select/src/types";
+import { getTagsLoadingAction } from "../../../store/actions/tags/getTags/actions";
 import { IApplicationState } from "../../../store/rootReducer";
 
-interface OptionType {
+export interface IOptionType {
     label: string;
     value: string;
 }
@@ -36,7 +30,6 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             flexGrow: 1,
-            height: 250,
             minWidth: 290,
         },
         input: {
@@ -87,7 +80,7 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 );
 
-function NoOptionsMessage(props: NoticeProps<OptionType>) {
+function NoOptionsMessage(props: NoticeProps<IOptionType>) {
     return (
         <Typography
             color="textSecondary"
@@ -106,7 +99,7 @@ function inputComponent({ inputRef, ...props }: InputComponentProps) {
     return <div ref={inputRef} {...props} />;
 }
 
-function Control(props: ControlProps<OptionType>) {
+function Control(props: ControlProps<IOptionType>) {
     const {
         children,
         innerProps,
@@ -131,7 +124,7 @@ function Control(props: ControlProps<OptionType>) {
     );
 }
 
-function Option(props: OptionProps<OptionType>) {
+function Option(props: OptionProps<IOptionType>) {
     return (
         <MenuItem
             ref={props.innerRef}
@@ -147,8 +140,8 @@ function Option(props: OptionProps<OptionType>) {
     );
 }
 
-type MuiPlaceholderProps = Omit<PlaceholderProps<OptionType>, "innerProps"> &
-    Partial<Pick<PlaceholderProps<OptionType>, "innerProps">>;
+type MuiPlaceholderProps = Omit<PlaceholderProps<IOptionType>, "innerProps"> &
+    Partial<Pick<PlaceholderProps<IOptionType>, "innerProps">>;
 function Placeholder(props: MuiPlaceholderProps) {
     const { selectProps, innerProps = {}, children } = props;
     return (
@@ -162,7 +155,7 @@ function Placeholder(props: MuiPlaceholderProps) {
     );
 }
 
-function SingleValue(props: SingleValueProps<OptionType>) {
+function SingleValue(props: SingleValueProps<IOptionType>) {
     return (
         <Typography
             className={props.selectProps.classes.singleValue}
@@ -173,7 +166,7 @@ function SingleValue(props: SingleValueProps<OptionType>) {
     );
 }
 
-function ValueContainer(props: ValueContainerProps<OptionType>) {
+function ValueContainer(props: ValueContainerProps<IOptionType>) {
     return (
         <div className={props.selectProps.classes.valueContainer}>
             {props.children}
@@ -181,7 +174,7 @@ function ValueContainer(props: ValueContainerProps<OptionType>) {
     );
 }
 
-function MultiValue(props: MultiValueProps<OptionType>) {
+function MultiValue(props: MultiValueProps<IOptionType>) {
     return (
         <Chip
             tabIndex={-1}
@@ -195,7 +188,7 @@ function MultiValue(props: MultiValueProps<OptionType>) {
     );
 }
 
-function Menu(props: MenuProps<OptionType>) {
+function Menu(props: MenuProps<IOptionType>) {
     return (
         <Paper
             square
@@ -218,20 +211,40 @@ const components = {
     ValueContainer,
 };
 
-export const TagSearch = () => {
-    const tags = useSelector((state: IApplicationState) => state.tags.tagsData);
+export const TagSearch = (props: { setTags: (values: string[]) => void }) => {
+    const { setTags } = props;
+    const dispatch = useDispatch();
 
-    const suggestions: OptionType[] = tags.map((tag) => ({
+    useEffect(() => {
+        dispatch(getTagsLoadingAction());
+    }, []);
+
+    const tags = useSelector((state: IApplicationState) => state.tags.tagsData);
+    const tagIds = useSelector(
+        (state: IApplicationState) => state.ui.filter.tagIds,
+    );
+
+    const tagValues = tagIds.map((tagId) => ({
+        label: tagId,
+        value: tagId,
+    }));
+
+    const suggestions: IOptionType[] = tags.map((tag) => ({
         label: tag.tagId,
         value: tag.tagId,
     }));
 
     const classes = useStyles();
     const theme = useTheme();
-    const [multi, setMulti] = React.useState<ValueType<OptionType>>(null);
 
-    const handleChangeMulti = (value: ValueType<OptionType>) => {
-        setMulti(value);
+    const handleChangeMulti = (values: ValueType<IOptionType>) => {
+        if (values) {
+            setTags(
+                (values as OptionsType<IOptionType>).map((value) => value.label),
+            );
+        } else {
+            setTags([]);
+        }
     };
 
     const selectStyles = {
@@ -260,7 +273,7 @@ export const TagSearch = () => {
                 placeholder="Filter by tag"
                 options={suggestions}
                 components={components}
-                value={multi}
+                value={tagValues}
                 onChange={handleChangeMulti}
                 isMulti
             />

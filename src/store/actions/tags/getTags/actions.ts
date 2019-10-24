@@ -3,11 +3,11 @@ import { ITag } from "../api";
 /* -------------------------------------------------------------------------- */
 /*                          getTagsLoadingAction                          */
 /* -------------------------------------------------------------------------- */
+export const GET_TAGS_LOADING = "GET_TAGS_LOADING";
 
 export interface IGetTagsLoadingAction {
     type: typeof GET_TAGS_LOADING;
 }
-export const GET_TAGS_LOADING = "GET_TAGS_LOADING";
 
 export const getTagsLoadingAction = (): IGetTagsLoadingAction => ({
     type: GET_TAGS_LOADING,
@@ -16,12 +16,12 @@ export const getTagsLoadingAction = (): IGetTagsLoadingAction => ({
 /* -------------------------------------------------------------------------- */
 /*                          getTagsSuccessAction                          */
 /* -------------------------------------------------------------------------- */
+export const GET_TAGS_SUCCESS = "GET_TAGS_SUCCESS";
 
 export interface IGetTagsSuccessAction {
     type: typeof GET_TAGS_SUCCESS;
     payload: ITag[];
 }
-export const GET_TAGS_SUCCESS = "GET_TAGS_SUCCESS";
 
 export const getTagsSuccessAction = (
     projects: ITag[]
@@ -33,12 +33,12 @@ export const getTagsSuccessAction = (
 /* -------------------------------------------------------------------------- */
 /*                           getTagsErrorAction                           */
 /* -------------------------------------------------------------------------- */
+export const GET_TAGS_ERROR = "GET_TAGS_ERROR";
 
 export interface IGetTagsErrorAction {
     type: typeof GET_TAGS_ERROR;
     payload: Error;
 }
-export const GET_TAGS_ERROR = "GET_TAGS_ERROR";
 
 export const getTagsErrorAction = (error: Error): IGetTagsErrorAction => ({
     payload: error,
