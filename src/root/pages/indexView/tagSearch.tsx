@@ -1,7 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Chip from "@material-ui/core/Chip";
 import MenuItem from "@material-ui/core/MenuItem";
 import Paper from "@material-ui/core/Paper";
-import { createStyles, emphasize, makeStyles, Theme, useTheme } from "@material-ui/core/styles";
+import {
+    createStyles,
+    emphasize,
+    makeStyles,
+    Theme,
+    useTheme,
+} from "@material-ui/core/styles";
 import TextField, { BaseTextFieldProps } from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import CancelIcon from "@material-ui/icons/Cancel";
@@ -28,22 +35,6 @@ export interface IOptionType {
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        root: {
-            flexGrow: 1,
-            minWidth: 290,
-        },
-        input: {
-            display: "flex",
-            padding: 0,
-            height: "auto",
-        },
-        valueContainer: {
-            display: "flex",
-            flexWrap: "wrap",
-            flex: 1,
-            alignItems: "center",
-            overflow: "hidden",
-        },
         chip: {
             margin: theme.spacing(0.5, 0.25),
         },
@@ -55,27 +46,43 @@ const useStyles = makeStyles((theme: Theme) =>
                 0.08
             ),
         },
+        divider: {
+            height: theme.spacing(2),
+        },
+        input: {
+            display: "flex",
+            height: "auto",
+            padding: 0,
+        },
         noOptionsMessage: {
             padding: theme.spacing(1, 2),
+        },
+        paper: {
+            left: 0,
+            marginTop: theme.spacing(1),
+            position: "absolute",
+            right: 0,
+            zIndex: 1,
+        },
+        placeholder: {
+            bottom: 6,
+            fontSize: 16,
+            left: 2,
+            position: "absolute",
+        },
+        root: {
+            flexGrow: 1,
+            minWidth: 290,
         },
         singleValue: {
             fontSize: 16,
         },
-        placeholder: {
-            position: "absolute",
-            left: 2,
-            bottom: 6,
-            fontSize: 16,
-        },
-        paper: {
-            position: "absolute",
-            zIndex: 1,
-            marginTop: theme.spacing(1),
-            left: 0,
-            right: 0,
-        },
-        divider: {
-            height: theme.spacing(2),
+        valueContainer: {
+            alignItems: "center",
+            display: "flex",
+            flex: 1,
+            flexWrap: "wrap",
+            overflow: "hidden",
         },
     })
 );
@@ -113,9 +120,9 @@ function Control(props: ControlProps<IOptionType>) {
             InputProps={{
                 inputComponent,
                 inputProps: {
+                    children,
                     className: classes.input,
                     ref: innerRef,
-                    children,
                     ...innerProps,
                 },
             }}
@@ -200,17 +207,6 @@ function Menu(props: MenuProps<IOptionType>) {
     );
 }
 
-const components = {
-    Control,
-    Menu,
-    MultiValue,
-    NoOptionsMessage,
-    Option,
-    Placeholder,
-    SingleValue,
-    ValueContainer,
-};
-
 export const TagSearch = (props: { setTags: (values: string[]) => void }) => {
     const { setTags } = props;
     const dispatch = useDispatch();
@@ -221,7 +217,7 @@ export const TagSearch = (props: { setTags: (values: string[]) => void }) => {
 
     const tags = useSelector((state: IApplicationState) => state.tags.tagsData);
     const tagIds = useSelector(
-        (state: IApplicationState) => state.ui.filter.tagIds,
+        (state: IApplicationState) => state.ui.filter.tagIds
     );
 
     const tagValues = tagIds.map((tagId) => ({
@@ -240,7 +236,7 @@ export const TagSearch = (props: { setTags: (values: string[]) => void }) => {
     const handleChangeMulti = (values: ValueType<IOptionType>) => {
         if (values) {
             setTags(
-                (values as OptionsType<IOptionType>).map((value) => value.label),
+                (values as OptionsType<IOptionType>).map((value) => value.label)
             );
         } else {
             setTags([]);
@@ -272,7 +268,16 @@ export const TagSearch = (props: { setTags: (values: string[]) => void }) => {
                 }}
                 placeholder="Filter by tag"
                 options={suggestions}
-                components={components}
+                components={{
+                    Control,
+                    Menu,
+                    MultiValue,
+                    NoOptionsMessage,
+                    Option,
+                    Placeholder,
+                    SingleValue,
+                    ValueContainer,
+                }}
                 value={tagValues}
                 onChange={handleChangeMulti}
                 isMulti
