@@ -1,18 +1,9 @@
-import {
-    Card,
-    CardActionArea,
-    CardContent,
-    CardMedia,
-    Grow,
-    Theme,
-    Tooltip,
-    Typography,
-} from "@material-ui/core";
-import { createStyles, makeStyles } from "@material-ui/styles";
-import React, { useState } from "react";
+import { Card, CardActionArea, CardContent, CardMedia, Grow, Theme, Typography } from "@material-ui/core";
 
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import { createStyles, makeStyles } from "@material-ui/styles";
 import { Link } from "@reach/router";
+import React, { useState } from "react";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -55,14 +46,17 @@ export const HomepageCard = (props: IOwnProps) => {
     const classes = useStyles();
     const [hovered, setHovered] = useState(false);
     const { children, to } = props;
+
+    const setHovering = (hovering: boolean) => () => setHovered(hovering);
+
     return (
         <Card square elevation={hovered ? 1 : 4} className={classes.card}>
             <div className={classes.cardFace}>
                 <CardContent>{children}</CardContent>
             </div>
             <CardActionArea
-                onMouseEnter={() => setHovered(true)}
-                onMouseLeave={() => setHovered(false)}
+                onMouseEnter={setHovering(true)}
+                onMouseLeave={setHovering(false)}
                 component={Link}
                 to={to}
                 className={classes.cardButton}

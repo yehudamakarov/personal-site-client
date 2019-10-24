@@ -1,19 +1,8 @@
-import {
-    Card,
-    createStyles,
-    GridList,
-    LinearProgress,
-    makeStyles,
-    Theme,
-    Typography,
-    useTheme,
-} from "@material-ui/core";
+import { createStyles, LinearProgress, makeStyles, Theme, Typography, useTheme } from "@material-ui/core";
+
+import { Grid } from "mauerwerk";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
-import { sizeHeight } from "@material-ui/system";
-import { throttle } from "lodash";
-import { Grid } from "mauerwerk";
 import { SizeMeProps, withSize } from "react-sizeme";
 import { animated, useSpring } from "react-spring";
 import { IBlogPost } from "../../../../store/actions/blogPost/api";
@@ -85,8 +74,7 @@ export const BlogPostsByProjectList = withSize({
 
     const setSingleHeight = (blogPostId: string, height: number) => {
         setCellHeights((prevState) => {
-            const newState = { ...prevState, [blogPostId]: height };
-            return newState;
+            return { ...prevState, [blogPostId]: height };
         });
     };
 
@@ -129,7 +117,7 @@ export const BlogPostsByProjectList = withSize({
                     lockScroll={true}
                     transitionMount={false}
                 >
-                    {(data: IBlogPost, open: any, toggle: any) => (
+                    {(data: IBlogPost) => (
                         <BlogPostByProjectComponent
                             blogPost={data}
                             setSingleHeight={setSingleHeight}

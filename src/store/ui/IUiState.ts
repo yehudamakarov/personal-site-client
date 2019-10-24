@@ -2,6 +2,7 @@ export interface IFilterListingTypes {
     projects: boolean;
     blogPosts: boolean;
     tags: boolean;
+    [index: string]: boolean;
 }
 
 export interface IFilter {

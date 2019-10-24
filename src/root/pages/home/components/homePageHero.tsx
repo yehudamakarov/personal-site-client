@@ -1,86 +1,65 @@
-import {
-    Button,
-    CircularProgress,
-    Container,
-    createStyles,
-    Fade,
-    Grid,
-    Grow,
-    Link,
-    makeStyles,
-    Paper,
-    Slide,
-    Snackbar,
-    Theme,
-    Tooltip,
-    Typography,
-} from "@material-ui/core";
-import { TransitionProps } from "@material-ui/core/transitions/transition";
+import { CircularProgress, createStyles, Fade, makeStyles, Paper, Theme } from "@material-ui/core";
 import React from "react";
 import quarry from "../../../../assets/jpeg/quarry.jpeg";
-import { GithubIconButton } from "../../../iconButtons/buttons/githubIconButton";
-import { LinkedInIconButton } from "../../../iconButtons/buttons/linkedInIconButton";
-import { ResumeButton } from "../../../iconButtons/buttons/resumeIconButton";
 import { HeroTextContainer } from "./heroTextContainer";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        root: {
-            position: "relative",
-        },
         container: {
             [theme.breakpoints.down("sm")]: {
-                paddingRight: 0,
                 paddingLeft: 0,
+                paddingRight: 0,
             },
+        },
+        loadingOverlay: {
+            alignItems: "center",
+            backgroundImage: `linear-gradient(to bottom right, ${theme.palette.background.paper}, ${theme.palette.secondary.dark})`,
+            bottom: 0,
+            display: "flex",
+            justifyContent: "center",
+            left: 0,
+            position: "absolute",
+            right: 0,
+            top: 0,
+        },
+        overlay: {
+            backgroundColor: "rgba(0,0,0,0.4)",
+            bottom: 0,
+            left: 0,
+            position: "absolute",
+            right: 0,
+            top: 0,
+        },
+        overlayEverything: {
+            bottom: 0,
+            color: theme.palette.common.white,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-end",
+            left: 0,
+            position: "absolute",
+            right: 0,
+            top: 0,
         },
         paper: {
             backgroundImage: `url(${quarry})`,
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
-            position: "relative",
-            height: "60vh",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            color: theme.palette.common.white,
+            display: "flex",
             [theme.breakpoints.down("sm")]: {
                 backgroundPosition: "left",
             },
-            display: "flex",
             flexDirection: "column",
+            height: "60vh",
             justifyContent: "flex-end",
-            color: theme.palette.common.white,
             marginBottom: theme.spacing(4),
+            position: "relative",
         },
-        overlayEverything: {
-            position: "absolute",
-            top: 0,
-            bottom: 0,
-            right: 0,
-            left: 0,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-end",
-            color: theme.palette.common.white,
+        root: {
+            position: "relative",
         },
-        overlay: {
-            position: "absolute",
-            top: 0,
-            bottom: 0,
-            right: 0,
-            left: 0,
-            backgroundColor: "rgba(0,0,0,0.4)",
-        },
-        loadingOverlay: {
-            position: "absolute",
-            top: 0,
-            bottom: 0,
-            right: 0,
-            left: 0,
-            backgroundImage: `linear-gradient(to bottom right, ${theme.palette.background.paper}, ${theme.palette.secondary.dark})`,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-        },
-        progress: {},
     })
 );
 
@@ -98,6 +77,7 @@ export const HomepageHero = () => {
                     onLoad={handleHeroLoaded}
                     style={{ display: "none" }}
                     src={quarry}
+                    alt="quarry"
                 />
             }
             <Fade in={!heroLoaded}>
@@ -107,7 +87,6 @@ export const HomepageHero = () => {
                             size={72}
                             thickness={4.2}
                             color={"secondary"}
-                            className={classes.progress}
                         />
                     </div>
                     <HeroTextContainer />

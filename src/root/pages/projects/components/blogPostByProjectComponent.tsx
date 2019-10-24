@@ -1,17 +1,8 @@
-import {
-    Card,
-    createStyles,
-    Grid,
-    GridListTile,
-    makeStyles,
-    Theme,
-    Typography,
-    useTheme,
-} from "@material-ui/core";
-import React, { useCallback, useEffect, useLayoutEffect, useMemo } from "react";
+import { Card, createStyles, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
+import React, { useCallback, useLayoutEffect } from "react";
 import { SizeMeProps, withSize } from "react-sizeme";
-import TagsComponent from "./tagsComponent";
 import { IBlogPost } from "../../../../store/actions/blogPost/api";
+import TagsComponent from "./tagsComponent";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -20,6 +11,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
     })
 );
+
 interface IOwnProps extends SizeMeProps {
     blogPost: IBlogPost;
     setSingleHeight: (blogPostId: string, height: number) => void;

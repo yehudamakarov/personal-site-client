@@ -4,10 +4,11 @@ import { IProject } from "../api";
 /*                          getProjectsLoadingAction                          */
 /* -------------------------------------------------------------------------- */
 
+export const GET_PROJECTS_LOADING = "GET_PROJECTS_LOADING";
+
 export interface IGetProjectsLoadingAction {
     type: typeof GET_PROJECTS_LOADING;
 }
-export const GET_PROJECTS_LOADING = "GET_PROJECTS_LOADING";
 
 export const getProjectsLoadingAction = (): IGetProjectsLoadingAction => ({
     type: GET_PROJECTS_LOADING,
@@ -17,11 +18,12 @@ export const getProjectsLoadingAction = (): IGetProjectsLoadingAction => ({
 /*                          getProjectsSuccessAction                          */
 /* -------------------------------------------------------------------------- */
 
+export const GET_PROJECTS_SUCCESS = "GET_PROJECTS_SUCCESS";
+
 export interface IGetProjectsSuccessAction {
     type: typeof GET_PROJECTS_SUCCESS;
     payload: IProject[];
 }
-export const GET_PROJECTS_SUCCESS = "GET_PROJECTS_SUCCESS";
 
 export const getProjectsSuccessAction = (
     projects: IProject[]
@@ -34,11 +36,12 @@ export const getProjectsSuccessAction = (
 /*                           getProjectsErrorAction                           */
 /* -------------------------------------------------------------------------- */
 
+export const GET_PROJECTS_ERROR = "GET_PROJECTS_ERROR";
+
 export interface IGetProjectsErrorAction {
     type: typeof GET_PROJECTS_ERROR;
     payload: Error;
 }
-export const GET_PROJECTS_ERROR = "GET_PROJECTS_ERROR";
 
 export const getProjectsErrorAction = (
     error: Error
