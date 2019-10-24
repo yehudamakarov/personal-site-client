@@ -48,6 +48,7 @@ export const IndexViewPage = (props: {
             searchText: filterSearchText,
             tagIds: filterTagIds,
         };
+        // todo make this it's own action to set the filterTypesFromRoute. send only the path and generate an object that's empty
         dispatch(setFilterAction(initialFilterFromRoute));
     }, [path]);
     return (

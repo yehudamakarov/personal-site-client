@@ -1,31 +1,15 @@
-import {
-    Checkbox,
-    createStyles,
-    FormControl,
-    Grid,
-    Input,
-    InputAdornment,
-    InputLabel,
-    ListItemText,
-    makeStyles,
-    MenuItem,
-    Select,
-    TextField,
-    Theme,
-} from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
+import { createStyles, Grid, makeStyles, Theme } from "@material-ui/core";
 import { debounce } from "lodash";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { IFilter, IFilterListingTypes } from "../../../store/ui/IUiState";
+import { IFilter } from "../../../store/ui/IUiState";
 import { setFilterAction } from "../../../store/ui/uiActions";
+import { ListingTypeSelect } from "./filter/listingTypeSelect";
+import { TextSearch } from "./filter/textSearch";
 import { TagSearch } from "./tagSearch";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        multiSelect: {
-            minWidth: theme.spacing(16),
-        },
         root: {
             margin: theme.spacing(1),
         },
@@ -35,6 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 );
 
+// todo instead of passing the filter as a prop, break out sub components, that get their part of the filter state and update the store when that part of the filter is changed.
 const IndexViewFilter = React.memo((props: { filter: IFilter }) => {
     const {
         filter: { listingTypes },
@@ -42,63 +27,6 @@ const IndexViewFilter = React.memo((props: { filter: IFilter }) => {
     } = props;
     const dispatch = useDispatch();
     const classes = useStyles();
-
-    const handleListingTypesChange = (
-        event: React.ChangeEvent<{ value: unknown }>
-    ) => {
-        const selectedValues = event.target.value as string[];
-        const newListingTypes: IFilterListingTypes = { ...listingTypes };
-        for (const listingType in listingTypes) {
-            if (listingTypes.hasOwnProperty(listingType)) {
-                newListingTypes[listingType] = selectedValues.includes(
-                    listingType,
-                );
-            }
-        }
-        const newFilter: IFilter = {
-            listingTypes: newListingTypes,
-            searchText: filter.searchText,
-            tagIds: filter.tagIds,
-        };
-
-        dispatch(setFilterAction(newFilter));
-    };
-
-    const getArrayOfListingTypesSelected = () => {
-        const listingTypeKeys: string[] = Object.keys(listingTypes);
-        return listingTypeKeys.reduce(
-            (agg, el) => {
-                if (listingTypes[el]) {
-                    agg.push(el);
-                }
-                return agg;
-            },
-            [] as string[]
-        );
-    };
-
-    const listingTypeValues = getArrayOfListingTypesSelected();
-
-    const getSelectedAsDisplayString = (selected: any) => {
-        const beautifyListingType = (
-            listingType: "projects" | "blogPosts" | "tags",
-        ) => {
-            switch (listingType) {
-                case "projects":
-                    return "Projects";
-                case "blogPosts":
-                    return "Blog Posts";
-                case "tags":
-                    return "Tags";
-                default:
-                    break;
-            }
-        };
-
-        return (selected as ["projects", "blogPosts", "tags"])
-            .map(beautifyListingType)
-            .join(", ");
-    };
 
     const setSearch = debounce((input: string) => {
         const newFilter: IFilter = {
@@ -113,7 +41,6 @@ const IndexViewFilter = React.memo((props: { filter: IFilter }) => {
         const input = event.target.value;
         setSearch(input);
     };
-
     const tagsChange = (values: string[]) => {
         const newFilter: IFilter = {
             listingTypes: { ...listingTypes },
@@ -128,48 +55,10 @@ const IndexViewFilter = React.memo((props: { filter: IFilter }) => {
         <div className={classes.root}>
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={3} md={4}>
-                    <FormControl fullWidth className={classes.multiSelect}>
-                        <InputLabel htmlFor="show-multiple-select">
-                            Showing:
-                        </InputLabel>
-                        <Select
-                            multiple
-                            value={listingTypeValues}
-                            onChange={handleListingTypesChange}
-                            renderValue={getSelectedAsDisplayString}
-                            input={
-                                <Input fullWidth id="show-multiple-select" />
-                            }
-                        >
-                            <MenuItem value="projects">
-                                <Checkbox checked={listingTypes.projects} />
-                                <ListItemText primary="Projects" />
-                            </MenuItem>
-                            <MenuItem value="blogPosts">
-                                <Checkbox checked={listingTypes.blogPosts} />
-                                <ListItemText primary="Blog Posts" />
-                            </MenuItem>
-                            <MenuItem value="tags">
-                                <Checkbox checked={listingTypes.tags} />
-                                <ListItemText primary="Tags" />
-                            </MenuItem>
-                        </Select>
-                    </FormControl>
+                    <ListingTypeSelect {...props} />
                 </Grid>
                 <Grid item xs={12} sm>
-                    <TextField
-                        onChange={searchChange}
-                        fullWidth
-                        inputProps={{ style: { height: "auto" } }}
-                        label="Search"
-                        InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    <SearchIcon />
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
+                    <TextSearch onChange={searchChange}/>
                 </Grid>
                 <Grid item xs={12}>
                     <TagSearch setTags={tagsChange}/>
