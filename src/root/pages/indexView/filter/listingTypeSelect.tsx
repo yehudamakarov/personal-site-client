@@ -10,8 +10,10 @@ import {
     Select,
     Theme,
 } from "@material-ui/core";
-import React from "react";
-import { useDispatch } from "react-redux";
+import _ from "lodash";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { IApplicationState } from "../../../../store/rootReducer";
 import { IFilter, IFilterListingTypes } from "../../../../store/ui/IUiState";
 import { setFilterAction } from "../../../../store/ui/uiActions";
 
@@ -23,13 +25,39 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 );
 
-export const ListingTypeSelect = (props: { filter: IFilter }) => {
-    const {
-        filter: { listingTypes },
-        filter,
-    } = props;
+export const ListingTypeSelect = (props: {
+    path: "projects" | "blogPosts" | "tags";
+}) => {
     const dispatch = useDispatch();
     const classes = useStyles();
+
+    const listingTypes = useSelector(
+        (state: IApplicationState) => state.ui.filter.listingTypes,
+        _.isEqual,
+    );
+
+    // todo not efficient, shouldn't need once we are only dispatching the new tags instead of the whole filter.
+    const filter = useSelector((state: IApplicationState) => state.ui.filter);
+
+    // todo clean this up into a single action so we do not need to assemble the entire filter and dispatch it
+    useEffect(() => {
+        const cleanedFilterListTypes: any = {};
+        Object.keys(filterListingTypes).forEach(clearOtherListingTypes);
+
+        function clearOtherListingTypes(listingTypeKey: string) {
+            if (listingTypeKey !== props.path) {
+                cleanedFilterListTypes[listingTypeKey] = false;
+            }
+        }
+
+        const initialFilterFromRoute: IFilter = {
+            listingTypes: { ...cleanedFilterListTypes, [props.path]: true },
+            searchText: filterSearchText,
+            tagIds: filterTagIds,
+        };
+        // todo make this it's own action to set the filterTypesFromRoute. send only the path and generate an object that's empty
+        dispatch(setFilterAction(initialFilterFromRoute));
+    }, [props.path]);
 
     // todo move to FilterHelpers
     const getSelectedAsDisplayString = (selected: any) => {
