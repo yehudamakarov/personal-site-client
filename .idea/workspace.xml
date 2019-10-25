@@ -8,6 +8,23 @@
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/iconButtons/base/myIconButtonBase.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/iconButtons/base/myIconButtonBase.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/iconButtons/buttons/githubIconButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/iconButtons/buttons/githubIconButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/iconButtons/buttons/linkedInIconButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/iconButtons/buttons/linkedInIconButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/iconButtons/buttons/resumeIconButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/iconButtons/buttons/resumeIconButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/navigation/topBar/topBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/navigation/topBar/topBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homeCardTextPinnedRepositories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homeCardTextPinnedRepositories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homeProjectCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homeProjectCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/home/components/homepageBody.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/home/components/homepageBody.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/filter/listingTypeSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/filter/listingTypeSelect.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/indexViewCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/indexViewCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/indexViewFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/indexViewFilter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/indexViewPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/indexViewPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/tagSearch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/tagSearch.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/projectPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/projectPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/root.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/getProjects/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/getProjects/saga.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,10 +34,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="3008" />
-    <option name="height" value="1692" />
   </component>
   <component name="ProjectId" id="1ScncZUbRigY4SUWJXWlNPeIFsG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -123,7 +136,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

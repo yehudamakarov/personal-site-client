@@ -1,6 +1,5 @@
 import { createStyles, Grid, makeStyles, Theme } from "@material-ui/core";
 import React from "react";
-import { useDispatch } from "react-redux";
 import { ListingTypeSelect } from "./filter/listingTypeSelect";
 import { TextSearch } from "./filter/textSearch";
 import { TagSearch } from "./tagSearch";
@@ -20,7 +19,6 @@ const useStyles = makeStyles((theme: Theme) =>
 const IndexViewFilter = (props: {
     path: "projects" | "blogPosts" | "tags";
 }) => {
-    const dispatch = useDispatch();
     const classes = useStyles();
 
     return (

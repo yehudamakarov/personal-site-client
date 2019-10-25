@@ -1,10 +1,3 @@
-import {
-    createStyles,
-    IconButton,
-    makeStyles,
-    SvgIcon,
-    Theme,
-} from "@material-ui/core";
 import React from "react";
 import { MyIconButtonBase } from "../base/myIconButtonBase";
 import { ResumeIcon } from "../icons/resumeIcon";

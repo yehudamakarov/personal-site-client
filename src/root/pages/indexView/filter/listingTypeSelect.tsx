@@ -12,7 +12,7 @@ import {
 } from "@material-ui/core";
 import _ from "lodash";
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { IApplicationState } from "../../../../store/rootReducer";
 import { IFilter, IFilterListingTypes } from "../../../../store/ui/IUiState";
 import { setFilterAction } from "../../../../store/ui/uiActions";
@@ -31,10 +31,17 @@ export const ListingTypeSelect = (props: {
     const dispatch = useDispatch();
     const classes = useStyles();
 
-    const listingTypes = useSelector(
-        (state: IApplicationState) => state.ui.filter.listingTypes,
-        _.isEqual,
-    );
+    const filterListingTypes = useSelector((state: IApplicationState) => {
+        return state.ui.filter.listingTypes;
+    }, shallowEqual);
+
+    const filterSearchText = useSelector((state: IApplicationState) => {
+        return state.ui.filter.searchText;
+    });
+
+    const filterTagIds = useSelector((state: IApplicationState) => {
+        return state.ui.filter.tagIds;
+    }, _.isEqual);
 
     // todo not efficient, shouldn't need once we are only dispatching the new tags instead of the whole filter.
     const filter = useSelector((state: IApplicationState) => state.ui.filter);
@@ -82,10 +89,10 @@ export const ListingTypeSelect = (props: {
     };
     // todo move to FilterHelpers
     const getArrayOfListingTypesSelected = () => {
-        const listingTypeKeys: string[] = Object.keys(listingTypes);
+        const listingTypeKeys: string[] = Object.keys(filterListingTypes);
         return listingTypeKeys.reduce(
             (agg, el) => {
-                if (listingTypes[el]) {
+                if (filterListingTypes[el]) {
                     agg.push(el);
                 }
                 return agg;
@@ -100,9 +107,9 @@ export const ListingTypeSelect = (props: {
         event: React.ChangeEvent<{ value: unknown }>
     ) => {
         const selectedValues = event.target.value as string[];
-        const newListingTypes: IFilterListingTypes = { ...listingTypes };
-        for (const listingType in listingTypes) {
-            if (listingTypes.hasOwnProperty(listingType)) {
+        const newListingTypes: IFilterListingTypes = { ...filterListingTypes };
+        for (const listingType in filterListingTypes) {
+            if (filterListingTypes.hasOwnProperty(listingType)) {
                 newListingTypes[listingType] = selectedValues.includes(
                     listingType
                 );
@@ -128,15 +135,15 @@ export const ListingTypeSelect = (props: {
                 input={<Input fullWidth id="show-multiple-select" />}
             >
                 <MenuItem value="projects">
-                    <Checkbox checked={listingTypes.projects} />
+                    <Checkbox checked={filterListingTypes.projects}/>
                     <ListItemText primary="Projects" />
                 </MenuItem>
                 <MenuItem value="blogPosts">
-                    <Checkbox checked={listingTypes.blogPosts} />
+                    <Checkbox checked={filterListingTypes.blogPosts}/>
                     <ListItemText primary="Blog Posts" />
                 </MenuItem>
                 <MenuItem value="tags">
-                    <Checkbox checked={listingTypes.tags} />
+                    <Checkbox checked={filterListingTypes.tags}/>
                     <ListItemText primary="Tags" />
                 </MenuItem>
             </Select>

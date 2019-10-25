@@ -2,18 +2,13 @@
 import Chip from "@material-ui/core/Chip";
 import MenuItem from "@material-ui/core/MenuItem";
 import Paper from "@material-ui/core/Paper";
-import {
-    createStyles,
-    emphasize,
-    makeStyles,
-    Theme,
-    useTheme,
-} from "@material-ui/core/styles";
+import { createStyles, emphasize, makeStyles, Theme, useTheme } from "@material-ui/core/styles";
 import TextField, { BaseTextFieldProps } from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import CancelIcon from "@material-ui/icons/Cancel";
 import { Omit } from "@material-ui/types";
 import clsx from "clsx";
+import _ from "lodash";
 import React, { CSSProperties, HTMLAttributes, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
@@ -27,6 +22,8 @@ import { SingleValueProps } from "react-select/src/components/SingleValue";
 import { OptionsType, ValueType } from "react-select/src/types";
 import { getTagsLoadingAction } from "../../../store/actions/tags/getTags/actions";
 import { IApplicationState } from "../../../store/rootReducer";
+import { IFilter } from "../../../store/ui/IUiState";
+import { setFilterAction } from "../../../store/ui/uiActions";
 
 export interface IOptionType {
     label: string;
@@ -207,9 +204,26 @@ function Menu(props: MenuProps<IOptionType>) {
     );
 }
 
-export const TagSearch = (props: { setTags: (values: string[]) => void }) => {
-    const { setTags } = props;
+export const TagSearch = () => {
     const dispatch = useDispatch();
+
+    const listingTypes = useSelector(
+        (state: IApplicationState) => state.ui.filter.listingTypes,
+        _.isEqual,
+    );
+
+    // todo not efficient, shouldn't need once we are only dispatching the new tags instead of the whole filter.
+    const filter = useSelector((state: IApplicationState) => state.ui.filter);
+
+    const tagsChange = (values: string[]) => {
+        const newFilter: IFilter = {
+            listingTypes: { ...listingTypes },
+            searchText: filter.searchText,
+            tagIds: [...values],
+        };
+
+        dispatch(setFilterAction(newFilter));
+    };
 
     useEffect(() => {
         dispatch(getTagsLoadingAction());
@@ -235,11 +249,11 @@ export const TagSearch = (props: { setTags: (values: string[]) => void }) => {
 
     const handleChangeMulti = (values: ValueType<IOptionType>) => {
         if (values) {
-            setTags(
+            tagsChange(
                 (values as OptionsType<IOptionType>).map((value) => value.label)
             );
         } else {
-            setTags([]);
+            tagsChange([]);
         }
     };
 
