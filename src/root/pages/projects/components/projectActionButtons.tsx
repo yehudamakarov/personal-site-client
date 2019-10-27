@@ -1,7 +1,9 @@
 import {
     Button,
+    ButtonGroup,
     createStyles,
     Fab,
+    Grid,
     makeStyles,
     Theme,
 } from "@material-ui/core";
@@ -18,13 +20,19 @@ const useStyles = makeStyles((theme: Theme) =>
         buttonRightMargin: {
             marginRight: theme.spacing(1),
         },
-        iconMarginLeft: {
-            marginLeft: theme.spacing(1),
+        iconMarginRight: {
+            marginRight: theme.spacing(1),
         },
         leftButton: {
             flexGrow: 1,
         },
-        root: { display: "flex" },
+        root: {
+            display: "flex",
+            marginTop: theme.spacing(2),
+        },
+        seeLive: {
+            [theme.breakpoints.down("xs")]: { marginBottom: theme.spacing(2) },
+        },
     })
 );
 
@@ -35,6 +43,7 @@ export const ProjectActionButtons = (props: {
 }) => {
     const { project } = props;
     const classes = useStyles();
+
     const projectGithubUrl = project
         ? (project.githubUrl as string)
         : undefined;
@@ -46,42 +55,55 @@ export const ProjectActionButtons = (props: {
         await navigate("/projects");
     };
 
-    const { opacity } = useSpring({ opacity: projectDeploymentUrl ? 1 : 0 });
+    const { opacity, display } = useSpring({
+        display: projectDeploymentUrl ? "flex" : "none",
+        opacity: projectDeploymentUrl ? 1 : 0,
+    });
 
     return (
         <div className={classes.root}>
-            <div className={classes.leftButton}>
-                <Button
-                    variant="contained"
-                    color="secondary"
-                    size="small"
-                    onClick={goBack}
-                    startIcon={<ArrowBackIosIcon />}
-                >
-                    All Projects
-                </Button>
-            </div>
-
-            <AnimatedFab
-                style={{ opacity }}
-                variant="extended"
-                className={classes.buttonRightMargin}
-                color="primary"
-                size="small"
-                href={projectDeploymentUrl}
+            <Grid
+                alignItems="center"
+                justify="space-between"
+                container
+                spacing={2}
             >
-                See Live
-                <WebAssetIcon className={classes.iconMarginLeft} />
-            </AnimatedFab>
-            <Button
-                variant="contained"
-                color="secondary"
-                size="small"
-                href={projectGithubUrl}
-                endIcon={<GithubIcon />}
-            >
-                View
-            </Button>
+                <Grid item>
+                    <ButtonGroup>
+                        <Button
+                            variant="contained"
+                            color="secondary"
+                            size="small"
+                            onClick={goBack}
+                            startIcon={<ArrowBackIosIcon />}
+                        >
+                            All Projects
+                        </Button>
+                        <Button
+                            variant="outlined"
+                            color="secondary"
+                            size="small"
+                            href={projectGithubUrl}
+                            endIcon={<GithubIcon />}
+                        >
+                            View Source
+                        </Button>
+                    </ButtonGroup>
+                </Grid>
+                <Grid item>
+                    <AnimatedFab
+                        className={classes.seeLive}
+                        style={{ opacity, display }}
+                        variant="extended"
+                        color="primary"
+                        size="small"
+                        href={projectDeploymentUrl}
+                    >
+                        <WebAssetIcon className={classes.iconMarginRight} />
+                        See Live
+                    </AnimatedFab>
+                </Grid>
+            </Grid>
         </div>
     );
 };

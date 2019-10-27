@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
             marginLeft: -theme.spacing(2),
             marginRight: -theme.spacing(2),
         },
+        title: { padding: theme.spacing(2) },
     })
 );
 
@@ -97,8 +98,8 @@ export const BlogPostsByProjectList = withSize({
 
     return (
         <div>
-            <div>
-                <Typography variant="h5">Posts About This Project</Typography>
+            <div className={classes.title}>
+                <Typography variant="h6">Posts About This Project</Typography>
             </div>
             <AnimatedLinearProgress
                 style={{
