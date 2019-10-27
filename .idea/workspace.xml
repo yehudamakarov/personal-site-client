@@ -7,11 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/root/pages/projects/components/projectTitleCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/blogPostsByProjectList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/blogPostsByProjectList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/projectActionButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/projectActionButtons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/projectPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/projectPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/projectPageTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/projectPageTitle.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,10 +25,16 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="filter-div" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1ScncZUbRigY4SUWJXWlNPeIFsG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">

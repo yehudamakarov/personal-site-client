@@ -92,7 +92,8 @@ export const BlogPostsByProjectList = withSize({
             : 1
         : 2;
 
-    const { opacity } = useSpring({
+    const { display, opacity } = useSpring({
+        display: blogPostsAreLoading ? "block" : "none",
         opacity: blogPostsAreLoading ? 1 : 0,
     });
 
@@ -103,6 +104,7 @@ export const BlogPostsByProjectList = withSize({
             </div>
             <AnimatedLinearProgress
                 style={{
+                    display,
                     opacity,
                 }}
                 variant="query"
