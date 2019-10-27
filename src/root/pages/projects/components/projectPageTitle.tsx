@@ -21,12 +21,17 @@ const ProjectPageTitle = (props: {
             return false;
         }
     });
-    const { opacity } = useSpring({
+    const { display, opacity } = useSpring({
+        display: projectIsLoading ? "block" : "none",
         opacity: projectIsLoading ? 1 : 0,
     });
+
     return (
         <div>
-            <AnimatedLinearProgress style={{ opacity }} variant="query" />
+            <AnimatedLinearProgress
+                style={{ opacity, display }}
+                variant="query"
+            />
             <AnimatedTypography style={{} /*{ opacity }*/} variant="h4">
                 {currentProjectName}
             </AnimatedTypography>
