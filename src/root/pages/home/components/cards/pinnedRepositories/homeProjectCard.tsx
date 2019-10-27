@@ -1,18 +1,15 @@
 import {
-    Avatar,
     Button,
     Card,
     CardActionArea,
     CardActions,
     CardContent,
-    CardMedia,
     createStyles,
     Grid,
     Grow,
     Hidden,
     LinearProgress,
     makeStyles,
-    Slide,
     Theme,
     Typography,
 } from "@material-ui/core";

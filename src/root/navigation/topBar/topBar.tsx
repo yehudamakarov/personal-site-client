@@ -1,19 +1,4 @@
-import {
-    AppBar,
-    Button,
-    Container,
-    createStyles,
-    Drawer,
-    IconButton,
-    Link,
-    makeStyles,
-    TextField,
-    Theme,
-    Toolbar,
-    Tooltip,
-    Typography,
-} from "@material-ui/core";
-import CodeIcon from "@material-ui/icons/Code";
+import { AppBar, Container, createStyles, Link, makeStyles, Theme, Toolbar, Tooltip } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import React from "react";
 import { useDispatch } from "react-redux";

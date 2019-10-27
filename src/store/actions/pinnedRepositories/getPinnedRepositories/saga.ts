@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { call, fork, put, takeEvery } from "redux-saga/effects";
+import { call, put, takeEvery } from "redux-saga/effects";
 import { IPinnedReposResponse, pinnedRepositoriesApi } from "../api";
 import {
     GET_PINNED_REPOSITORIES_LOADING,

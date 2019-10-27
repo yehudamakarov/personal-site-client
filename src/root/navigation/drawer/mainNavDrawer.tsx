@@ -1,16 +1,13 @@
 import {
-    Avatar,
     createStyles,
     Divider,
     Drawer,
     List,
     ListItem,
-    ListItemAvatar,
     ListItemIcon,
     ListItemText,
     makeStyles,
     Paper,
-    SvgIcon,
     Theme,
 } from "@material-ui/core";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";

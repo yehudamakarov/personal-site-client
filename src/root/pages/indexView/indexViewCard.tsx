@@ -1,18 +1,8 @@
-import {
-    Box,
-    Card,
-    CardActionArea,
-    createStyles,
-    Divider,
-    Grid,
-    makeStyles,
-    Theme,
-    Tooltip,
-    Typography,
-} from "@material-ui/core";
+import { Card, CardActionArea, createStyles, Grid, makeStyles, Theme, Tooltip, Typography } from "@material-ui/core";
 import { Link } from "@reach/router";
 import React from "react";
 import TagsComponent from "../projects/components/tagsComponent";
+
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         div: {
@@ -41,7 +31,7 @@ const IndexViewCard = (props: {
     githubLink: string | null;
     type: "project" | "blogPost";
 }) => {
-    const { title, subTitle, tagIds, regularLink, type, githubLink } = props;
+    const { title, subTitle, tagIds, regularLink, type } = props;
     const classes = useStyles();
 
     const truncateText = (str: string | null, desiredLength: number) => {
