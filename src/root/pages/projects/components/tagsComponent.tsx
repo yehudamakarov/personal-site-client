@@ -1,11 +1,4 @@
-import {
-    Avatar,
-    Chip,
-    createStyles,
-    Grid,
-    makeStyles,
-    Theme,
-} from "@material-ui/core";
+import { Chip, createStyles, Grid, makeStyles, Theme } from "@material-ui/core";
 import { Link } from "@reach/router";
 import React from "react";
 
@@ -21,15 +14,7 @@ const TagsComponent = (props: {
     type: "project" | "blogPost";
 }) => {
     const { rtl, tags, type } = props;
-    // const { rtl, type } = props;
-    // const tags = [
-    //     "react",
-    //     "someOther",
-    //     "another",
-    //     "react2",
-    //     "someOther2",
-    //     "another2",
-    // ];
+    const classes = useStyles();
     const direction = rtl ? "row-reverse" : "row";
     return (
         <Grid container spacing={1} alignItems="flex-end" direction={direction}>

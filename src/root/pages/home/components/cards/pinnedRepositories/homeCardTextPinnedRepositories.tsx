@@ -1,10 +1,4 @@
-import {
-    Card,
-    Fade,
-    Grid,
-    LinearProgress,
-    Typography,
-} from "@material-ui/core";
+import { Grid, LinearProgress, Typography } from "@material-ui/core";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPinnedRepositoriesLoadingAction } from "../../../../../../store/actions/pinnedRepositories/getPinnedRepositories/actions";

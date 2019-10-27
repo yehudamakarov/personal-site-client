@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Chip from "@material-ui/core/Chip";
 import MenuItem from "@material-ui/core/MenuItem";
 import Paper from "@material-ui/core/Paper";
@@ -7,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import CancelIcon from "@material-ui/icons/Cancel";
 import { Omit } from "@material-ui/types";
 import clsx from "clsx";
+import _ from "lodash";
 import React, { CSSProperties, HTMLAttributes, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
@@ -20,6 +22,8 @@ import { SingleValueProps } from "react-select/src/components/SingleValue";
 import { OptionsType, ValueType } from "react-select/src/types";
 import { getTagsLoadingAction } from "../../../store/actions/tags/getTags/actions";
 import { IApplicationState } from "../../../store/rootReducer";
+import { IFilter } from "../../../store/ui/IUiState";
+import { setFilterAction } from "../../../store/ui/uiActions";
 
 export interface IOptionType {
     label: string;
@@ -28,22 +32,6 @@ export interface IOptionType {
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        root: {
-            flexGrow: 1,
-            minWidth: 290,
-        },
-        input: {
-            display: "flex",
-            padding: 0,
-            height: "auto",
-        },
-        valueContainer: {
-            display: "flex",
-            flexWrap: "wrap",
-            flex: 1,
-            alignItems: "center",
-            overflow: "hidden",
-        },
         chip: {
             margin: theme.spacing(0.5, 0.25),
         },
@@ -55,27 +43,43 @@ const useStyles = makeStyles((theme: Theme) =>
                 0.08
             ),
         },
+        divider: {
+            height: theme.spacing(2),
+        },
+        input: {
+            display: "flex",
+            height: "auto",
+            padding: 0,
+        },
         noOptionsMessage: {
             padding: theme.spacing(1, 2),
+        },
+        paper: {
+            left: 0,
+            marginTop: theme.spacing(1),
+            position: "absolute",
+            right: 0,
+            zIndex: 1,
+        },
+        placeholder: {
+            bottom: 6,
+            fontSize: 16,
+            left: 2,
+            position: "absolute",
+        },
+        root: {
+            flexGrow: 1,
+            minWidth: 290,
         },
         singleValue: {
             fontSize: 16,
         },
-        placeholder: {
-            position: "absolute",
-            left: 2,
-            bottom: 6,
-            fontSize: 16,
-        },
-        paper: {
-            position: "absolute",
-            zIndex: 1,
-            marginTop: theme.spacing(1),
-            left: 0,
-            right: 0,
-        },
-        divider: {
-            height: theme.spacing(2),
+        valueContainer: {
+            alignItems: "center",
+            display: "flex",
+            flex: 1,
+            flexWrap: "wrap",
+            overflow: "hidden",
         },
     })
 );
@@ -113,9 +117,9 @@ function Control(props: ControlProps<IOptionType>) {
             InputProps={{
                 inputComponent,
                 inputProps: {
+                    children,
                     className: classes.input,
                     ref: innerRef,
-                    children,
                     ...innerProps,
                 },
             }}
@@ -200,20 +204,26 @@ function Menu(props: MenuProps<IOptionType>) {
     );
 }
 
-const components = {
-    Control,
-    Menu,
-    MultiValue,
-    NoOptionsMessage,
-    Option,
-    Placeholder,
-    SingleValue,
-    ValueContainer,
-};
-
-export const TagSearch = (props: { setTags: (values: string[]) => void }) => {
-    const { setTags } = props;
+export const TagSearch = () => {
     const dispatch = useDispatch();
+
+    const listingTypes = useSelector(
+        (state: IApplicationState) => state.ui.filter.listingTypes,
+        _.isEqual,
+    );
+
+    // todo not efficient, shouldn't need once we are only dispatching the new tags instead of the whole filter.
+    const filter = useSelector((state: IApplicationState) => state.ui.filter);
+
+    const tagsChange = (values: string[]) => {
+        const newFilter: IFilter = {
+            listingTypes: { ...listingTypes },
+            searchText: filter.searchText,
+            tagIds: [...values],
+        };
+
+        dispatch(setFilterAction(newFilter));
+    };
 
     useEffect(() => {
         dispatch(getTagsLoadingAction());
@@ -221,7 +231,7 @@ export const TagSearch = (props: { setTags: (values: string[]) => void }) => {
 
     const tags = useSelector((state: IApplicationState) => state.tags.tagsData);
     const tagIds = useSelector(
-        (state: IApplicationState) => state.ui.filter.tagIds,
+        (state: IApplicationState) => state.ui.filter.tagIds
     );
 
     const tagValues = tagIds.map((tagId) => ({
@@ -239,11 +249,11 @@ export const TagSearch = (props: { setTags: (values: string[]) => void }) => {
 
     const handleChangeMulti = (values: ValueType<IOptionType>) => {
         if (values) {
-            setTags(
-                (values as OptionsType<IOptionType>).map((value) => value.label),
+            tagsChange(
+                (values as OptionsType<IOptionType>).map((value) => value.label)
             );
         } else {
-            setTags([]);
+            tagsChange([]);
         }
     };
 
@@ -272,7 +282,16 @@ export const TagSearch = (props: { setTags: (values: string[]) => void }) => {
                 }}
                 placeholder="Filter by tag"
                 options={suggestions}
-                components={components}
+                components={{
+                    Control,
+                    Menu,
+                    MultiValue,
+                    NoOptionsMessage,
+                    Option,
+                    Placeholder,
+                    SingleValue,
+                    ValueContainer,
+                }}
                 value={tagValues}
                 onChange={handleChangeMulti}
                 isMulti
