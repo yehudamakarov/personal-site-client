@@ -7,6 +7,7 @@ import { getProjectByNameLoadingAction } from "../../../store/actions/projects/g
 import { IApplicationState } from "../../../store/rootReducer";
 import { BasePage } from "../basePage";
 import { BlogPostsByProjectList } from "./components/blogPostsByProjectList";
+import { ProjectActionButtons } from "./components/projectActionButtons";
 import ProjectPageTitle from "./components/projectPageTitle";
 
 interface IOwnProps extends RouteComponentProps<{ projectName?: string }> {}
@@ -39,7 +40,11 @@ const ProjectPage = (props: IOwnProps) => {
 
     return (
         <BasePage>
-            <Grid container spacing={4}>
+            <Grid container spacing={3}>
+                {/*Action Buttons*/}
+                <Grid item xs={12}>
+                    <ProjectActionButtons project={currentProject} />
+                </Grid>
                 {/* Title */}
                 <Grid item xs={12}>
                     <ProjectPageTitle
@@ -50,7 +55,7 @@ const ProjectPage = (props: IOwnProps) => {
                 {/* Highlights */}
                 {/* Tags */}
 
-                {/* About */}
+                {/* Description */}
                 <Grid item xs={12}>
                     <Typography variant="h5">Description</Typography>
                     <Typography variant="body1">

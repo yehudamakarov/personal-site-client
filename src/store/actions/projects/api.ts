@@ -39,6 +39,7 @@ export interface IProject {
     projectHighlights: IProjectHighlight[];
     projectPictures: IProjectPicture[];
     slug: string;
+    deploymentUrl: string | null;
 }
 
 export interface IProjectPicture {

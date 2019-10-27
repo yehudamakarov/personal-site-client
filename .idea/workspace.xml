@@ -7,30 +7,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/root/pages/projects/components/projectActionButtons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/iconButtons/base/myIconButtonBase.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/iconButtons/base/myIconButtonBase.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/iconButtons/buttons/githubIconButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/iconButtons/buttons/githubIconButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/iconButtons/buttons/linkedInIconButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/iconButtons/buttons/linkedInIconButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/iconButtons/buttons/resumeIconButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/iconButtons/buttons/resumeIconButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/navigation/topBar/topBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/navigation/topBar/topBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homeCardTextPinnedRepositories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homeCardTextPinnedRepositories.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homeProjectCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homeProjectCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/home/components/homepageBody.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/home/components/homepageBody.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/filter/listingTypeSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/filter/listingTypeSelect.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/indexViewCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/indexViewCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/indexViewFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/indexViewFilter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/indexViewPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/indexViewPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/tagSearch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/tagSearch.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/projectPageTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/projectPageTitle.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/pages/projects/projectPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/projectPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/root.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/getProjects/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/getProjects/saga.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -95,7 +92,7 @@
       <workItem from="1571870749104" duration="312000" />
       <workItem from="1571871149859" duration="5000" />
       <workItem from="1571871839537" duration="4975000" />
-      <workItem from="1571876840333" duration="15423000" />
+      <workItem from="1571876840333" duration="25190000" />
     </task>
     <task id="LOCAL-00001" summary="project styles for webstorm">
       <created>1568176773387</created>
@@ -125,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571959293566</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary=".">
+      <created>1572009457859</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1572009457859</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,7 +155,8 @@
     <MESSAGE value="webstorm and tag filtering" />
     <MESSAGE value="webstorm and tag filtering tags" />
     <MESSAGE value="spare changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="spare changes" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

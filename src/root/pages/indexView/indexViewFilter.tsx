@@ -28,10 +28,10 @@ const IndexViewFilter = (props: {
                     <ListingTypeSelect {...props} />
                 </Grid>
                 <Grid item xs={12} sm>
-                    <TextSearch/>
+                    <TextSearch />
                 </Grid>
                 <Grid item xs={12}>
-                    <TagSearch/>
+                    <TagSearch />
                 </Grid>
             </Grid>
         </div>

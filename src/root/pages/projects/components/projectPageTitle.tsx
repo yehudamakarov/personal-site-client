@@ -27,7 +27,7 @@ const ProjectPageTitle = (props: {
     return (
         <div>
             <AnimatedLinearProgress style={{ opacity }} variant="query" />
-            <AnimatedTypography style={{} /*{ opacity }*/} variant="h3">
+            <AnimatedTypography style={{} /*{ opacity }*/} variant="h4">
                 {currentProjectName}
             </AnimatedTypography>
         </div>
