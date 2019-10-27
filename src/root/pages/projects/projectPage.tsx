@@ -1,4 +1,4 @@
-import { Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import { RouteComponentProps } from "@reach/router";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,8 +7,7 @@ import { getProjectByNameLoadingAction } from "../../../store/actions/projects/g
 import { IApplicationState } from "../../../store/rootReducer";
 import { BasePage } from "../basePage";
 import { BlogPostsByProjectList } from "./components/blogPostsByProjectList";
-import { ProjectActionButtons } from "./components/projectActionButtons";
-import ProjectPageTitle from "./components/projectPageTitle";
+import { ProjectPageTitleCard } from "./components/projectTitleCard";
 
 interface IOwnProps extends RouteComponentProps<{ projectName?: string }> {}
 
@@ -30,38 +29,23 @@ const ProjectPage = (props: IOwnProps) => {
         }
     }, [projectNameFromRoute]);
 
-    const currentProjectName = currentProject
-        ? currentProject.projectName
-        : projectNameFromRoute;
 
-    const currentProjectDescription = currentProject
-        ? currentProject.projectDescription
-        : "";
 
     return (
         <BasePage>
-            <Grid container spacing={3}>
-                {/*Action Buttons*/}
+            <Grid container spacing={2}>
                 <Grid item xs={12}>
-                    <ProjectActionButtons project={currentProject} />
-                </Grid>
-                {/* Title */}
-                <Grid item xs={12}>
-                    <ProjectPageTitle
-                        currentProjectName={currentProjectName}
+                    <ProjectPageTitleCard
+
                         projectNameFromRoute={projectNameFromRoute}
+
+                        project={currentProject}
                     />
                 </Grid>
-                {/* Highlights */}
-                {/* Tags */}
 
-                {/* Description */}
-                <Grid item xs={12}>
-                    <Typography variant="h5">Description</Typography>
-                    <Typography variant="body1">
-                        {currentProjectDescription}
-                    </Typography>
-                </Grid>
+                {/* Tags */}
+                {/* Highlights */}
+
                 {/* Post List */}
                 <Grid item xs={12}>
                     <BlogPostsByProjectList project={currentProject} />
