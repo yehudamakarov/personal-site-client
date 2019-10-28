@@ -7,11 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homePinnedRepositories.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homeCardTextPinnedRepositories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homeCardTextPinnedRepositories.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homeProjectCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homeProjectCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/home/components/homepageBody.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/home/components/homepageBody.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homePinnedRepositories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homePinnedRepositories.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -158,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572286930927</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="this will work for now but it shouldn't be only 6 wide">
+      <created>1572288585051</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1572288585051</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,7 +193,8 @@
     <MESSAGE value="action buttons for project Page" />
     <MESSAGE value="not displaying loading bars after animation" />
     <MESSAGE value="shortening the green button" />
-    <option name="LAST_COMMIT_MESSAGE" value="shortening the green button" />
+    <MESSAGE value="this will work for now but it shouldn't be only 6 wide" />
+    <option name="LAST_COMMIT_MESSAGE" value="this will work for now but it shouldn't be only 6 wide" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
