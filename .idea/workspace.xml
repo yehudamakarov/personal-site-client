@@ -7,9 +7,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assets/svg/color_logo_black.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/svg/color_logo_transparent.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/svg/color_logo_transparent_black.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/svg/color_logo_transparent_white.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/svg/color_logo_white.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/root/iconButtons/icons/brandIcon.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/navigation/topBar/brandLogo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/navigation/topBar/brandLogo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/navigation/topBar/topBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/navigation/topBar/topBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/about/aboutPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/about/aboutPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/blog/blogPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/blog/blogPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/home/components/cards/about/homepageCardTextAbout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/home/components/cards/about/homepageCardTextAbout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homeCardTextPinnedRepositories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homeCardTextPinnedRepositories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/indexViewFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/indexViewFilter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/indexViewPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/indexViewPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/blogPostsByProjectList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/blogPostsByProjectList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/projectPageTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/projectPageTitle.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +53,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="NewWatcherDialog.advanced.open" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -97,6 +113,7 @@
       <workItem from="1571871149859" duration="5000" />
       <workItem from="1571871839537" duration="4975000" />
       <workItem from="1571876840333" duration="31176000" />
+      <workItem from="1572232839965" duration="7264000" />
     </task>
     <task id="LOCAL-00001" summary="project styles for webstorm">
       <created>1568176773387</created>
@@ -140,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572202484127</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="not displaying loading bars after animation">
+      <created>1572215286585</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1572215286585</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,6 +185,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="project styles for webstorm" />
     <MESSAGE value="missing files?" />
     <MESSAGE value="webstorm and tag filtering" />
@@ -168,7 +193,8 @@
     <MESSAGE value="spare changes" />
     <MESSAGE value="." />
     <MESSAGE value="action buttons for project Page" />
-    <option name="LAST_COMMIT_MESSAGE" value="action buttons for project Page" />
+    <MESSAGE value="not displaying loading bars after animation" />
+    <option name="LAST_COMMIT_MESSAGE" value="not displaying loading bars after animation" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

@@ -24,7 +24,7 @@ export const IndexViewPage = (props: {
 
     return (
         <BasePage>
-            <Typography variant="h3">Projects and Blog Posts</Typography>
+            <Typography variant="h4">Projects and Blog Posts</Typography>
             <IndexViewFilter {...props} />
             <IndexViewList
                 listingTypes={filterListingTypes}

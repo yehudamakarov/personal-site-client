@@ -16,9 +16,9 @@ const HomepageCardTextPinnedRepositories = () => {
     }, []);
 
     return (
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
             <Grid item xs={12}>
-                <Typography variant="h3">Some Projects</Typography>
+                <Typography variant="h4">Some Projects</Typography>
             </Grid>
             <Grid item xs={12} sm={8} md={6}>
                 <Typography variant="subtitle2">

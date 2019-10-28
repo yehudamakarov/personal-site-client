@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) => {
             maxWidth: 26,
         },
         menuButton: {
-            marginRight: theme.spacing(1),
+            // marginRight: theme.spacing(1),
         },
     });
 });
