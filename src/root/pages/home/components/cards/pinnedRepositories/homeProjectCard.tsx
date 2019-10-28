@@ -70,6 +70,29 @@ const HomeProjectCard = (props: IOwnProps) => {
     return (
         <div>
             <Card elevation={hovered ? 6 : 1} square className={classes.card}>
+                <div className={classes.cardFace}>
+                    <CardContent>
+                        <Typography variant="h6">{project.name}</Typography>
+                        <Typography variant="body2">
+                            {project.description}
+                        </Typography>
+                    </CardContent>
+                    <CardActions>
+                        <Grid container spacing={1}>
+                            <Grid item xs={12}>
+                                <Button
+                                    onClick={setPressedTrue}
+                                    size="small"
+                                    color="primary"
+                                    href={project.url}
+                                >
+                                    Github
+                                    <GithubIcon className={classes.iconRight} />
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </CardActions>
+                </div>
                 <CardActionArea
                     component={Link}
                     to={`/projects/${project.name}`}
@@ -97,29 +120,6 @@ const HomeProjectCard = (props: IOwnProps) => {
                         </Hidden>
                     </div>
                 </CardActionArea>
-                <div className={classes.cardFace}>
-                    <CardContent>
-                        <Typography variant="h6">{project.name}</Typography>
-                        <Typography variant="body2">
-                            {project.description}
-                        </Typography>
-                    </CardContent>
-                    <CardActions>
-                        <Grid container spacing={1}>
-                            <Grid item xs={12}>
-                                <Button
-                                    onClick={setPressedTrue}
-                                    size="small"
-                                    color="primary"
-                                    href={project.url}
-                                >
-                                    Github
-                                    <GithubIcon className={classes.iconRight} />
-                                </Button>
-                            </Grid>
-                        </Grid>
-                    </CardActions>
-                </div>
             </Card>
             <Grow in={pressed}>
                 <LinearProgress variant="query" />
