@@ -5,7 +5,7 @@ import { BasePage } from "../basePage";
 export const BlogPage = (props: { path: string }) => {
     return (
         <BasePage>
-            <Typography variant="h3">Blog</Typography>
+            <Typography variant="h4">Blog</Typography>
         </BasePage>
     );
 };

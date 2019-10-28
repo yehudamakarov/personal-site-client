@@ -3,10 +3,10 @@ import React from "react";
 
 const HomepageCardTextAbout = () => {
     return (
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
             {/* Top Header */}
             <Grid item xs={12}>
-                <Typography variant="h3">About</Typography>
+                <Typography variant="h4">About</Typography>
             </Grid>
             {/* Caption and sub caption */}
             <Grid item xs={12} sm={8} md={6}>

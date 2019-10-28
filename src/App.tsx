@@ -69,6 +69,29 @@ const theme = createMuiTheme({
         tonalOffset: 0.3,
         type: "light",
     },
+    typography: {
+        // fontFamily: "'Exo 2', sans-serif",
+        fontFamily: "'Noto Sans TC', sans-serif",
+        fontSize: 12,
+        h3: {
+            fontWeight: 500,
+        },
+        h4: {
+            fontWeight: 500,
+            textTransform: "uppercase",
+        },
+        h5: {
+            fontSize: "1.5rem",
+            fontWeight: 500,
+            textTransform: "uppercase",
+        },
+        h6: {
+            fontSize: "1.35rem",
+        },
+        subtitle2: {
+            fontSize: "0.9rem",
+        },
+    },
 });
 
 export const App = () => {
