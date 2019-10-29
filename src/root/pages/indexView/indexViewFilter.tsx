@@ -1,8 +1,8 @@
 import { createStyles, Grid, makeStyles, Theme } from "@material-ui/core";
 import React from "react";
 import { ListingTypeSelect } from "./filter/listingTypeSelect";
+import { TagSearchContainer } from "./filter/tagSearch/tagSearchContainer";
 import { TextSearch } from "./filter/textSearch";
-import { TagSearch } from "./tagSearch";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -30,7 +30,7 @@ const IndexViewFilter = (props: {
                     <TextSearch />
                 </Grid>
                 <Grid item xs={12}>
-                    <TagSearch />
+                    <TagSearchContainer />
                 </Grid>
             </Grid>
         </div>

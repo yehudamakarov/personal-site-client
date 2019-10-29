@@ -30,8 +30,23 @@ export interface ISetFilterAction {
     payload: IFilter;
 }
 
+// SET_FILTER
+export const SET_TAGS_FOR_FILTER = "SET_TAGS_FOR_FILTER";
+export const setTagsForFilterAction = (
+    tagIds: string[],
+): ISetTagsForFilterAction => ({
+    payload: tagIds,
+    type: SET_TAGS_FOR_FILTER,
+});
+
+export interface ISetTagsForFilterAction {
+    type: typeof SET_TAGS_FOR_FILTER;
+    payload: string[];
+}
+
 // UNION TYPE
 export type UiActionTypes =
     | IOpenDrawerAction
     | ICloseDrawerAction
-    | ISetFilterAction;
+    | ISetFilterAction
+    | ISetTagsForFilterAction;
