@@ -22,8 +22,8 @@ import { GithubIcon } from "../../../../../iconButtons/icons/githubIcon";
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         cardLeftPadding: {
-            borderLeft: `${theme.spacing(1)}px ridge ${
-                theme.palette.secondary.main
+            borderLeft: `${theme.spacing(1)}px solid ${
+                theme.palette.secondary.light
             }`,
             borderRadius: theme.spacing(1),
             paddingLeft: theme.spacing(1),
@@ -31,6 +31,9 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         cardSideButtonHover: {
             backgroundColor: theme.palette.action.selected,
+        },
+        title: {
+            paddingBottom: theme.spacing(1),
         },
     })
 );
@@ -54,8 +57,12 @@ const HomeProjectCard = (props: IOwnProps) => {
     const CardBody = (
         <div>
             <CardContent>
-                <Typography variant="h6">{project.name}</Typography>
-                <Typography variant="body2">{project.description}</Typography>
+                <Typography className={classes.title} variant="h6">
+                    {project.name}
+                </Typography>
+                <Typography variant="overline">
+                    {project.description}
+                </Typography>
             </CardContent>
             <CardActions>
                 <Grid container spacing={1}>

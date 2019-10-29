@@ -36,7 +36,7 @@ export const TextSearch = () => {
             InputProps={{
                 startAdornment: (
                     <InputAdornment position="start">
-                        <SearchIcon/>
+                        <SearchIcon />
                     </InputAdornment>
                 ),
             }}

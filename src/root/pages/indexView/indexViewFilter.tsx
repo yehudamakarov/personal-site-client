@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 );
 
-// todo instead of passing the filter as a prop, break out sub components, that get their part of the filter state and update the store when that part of the filter is changed.
 const IndexViewFilter = (props: {
     path: "projects" | "blogPosts" | "tags";
 }) => {
