@@ -1,6 +1,5 @@
 import {
     createStyles,
-    Divider,
     Drawer,
     List,
     ListItem,
@@ -10,6 +9,7 @@ import {
     Paper,
     Theme,
 } from "@material-ui/core";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import NotesRoundedIcon from "@material-ui/icons/NotesRounded";
 import PortraitIcon from "@material-ui/icons/Portrait";
@@ -31,6 +31,16 @@ const useStyles = makeStyles((theme: Theme) =>
                 width: 340,
             },
         },
+        exitArrow: {
+            // display: 'flex',
+            // alignItems: 'center',
+            // padding: theme.spacing(0, 1),
+            ...theme.mixins.toolbar,
+            // justifyContent: 'flex-end',
+        },
+        list: {
+            paddingTop: 0,
+        },
     })
 );
 
@@ -49,7 +59,12 @@ export const MainNavDrawer = () => {
                 onClick={handleDrawerClose}
                 className={classes.drawerBackground}
             >
-                <List>
+                <List className={classes.list}>
+                    <ListItem button divider className={classes.exitArrow}>
+                        <ListItemIcon>
+                            <ArrowBackIosIcon />
+                        </ListItemIcon>
+                    </ListItem>
                     <ListItem button component={Link} to="/">
                         <ListItemIcon>
                             <HomeRoundedIcon />
@@ -60,7 +75,6 @@ export const MainNavDrawer = () => {
                             Home
                         </ListItemText>
                     </ListItem>
-                    <Divider />
                     <ListItem button component={Link} to="about">
                         <ListItemIcon>
                             <PortraitIcon />

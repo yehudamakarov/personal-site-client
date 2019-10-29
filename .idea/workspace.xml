@@ -8,11 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/svg/color_logo_black.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/svg/color_logo_transparent.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/navigation/topBar/brandLogo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/navigation/topBar/brandLogo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homePinnedRepositories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homePinnedRepositories.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homeProjectCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homeProjectCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/navigation/drawer/mainNavDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/navigation/drawer/mainNavDrawer.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +97,7 @@
       <workItem from="1571871149859" duration="5000" />
       <workItem from="1571871839537" duration="4975000" />
       <workItem from="1571876840333" duration="31176000" />
-      <workItem from="1572232839965" duration="14347000" />
+      <workItem from="1572232839965" duration="15331000" />
     </task>
     <task id="LOCAL-00001" summary="project styles for webstorm">
       <created>1568176773387</created>
@@ -159,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572240397022</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fixed up home cards for projects">
+      <created>1572319206660</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1572319206660</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,7 +193,8 @@
     <MESSAGE value="action buttons for project Page" />
     <MESSAGE value="not displaying loading bars after animation" />
     <MESSAGE value="logo" />
-    <option name="LAST_COMMIT_MESSAGE" value="logo" />
+    <MESSAGE value="fixed up home cards for projects" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed up home cards for projects" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
