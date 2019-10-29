@@ -1,4 +1,4 @@
-import { createStyles, Link, Theme } from "@material-ui/core";
+import { createStyles, Link, Theme, useTheme } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import { Link as RouterLink } from "@reach/router";
 import React from "react";
@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 export const BrandLogo = () => {
     const classes = useStyles();
+    const theme = useTheme();
 
     const [props, set] = useSpring(() => ({
         config: { mass: 5, tension: 350, friction: 40 },
@@ -52,7 +53,7 @@ export const BrandLogo = () => {
                         transform: props.xys.interpolate(trans),
                     }}
                 >
-                    <BrandIcon />
+                    <BrandIcon style={{ fill: theme.palette.common.white }} />
                 </animated.div>
             </div>
         </Link>

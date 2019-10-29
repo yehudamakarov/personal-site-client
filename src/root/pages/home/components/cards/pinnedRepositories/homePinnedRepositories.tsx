@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
                 paddingRight: theme.spacing(3),
             },
         },
-    }),
+    })
 );
 
 export const HomePinnedRepositories = () => {
@@ -36,7 +36,7 @@ export const HomePinnedRepositories = () => {
     }, []);
 
     return (
-        <Grid container spacing={1} direction="column" className={classes.root}>
+        <Grid container spacing={2}>
             {isLoading && <LinearProgress variant="query" />}
 
             {isError && (
@@ -51,7 +51,7 @@ export const HomePinnedRepositories = () => {
             {!isLoading &&
                 !isError &&
                 pinnedRepositories.map((pinnedRepository) => (
-                    <Grid item xs={12} key={pinnedRepository.name}>
+                    <Grid item xs={12} sm={6} key={pinnedRepository.name}>
                         <HomeProjectCard project={pinnedRepository} />
                     </Grid>
                 ))}
