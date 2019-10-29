@@ -3,6 +3,7 @@ import React from "react";
 import { HomepageCardTextAbout } from "./cards/about/homepageCardTextAbout";
 import { HomepageCard } from "./cards/homePageCard";
 import { HomepageCardTextPinnedRepositories } from "./cards/pinnedRepositories/homeCardTextPinnedRepositories";
+import { HomePinnedRepositories } from "./cards/pinnedRepositories/homePinnedRepositories";
 
 export const HomepageBody = () => {
     return (
@@ -19,6 +20,9 @@ export const HomepageBody = () => {
                     <HomepageCard to="projects">
                         <HomepageCardTextPinnedRepositories />
                     </HomepageCard>
+                </Grid>
+                <Grid item xs={12}>
+                    <HomePinnedRepositories />
                 </Grid>
             </Grid>
         </Container>

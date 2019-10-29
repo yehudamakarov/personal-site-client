@@ -13,44 +13,24 @@ import {
     Theme,
     Typography,
 } from "@material-ui/core";
-import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-import { Link } from "@reach/router";
+import SubjectIcon from "@material-ui/icons/Subject";
+import { Link, navigate } from "@reach/router";
 import React, { useState } from "react";
 import { IPinnedRepository } from "../../../../../../store/actions/pinnedRepositories/api";
 import { GithubIcon } from "../../../../../iconButtons/icons/githubIcon";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        avatar: {
-            backgroundColor: theme.palette.primary.main,
-        },
-        card: {
-            display: "flex",
-        },
-        cardFace: {
-            flex: 1,
-        },
-        cardSideButton: {
-            [theme.breakpoints.down("xs")]: {
-                width: theme.spacing(6),
-            },
-            alignItems: "center",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            width: theme.spacing(14),
+        cardLeftPadding: {
+            borderLeft: `${theme.spacing(1)}px ridge ${
+                theme.palette.secondary.main
+            }`,
+            borderRadius: theme.spacing(1),
+            paddingLeft: theme.spacing(1),
+            paddingRight: theme.spacing(1),
         },
         cardSideButtonHover: {
-            "& svg": {
-                fill: theme.palette.primary.dark,
-            },
             backgroundColor: theme.palette.action.selected,
-        },
-        dummyTop: {
-            [theme.breakpoints.up("sm")]: { minHeight: theme.spacing(4) },
-        },
-        iconRight: {
-            marginLeft: theme.spacing(1),
         },
     })
 );
@@ -66,61 +46,67 @@ const HomeProjectCard = (props: IOwnProps) => {
     const { project } = props;
     const setHoveredTrue = () => setHovered(true);
     const setHoveredFalse = () => setHovered(false);
-    const setPressedTrue = () => setPressed(true);
+    const setPressedTrue = async (event: any) => {
+        event.preventDefault();
+        setPressed(true);
+        await navigate(project.url);
+    };
+    const CardBody = (
+        <div>
+            <CardContent>
+                <Typography variant="h6">{project.name}</Typography>
+                <Typography variant="body2">{project.description}</Typography>
+            </CardContent>
+            <CardActions>
+                <Grid container spacing={1}>
+                    <Grid item>
+                        <Button
+                            onClick={setPressedTrue}
+                            size="small"
+                            color="primary"
+                            disableTouchRipple
+                            endIcon={<GithubIcon />}
+                        >
+                            View Source
+                        </Button>
+                    </Grid>
+                    <Grid item>
+                        <Button
+                            endIcon={<SubjectIcon />}
+                            size="small"
+                            color="primary"
+                            disableTouchRipple
+                        >
+                            See More
+                        </Button>
+                    </Grid>
+                </Grid>
+            </CardActions>
+        </div>
+    );
     return (
         <div>
-            <Card elevation={hovered ? 6 : 1} square className={classes.card}>
-                <CardActionArea
-                    component={Link}
-                    to={`/projects/${project.name}`}
-                    onMouseEnter={setHoveredTrue}
-                    onMouseLeave={setHoveredFalse}
-                    className={
-                        hovered
-                            ? classes.cardSideButton +
-                              " " +
-                              classes.cardSideButtonHover
-                            : classes.cardSideButton
-                    }
-                >
-                    <div className={classes.dummyTop} />
-                    <div>
-                        <ArrowForwardIosIcon />
+            <CardActionArea
+                component={Link}
+                to={`/projects/${project.name}`}
+                onMouseEnter={setHoveredTrue}
+                onMouseLeave={setHoveredFalse}
+                className={hovered ? classes.cardSideButtonHover : ""}
+            >
+                <Hidden xsDown>
+                    <Card elevation={0} square>
+                        {CardBody}
+                    </Card>
+                </Hidden>
+                <Hidden smUp>
+                    <div className={classes.cardLeftPadding}>
+                        <Card elevation={0} square>
+                            {CardBody}
+                        </Card>
                     </div>
-                    <div>
-                        <Hidden xsDown>
-                            <Grow in={hovered} timeout={500}>
-                                <Typography variant="button">
-                                    See More
-                                </Typography>
-                            </Grow>
-                        </Hidden>
-                    </div>
-                </CardActionArea>
-                <div className={classes.cardFace}>
-                    <CardContent>
-                        <Typography variant="h6">{project.name}</Typography>
-                        <Typography variant="body2">
-                            {project.description}
-                        </Typography>
-                    </CardContent>
-                    <CardActions>
-                        <Grid container spacing={1}>
-                            <Grid item xs={12}>
-                                <Button
-                                    onClick={setPressedTrue}
-                                    size="small"
-                                    color="primary"
-                                    href={project.url}
-                                >
-                                    Github
-                                    <GithubIcon className={classes.iconRight} />
-                                </Button>
-                            </Grid>
-                        </Grid>
-                    </CardActions>
-                </div>
-            </Card>
+                </Hidden>
+            </CardActionArea>
+
             <Grow in={pressed}>
                 <LinearProgress variant="query" />
             </Grow>
