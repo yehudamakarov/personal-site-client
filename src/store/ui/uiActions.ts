@@ -1,10 +1,11 @@
-import { IFilter } from "./IUiState";
+import { IFilter, IFilterListingTypes } from "./IUiState";
 
 // OPEN_DRAWER
 export const OPEN_DRAWER = "OPEN_DRAWER";
 export const openDrawerAction = (): IOpenDrawerAction => ({
     type: OPEN_DRAWER,
 });
+
 export interface IOpenDrawerAction {
     type: typeof OPEN_DRAWER;
 }
@@ -14,6 +15,7 @@ export const CLOSE_DRAWER = "CLOSE_DRAWER";
 export const closeDrawerAction = (): ICloseDrawerAction => ({
     type: CLOSE_DRAWER,
 });
+
 export interface ICloseDrawerAction {
     type: typeof CLOSE_DRAWER;
 }
@@ -30,7 +32,7 @@ export interface ISetFilterAction {
     payload: IFilter;
 }
 
-// SET_FILTER
+// SET_TAGS_FOR_FILTER
 export const SET_TAGS_FOR_FILTER = "SET_TAGS_FOR_FILTER";
 export const setTagsForFilterAction = (
     tagIds: string[],
@@ -44,9 +46,24 @@ export interface ISetTagsForFilterAction {
     payload: string[];
 }
 
+// SET_LISTING_TYPES_FOR_FILTER
+export const SET_LISTING_TYPES_FOR_FILTER = "SET_LISTING_TYPES_FOR_FILTER";
+export const setListingTypesForFilterAction = (
+    listingTypes: IFilterListingTypes,
+): ISetListingTypesForFilterAction => ({
+    payload: listingTypes,
+    type: SET_LISTING_TYPES_FOR_FILTER,
+});
+
+export interface ISetListingTypesForFilterAction {
+    type: typeof SET_LISTING_TYPES_FOR_FILTER;
+    payload: IFilterListingTypes;
+}
+
 // UNION TYPE
 export type UiActionTypes =
     | IOpenDrawerAction
     | ICloseDrawerAction
     | ISetFilterAction
-    | ISetTagsForFilterAction;
+    | ISetTagsForFilterAction
+    | ISetListingTypesForFilterAction;

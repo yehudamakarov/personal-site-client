@@ -1,6 +1,6 @@
 import { createStyles, Grid, makeStyles, Theme } from "@material-ui/core";
 import React from "react";
-import { ListingTypeSelect } from "./filter/listingTypeSelect";
+import { ListingTypeSelectContainer } from "./filter/listingTypeSelect/listingTypeSelectContainer";
 import { TagSearchContainer } from "./filter/tagSearch/tagSearchContainer";
 import { TextSearch } from "./filter/textSearch";
 
@@ -24,7 +24,7 @@ const IndexViewFilter = (props: {
         <div className={classes.root}>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={3} md={4}>
-                    <ListingTypeSelect {...props} />
+                    <ListingTypeSelectContainer path={props.path} />
                 </Grid>
                 <Grid item xs={12} sm>
                     <TextSearch />

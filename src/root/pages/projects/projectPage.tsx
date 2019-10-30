@@ -36,9 +36,7 @@ const ProjectPage = (props: IOwnProps) => {
             <Grid container spacing={2}>
                 <Grid item xs={12}>
                     <ProjectPageTitleCard
-
                         projectNameFromRoute={projectNameFromRoute}
-
                         project={currentProject}
                     />
                 </Grid>

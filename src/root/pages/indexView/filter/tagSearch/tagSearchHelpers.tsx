@@ -33,7 +33,9 @@ export const NoOptionsMessage = (props: NoticeProps<IOptionType>) => (
 type InputComponentProps = Pick<BaseTextFieldProps, "inputRef"> &
     HTMLAttributes<HTMLDivElement>;
 
-const inputComponent = ({ inputRef, ...props }: InputComponentProps) => <div ref={inputRef} {...props} />;
+const inputComponent = ({ inputRef, ...props }: InputComponentProps) => (
+    <div ref={inputRef} {...props} />
+);
 
 export const Control = (props: ControlProps<IOptionType>) => {
     const {

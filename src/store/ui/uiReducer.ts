@@ -1,5 +1,12 @@
 import { IUiState } from "./IUiState";
-import { CLOSE_DRAWER, OPEN_DRAWER, SET_FILTER, SET_TAGS_FOR_FILTER, UiActionTypes } from "./uiActions";
+import {
+    CLOSE_DRAWER,
+    OPEN_DRAWER,
+    SET_FILTER,
+    SET_LISTING_TYPES_FOR_FILTER,
+    SET_TAGS_FOR_FILTER,
+    UiActionTypes,
+} from "./uiActions";
 
 const INITIAL_STATE: IUiState = {
     drawerOpen: false,
@@ -32,6 +39,10 @@ export const uiReducer = (
         case SET_TAGS_FOR_FILTER: {
             const { payload: tagIds } = action;
             return { ...state, filter: { ...state.filter, tagIds } };
+        }
+        case SET_LISTING_TYPES_FOR_FILTER: {
+            const { payload: listingTypes } = action;
+            return { ...state, filter: { ...state.filter, listingTypes } };
         }
         default:
             return state;

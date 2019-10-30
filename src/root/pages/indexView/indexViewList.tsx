@@ -1,16 +1,14 @@
 import { Grid } from "@material-ui/core";
 import _ from "lodash";
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { FilterHelpers } from "../../../helpers/filterHelpers";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { getBlogPostsLoadingAction } from "../../../store/actions/blogPost/getBlogPosts/actions";
 import { getProjectsLoadingAction } from "../../../store/actions/projects/getProjects/actions";
 import { IApplicationState } from "../../../store/rootReducer";
-import { IFilter } from "../../../store/ui/IUiState";
 import IndexViewCard from "./indexViewCard";
+import { filterBlogPosts, filterProjects } from "./indexViewListHelpers";
 
-const IndexViewList = (props: IFilter) => {
-    const { listingTypes, searchText, tagIds } = props;
+const IndexViewList = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -18,41 +16,29 @@ const IndexViewList = (props: IFilter) => {
         dispatch(getBlogPostsLoadingAction());
     }, []);
 
-    const filteredBlogPosts = useSelector((state: IApplicationState) => {
-        if (listingTypes.blogPosts) {
-            return state.blogPosts.blogPostData.filter((blogPost) => {
-                const titleContainsSearchText = FilterHelpers.getTitleContainsSearchText(
-                    blogPost.title,
-                    searchText,
-                );
-                const tagsContainAHighlightedTag = FilterHelpers.getTagsContainAHighlightedTag(
-                    tagIds,
-                    blogPost.tagIds,
-                );
-                return titleContainsSearchText && tagsContainAHighlightedTag;
-            });
-        } else {
-            return [];
-        }
+    const listingTypes = useSelector((state: IApplicationState) => {
+        return state.ui.filter.listingTypes;
+    }, shallowEqual);
+
+    const searchText = useSelector((state: IApplicationState) => {
+        return state.ui.filter.searchText;
+    });
+
+    const tagIds = useSelector((state: IApplicationState) => {
+        return state.ui.filter.tagIds;
     }, _.isEqual);
 
-    const filteredProjects = useSelector((state: IApplicationState) => {
-        if (!listingTypes.projects) {
-            return [];
-        } else {
-            return state.projects.projectsData.filter((project) => {
-                const titleContainsSearchText = FilterHelpers.getTitleContainsSearchText(
-                    project.projectName,
-                    searchText,
-                );
-                const tagsContainAHighlightedTag = FilterHelpers.getTagsContainAHighlightedTag(
-                    tagIds,
-                    project.tagIds,
-                );
-                return titleContainsSearchText && tagsContainAHighlightedTag;
-            });
-        }
-    }, _.isEqual);
+    const currentFilter = { listingTypes, searchText, tagIds };
+
+    const filteredBlogPosts = useSelector(
+        filterBlogPosts(currentFilter),
+        _.isEqual,
+    );
+
+    const filteredProjects = useSelector(
+        filterProjects(currentFilter),
+        _.isEqual,
+    );
 
     const getCards = () => {
         const blogPostCards = filteredBlogPosts

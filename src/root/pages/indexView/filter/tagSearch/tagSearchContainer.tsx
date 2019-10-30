@@ -5,7 +5,7 @@ import { getTagsLoadingAction } from "../../../../../store/actions/tags/getTags/
 import { IApplicationState } from "../../../../../store/rootReducer";
 import { setTagsForFilterAction } from "../../../../../store/ui/uiActions";
 import { TagSearchDisplay } from "./tagSearchDisplay";
-import { IOptionType } from "./tagSearchDisplayHelpers";
+import { IOptionType } from "./tagSearchHelpers";
 
 export const TagSearchContainer = () => {
     const dispatch = useDispatch();

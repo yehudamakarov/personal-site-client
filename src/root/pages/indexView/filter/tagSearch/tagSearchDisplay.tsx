@@ -13,7 +13,7 @@ import {
     Placeholder,
     SingleValue,
     ValueContainer,
-} from "./tagSearchDisplayHelpers";
+} from "./tagSearchHelpers";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
