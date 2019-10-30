@@ -7,23 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/root/pages/indexView/filter/listingTypeSelect/listingTypeSelectContainer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/root/pages/indexView/filter/listingTypeSelect/listingTypeSelectHelpers.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/root/pages/indexView/indexViewListHelpers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/yehudamakarov.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/yehudamakarov.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/filter/listingTypeSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/filter/listingTypeSelect/listingTypeSelectPresentational.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/filter/tagSearch/tagSearchContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/filter/tagSearch/tagSearchContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/filter/tagSearch/tagSearchDisplay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/filter/tagSearch/tagSearchDisplay.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/filter/tagSearch/tagSearchDisplayHelpers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/filter/tagSearch/tagSearchHelpers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/indexViewFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/indexViewFilter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers/filterHelpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/filterHelpers.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/indexViewList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/indexViewList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/indexViewPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/indexViewPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/projectPageTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/projectPageTitle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/projectTitleCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/projectTitleCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/projectPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/projectPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/ui/uiActions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/ui/uiActions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/ui/uiReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/ui/uiReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/indexViewListHelpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/indexViewListHelpers.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -116,7 +104,7 @@
       <workItem from="1571871839537" duration="4975000" />
       <workItem from="1571876840333" duration="31176000" />
       <workItem from="1572232839965" duration="16250000" />
-      <workItem from="1572405118772" duration="5163000" />
+      <workItem from="1572405118772" duration="9075000" />
     </task>
     <task id="LOCAL-00001" summary="project styles for webstorm">
       <created>1568176773387</created>
@@ -188,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572321578409</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="refactoring">
+      <created>1572413897908</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1572413897909</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,7 +216,8 @@
     <MESSAGE value="logo" />
     <MESSAGE value="fixed up home cards for projects" />
     <MESSAGE value="added close icon to drawer" />
-    <option name="LAST_COMMIT_MESSAGE" value="added close icon to drawer" />
+    <MESSAGE value="refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
