@@ -1,5 +1,6 @@
 import { Router } from "@reach/router";
 import React from "react";
+import { Routes } from "../store/ui/IUiState";
 import { Navigation } from "./navigation/navigation";
 import { AboutPage } from "./pages/about/aboutPage";
 import { Homepage } from "./pages/home/homepage";
@@ -11,14 +12,12 @@ export const Root = () => {
         <React.Fragment>
             <Navigation />
             <Router>
-                {/* todo make all these types to be used by props all over, and */}
-                {/* todo also a class or object in order to not use these magic strings */}
-                <Homepage path="/" />
-                <AboutPage path="about" />
-                <ProjectPage path="projects/:projectName" />
-                <IndexViewPage path="projects" />
-                <IndexViewPage path="blogPosts" />
-                <IndexViewPage path="tags/:tagId" />
+                <Homepage path={Routes.home} />
+                <AboutPage path={Routes.about} />
+                <ProjectPage path={Routes.projectsProjectNameParam} />
+                <IndexViewPage path={Routes.projects} />
+                <IndexViewPage path={Routes.blogPosts} />
+                <IndexViewPage path={Routes.tagsTagIdParam} />
             </Router>
         </React.Fragment>
     );

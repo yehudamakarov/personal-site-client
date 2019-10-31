@@ -1,9 +1,9 @@
 import Chip from "@material-ui/core/Chip";
 import MenuItem from "@material-ui/core/MenuItem";
 import Paper from "@material-ui/core/Paper";
-import CancelIcon from "@material-ui/core/SvgIcon/SvgIcon";
 import TextField, { BaseTextFieldProps } from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
+import CancelIcon from "@material-ui/icons/Cancel";
 import { Omit } from "@material-ui/types";
 import clsx from "clsx";
 import React, { HTMLAttributes } from "react";

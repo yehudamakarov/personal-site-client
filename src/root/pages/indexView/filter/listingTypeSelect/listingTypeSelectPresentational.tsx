@@ -33,15 +33,19 @@ interface IOwnProps {
 
 export const ListingTypeSelectPresentational = (props: IOwnProps) => {
     const classes = useStyles();
+    const renderEmpty = () => true;
     return (
         <FormControl fullWidth className={classes.multiSelect}>
-            <InputLabel htmlFor="show-multiple-select">Showing:</InputLabel>
+            <InputLabel shrink htmlFor="show-multiple-select">
+                Showing:
+            </InputLabel>
             <Select
                 multiple
                 value={props.listingTypeValues}
                 onChange={props.handleListingTypesChange}
                 renderValue={props.getSelectedAsDisplayString}
                 input={<Input fullWidth id="show-multiple-select" />}
+                displayEmpty
             >
                 <MenuItem value="projects">
                     <Checkbox checked={props.filterListingTypes.projects} />

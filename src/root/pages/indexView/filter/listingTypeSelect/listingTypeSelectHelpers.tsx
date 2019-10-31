@@ -16,6 +16,7 @@ export const getArrayOfListingTypesSelected = (
 };
 
 export const getSelectedAsDisplayString = (selected: any) => {
+    type Selected = ["projects", "blogPosts"] & [];
     const beautifyListingType = (listingType: "projects" | "blogPosts") => {
         switch (listingType) {
             case "projects":
@@ -27,9 +28,10 @@ export const getSelectedAsDisplayString = (selected: any) => {
         }
     };
 
-    return (selected as ["projects", "blogPosts"])
-        .map(beautifyListingType)
-        .join(", ");
+    if ((selected as Selected).length === 0) {
+        return "None Selected";
+    }
+    return (selected as Selected).map(beautifyListingType).join(", ");
 };
 
 export const getFilterListTypesFromPath = (
