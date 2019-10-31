@@ -1,5 +1,6 @@
 import { createStyles, Grid, makeStyles, Theme } from "@material-ui/core";
 import React from "react";
+import { IndexTypeRoute } from "../../../store/ui/IUiState";
 import { ListingTypeSelectContainer } from "./filter/listingTypeSelect/listingTypeSelectContainer";
 import { TagSearchContainer } from "./filter/tagSearch/tagSearchContainer";
 import { TextSearch } from "./filter/textSearch";
@@ -15,9 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 );
 
-const IndexViewFilter = (props: {
-    path: "projects" | "blogPosts" | "tags";
-}) => {
+const IndexViewFilter = (props: { path: IndexTypeRoute }) => {
     const classes = useStyles();
 
     return (

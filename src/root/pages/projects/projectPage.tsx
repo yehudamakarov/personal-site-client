@@ -9,11 +9,15 @@ import { BasePage } from "../basePage";
 import { BlogPostsByProjectList } from "./components/blogPostsByProjectList";
 import { ProjectPageTitleCard } from "./components/projectTitleCard";
 
-interface IOwnProps extends RouteComponentProps<{ projectName?: string }> {}
+interface IOwnProps extends RouteComponentProps<{ projectName?: string }> {
+    path: string;
+}
 
 const ProjectPage = (props: IOwnProps) => {
     const dispatch = useDispatch();
     const { projectName: projectNameFromRoute } = props;
+
+    console.log(props.path);
 
     const currentProject: IProject | undefined = useSelector(
         (state: IApplicationState) => {
@@ -28,8 +32,6 @@ const ProjectPage = (props: IOwnProps) => {
             dispatch(getProjectByNameLoadingAction(projectNameFromRoute));
         }
     }, [projectNameFromRoute]);
-
-
 
     return (
         <BasePage>

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { IApplicationState } from "../../../../../store/rootReducer";
+import { IndexTypeRoute } from "../../../../../store/ui/IUiState";
 import { setListingTypesForFilterAction } from "../../../../../store/ui/uiActions";
 import {
     getArrayOfListingTypesSelected,
@@ -11,7 +12,7 @@ import {
 import { ListingTypeSelectPresentational } from "./listingTypeSelectPresentational";
 
 export const ListingTypeSelectContainer = (props: {
-    path: "projects" | "blogPosts" | "tags";
+    path: IndexTypeRoute
 }) => {
     const dispatch = useDispatch();
     const filterListingTypes = useSelector((state: IApplicationState) => {

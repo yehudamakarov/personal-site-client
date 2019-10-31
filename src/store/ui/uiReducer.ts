@@ -4,6 +4,7 @@ import {
     OPEN_DRAWER,
     SET_FILTER,
     SET_LISTING_TYPES_FOR_FILTER,
+    SET_ROUTE,
     SET_TAGS_FOR_FILTER,
     UiActionTypes,
 } from "./uiActions";
@@ -14,11 +15,11 @@ const INITIAL_STATE: IUiState = {
         listingTypes: {
             blogPosts: false,
             projects: false,
-            tags: false,
         },
         searchText: "",
         tagIds: [],
     },
+    route: "/",
 };
 
 export const uiReducer = (
@@ -31,6 +32,9 @@ export const uiReducer = (
         }
         case CLOSE_DRAWER: {
             return { ...state, drawerOpen: false };
+        }
+        case SET_ROUTE: {
+            return { ...state, route: action.payload };
         }
         case SET_FILTER: {
             const { payload: filter } = action;

@@ -11,7 +11,7 @@ import {
     Theme,
 } from "@material-ui/core";
 import React from "react";
-import { IFilterListingTypes } from "../../../../../store/ui/IUiState";
+import { IFilterListingTypes, IndexTypeRoute } from "../../../../../store/ui/IUiState";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface IOwnProps {
-    path: "projects" | "blogPosts" | "tags";
+    path: IndexTypeRoute;
     listingTypeValues: string[];
     handleListingTypesChange: (
         event: React.ChangeEvent<{ value: unknown }>,
@@ -50,10 +50,6 @@ export const ListingTypeSelectPresentational = (props: IOwnProps) => {
                 <MenuItem value="blogPosts">
                     <Checkbox checked={props.filterListingTypes.blogPosts} />
                     <ListItemText primary="Blog Posts" />
-                </MenuItem>
-                <MenuItem value="tags">
-                    <Checkbox checked={props.filterListingTypes.tags} />
-                    <ListItemText primary="Tags" />
                 </MenuItem>
             </Select>
         </FormControl>

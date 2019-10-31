@@ -1,4 +1,4 @@
-import { IFilter, IFilterListingTypes } from "./IUiState";
+import { IFilter, IFilterListingTypes, Route } from "./IUiState";
 
 // OPEN_DRAWER
 export const OPEN_DRAWER = "OPEN_DRAWER";
@@ -60,10 +60,23 @@ export interface ISetListingTypesForFilterAction {
     payload: IFilterListingTypes;
 }
 
+// SET_ROUTE
+export const SET_ROUTE = "SET_ROUTE";
+export const setRouteAction = (route: Route): ISetRouteAction => ({
+    payload: route,
+    type: SET_ROUTE,
+});
+
+export interface ISetRouteAction {
+    type: typeof SET_ROUTE;
+    payload: Route;
+}
+
 // UNION TYPE
 export type UiActionTypes =
     | IOpenDrawerAction
     | ICloseDrawerAction
     | ISetFilterAction
     | ISetTagsForFilterAction
-    | ISetListingTypesForFilterAction;
+    | ISetListingTypesForFilterAction
+    | ISetRouteAction;

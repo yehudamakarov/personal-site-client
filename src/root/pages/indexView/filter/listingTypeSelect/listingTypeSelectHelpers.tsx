@@ -1,4 +1,4 @@
-import { IFilterListingTypes } from "../../../../../store/ui/IUiState";
+import { IFilterListingTypes, IndexTypeRoute } from "../../../../../store/ui/IUiState";
 
 export const getArrayOfListingTypesSelected = (
     filterListingTypes: IFilterListingTypes,
@@ -16,28 +16,24 @@ export const getArrayOfListingTypesSelected = (
 };
 
 export const getSelectedAsDisplayString = (selected: any) => {
-    const beautifyListingType = (
-        listingType: "projects" | "blogPosts" | "tags",
-    ) => {
+    const beautifyListingType = (listingType: "projects" | "blogPosts") => {
         switch (listingType) {
             case "projects":
                 return "Projects";
             case "blogPosts":
                 return "Blog Posts";
-            case "tags":
-                return "Tags";
             default:
                 break;
         }
     };
 
-    return (selected as ["projects", "blogPosts", "tags"])
+    return (selected as ["projects", "blogPosts"])
         .map(beautifyListingType)
         .join(", ");
 };
 
 export const getFilterListTypesFromPath = (
-    path: "projects" | "blogPosts" | "tags",
+    path: IndexTypeRoute,
     filterListingTypes: IFilterListingTypes,
 ) => {
     const cleanedFilterListTypes: any = {};
