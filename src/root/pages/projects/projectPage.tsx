@@ -17,8 +17,6 @@ const ProjectPage = (props: IOwnProps) => {
     const dispatch = useDispatch();
     const { projectName: projectNameFromRoute } = props;
 
-    console.log(props.path);
-
     const currentProject: IProject | undefined = useSelector(
         (state: IApplicationState) => {
             return state.projects.projectsData.find((project) => {

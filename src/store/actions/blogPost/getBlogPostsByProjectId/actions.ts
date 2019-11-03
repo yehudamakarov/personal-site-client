@@ -26,13 +26,13 @@ export const GET_BLOG_POSTS_BY_PROJECT_ID_ERROR =
 export interface IGetBlogPostsByProjectIdErrorAction {
     type: typeof GET_BLOG_POSTS_BY_PROJECT_ID_ERROR;
     payload: {
-        error: Error;
+        error: string;
         projectId?: string;
     };
 }
 
 export const getBlogPostsByProjectIdErrorAction = (
-    error: Error,
+    error: string,
     projectId?: string
 ): IGetBlogPostsByProjectIdErrorAction => ({
     payload: { error, projectId },

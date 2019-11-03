@@ -10,7 +10,8 @@ function* getProjects() {
         );
         yield put(getProjectsSuccessAction(response.data.data));
     } catch (error) {
-        yield put(getProjectsErrorAction(error));
+        const errorContent = JSON.stringify(error.toJSON());
+        yield put(getProjectsErrorAction(errorContent));
     }
 }
 

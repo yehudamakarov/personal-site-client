@@ -62,14 +62,17 @@ export interface ISetListingTypesForFilterAction {
 
 // SET_ROUTE
 export const SET_ROUTE = "SET_ROUTE";
-export const setRouteAction = (route: Route): ISetRouteAction => ({
-    payload: route,
+export const setRouteAction = (routeAndUri: {
+    route: Route;
+    uri: string | undefined;
+}): ISetRouteAction => ({
+    payload: routeAndUri,
     type: SET_ROUTE,
 });
 
 export interface ISetRouteAction {
     type: typeof SET_ROUTE;
-    payload: Route;
+    payload: { route: Route; uri: string | undefined };
 }
 
 // UNION TYPE

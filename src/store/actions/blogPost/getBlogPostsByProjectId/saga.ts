@@ -26,7 +26,8 @@ function* getBlogPostsByProjectId(
         yield delay(1000);
         yield put(getBlogPostsByProjectIdSuccessAction(blogPostResponse));
     } catch (error) {
-        yield put(getBlogPostsByProjectIdErrorAction(error, projectId));
+        const errorContent = JSON.stringify(error.toJSON());
+        yield put(getBlogPostsByProjectIdErrorAction(errorContent, projectId));
     }
 }
 

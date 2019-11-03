@@ -11,6 +11,7 @@ type TagsTagIdRoute = "tags/:tagId";
 type HomeRoute = "/";
 type AboutRoute = "about";
 type ProjectsProjectNameRoute = "projects/:projectName";
+
 export type IndexTypeRoute = ProjectsRoute | BlogPostsRoute | TagsTagIdRoute;
 export type Route =
     | IndexTypeRoute
@@ -37,5 +38,6 @@ export interface IFilter {
 export interface IUiState {
     drawerOpen: boolean;
     route: Route;
+    uri: string | undefined;
     filter: IFilter;
 }

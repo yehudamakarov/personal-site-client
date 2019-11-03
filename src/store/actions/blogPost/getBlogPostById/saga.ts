@@ -22,7 +22,8 @@ function* getBlogPostById(action: IGetBlogPostByIdLoadingAction) {
         yield put(getBlogPostByIdSuccessAction(blogPostResponse));
     } catch (error) {
         const blogPostId = action.payload;
-        yield put(getBlogPostByIdErrorAction(error, blogPostId));
+        const errorContent = JSON.stringify(error.ToJSON());
+        yield put(getBlogPostByIdErrorAction(errorContent, blogPostId));
     }
 }
 

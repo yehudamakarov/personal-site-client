@@ -1,4 +1,5 @@
 import { Typography } from "@material-ui/core";
+import { RouteComponentProps } from "@reach/router";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { IndexTypeRoute } from "../../../store/ui/IUiState";
@@ -7,11 +8,15 @@ import { BasePage } from "../basePage";
 import IndexViewFilter from "./indexViewFilter";
 import IndexViewList from "./indexViewList";
 
-export const IndexViewPage = (props: { path: IndexTypeRoute }) => {
+interface IOwnProps extends RouteComponentProps<{ tagId?: string }> {
+    path: IndexTypeRoute;
+}
+
+export const IndexViewPage = (props: IOwnProps) => {
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(setRouteAction(props.path));
-    }, [props.path]);
+        dispatch(setRouteAction({ route: props.path, uri: props.uri }));
+    }, [props.uri]);
     return (
         <BasePage>
             <Typography variant="h4">Projects and Blog Posts</Typography>

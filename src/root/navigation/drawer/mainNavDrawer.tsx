@@ -1,4 +1,5 @@
 import {
+    Collapse,
     createStyles,
     Drawer,
     List,
@@ -10,16 +11,20 @@ import {
     Theme,
 } from "@material-ui/core";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import ExpandMore from "@material-ui/icons/ExpandMore";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
+import LabelTwoToneIcon from "@material-ui/icons/LabelTwoTone";
 import NotesRoundedIcon from "@material-ui/icons/NotesRounded";
 import PortraitIcon from "@material-ui/icons/Portrait";
 import WorkIcon from "@material-ui/icons/Work";
 import { Link } from "@reach/router";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IApplicationState } from "../../../store/rootReducer";
 import { closeDrawerAction } from "../../../store/ui/uiActions";
 import { ApiIcon } from "../../iconButtons/icons/apiIcon";
+import { TagListItem } from "./tagListItem";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -28,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) =>
                 width: "100vw",
             },
             [theme.breakpoints.up("sm")]: {
-                width: 340,
+                width: 440,
             },
         },
         exitArrow: {
@@ -48,24 +53,35 @@ export const MainNavDrawer = () => {
     const drawerOpen = useSelector(
         (state: IApplicationState) => state.ui.drawerOpen
     );
+    const tags = useSelector((state: IApplicationState) => state.tags.tagsData);
     const dispatch = useDispatch();
     const handleDrawerClose = () => dispatch(closeDrawerAction());
 
     const classes = useStyles();
 
+    const [tagsAreOpen, setTagsAreOpen] = useState(false);
+    const handleTagsOpen = () => setTagsAreOpen(!tagsAreOpen);
+
     return (
         <Drawer open={drawerOpen} onClose={handleDrawerClose}>
-            <Paper
-                onClick={handleDrawerClose}
-                className={classes.drawerBackground}
-            >
+            <Paper className={classes.drawerBackground}>
                 <List className={classes.list}>
-                    <ListItem button divider className={classes.exitArrow}>
+                    <ListItem
+                        button
+                        divider
+                        className={classes.exitArrow}
+                        onClick={handleDrawerClose}
+                    >
                         <ListItemIcon>
                             <ArrowBackIosIcon />
                         </ListItemIcon>
                     </ListItem>
-                    <ListItem button component={Link} to="/">
+                    <ListItem
+                        button
+                        component={Link}
+                        to="/"
+                        onClick={handleDrawerClose}
+                    >
                         <ListItemIcon>
                             <HomeRoundedIcon />
                         </ListItemIcon>
@@ -75,7 +91,12 @@ export const MainNavDrawer = () => {
                             Home
                         </ListItemText>
                     </ListItem>
-                    <ListItem button component={Link} to="about">
+                    <ListItem
+                        button
+                        component={Link}
+                        to="about"
+                        onClick={handleDrawerClose}
+                    >
                         <ListItemIcon>
                             <PortraitIcon />
                         </ListItemIcon>
@@ -85,27 +106,61 @@ export const MainNavDrawer = () => {
                             About
                         </ListItemText>
                     </ListItem>
-                    <ListItem button component={Link} to="projects">
+                    <ListItem
+                        button
+                        component={Link}
+                        to="projects"
+                        onClick={handleDrawerClose}
+                    >
                         <ListItemIcon>
                             <WorkIcon />
                         </ListItemIcon>
                         <ListItemText
+                            primary="Projects"
                             primaryTypographyProps={{ variant: "h6" }}
-                        >
-                            Projects
-                        </ListItemText>
+                        />
                     </ListItem>
-                    <ListItem button component={Link} to="blogPosts">
+                    <ListItem
+                        button
+                        component={Link}
+                        to="blogPosts"
+                        onClick={handleDrawerClose}
+                    >
                         <ListItemIcon>
                             <NotesRoundedIcon />
                         </ListItemIcon>
                         <ListItemText
                             primaryTypographyProps={{ variant: "h6" }}
-                        >
-                            Blog
-                        </ListItemText>
+                            primary="Blog"
+                        />
                     </ListItem>
-                    <ListItem button component="a" href="/api/swagger">
+                    <ListItem button onClick={handleTagsOpen}>
+                        <ListItemIcon>
+                            <LabelTwoToneIcon />
+                        </ListItemIcon>
+                        <ListItemText
+                            primaryTypographyProps={{ variant: "h6" }}
+                            primary="Tags"
+                        />
+                        {tagsAreOpen ? <ExpandLess /> : <ExpandMore />}
+                    </ListItem>
+                    <Collapse in={tagsAreOpen} timeout="auto" unmountOnExit>
+                        <List component="div" disablePadding>
+                            {tags.map((tag) => (
+                                <TagListItem
+                                    onClick={handleDrawerClose}
+                                    key={tag.tagId}
+                                    name={tag.tagId}
+                                />
+                            ))}
+                        </List>
+                    </Collapse>
+                    <ListItem
+                        button
+                        component="a"
+                        href="/api/swagger"
+                        onClick={handleDrawerClose}
+                    >
                         <ListItemIcon>
                             <ApiIcon />
                         </ListItemIcon>

@@ -20,6 +20,7 @@ const INITIAL_STATE: IUiState = {
         tagIds: [],
     },
     route: "/",
+    uri: "/",
 };
 
 export const uiReducer = (
@@ -34,7 +35,11 @@ export const uiReducer = (
             return { ...state, drawerOpen: false };
         }
         case SET_ROUTE: {
-            return { ...state, route: action.payload };
+            return {
+                ...state,
+                route: action.payload.route,
+                uri: action.payload.uri,
+            };
         }
         case SET_FILTER: {
             const { payload: filter } = action;

@@ -40,11 +40,11 @@ export const GET_PROJECTS_ERROR = "GET_PROJECTS_ERROR";
 
 export interface IGetProjectsErrorAction {
     type: typeof GET_PROJECTS_ERROR;
-    payload: Error;
+    payload: string;
 }
 
 export const getProjectsErrorAction = (
-    error: Error
+    error: string,
 ): IGetProjectsErrorAction => ({
     payload: error,
     type: GET_PROJECTS_ERROR,

@@ -1,4 +1,5 @@
 import { createStyles, Grid, makeStyles, Theme } from "@material-ui/core";
+import { RouteComponentProps } from "@reach/router";
 import React from "react";
 import { IndexTypeRoute } from "../../../store/ui/IUiState";
 import { ListingTypeSelectContainer } from "./filter/listingTypeSelect/listingTypeSelectContainer";
@@ -16,7 +17,11 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 );
 
-const IndexViewFilter = (props: { path: IndexTypeRoute }) => {
+interface IOwnProps extends RouteComponentProps<{ tagId?: string }> {
+    path: IndexTypeRoute;
+}
+
+const IndexViewFilter = (props: IOwnProps) => {
     const classes = useStyles();
 
     return (
@@ -29,7 +34,7 @@ const IndexViewFilter = (props: { path: IndexTypeRoute }) => {
                     <TextSearch />
                 </Grid>
                 <Grid item xs={12}>
-                    <TagSearchContainer />
+                    <TagSearchContainer {...props} />
                 </Grid>
             </Grid>
         </div>

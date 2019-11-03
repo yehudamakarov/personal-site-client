@@ -1,11 +1,7 @@
 import { AxiosResponse } from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
 import { blogPostsApi, IBlogPostsResponse } from "../api";
-import {
-    GET_BLOG_POSTS_LOADING,
-    getBlogPostsErrorAction,
-    getBlogPostsSuccessAction,
-} from "./actions";
+import { GET_BLOG_POSTS_LOADING, getBlogPostsErrorAction, getBlogPostsSuccessAction } from "./actions";
 
 function* getBlogPosts() {
     try {
@@ -14,7 +10,8 @@ function* getBlogPosts() {
         );
         yield put(getBlogPostsSuccessAction(response.data.data));
     } catch (error) {
-        yield put(getBlogPostsErrorAction(error));
+        const errorContent = JSON.stringify(error.toJSON());
+        yield put(getBlogPostsErrorAction(errorContent));
     }
 }
 
