@@ -7,30 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/root/navigation/drawer/tagListItem.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/navigation/drawer/mainNavDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/navigation/drawer/mainNavDrawer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/navigation/navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/navigation/navigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/filter/tagSearch/tagSearchContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/filter/tagSearch/tagSearchContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/filter/tagSearch/tagSearchDisplay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/filter/tagSearch/tagSearchDisplay.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/indexViewFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/indexViewFilter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/indexViewPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/indexViewPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/blogPostsByProjectList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/blogPostsByProjectList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/projectPageTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/projectPageTitle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/projectPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/projectPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/blogPost/getBlogPostById/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/blogPost/getBlogPostById/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/blogPost/getBlogPostById/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/blogPost/getBlogPostById/saga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/blogPost/getBlogPosts/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/blogPost/getBlogPosts/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/blogPost/getBlogPosts/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/blogPost/getBlogPosts/saga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/blogPost/getBlogPostsByProjectId/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/blogPost/getBlogPostsByProjectId/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/blogPost/getBlogPostsByProjectId/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/blogPost/getBlogPostsByProjectId/saga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/getProjects/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/getProjects/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/getProjects/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/getProjects/saga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/tags/getTags/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/tags/getTags/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/tags/getTags/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/tags/getTags/saga.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/root.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/ui/IUiState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/ui/IUiState.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/ui/uiActions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/ui/uiActions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/ui/uiReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/ui/uiReducer.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -124,7 +103,7 @@
       <workItem from="1571876840333" duration="31176000" />
       <workItem from="1572232839965" duration="16250000" />
       <workItem from="1572405118772" duration="21684000" />
-      <workItem from="1572567511908" duration="7792000" />
+      <workItem from="1572567511908" duration="9234000" />
     </task>
     <task id="LOCAL-00001" summary="project styles for webstorm">
       <created>1568176773387</created>
@@ -224,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572564399981</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="refactoring">
+      <created>1572808946718</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1572808946718</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

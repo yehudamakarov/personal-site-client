@@ -17,6 +17,7 @@ export const Root = () => {
                 <ProjectPage path={Routes.projectsProjectNameParam} />
                 <IndexViewPage path={Routes.projects} />
                 <IndexViewPage path={Routes.blogPosts} />
+                <IndexViewPage path={Routes.tags} />
                 <IndexViewPage path={Routes.tagsTagIdParam} />
             </Router>
         </React.Fragment>
