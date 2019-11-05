@@ -1,4 +1,11 @@
-import { createStyles, LinearProgress, makeStyles, Theme, Typography, useTheme } from "@material-ui/core";
+import {
+    createStyles,
+    LinearProgress,
+    makeStyles,
+    Theme,
+    Typography,
+    useTheme,
+} from "@material-ui/core";
 
 import { Grid } from "mauerwerk";
 import React, { useEffect, useState } from "react";
@@ -102,9 +109,6 @@ export const BlogPostsByProjectList = withSize({
 
     return (
         <div>
-            <div className={classes.title}>
-                <Typography variant="h5">Posts About This Project</Typography>
-            </div>
             <AnimatedLinearProgress
                 className={classes.progress}
                 style={{
@@ -113,7 +117,14 @@ export const BlogPostsByProjectList = withSize({
                 }}
                 variant="query"
             />
-
+            {/*todo make animation*/}
+            {blogPostsForProject.length > 0 && (
+                <div className={classes.title}>
+                    <Typography variant="h5">
+                        Posts About This Project
+                    </Typography>
+                </div>
+            )}
             <div className={classes.cardsGrid}>
                 <Grid
                     heights={calculateHeights}

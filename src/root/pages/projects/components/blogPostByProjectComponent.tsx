@@ -45,11 +45,7 @@ export const BlogPostByProjectComponent = React.memo(
                         </Typography>
                     </Grid>
                     <Grid item>
-                        <TagsComponent
-                            type="blogPost"
-                            rtl
-                            tags={blogPost.tagIds}
-                        />
+                        <TagsComponent small rtl tags={blogPost.tagIds} />
                     </Grid>
                 </Grid>
             </Card>

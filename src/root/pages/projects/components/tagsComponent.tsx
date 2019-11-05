@@ -1,4 +1,5 @@
 import { Chip, createStyles, Grid, makeStyles, Theme } from "@material-ui/core";
+import LabelIcon from "@material-ui/icons/Label";
 import { Link } from "@reach/router";
 import React from "react";
 
@@ -10,10 +11,10 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const TagsComponent = (props: {
     tags: string[];
-    rtl: boolean;
-    type: "project" | "blogPost";
+    rtl?: boolean;
+    small?: boolean;
 }) => {
-    const { rtl, tags, type } = props;
+    const { rtl, tags, small } = props;
     const classes = useStyles();
     const direction = rtl ? "row-reverse" : "row";
     return (
@@ -27,10 +28,9 @@ const TagsComponent = (props: {
                                 component={Link}
                                 to={`/tags/${tag}`}
                                 clickable
-                                size="small"
-                                color={
-                                    type === "project" ? "primary" : "secondary"
-                                }
+                                size={small ? "small" : "medium"}
+                                color={"primary"}
+                                icon={<LabelIcon />}
                             />
                         </Grid>
                     );

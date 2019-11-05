@@ -1,12 +1,4 @@
-import {
-    Button,
-    ButtonGroup,
-    createStyles,
-    Fab,
-    Grid,
-    makeStyles,
-    Theme,
-} from "@material-ui/core";
+import { Button, ButtonGroup, createStyles, Fab, Grid, makeStyles, Theme } from "@material-ui/core";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import WebAssetIcon from "@material-ui/icons/WebAsset";
 import { navigate } from "@reach/router";
@@ -29,9 +21,6 @@ const useStyles = makeStyles((theme: Theme) =>
         root: {
             display: "flex",
             marginTop: theme.spacing(2),
-        },
-        seeLive: {
-            [theme.breakpoints.down("xs")]: { marginBottom: theme.spacing(2) },
         },
     })
 );
@@ -92,7 +81,6 @@ export const ProjectActionButtons = (props: {
                 </Grid>
                 <Grid item>
                     <AnimatedFab
-                        className={classes.seeLive}
                         style={{ opacity, display }}
                         variant="extended"
                         color="primary"

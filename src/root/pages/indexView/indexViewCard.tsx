@@ -91,7 +91,7 @@ const IndexViewCard = (props: {
                 </Tooltip>
                 {tagIds && (
                     <div className={classes.tags}>
-                        <TagsComponent type={type} rtl tags={tagIds} />
+                        <TagsComponent small rtl tags={tagIds} />
                     </div>
                 )}
             </div>

@@ -8,6 +8,7 @@ import { IApplicationState } from "../../../store/rootReducer";
 import { BasePage } from "../basePage";
 import { BlogPostsByProjectList } from "./components/blogPostsByProjectList";
 import { ProjectPageTitleCard } from "./components/projectTitleCard";
+import TagsComponent from "./components/tagsComponent";
 
 interface IOwnProps extends RouteComponentProps<{ projectName?: string }> {
     path: string;
@@ -40,8 +41,12 @@ const ProjectPage = (props: IOwnProps) => {
                         project={currentProject}
                     />
                 </Grid>
-
                 {/* Tags */}
+                <Grid item xs={12}>
+                    <TagsComponent
+                        tags={currentProject ? currentProject.tagIds : []}
+                    />
+                </Grid>
                 {/* Highlights */}
 
                 {/* Post List */}
