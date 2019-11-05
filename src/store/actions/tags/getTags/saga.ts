@@ -10,7 +10,8 @@ function* getTags() {
         );
         yield put(getTagsSuccessAction(response.data.data));
     } catch (error) {
-        yield put(getTagsErrorAction(error));
+        const errorContent = JSON.stringify(error);
+        yield put(getTagsErrorAction(errorContent));
     }
 }
 

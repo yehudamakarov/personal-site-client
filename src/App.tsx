@@ -88,6 +88,9 @@ const theme = createMuiTheme({
         h6: {
             fontSize: "1.35rem",
         },
+        overline: {
+            lineHeight: 2.1,
+        },
         subtitle2: {
             fontSize: "0.9rem",
         },

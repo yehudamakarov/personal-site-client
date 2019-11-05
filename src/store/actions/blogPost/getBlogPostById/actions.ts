@@ -40,14 +40,13 @@ export interface IGetBlogPostByIdSuccessAction {
 
 export const GET_BLOG_POST_BY_ID_ERROR = "GET_BLOG_POST_BY_ID_ERROR";
 
-
 export interface IGetBlogPostByIdErrorAction {
     type: typeof GET_BLOG_POST_BY_ID_ERROR;
-    payload: { error: Error; blogPostId?: string };
+    payload: { error: string; blogPostId?: string };
 }
 
 export const getBlogPostByIdErrorAction = (
-    error: Error,
+    error: string,
     blogPostId?: string
 ): IGetBlogPostByIdErrorAction => ({
     payload: { error, blogPostId },

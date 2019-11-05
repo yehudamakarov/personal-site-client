@@ -37,10 +37,10 @@ export const GET_TAGS_ERROR = "GET_TAGS_ERROR";
 
 export interface IGetTagsErrorAction {
     type: typeof GET_TAGS_ERROR;
-    payload: Error;
+    payload: string;
 }
 
-export const getTagsErrorAction = (error: Error): IGetTagsErrorAction => ({
+export const getTagsErrorAction = (error: string): IGetTagsErrorAction => ({
     payload: error,
     type: GET_TAGS_ERROR,
 });

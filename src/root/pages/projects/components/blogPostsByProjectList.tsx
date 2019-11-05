@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme: Theme) =>
             marginLeft: -theme.spacing(2),
             marginRight: -theme.spacing(2),
         },
+        progress: {
+            margin: theme.spacing(1),
+        },
         title: {},
     })
 );
@@ -103,6 +106,7 @@ export const BlogPostsByProjectList = withSize({
                 <Typography variant="h5">Posts About This Project</Typography>
             </div>
             <AnimatedLinearProgress
+                className={classes.progress}
                 style={{
                     display,
                     opacity,

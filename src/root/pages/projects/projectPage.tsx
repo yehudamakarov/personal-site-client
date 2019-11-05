@@ -9,7 +9,9 @@ import { BasePage } from "../basePage";
 import { BlogPostsByProjectList } from "./components/blogPostsByProjectList";
 import { ProjectPageTitleCard } from "./components/projectTitleCard";
 
-interface IOwnProps extends RouteComponentProps<{ projectName?: string }> {}
+interface IOwnProps extends RouteComponentProps<{ projectName?: string }> {
+    path: string;
+}
 
 const ProjectPage = (props: IOwnProps) => {
     const dispatch = useDispatch();
@@ -29,16 +31,12 @@ const ProjectPage = (props: IOwnProps) => {
         }
     }, [projectNameFromRoute]);
 
-
-
     return (
         <BasePage>
             <Grid container spacing={2}>
                 <Grid item xs={12}>
                     <ProjectPageTitleCard
-
                         projectNameFromRoute={projectNameFromRoute}
-
                         project={currentProject}
                     />
                 </Grid>

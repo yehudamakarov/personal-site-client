@@ -36,12 +36,12 @@ export const getBlogPostsSuccessAction = (
 
 export const GET_BLOG_POSTS_ERROR = "GET_BLOG_POSTS_ERROR";
 export interface IGetBlogPostsErrorAction {
-    payload: Error;
+    payload: string;
     type: typeof GET_BLOG_POSTS_ERROR;
 }
 
 export const getBlogPostsErrorAction = (
-    error: Error
+    error: string,
 ): IGetBlogPostsErrorAction => ({
     payload: error,
     type: GET_BLOG_POSTS_ERROR,

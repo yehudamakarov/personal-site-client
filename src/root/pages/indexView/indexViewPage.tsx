@@ -1,36 +1,27 @@
 import { Typography } from "@material-ui/core";
-import _ from "lodash";
-import React from "react";
-import { shallowEqual, useSelector } from "react-redux";
-import { IApplicationState } from "../../../store/rootReducer";
+import { RouteComponentProps } from "@reach/router";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { IndexTypeRoute } from "../../../store/ui/IUiState";
+import { setRouteAction } from "../../../store/ui/uiActions";
 import { BasePage } from "../basePage";
 import IndexViewFilter from "./indexViewFilter";
 import IndexViewList from "./indexViewList";
 
-export const IndexViewPage = (props: {
-    path: "projects" | "blogPosts" | "tags";
-}) => {
-    const filterListingTypes = useSelector((state: IApplicationState) => {
-        return state.ui.filter.listingTypes;
-    }, shallowEqual);
+interface IOwnProps extends RouteComponentProps<{ tagId?: string }> {
+    path: IndexTypeRoute;
+}
 
-    const filterSearchText = useSelector((state: IApplicationState) => {
-        return state.ui.filter.searchText;
-    });
-
-    const filterTagIds = useSelector((state: IApplicationState) => {
-        return state.ui.filter.tagIds;
-    }, _.isEqual);
-
+export const IndexViewPage = (props: IOwnProps) => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(setRouteAction({ route: props.path, uri: props.uri }));
+    }, [props.uri]);
     return (
         <BasePage>
             <Typography variant="h4">Projects and Blog Posts</Typography>
             <IndexViewFilter {...props} />
-            <IndexViewList
-                listingTypes={filterListingTypes}
-                searchText={filterSearchText}
-                tagIds={filterTagIds}
-            />
+            <IndexViewList />
         </BasePage>
     );
 };
