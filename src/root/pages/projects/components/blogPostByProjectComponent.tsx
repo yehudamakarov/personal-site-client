@@ -1,5 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Card, createStyles, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
+import {
+    Box,
+    Card,
+    createStyles,
+    Grid,
+    makeStyles,
+    Theme,
+    Typography,
+    useTheme,
+} from "@material-ui/core";
 import React, { useCallback, useLayoutEffect } from "react";
 import { SizeMeProps, withSize } from "react-sizeme";
 import { IBlogPost } from "../../../../store/actions/blogPost/api";
@@ -23,6 +32,8 @@ export const BlogPostByProjectComponent = React.memo(
         monitorHeight: true,
         monitorWidth: false,
     })((props: IOwnProps) => {
+        console.count("individual");
+        const theme = useTheme();
         const { blogPost, setSingleHeight, size } = props;
         const classes = useStyles();
         const memo = useCallback(() => {
@@ -34,21 +45,25 @@ export const BlogPostByProjectComponent = React.memo(
             memo();
         }, [size.height]);
         return (
-            <Card className={classes.root} square>
-                <Grid container direction="column" spacing={1}>
-                    <Grid item>
-                        <Typography variant="h6">{blogPost.title}</Typography>
+            <Box border={theme.spacing(1)}>
+                <Card className={classes.root}>
+                    <Grid container direction="column" spacing={1}>
+                        <Grid item>
+                            <Typography variant="h6">
+                                {blogPost.title}
+                            </Typography>
+                        </Grid>
+                        <Grid item>
+                            <Typography variant="body2">
+                                {blogPost.description}
+                            </Typography>
+                        </Grid>
+                        <Grid item>
+                            <TagsComponent small rtl tags={blogPost.tagIds} />
+                        </Grid>
                     </Grid>
-                    <Grid item>
-                        <Typography variant="body2">
-                            {blogPost.description}
-                        </Typography>
-                    </Grid>
-                    <Grid item>
-                        <TagsComponent small rtl tags={blogPost.tagIds} />
-                    </Grid>
-                </Grid>
-            </Card>
+                </Card>
+            </Box>
         );
     })
 );

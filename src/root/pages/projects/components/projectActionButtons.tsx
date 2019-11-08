@@ -60,8 +60,8 @@ export const ProjectActionButtons = (props: {
                 <Grid item>
                     <ButtonGroup>
                         <Button
-                            variant="contained"
-                            color="secondary"
+                            variant="outlined"
+                            color="primary"
                             size="small"
                             onClick={goBack}
                             startIcon={<ArrowBackIosIcon />}
@@ -70,7 +70,7 @@ export const ProjectActionButtons = (props: {
                         </Button>
                         <Button
                             variant="outlined"
-                            color="secondary"
+                            color="primary"
                             size="small"
                             href={projectGithubUrl}
                             endIcon={<GithubIcon />}

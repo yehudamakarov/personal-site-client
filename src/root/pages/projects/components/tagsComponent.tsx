@@ -29,8 +29,9 @@ const TagsComponent = (props: {
                                 to={`/tags/${tag}`}
                                 clickable
                                 size={small ? "small" : "medium"}
-                                color={"primary"}
+                                color={"secondary"}
                                 icon={<LabelIcon />}
+                                variant={"outlined"}
                             />
                         </Grid>
                     );
