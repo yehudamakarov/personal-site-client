@@ -45,7 +45,9 @@ export const TagSearchContainer = (props: IOwnProps) => {
             tagsChange([]);
             // todo when the tags list is empty and you click on a tag you should load the filter again...
             // todo also, figure out routing for tags in general
-            navigate("/tags");
+            if (props.path === Routes.tagsTagIdParam && props.tagId) {
+                navigate("/tags").then(() => null);
+            }
         }
     };
 

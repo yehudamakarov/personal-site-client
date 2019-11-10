@@ -16,7 +16,9 @@ function loadState() {
         if (serializedState === null) {
             return undefined;
         }
-        return JSON.parse(serializedState);
+        const state = JSON.parse(serializedState);
+        console.log("loading: ", state);
+        return state;
     } catch (e) {
         return undefined;
     }
@@ -24,6 +26,7 @@ function loadState() {
 
 function saveState(savableState: { auth: IAuthState; ui: IUiState }) {
     try {
+        console.log("saving: ", savableState);
         const serializedState = JSON.stringify(savableState);
         localStorage.setItem("state", serializedState);
     } catch (e) {
@@ -41,9 +44,12 @@ store.subscribe(
     throttle(() => {
         saveState({
             auth: store.getState().auth,
-            ui: { ...INITIAL_STATE, filter: store.getState().ui.filter },
+            ui: {
+                ...INITIAL_STATE,
+                filter: { ...store.getState().ui.filter, searchText: "" },
+            },
         });
-    }, 1000),
+    }, 1000)
 );
 
 sagaMiddleware.run(rootSaga);
