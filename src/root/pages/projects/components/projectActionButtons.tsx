@@ -1,4 +1,12 @@
-import { Button, ButtonGroup, createStyles, Fab, Grid, makeStyles, Theme } from "@material-ui/core";
+import {
+    Button,
+    ButtonGroup,
+    createStyles,
+    Fab,
+    Grid,
+    makeStyles,
+    Theme,
+} from "@material-ui/core";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import WebAssetIcon from "@material-ui/icons/WebAsset";
 import { navigate } from "@reach/router";
@@ -80,16 +88,31 @@ export const ProjectActionButtons = (props: {
                     </ButtonGroup>
                 </Grid>
                 <Grid item>
-                    <AnimatedFab
-                        style={{ opacity, display }}
-                        variant="extended"
-                        color="primary"
-                        size="small"
-                        href={projectDeploymentUrl}
-                    >
-                        <WebAssetIcon className={classes.iconMarginRight} />
-                        See Live
-                    </AnimatedFab>
+                    <Grid container spacing={2}>
+                        <Grid item>
+                            <Fab
+                                variant="extended"
+                                color="secondary"
+                                size="small"
+                            >
+                                Edit
+                            </Fab>
+                        </Grid>
+                        <Grid item>
+                            <AnimatedFab
+                                style={{ opacity, display }}
+                                variant="extended"
+                                color="primary"
+                                size="small"
+                                href={projectDeploymentUrl}
+                            >
+                                <WebAssetIcon
+                                    className={classes.iconMarginRight}
+                                />
+                                See Live
+                            </AnimatedFab>
+                        </Grid>
+                    </Grid>
                 </Grid>
             </Grid>
         </div>

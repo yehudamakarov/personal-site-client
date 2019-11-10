@@ -1,14 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import {
-    Box,
-    Card,
-    createStyles,
-    Grid,
-    makeStyles,
-    Theme,
-    Typography,
-    useTheme,
-} from "@material-ui/core";
+import { Box, Card, createStyles, Grid, makeStyles, Theme, Typography, useTheme } from "@material-ui/core";
 import React, { useCallback, useLayoutEffect } from "react";
 import { SizeMeProps, withSize } from "react-sizeme";
 import { IBlogPost } from "../../../../store/actions/blogPost/api";
@@ -32,7 +23,6 @@ export const BlogPostByProjectComponent = React.memo(
         monitorHeight: true,
         monitorWidth: false,
     })((props: IOwnProps) => {
-        console.count("individual");
         const theme = useTheme();
         const { blogPost, setSingleHeight, size } = props;
         const classes = useStyles();
@@ -45,7 +35,7 @@ export const BlogPostByProjectComponent = React.memo(
             memo();
         }, [size.height]);
         return (
-            <Box border={theme.spacing(1)}>
+            <Box border={1} borderColor="secondary.main">
                 <Card className={classes.root}>
                     <Grid container direction="column" spacing={1}>
                         <Grid item>

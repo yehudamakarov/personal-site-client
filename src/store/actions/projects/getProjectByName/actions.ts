@@ -1,4 +1,4 @@
-import { IApiResponse } from "../../../types/IApiResponse";
+import { IApiResponse } from "../../../baseTypes/IApiResponse";
 import { IProject } from "../api";
 
 /* -------------------------------------------------------------------------- */

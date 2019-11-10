@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme: Theme) =>
             },
             padding: theme.spacing(2),
         },
-    }),
+    })
 );
 
 export const ProjectPageTitleCard = (props: {
@@ -39,7 +39,7 @@ export const ProjectPageTitleCard = (props: {
         ? props.project.projectDescription
         : "";
     return (
-        <Card className={classes.topCard} square>
+        <Card className={classes.topCard} elevation={8} square>
             {/* Title */}
             <ProjectPageTitle
                 currentProjectName={currentProjectName}

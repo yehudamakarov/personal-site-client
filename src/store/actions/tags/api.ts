@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IApiResponse } from "../../types/IApiResponse";
+import { IApiResponse } from "../../baseTypes/IApiResponse";
 
 export interface ITag {
     tagId: string;

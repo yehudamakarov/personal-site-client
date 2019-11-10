@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IApiResponse } from "../../types/IApiResponse";
+import { IApiResponse } from "../../baseTypes/IApiResponse";
 
 export type IProjectResponse = IApiResponse<IProject>;
 export type IProjectsResponse = IApiResponse<IProject[]>;
