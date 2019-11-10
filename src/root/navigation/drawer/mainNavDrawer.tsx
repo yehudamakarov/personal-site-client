@@ -1,4 +1,5 @@
 import {
+    Button,
     Collapse,
     createStyles,
     Drawer,
@@ -21,6 +22,7 @@ import WorkIcon from "@material-ui/icons/Work";
 import { Link } from "@reach/router";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { logoutLoadingAction } from "../../../store/actions/auth/logout/actions";
 import { IApplicationState } from "../../../store/rootReducer";
 import { closeDrawerAction } from "../../../store/ui/uiActions";
 import { ApiIcon } from "../../iconButtons/icons/apiIcon";
@@ -28,6 +30,11 @@ import { TagListItem } from "./tagListItem";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
+        actions: {
+            display: "flex",
+            flexDirection: "row-reverse",
+            margin: theme.spacing(1),
+        },
         drawerBackground: {
             [theme.breakpoints.down("xs")]: {
                 width: "100vw",
@@ -37,11 +44,7 @@ const useStyles = makeStyles((theme: Theme) =>
             },
         },
         exitArrow: {
-            // display: 'flex',
-            // alignItems: 'center',
-            // padding: theme.spacing(0, 1),
             ...theme.mixins.toolbar,
-            // justifyContent: 'flex-end',
         },
         list: {
             paddingTop: 0,
@@ -53,6 +56,9 @@ export const MainNavDrawer = () => {
     const drawerOpen = useSelector(
         (state: IApplicationState) => state.ui.drawerOpen
     );
+    const isLoggedIn = useSelector(
+        (state: IApplicationState) => state.auth.loggedIn,
+    );
     const tags = useSelector((state: IApplicationState) => state.tags.tagsData);
     const dispatch = useDispatch();
     const handleDrawerClose = () => dispatch(closeDrawerAction());
@@ -61,6 +67,11 @@ export const MainNavDrawer = () => {
 
     const [tagsAreOpen, setTagsAreOpen] = useState(false);
     const handleTagsOpen = () => setTagsAreOpen(!tagsAreOpen);
+
+    const handleLogout = () => {
+        handleDrawerClose();
+        dispatch(logoutLoadingAction());
+    };
 
     return (
         <Drawer open={drawerOpen} onClose={handleDrawerClose}>
@@ -172,6 +183,13 @@ export const MainNavDrawer = () => {
                     </ListItem>
                 </List>
             </Paper>
+            {isLoggedIn && (
+                <div className={classes.actions}>
+                    <Button onClick={handleLogout} variant={"contained"} color={"secondary"}>
+                        Log Out
+                    </Button>
+                </div>
+            )}
         </Drawer>
     );
 };

@@ -9,7 +9,7 @@ import {
     UiActionTypes,
 } from "./uiActions";
 
-const INITIAL_STATE: IUiState = {
+export const INITIAL_STATE: IUiState = {
     drawerOpen: false,
     filter: {
         listingTypes: {

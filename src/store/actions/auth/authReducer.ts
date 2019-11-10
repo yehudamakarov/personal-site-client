@@ -69,7 +69,7 @@ function readToken(token: string): ITokenState {
 
 export const authReducer = (
     state = INITIAL_STATE,
-    action: AuthActionTypes,
+    action: AuthActionTypes
 ): IAuthState => {
     switch (action.type) {
         case "LOGIN_LOADING":
@@ -81,7 +81,8 @@ export const authReducer = (
         case "LOGIN_ERROR":
             return state;
         case "LOGOUT_LOADING":
-            return state;
+            localStorage.clear();
+            return { ...INITIAL_STATE };
         case "LOGOUT_SUCCESS":
             return state;
         case "LOGOUT_ERROR":

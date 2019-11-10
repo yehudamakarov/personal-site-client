@@ -7,9 +7,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Yehuda.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/root/pages/login/loginPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/baseTypes/IApiResponse.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/baseTypes/IApiResponse.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/navigation/drawer/mainNavDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/navigation/drawer/mainNavDrawer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/root.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/auth/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/auth/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/auth/authReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/auth/authReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/auth/authSagas.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/auth/authSagas.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/auth/login/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/auth/login/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/auth/login/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/auth/login/saga.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/rootSaga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/rootSaga.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/storeConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/storeConfig.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/ui/IUiState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/ui/IUiState.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/ui/uiReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/ui/uiReducer.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,9 +68,10 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="watcher.settings" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">

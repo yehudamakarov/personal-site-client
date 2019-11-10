@@ -5,6 +5,7 @@ import { Navigation } from "./navigation/navigation";
 import { AboutPage } from "./pages/about/aboutPage";
 import { Homepage } from "./pages/home/homepage";
 import { IndexViewPage } from "./pages/indexView/indexViewPage";
+import { LoginPage } from "./pages/login/loginPage";
 import ProjectPage from "./pages/projects/projectPage";
 
 export const Root = () => {
@@ -13,6 +14,7 @@ export const Root = () => {
             <Navigation />
             <Router>
                 <Homepage path={Routes.home} />
+                <LoginPage path={Routes.login} />
                 <AboutPage path={Routes.about} />
                 <ProjectPage path={Routes.projectsProjectNameParam} />
                 <IndexViewPage path={Routes.projects} />

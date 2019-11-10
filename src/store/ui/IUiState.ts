@@ -11,7 +11,8 @@ type TagsTagIdRoute = "tags/:tagId";
 type HomeRoute = "/";
 type AboutRoute = "about";
 type ProjectsProjectNameRoute = "projects/:projectName";
-type TagsRoute = "/tags";
+type TagsRoute = "tags";
+type LoginRoute = "login";
 
 export type IndexTypeRoute =
     | ProjectsRoute
@@ -32,7 +33,8 @@ export class Routes {
     public static about: AboutRoute = "about";
     public static projectsProjectNameParam: ProjectsProjectNameRoute =
         "projects/:projectName";
-    public static tags: TagsRoute = "/tags";
+    public static tags: TagsRoute = "tags";
+    public static login: LoginRoute = "login";
 }
 
 export interface IFilter {

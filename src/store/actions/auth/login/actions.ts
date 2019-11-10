@@ -1,4 +1,4 @@
-import { ITokenData } from "../api";
+import { ILoginRequest, ITokenData } from "../api";
 
 /* -------------------------------------------------------------------------- */
 /*                          loginLoadingAction                          */
@@ -7,9 +7,21 @@ export const LOGIN_LOADING = "LOGIN_LOADING";
 
 export interface ILoginLoadingAction {
     type: typeof LOGIN_LOADING;
+    payload: {
+        firstName: string;
+        lastName: string;
+        password: string;
+    };
 }
 
-export const loginLoadingAction = (): ILoginLoadingAction => ({
+export const loginLoadingAction = (
+    credentials: ILoginRequest,
+): ILoginLoadingAction => ({
+    payload: {
+        firstName: credentials.firstName,
+        lastName: credentials.lastName,
+        password: credentials.password,
+    },
     type: LOGIN_LOADING,
 });
 
