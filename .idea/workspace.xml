@@ -6,36 +6,10 @@
     <option name="FILTER_RESOLVED_ITEMS" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="refactoring">
-      <change afterPath="$PROJECT_DIR$/src/store/actions/auth/api.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/actions/auth/authReducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/actions/auth/authSagas.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/actions/auth/login/actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/actions/auth/login/saga.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/actions/auth/logout/actions.ts" afterDir="false" />
+    <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/blogPostByProjectComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/blogPostByProjectComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/projectActionButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/projectActionButtons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/projectTitleCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/projectTitleCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/blogPost/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/blogPost/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/blogPost/blogPostReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/blogPost/blogPostReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/blogPost/getBlogPostById/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/blogPost/getBlogPostById/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/blogPost/getBlogPostsByProjectId/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/blogPost/getBlogPostsByProjectId/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/pinnedRepositories/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/pinnedRepositories/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/getProjectByName/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/getProjectByName/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/projectsReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/projectsReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/tags/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/tags/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/tags/tagsReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/tags/tagsReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/rootReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/rootReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/baseTypes/IApiResponse.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/baseTypes/IApiResponse.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/storeConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/storeConfig.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/types/IApiResponse.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/baseTypes/IApiResponse.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/types/IBaseCollectionUiState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/baseTypes/IBaseCollectionUiState.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/types/IErrorMap.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/baseTypes/IErrorMap.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/types/IResultDetails.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/baseTypes/IResultDetails.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/types/ResultStatus.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/baseTypes/ResultStatus.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +105,7 @@
       <workItem from="1572232839965" duration="16250000" />
       <workItem from="1572405118772" duration="21684000" />
       <workItem from="1572567511908" duration="15965000" />
-      <workItem from="1573178871485" duration="6859000" />
+      <workItem from="1573178871485" duration="7631000" />
     </task>
     <task id="LOCAL-00001" summary="project styles for webstorm">
       <created>1568176773387</created>
@@ -252,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572930499726</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="admin button in progress">
+      <created>1573359629391</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1573359629392</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,7 +268,8 @@
     <MESSAGE value="fixed up home cards for projects" />
     <MESSAGE value="added close icon to drawer" />
     <MESSAGE value="refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
+    <MESSAGE value="admin button in progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="admin button in progress" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

@@ -19,8 +19,10 @@ function getToken() {
 
 const interceptorId = axios.interceptors.request.use(
     (config: AxiosRequestConfig) => {
-        config.headers.Authorization = `Bearer: ${getToken()}`;
-        debugger;
+        const token = getToken();
+        if (token !== null) {
+            config.headers.Authorization = `Bearer: ${token}`;
+        }
         return config;
-    },
+    }
 );
