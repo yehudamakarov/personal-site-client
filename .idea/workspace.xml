@@ -7,20 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Yehuda.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/root/pages/login/loginPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/navigation/drawer/mainNavDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/navigation/drawer/mainNavDrawer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/root.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/auth/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/auth/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/auth/authReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/auth/authReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/auth/authSagas.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/auth/authSagas.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/auth/login/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/auth/login/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/auth/login/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/auth/login/saga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/rootSaga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/rootSaga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/storeConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/storeConfig.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/ui/IUiState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/ui/IUiState.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/ui/uiReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/ui/uiReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -245,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573359629392</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="login / logout">
+      <created>1573406301815</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1573406301815</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,7 +276,8 @@
     <MESSAGE value="added close icon to drawer" />
     <MESSAGE value="refactoring" />
     <MESSAGE value="admin button in progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin button in progress" />
+    <MESSAGE value="login / logout" />
+    <option name="LAST_COMMIT_MESSAGE" value="login / logout" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
