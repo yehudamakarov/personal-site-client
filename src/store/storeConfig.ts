@@ -19,7 +19,6 @@ function loadState() {
             return undefined;
         }
         const state = JSON.parse(serializedState);
-        console.log("loading: ", state);
         return state;
     } catch (e) {
         return undefined;
@@ -28,7 +27,6 @@ function loadState() {
 
 function saveState(savableState: { auth: IAuthState; ui: IUiState }) {
     try {
-        console.log("saving: ", savableState);
         const serializedState = JSON.stringify(savableState);
         localStorage.setItem("state", serializedState);
     } catch (e) {
