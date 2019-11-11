@@ -1,19 +1,33 @@
-import {
-    Button,
-    ButtonGroup,
-    createStyles,
-    Fab,
-    Grid,
-    makeStyles,
-    Theme,
-} from "@material-ui/core";
+import { Button, ButtonGroup, createStyles, Fab, Grid, makeStyles, Theme } from "@material-ui/core";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import WebAssetIcon from "@material-ui/icons/WebAsset";
 import { navigate } from "@reach/router";
 import React from "react";
+import { useSelector } from "react-redux";
 import { animated, useSpring } from "react-spring";
+import { roleType } from "../../../../store/actions/auth/authReducer";
 import { IProject } from "../../../../store/actions/projects/api";
+import { IApplicationState } from "../../../../store/rootReducer";
 import { GithubIcon } from "../../../iconButtons/icons/githubIcon";
+
+const useAuth = (roles: roleType[]) => {
+    debugger;
+    const isLoggedIn = useSelector(
+        (state: IApplicationState) => state.auth.loggedIn,
+    );
+    const expiryTime = useSelector(
+        (state: IApplicationState) => state.auth.expiryTime,
+    );
+    const role = useSelector((state: IApplicationState) => state.auth.role);
+
+    if (!isLoggedIn) {
+        return false;
+    }
+    if (expiryTime && expiryTime * 1000 <= Date.now()) {
+        return false;
+    }
+    return roles.some((possibleRole) => possibleRole === role);
+};
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -40,6 +54,8 @@ export const ProjectActionButtons = (props: {
 }) => {
     const { project } = props;
     const classes = useStyles();
+
+    const isAuthorized = useAuth([roleType.administrator]);
 
     const projectGithubUrl = project
         ? (project.githubUrl as string)
@@ -89,15 +105,17 @@ export const ProjectActionButtons = (props: {
                 </Grid>
                 <Grid item>
                     <Grid container spacing={2}>
-                        <Grid item>
-                            <Fab
-                                variant="extended"
-                                color="secondary"
-                                size="small"
-                            >
-                                Edit
-                            </Fab>
-                        </Grid>
+                        {isAuthorized && (
+                            <Grid item>
+                                <Fab
+                                    variant="extended"
+                                    color="secondary"
+                                    size="small"
+                                >
+                                    Edit
+                                </Fab>
+                            </Grid>
+                        )}
                         <Grid item>
                             <AnimatedFab
                                 style={{ opacity, display }}

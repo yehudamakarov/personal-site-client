@@ -2,7 +2,7 @@ import jwtDecode from "jwt-decode";
 import { LoginActionTypes } from "./login/actions";
 import { LogoutActionTypes } from "./logout/actions";
 
-enum roleType {
+export enum roleType {
     administrator = "Administrator",
     user = "User",
 }
