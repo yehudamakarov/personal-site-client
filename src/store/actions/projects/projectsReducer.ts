@@ -12,7 +12,11 @@ import {
     GET_PROJECTS_SUCCESS,
     GetProjectsActionTypes,
 } from "./data/getProjects/actions";
-import { SetAnyProjectIsEditableActionTypes } from "./ui/setAnyProjectIsEditable/actions";
+import {
+    SET_ANY_PROJECT_IS_DONE_EDITING,
+    SET_ANY_PROJECT_IS_EDITABLE,
+    SetAnyProjectIsEditableActionTypes,
+} from "./ui/setAnyProjectIsEditable/actions";
 
 export interface IProjectsState {
     projectsData: IProject[];
@@ -20,7 +24,8 @@ export interface IProjectsState {
 }
 
 interface IProjectsUi extends IBaseCollectionUiState {
-    anyProjectIsEditable: boolean;
+    singleIsEditing: { [index: string]: boolean };
+    editableProjects: { [index: string]: IProject };
 }
 
 const INITIAL_STATE: IProjectsState = {
@@ -28,7 +33,8 @@ const INITIAL_STATE: IProjectsState = {
     projectsUi: {
         allIsError: false,
         allIsLoading: false,
-        anyProjectIsEditable: false,
+        editableProjects: {},
+        singleIsEditing: {},
         singleIsError: {},
         singleIsLoading: {},
     },
@@ -142,12 +148,40 @@ export const projectsReducer = (
             }
         }
 
-        case "SET_ANY_PROJECT_IS_EDITABLE": {
+        case SET_ANY_PROJECT_IS_EDITABLE: {
+            const projectId = action.payload;
+            const projectToEdit = state.projectsData.find(
+                (project) => project.githubRepoDatabaseId === projectId
+            );
             return {
                 ...state,
                 projectsUi: {
                     ...state.projectsUi,
-                    anyProjectIsEditable: action.payload,
+                    editableProjects: {
+                        ...state.projectsUi.editableProjects,
+                        [projectId]: projectToEdit as IProject,
+                    },
+                    singleIsEditing: {
+                        ...state.projectsUi.singleIsEditing,
+                        [projectId]: true,
+                    },
+                },
+            };
+        }
+
+        case SET_ANY_PROJECT_IS_DONE_EDITING: {
+            const projectId = action.payload;
+            const editableProjects = { ...state.projectsUi.editableProjects };
+            delete editableProjects[projectId];
+            return {
+                ...state,
+                projectsUi: {
+                    ...state.projectsUi,
+                    editableProjects,
+                    singleIsEditing: {
+                        ...state.projectsUi.singleIsEditing,
+                        [projectId]: false,
+                    },
                 },
             };
         }

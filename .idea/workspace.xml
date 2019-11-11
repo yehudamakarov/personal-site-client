@@ -7,17 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/store/actions/projects/ui/setAnyProjectIsEditable/actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/indexViewList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/indexViewList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/projectActionButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/projectActionButtons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/projectPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/projectPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/getProjectByName/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/data/getProjectByName/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/getProjectByName/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/data/getProjectByName/saga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/getProjects/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/data/getProjects/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/getProjects/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/data/getProjects/saga.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/projects/projectsReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/projectsReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/projectsSagas.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/projectsSagas.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/ui/setAnyProjectIsEditable/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/ui/setAnyProjectIsEditable/actions.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

@@ -1,14 +1,4 @@
-import { Button, ButtonGroup, createStyles, Fab, Grid, makeStyles, Theme } from "@material-ui/core";
-import {
-    Button,
-    ButtonGroup,
-    createStyles,
-    Fab,
-    Grid,
-    makeStyles,
-    TextField,
-    Theme,
-} from "@material-ui/core";
+import { Button, ButtonGroup, createStyles, Fab, Grid, makeStyles, TextField, Theme } from "@material-ui/core";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import WebAssetIcon from "@material-ui/icons/WebAsset";
 import { navigate } from "@reach/router";
@@ -17,13 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { animated, useSpring } from "react-spring";
 import { roleType } from "../../../../store/actions/auth/authReducer";
 import { IProject } from "../../../../store/actions/projects/api";
-import { IApplicationState } from "../../../../store/rootReducer";
-import { setAnyProjectIsEditableAction } from "../../../../store/actions/projects/ui/setAnyProjectIsEditable/actions";
+import {
+    setAnyProjectIsDoneEditingAction,
+    setAnyProjectIsEditableAction,
+} from "../../../../store/actions/projects/ui/setAnyProjectIsEditable/actions";
 import { IApplicationState } from "../../../../store/rootReducer";
 import { GithubIcon } from "../../../iconButtons/icons/githubIcon";
 
 const useAuth = (roles: roleType[]) => {
-    debugger;
     const isLoggedIn = useSelector(
         (state: IApplicationState) => state.auth.loggedIn,
     );
@@ -76,20 +67,34 @@ export const ProjectActionButtons = (props: {
     const projectDeploymentUrl = project
         ? (project.deploymentUrl as string)
         : undefined;
+    const projectId = project
+        ? (project.githubRepoDatabaseId as string)
+        : undefined;
 
     const goBack = async () => {
         await navigate("/projects");
     };
 
+    const projectIsEditable = useSelector((state: IApplicationState) => {
+        if (projectId) {
+            return state.projects.projectsUi.singleIsEditing[projectId];
+        } else {
+            return false;
+        }
+    });
+
     // todo move out
     const handleProjectEdit = () => {
-        dispatch(setAnyProjectIsEditableAction(true));
+        const editing = !projectIsEditable;
+        if (!projectId) {
+            return;
+        }
+        if (editing) {
+            dispatch(setAnyProjectIsEditableAction(projectId));
+        } else {
+            dispatch(setAnyProjectIsDoneEditingAction(projectId));
+        }
     };
-
-    const projectIsEditable = useSelector(
-        (state: IApplicationState) =>
-            state.projects.projectsUi.anyProjectIsEditable
-    );
 
     const { opacity, display } = useSpring({
         display: projectDeploymentUrl ? "flex" : "none",
