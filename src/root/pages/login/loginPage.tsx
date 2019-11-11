@@ -80,7 +80,7 @@ export const LoginPage = (props: { path: string }) => {
     };
 
     const handleLogOut = () => {
-        dispatch(logoutLoadingAction);
+        dispatch(logoutLoadingAction());
     };
 
     return (

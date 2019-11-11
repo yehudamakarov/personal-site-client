@@ -13,6 +13,7 @@ type AboutRoute = "about";
 type ProjectsProjectNameRoute = "projects/:projectName";
 type TagsRoute = "tags";
 type LoginRoute = "login";
+type TestRoute = "test";
 
 export type IndexTypeRoute =
     | ProjectsRoute
@@ -35,6 +36,7 @@ export class Routes {
         "projects/:projectName";
     public static tags: TagsRoute = "tags";
     public static login: LoginRoute = "login";
+    public static test: TestRoute = "test";
 }
 
 export interface IFilter {

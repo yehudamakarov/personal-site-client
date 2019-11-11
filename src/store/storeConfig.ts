@@ -1,11 +1,13 @@
-import axios, { AxiosRequestConfig } from "axios";
+import { navigate } from "@reach/router";
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { throttle } from "lodash";
 import createSagaMiddleware from "redux-saga";
 import { configureStore, getDefaultMiddleware } from "redux-starter-kit";
 import { IAuthState } from "./actions/auth/authReducer";
+import { logoutLoadingAction } from "./actions/auth/logout/actions";
 import { rootReducer } from "./rootReducer";
 import { rootSaga } from "./rootSaga";
-import { IUiState } from "./ui/IUiState";
+import { IUiState, Routes } from "./ui/IUiState";
 import { INITIAL_STATE } from "./ui/uiReducer";
 
 const sagaMiddleware = createSagaMiddleware();
@@ -58,12 +60,34 @@ function getToken() {
     return store.getState().auth.token;
 }
 
-const interceptorId = axios.interceptors.request.use(
+const requestInterceptorId = axios.interceptors.request.use(
     (config: AxiosRequestConfig) => {
         const token = getToken();
         if (token !== null) {
-            config.headers.Authorization = `Bearer: ${token}`;
+            config.headers.Authorization = `Bearer ${token}`;
         }
         return config;
+    }
+);
+
+const responseInterceptorId = axios.interceptors.response.use(
+    (response: AxiosResponse) => {
+        return response;
+    },
+    (error) => {
+        switch (error.response.status) {
+            case 401:
+                // todo set state for a login prompt
+                store.dispatch(logoutLoadingAction());
+                navigate(Routes.login).then(() => null);
+                break;
+            case 403:
+                // todo set state for a login prompt
+                store.dispatch(logoutLoadingAction());
+                navigate(Routes.login).then(() => null);
+                break;
+        }
+
+        return Promise.reject(error);
     }
 );

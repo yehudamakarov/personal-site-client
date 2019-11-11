@@ -7,6 +7,7 @@ import { Homepage } from "./pages/home/homepage";
 import { IndexViewPage } from "./pages/indexView/indexViewPage";
 import { LoginPage } from "./pages/login/loginPage";
 import ProjectPage from "./pages/projects/projectPage";
+import { TestPage } from "./pages/test/testPage";
 
 export const Root = () => {
     return (
@@ -21,6 +22,7 @@ export const Root = () => {
                 <IndexViewPage path={Routes.blogPosts} />
                 <IndexViewPage path={Routes.tags} />
                 <IndexViewPage path={Routes.tagsTagIdParam} />
+                <TestPage path={Routes.test} />
             </Router>
         </React.Fragment>
     );

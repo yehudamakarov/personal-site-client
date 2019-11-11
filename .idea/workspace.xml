@@ -7,9 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/root/pages/test/testPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/filter/tagSearch/tagSearchContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/filter/tagSearch/tagSearchContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/login/loginPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/login/loginPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/root.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/storeConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/storeConfig.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/ui/IUiState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/ui/IUiState.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
