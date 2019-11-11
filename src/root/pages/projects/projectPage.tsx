@@ -3,7 +3,7 @@ import { RouteComponentProps } from "@reach/router";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IProject } from "../../../store/actions/projects/api";
-import { getProjectByNameLoadingAction } from "../../../store/actions/projects/getProjectByName/actions";
+import { getProjectByNameLoadingAction } from "../../../store/actions/projects/data/getProjectByName/actions";
 import { IApplicationState } from "../../../store/rootReducer";
 import { BasePage } from "../basePage";
 import { BlogPostsByProjectList } from "./components/blogPostsByProjectList";

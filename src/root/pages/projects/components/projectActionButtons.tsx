@@ -1,12 +1,24 @@
 import { Button, ButtonGroup, createStyles, Fab, Grid, makeStyles, Theme } from "@material-ui/core";
+import {
+    Button,
+    ButtonGroup,
+    createStyles,
+    Fab,
+    Grid,
+    makeStyles,
+    TextField,
+    Theme,
+} from "@material-ui/core";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import WebAssetIcon from "@material-ui/icons/WebAsset";
 import { navigate } from "@reach/router";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { animated, useSpring } from "react-spring";
 import { roleType } from "../../../../store/actions/auth/authReducer";
 import { IProject } from "../../../../store/actions/projects/api";
+import { IApplicationState } from "../../../../store/rootReducer";
+import { setAnyProjectIsEditableAction } from "../../../../store/actions/projects/ui/setAnyProjectIsEditable/actions";
 import { IApplicationState } from "../../../../store/rootReducer";
 import { GithubIcon } from "../../../iconButtons/icons/githubIcon";
 
@@ -52,6 +64,7 @@ const AnimatedFab = animated(Fab);
 export const ProjectActionButtons = (props: {
     project: undefined | IProject;
 }) => {
+    const dispatch = useDispatch();
     const { project } = props;
     const classes = useStyles();
 
@@ -67,6 +80,16 @@ export const ProjectActionButtons = (props: {
     const goBack = async () => {
         await navigate("/projects");
     };
+
+    // todo move out
+    const handleProjectEdit = () => {
+        dispatch(setAnyProjectIsEditableAction(true));
+    };
+
+    const projectIsEditable = useSelector(
+        (state: IApplicationState) =>
+            state.projects.projectsUi.anyProjectIsEditable
+    );
 
     const { opacity, display } = useSpring({
         display: projectDeploymentUrl ? "flex" : "none",
@@ -111,24 +134,34 @@ export const ProjectActionButtons = (props: {
                                     variant="extended"
                                     color="secondary"
                                     size="small"
+                                    onClick={handleProjectEdit}
                                 >
-                                    Edit
+                                    {projectIsEditable ? "Done" : "Edit"}
                                 </Fab>
                             </Grid>
                         )}
                         <Grid item>
-                            <AnimatedFab
-                                style={{ opacity, display }}
-                                variant="extended"
-                                color="primary"
-                                size="small"
-                                href={projectDeploymentUrl}
-                            >
-                                <WebAssetIcon
-                                    className={classes.iconMarginRight}
+                            {projectIsEditable ? (
+                                <TextField
+                                    helperText={
+                                        "Where this project is deployed to."
+                                    }
+                                    defaultValue={projectDeploymentUrl}
                                 />
-                                See Live
-                            </AnimatedFab>
+                            ) : (
+                                <AnimatedFab
+                                    style={{ opacity, display }}
+                                    variant="extended"
+                                    color="primary"
+                                    size="small"
+                                    href={projectDeploymentUrl}
+                                >
+                                    <WebAssetIcon
+                                        className={classes.iconMarginRight}
+                                    />
+                                    See Live
+                                </AnimatedFab>
+                            )}
                         </Grid>
                     </Grid>
                 </Grid>

@@ -7,9 +7,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/store/actions/projects/ui/setAnyProjectIsEditable/actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/indexViewList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/indexViewList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/projectActionButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/projectActionButtons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/auth/authReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/auth/authReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/projectPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/projectPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/getProjectByName/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/data/getProjectByName/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/getProjectByName/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/data/getProjectByName/saga.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/getProjects/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/data/getProjects/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/getProjects/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/data/getProjects/saga.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/projectsReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/projectsReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/projectsSagas.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/projectsSagas.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,6 +76,7 @@
       <recent name="$PROJECT_DIR$/src/root/pages/projects/components/projectTitleCard.tsx" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Yehuda\projects\personal-site-client\src\store\actions\projects\data" />
       <recent name="$PROJECT_DIR$/src/root/pages/indexView/filter/listingTypeSelect" />
       <recent name="C:\Users\Yehuda\projects\personal-site-client\src\root\pages\indexView\filter\tagSearch" />
       <recent name="$PROJECT_DIR$/src" />
@@ -107,6 +116,8 @@
       <workItem from="1572405118772" duration="21684000" />
       <workItem from="1572567511908" duration="15965000" />
       <workItem from="1573178871485" duration="7631000" />
+      <workItem from="1573482928460" duration="13000" />
+      <workItem from="1573487037555" duration="4968000" />
     </task>
     <task id="LOCAL-00001" summary="project styles for webstorm">
       <created>1568176773387</created>
@@ -248,21 +259,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573406917977</updated>
     </task>
-    <task id="LOCAL-00021" summary="login / logout done for now">
-      <created>1573439368438</created>
+    <task id="LOCAL-00021" summary="state persistence / tags routing">
+      <created>1573408579042</created>
       <option name="number" value="00021" />
       <option name="presentableId" value="LOCAL-00021" />
       <option name="project" value="LOCAL" />
-      <updated>1573439368438</updated>
+      <updated>1573408579042</updated>
     </task>
-    <task id="LOCAL-00022" summary="login / logout done for now">
-      <created>1573439455630</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1573439455630</updated>
-    </task>
-    <option name="localTasksCounter" value="23" />
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,8 +303,8 @@
     <MESSAGE value="refactoring" />
     <MESSAGE value="admin button in progress" />
     <MESSAGE value="login / logout" />
-    <MESSAGE value="login / logout done for now" />
-    <option name="LAST_COMMIT_MESSAGE" value="login / logout done for now" />
+    <MESSAGE value="state persistence / tags routing" />
+    <option name="LAST_COMMIT_MESSAGE" value="state persistence / tags routing" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

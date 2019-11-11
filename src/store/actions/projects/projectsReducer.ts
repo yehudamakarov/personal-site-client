@@ -5,32 +5,39 @@ import {
     GET_PROJECT_BY_NAME_LOADING,
     GET_PROJECT_BY_NAME_SUCCESS,
     GetProjectByNameActionsType,
-} from "./getProjectByName/actions";
+} from "./data/getProjectByName/actions";
 import {
     GET_PROJECTS_ERROR,
     GET_PROJECTS_LOADING,
     GET_PROJECTS_SUCCESS,
     GetProjectsActionTypes,
-} from "./getProjects/actions";
+} from "./data/getProjects/actions";
+import { SetAnyProjectIsEditableActionTypes } from "./ui/setAnyProjectIsEditable/actions";
 
 export interface IProjectsState {
     projectsData: IProject[];
     projectsUi: IProjectsUi;
 }
 
-type IProjectsUi = IBaseCollectionUiState;
+interface IProjectsUi extends IBaseCollectionUiState {
+    anyProjectIsEditable: boolean;
+}
 
 const INITIAL_STATE: IProjectsState = {
     projectsData: [],
     projectsUi: {
         allIsError: false,
         allIsLoading: false,
+        anyProjectIsEditable: false,
         singleIsError: {},
         singleIsLoading: {},
     },
 };
 
-type ProjectsActionTypes = GetProjectByNameActionsType | GetProjectsActionTypes;
+type ProjectsActionTypes =
+    | GetProjectByNameActionsType
+    | GetProjectsActionTypes
+    | SetAnyProjectIsEditableActionTypes;
 
 export const projectsReducer = (
     state = INITIAL_STATE,
@@ -133,6 +140,16 @@ export const projectsReducer = (
                     },
                 };
             }
+        }
+
+        case "SET_ANY_PROJECT_IS_EDITABLE": {
+            return {
+                ...state,
+                projectsUi: {
+                    ...state.projectsUi,
+                    anyProjectIsEditable: action.payload,
+                },
+            };
         }
 
         default:

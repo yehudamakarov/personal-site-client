@@ -1,4 +1,4 @@
-import { IProject } from "../api";
+import { IProject } from "../../api";
 
 /* -------------------------------------------------------------------------- */
 /*                          getProjectsLoadingAction                          */
