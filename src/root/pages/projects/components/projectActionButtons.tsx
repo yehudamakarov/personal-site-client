@@ -1,12 +1,22 @@
-import { Button, ButtonGroup, createStyles, Fab, Grid, makeStyles, TextField, Theme } from "@material-ui/core";
+import {
+    Button,
+    ButtonGroup,
+    createStyles,
+    Fab,
+    Grid,
+    makeStyles,
+    TextField,
+    Theme,
+} from "@material-ui/core";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import WebAssetIcon from "@material-ui/icons/WebAsset";
 import { navigate } from "@reach/router";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { animated, useSpring } from "react-spring";
 import { roleType } from "../../../../store/actions/auth/authReducer";
 import { IProject } from "../../../../store/actions/projects/api";
+import { editProjectAction } from "../../../../store/actions/projects/ui/editProject/actions";
 import {
     setAnyProjectIsDoneEditingAction,
     setAnyProjectIsEditableAction,
@@ -16,10 +26,10 @@ import { GithubIcon } from "../../../iconButtons/icons/githubIcon";
 
 const useAuth = (roles: roleType[]) => {
     const isLoggedIn = useSelector(
-        (state: IApplicationState) => state.auth.loggedIn,
+        (state: IApplicationState) => state.auth.loggedIn
     );
     const expiryTime = useSelector(
-        (state: IApplicationState) => state.auth.expiryTime,
+        (state: IApplicationState) => state.auth.expiryTime
     );
     const role = useSelector((state: IApplicationState) => state.auth.role);
 
@@ -71,10 +81,6 @@ export const ProjectActionButtons = (props: {
         ? (project.githubRepoDatabaseId as string)
         : undefined;
 
-    const goBack = async () => {
-        await navigate("/projects");
-    };
-
     const projectIsEditable = useSelector((state: IApplicationState) => {
         if (projectId) {
             return state.projects.projectsUi.singleIsEditing[projectId];
@@ -82,6 +88,34 @@ export const ProjectActionButtons = (props: {
             return false;
         }
     });
+
+    const editableProject = useSelector((state: IApplicationState) => {
+        if (projectIsEditable && projectId) {
+            return state.projects.projectsUi.editableProjects[projectId];
+        }
+    }, shallowEqual);
+
+    const handleEdit = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const newDeploymentUrl = event.target.value;
+        if (!editableProject) {
+            return;
+        }
+        const editedProject = {
+            ...editableProject,
+            deploymentUrl: newDeploymentUrl,
+        };
+        dispatch(editProjectAction(editedProject));
+    };
+
+    const onEditProjectDeploymentUrl = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        handleEdit(event);
+    };
+
+    const goBack = async () => {
+        await navigate("/projects");
+    };
 
     // todo move out
     const handleProjectEdit = () => {
@@ -95,6 +129,10 @@ export const ProjectActionButtons = (props: {
             dispatch(setAnyProjectIsDoneEditingAction(projectId));
         }
     };
+
+    const editableProjectDeploymentUrl = editableProject
+        ? editableProject.deploymentUrl
+        : undefined;
 
     const { opacity, display } = useSpring({
         display: projectDeploymentUrl ? "flex" : "none",
@@ -145,13 +183,26 @@ export const ProjectActionButtons = (props: {
                                 </Fab>
                             </Grid>
                         )}
+                        {isAuthorized && projectIsEditable && (
+                            <Grid item>
+                                <Fab
+                                    variant="extended"
+                                    color="secondary"
+                                    size="small"
+                                    onClick={handleProjectEdit}
+                                >
+                                    Cancel
+                                </Fab>
+                            </Grid>
+                        )}
                         <Grid item>
                             {projectIsEditable ? (
                                 <TextField
                                     helperText={
                                         "Where this project is deployed to."
                                     }
-                                    defaultValue={projectDeploymentUrl}
+                                    value={editableProjectDeploymentUrl}
+                                    onChange={onEditProjectDeploymentUrl}
                                 />
                             ) : (
                                 <AnimatedFab

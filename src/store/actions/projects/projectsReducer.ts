@@ -12,6 +12,7 @@ import {
     GET_PROJECTS_SUCCESS,
     GetProjectsActionTypes,
 } from "./data/getProjects/actions";
+import { EDIT_PROJECT, EditProjectActionTypes } from "./ui/editProject/actions";
 import {
     SET_ANY_PROJECT_IS_DONE_EDITING,
     SET_ANY_PROJECT_IS_EDITABLE,
@@ -43,7 +44,8 @@ const INITIAL_STATE: IProjectsState = {
 type ProjectsActionTypes =
     | GetProjectByNameActionsType
     | GetProjectsActionTypes
-    | SetAnyProjectIsEditableActionTypes;
+    | SetAnyProjectIsEditableActionTypes
+    | EditProjectActionTypes;
 
 export const projectsReducer = (
     state = INITIAL_STATE,
@@ -181,6 +183,22 @@ export const projectsReducer = (
                     singleIsEditing: {
                         ...state.projectsUi.singleIsEditing,
                         [projectId]: false,
+                    },
+                },
+            };
+        }
+
+        case EDIT_PROJECT: {
+            const project = action.payload;
+            const projectId = project.githubRepoDatabaseId;
+
+            return {
+                ...state,
+                projectsUi: {
+                    ...state.projectsUi,
+                    editableProjects: {
+                        ...state.projectsUi.editableProjects,
+                        [projectId]: project,
                     },
                 },
             };

@@ -7,10 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/store/actions/projects/ui/editProject/actions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/actions/projects/ui/editProject/saga.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/projectActionButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/projectActionButtons.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/projects/projectsReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/projectsReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/ui/setAnyProjectIsEditable/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/ui/setAnyProjectIsEditable/actions.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
