@@ -6,12 +6,13 @@
     <option name="FILTER_RESOLVED_ITEMS" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/store/actions/projects/ui/editProject/actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/actions/projects/ui/editProject/saga.ts" afterDir="false" />
+    <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="edit projects, persist multiple edits til done">
+      <change afterPath="$PROJECT_DIR$/src/root/hooks/useAuth.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/root/pages/projects/components/editProjectButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/root/pages/projects/components/editableDeployUrlDisplay.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/projectActionButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/projectActionButtons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/projectsReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/projects/projectsReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/projectPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/projectPage.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,6 +68,9 @@
   </component>
   <component name="RecentsManager">
     <key name="es6.move.members.recent.items">
+      <recent name="C:\Users\Yehuda\projects\personal-site-client\src\root\pages\projects\components\editProjectButton.tsx" />
+      <recent name="C:\Users\Yehuda\projects\personal-site-client\src\root\pages\projects\components\editableDeployUrlDisplay.tsx" />
+      <recent name="C:\Users\Yehuda\projects\personal-site-client\src\root\hooks\useAuth.tsx" />
       <recent name="$PROJECT_DIR$/src/root/pages/projects/components/projectTitleCard.tsx" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -112,6 +116,7 @@
       <workItem from="1573178871485" duration="7631000" />
       <workItem from="1573482928460" duration="13000" />
       <workItem from="1573487037555" duration="4968000" />
+      <workItem from="1573520042222" duration="4194000" />
     </task>
     <task id="LOCAL-00001" summary="project styles for webstorm">
       <created>1568176773387</created>
@@ -260,7 +265,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573408579042</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="edit projects, persist multiple edits til done">
+      <created>1573506599588</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1573506599588</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,7 +310,8 @@
     <MESSAGE value="admin button in progress" />
     <MESSAGE value="login / logout" />
     <MESSAGE value="state persistence / tags routing" />
-    <option name="LAST_COMMIT_MESSAGE" value="state persistence / tags routing" />
+    <MESSAGE value="edit projects, persist multiple edits til done" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit projects, persist multiple edits til done" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

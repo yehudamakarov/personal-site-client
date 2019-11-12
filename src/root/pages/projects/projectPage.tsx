@@ -26,6 +26,7 @@ const ProjectPage = (props: IOwnProps) => {
         }
     );
 
+
     useEffect(() => {
         if (!currentProject) {
             dispatch(getProjectByNameLoadingAction(projectNameFromRoute));
