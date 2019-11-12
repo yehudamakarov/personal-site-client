@@ -26,7 +26,6 @@ const ProjectPage = (props: IOwnProps) => {
         }
     );
 
-
     useEffect(() => {
         if (!currentProject) {
             dispatch(getProjectByNameLoadingAction(projectNameFromRoute));
@@ -45,6 +44,7 @@ const ProjectPage = (props: IOwnProps) => {
                 {/* Tags */}
                 <Grid item xs={12}>
                     <TagsComponent
+                        project={currentProject}
                         tags={currentProject ? currentProject.tagIds : []}
                     />
                 </Grid>

@@ -1,11 +1,4 @@
-import {
-    Button,
-    ButtonGroup,
-    createStyles,
-    Grid,
-    makeStyles,
-    Theme,
-} from "@material-ui/core";
+import { Button, ButtonGroup, createStyles, Grid, makeStyles, Theme } from "@material-ui/core";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { navigate } from "@reach/router";
 import React from "react";
@@ -91,10 +84,12 @@ export const ProjectActionButtons = (props: {
                 </Grid>
                 <Grid item>
                     <Grid container spacing={2}>
-                        <EditProjectButton
-                            projectIsEditable={projectIsEditable}
-                            projectId={projectId}
-                        />
+                        <Grid item>
+                            <EditProjectButton
+                                projectIsEditable={projectIsEditable}
+                                projectId={projectId}
+                            />
+                        </Grid>
                         <Grid item>
                             <EditableDeployUrlDisplay
                                 projectIsEditable={projectIsEditable}

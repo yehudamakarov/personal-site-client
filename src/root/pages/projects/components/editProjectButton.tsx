@@ -27,7 +27,7 @@ export const EditProjectButton = (props: {
     };
 
     return (
-        <>
+        <Grid container>
             {isAuthorized && (
                 <Grid item>
                     <Fab
@@ -52,6 +52,6 @@ export const EditProjectButton = (props: {
                     </Fab>
                 </Grid>
             )}
-        </>
+        </Grid>
     );
 };

@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) =>
         iconMarginRight: {
             marginRight: theme.spacing(1),
         },
-    }),
+    })
 );
 
 export const EditableDeployUrlDisplay = (props: {
@@ -22,7 +22,9 @@ export const EditableDeployUrlDisplay = (props: {
     projectId: string | undefined;
 }) => {
     const dispatch = useDispatch();
+
     const classes = useStyles();
+
     const onEditProjectDeploymentUrl = (
         event: React.ChangeEvent<HTMLInputElement>,
     ) => {
@@ -36,18 +38,22 @@ export const EditableDeployUrlDisplay = (props: {
         };
         dispatch(editProjectAction(editedProject));
     };
+
     const { opacity, display } = useSpring({
         display: props.projectDeploymentUrl ? "flex" : "none",
         opacity: props.projectDeploymentUrl ? 1 : 0,
     });
+
     const editableProject = useSelector((state: IApplicationState) => {
         if (props.projectIsEditable && props.projectId) {
             return state.projects.projectsUi.editableProjects[props.projectId];
         }
     }, shallowEqual);
+
     const editableProjectDeploymentUrl = editableProject
         ? editableProject.deploymentUrl
         : undefined;
+
     return (
         <>
             {props.projectIsEditable ? (
