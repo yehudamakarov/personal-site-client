@@ -1,8 +1,6 @@
 import { Card, createStyles, makeStyles, Theme, Typography } from "@material-ui/core";
 import React from "react";
-import { useSelector } from "react-redux";
 import { IProject } from "../../../../store/actions/projects/api";
-import { IApplicationState } from "../../../../store/rootReducer";
 import { ProjectActionButtons } from "./projectActionButtons";
 import ProjectPageTitle from "./projectPageTitle";
 
@@ -22,32 +20,19 @@ export const ProjectPageTitleCard = (props: {
     project: IProject | undefined;
 }) => {
     const classes = useStyles();
-    const projectIsLoading = useSelector((state: IApplicationState) => {
-        if (props.projectNameFromRoute) {
-            return state.projects.projectsUi.singleIsLoading[
-                props.projectNameFromRoute
-                ];
-        } else {
-            return false;
-        }
-    });
-    const currentProjectName = props.project
-        ? props.project.projectTitle
-        : props.projectNameFromRoute;
-
-    const currentProjectDescription = props.project
-        ? props.project.projectDescription
-        : "";
     return (
         <Card className={classes.topCard} elevation={8} square>
             {/* Title */}
             <ProjectPageTitle
-                currentProjectName={currentProjectName}
-                projectIsLoading={projectIsLoading}
+                currentProjectName={
+                    props.project
+                        ? props.project.projectTitle
+                        : props.projectNameFromRoute
+                }
             />
             {/* Description */}
             <Typography variant="subtitle2">
-                {currentProjectDescription}
+                {props.project ? props.project.projectDescription : ""}
             </Typography>
             {/*Action Buttons*/}
             <ProjectActionButtons project={props.project} />

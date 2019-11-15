@@ -14,18 +14,25 @@ export const TagEditContainer = (props: { project: IProject | undefined }) => {
         state.tags.tagsData.map((tag) => ({
             label: tag.tagId,
             value: tag.tagId,
-        })),
+        }))
     );
 
-    const selectedTagValues = useSelector((state: IApplicationState) =>
-        state.ui.filter.tagIds.map((tagId) => ({
-            label: tagId,
-            value: tagId,
-        })),
-    );
+    const selectedTagValues = useSelector((state: IApplicationState) => {
+        if (props.project && props.project.githubRepoDatabaseId) {
+            return state.projects.projectsUi.editableProjects[
+                props.project.githubRepoDatabaseId
+                ].tagIds.map((tagId) => ({
+                label: tagId,
+                value: tagId,
+            }));
+        } else {
+            return [];
+        }
+    });
 
     const tagsChange = (values: string[]) => {
-        // dispatch(setTagsForFilterAction([...values]));
+        // dispatch(editProjectAction());
+        debugger;
     };
 
     const handleChangeMulti = (values: ValueType<IOptionType>) => {

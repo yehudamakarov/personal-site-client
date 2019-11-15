@@ -10,24 +10,21 @@ import { BlogPostsByProjectList } from "./components/blogPostsByProjectList";
 import { ProjectPageTitleCard } from "./components/projectTitleCard";
 import TagsComponent from "./components/tagsComponent";
 
-interface IOwnProps extends RouteComponentProps<{ projectName?: string }> {
-    path: string;
-}
 
-const ProjectPage = (props: IOwnProps) => {
+const ProjectPage = (props: RouteComponentProps<{ projectName?: string }>) => {
     const dispatch = useDispatch();
     const { projectName: projectNameFromRoute } = props;
 
-    const currentProject: IProject | undefined = useSelector(
+    const projectFromRoute: IProject | undefined = useSelector(
         (state: IApplicationState) => {
             return state.projects.projectsData.find((project) => {
                 return project.projectName === props.projectName;
             });
-        }
+        },
     );
 
     useEffect(() => {
-        if (!currentProject) {
+        if (!projectFromRoute) {
             dispatch(getProjectByNameLoadingAction(projectNameFromRoute));
         }
     }, [projectNameFromRoute]);
@@ -38,21 +35,21 @@ const ProjectPage = (props: IOwnProps) => {
                 <Grid item xs={12}>
                     <ProjectPageTitleCard
                         projectNameFromRoute={projectNameFromRoute}
-                        project={currentProject}
+                        project={projectFromRoute}
                     />
                 </Grid>
                 {/* Tags */}
                 <Grid item xs={12}>
                     <TagsComponent
-                        project={currentProject}
-                        tags={currentProject ? currentProject.tagIds : []}
+                        project={projectFromRoute}
+                        tags={projectFromRoute ? projectFromRoute.tagIds : []}
                     />
                 </Grid>
                 {/* Highlights */}
 
                 {/* Post List */}
                 <Grid item xs={12}>
-                    <BlogPostsByProjectList project={currentProject} />
+                    <BlogPostsByProjectList project={projectFromRoute} />
                 </Grid>
             </Grid>
         </BasePage>

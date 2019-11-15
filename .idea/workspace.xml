@@ -6,15 +6,15 @@
     <option name="FILTER_RESOLVED_ITEMS" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/root/pages/projects/components/tagEditContainer.tsx" afterDir="false" />
+    <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="need to fix grid">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/indexViewCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/indexViewCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/editProjectButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/editProjectButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/editableDeployUrlDisplay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/editableDeployUrlDisplay.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/projectActionButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/projectActionButtons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/tagsComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/tagsComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/projectPageTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/projectPageTitle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/projectTitleCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/projectTitleCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/tagEditContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/tagEditContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/pages/projects/projectPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/projectPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,9 +70,6 @@
   </component>
   <component name="RecentsManager">
     <key name="es6.move.members.recent.items">
-      <recent name="C:\Users\Yehuda\projects\personal-site-client\src\root\pages\projects\components\editProjectButton.tsx" />
-      <recent name="C:\Users\Yehuda\projects\personal-site-client\src\root\pages\projects\components\editableDeployUrlDisplay.tsx" />
-      <recent name="C:\Users\Yehuda\projects\personal-site-client\src\root\hooks\useAuth.tsx" />
       <recent name="$PROJECT_DIR$/src/root/pages/projects/components/projectTitleCard.tsx" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -118,7 +115,7 @@
       <workItem from="1573178871485" duration="7631000" />
       <workItem from="1573482928460" duration="13000" />
       <workItem from="1573487037555" duration="4968000" />
-      <workItem from="1573520042222" duration="8038000" />
+      <workItem from="1573568623087" duration="9457000" />
     </task>
     <task id="LOCAL-00001" summary="project styles for webstorm">
       <created>1568176773387</created>
@@ -267,21 +264,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573408579042</updated>
     </task>
-    <task id="LOCAL-00022" summary="edit projects, persist multiple edits til done">
-      <created>1573506599588</created>
+    <task id="LOCAL-00022" summary="need to fix grid">
+      <created>1573533392304</created>
       <option name="number" value="00022" />
       <option name="presentableId" value="LOCAL-00022" />
       <option name="project" value="LOCAL" />
-      <updated>1573506599588</updated>
+      <updated>1573533392304</updated>
     </task>
-    <task id="LOCAL-00023" summary="moving up components">
-      <created>1573589217415</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1573589217415</updated>
-    </task>
-    <option name="localTasksCounter" value="24" />
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,9 +309,8 @@
     <MESSAGE value="admin button in progress" />
     <MESSAGE value="login / logout" />
     <MESSAGE value="state persistence / tags routing" />
-    <MESSAGE value="edit projects, persist multiple edits til done" />
-    <MESSAGE value="moving up components" />
-    <option name="LAST_COMMIT_MESSAGE" value="moving up components" />
+    <MESSAGE value="need to fix grid" />
+    <option name="LAST_COMMIT_MESSAGE" value="need to fix grid" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
