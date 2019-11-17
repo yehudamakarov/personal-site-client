@@ -45,13 +45,22 @@ export const TagSearchContainer = (props: IOwnProps) => {
             tagsChange([]);
             // todo when the tags list is empty and you click on a tag you should load the filter again...
             // todo also, figure out routing for tags in general
-            navigate("/tags");
+            if (props.path === Routes.tagsTagIdParam && props.tagId) {
+                navigate("/tags").then(() => null);
+            }
         }
     };
 
     useEffect(() => {
-        if (props.path === Routes.tagsTagIdParam && props.tagId) {
-            tagsChange([props.tagId]);
+        if (
+            props.path === Routes.tagsTagIdParam &&
+            props.tagId &&
+            props.location
+        ) {
+            const routeTagId = props.location.href.slice(
+                props.location.href.lastIndexOf("/") + 1
+            );
+            tagsChange([routeTagId]);
         }
     }, [uri]);
 

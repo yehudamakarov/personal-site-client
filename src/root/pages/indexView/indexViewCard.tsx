@@ -68,17 +68,19 @@ const IndexViewCard = (props: {
         <Typography variant="subtitle2">{truncatedText}</Typography>
     );
 
+    const titleValue = (
+        <Typography variant="subtitle2">
+            {subTitle ? subTitle : title}
+        </Typography>
+    );
+
     return (
         <Card className={classes.root}>
             <div className={classes.div}>
                 <Tooltip
                     placement="right-start"
                     className={classes.grid}
-                    title={
-                        <Typography variant="subtitle2">
-                            {subTitle ? subTitle : title}
-                        </Typography>
-                    }
+                    title={titleValue}
                 >
                     <CardActionArea component={Link} to={regularLink}>
                         <Grid container direction="column" spacing={2}>
@@ -91,7 +93,7 @@ const IndexViewCard = (props: {
                 </Tooltip>
                 {tagIds && (
                     <div className={classes.tags}>
-                        <TagsComponent type={type} rtl tags={tagIds} />
+                        <TagsComponent small rtl tags={tagIds} />
                     </div>
                 )}
             </div>

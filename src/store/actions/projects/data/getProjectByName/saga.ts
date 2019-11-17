@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import { call, delay, put, takeEvery } from "redux-saga/effects";
-import { IProjectResponse, projectsApi } from "../api";
+import { IProjectResponse, projectsApi } from "../../api";
 import {
     GET_PROJECT_BY_NAME_LOADING,
     getProjectByNameErrorAction,

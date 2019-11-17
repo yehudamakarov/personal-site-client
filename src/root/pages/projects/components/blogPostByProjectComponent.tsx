@@ -1,5 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Card, createStyles, Grid, makeStyles, Theme, Typography } from "@material-ui/core";
+import {
+    Card,
+    createStyles,
+    Grid,
+    makeStyles,
+    Theme,
+    Typography,
+    useTheme,
+} from "@material-ui/core";
 import React, { useCallback, useLayoutEffect } from "react";
 import { SizeMeProps, withSize } from "react-sizeme";
 import { IBlogPost } from "../../../../store/actions/blogPost/api";
@@ -23,6 +31,7 @@ export const BlogPostByProjectComponent = React.memo(
         monitorHeight: true,
         monitorWidth: false,
     })((props: IOwnProps) => {
+        const theme = useTheme();
         const { blogPost, setSingleHeight, size } = props;
         const classes = useStyles();
         const memo = useCallback(() => {
@@ -34,7 +43,7 @@ export const BlogPostByProjectComponent = React.memo(
             memo();
         }, [size.height]);
         return (
-            <Card className={classes.root} square>
+            <Card square elevation={5} className={classes.root}>
                 <Grid container direction="column" spacing={1}>
                     <Grid item>
                         <Typography variant="h6">{blogPost.title}</Typography>
@@ -45,11 +54,7 @@ export const BlogPostByProjectComponent = React.memo(
                         </Typography>
                     </Grid>
                     <Grid item>
-                        <TagsComponent
-                            type="blogPost"
-                            rtl
-                            tags={blogPost.tagIds}
-                        />
+                        <TagsComponent small rtl tags={blogPost.tagIds} />
                     </Grid>
                 </Grid>
             </Card>

@@ -58,7 +58,7 @@ const theme = createMuiTheme({
             // dark: "rgb(154, 0, 54)",
             contrastText: "#F4F7F8",
             // light: "rgb(227, 51, 113)",
-            main: "#357266",
+            main: "#177269",
         },
         text: {
             disabled: "#959FA5",
@@ -89,6 +89,7 @@ const theme = createMuiTheme({
             fontSize: "1.35rem",
         },
         overline: {
+            letterSpacing: 1.1,
             lineHeight: 2.1,
         },
         subtitle2: {

@@ -15,6 +15,7 @@ interface IOwnProps extends RouteComponentProps<{ tagId?: string }> {
 export const IndexViewPage = (props: IOwnProps) => {
     const dispatch = useDispatch();
     useEffect(() => {
+
         dispatch(setRouteAction({ route: props.path, uri: props.uri }));
     }, [props.uri]);
     return (

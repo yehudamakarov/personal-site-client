@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { FilterHelpers } from "../../../helpers/filterHelpers";
 import { getBlogPostsLoadingAction } from "../../../store/actions/blogPost/getBlogPosts/actions";
-import { getProjectsLoadingAction } from "../../../store/actions/projects/getProjects/actions";
+import { getProjectsLoadingAction } from "../../../store/actions/projects/data/getProjects/actions";
 import { IApplicationState } from "../../../store/rootReducer";
 import { IFilterListingTypes } from "../../../store/ui/IUiState";
 import IndexViewCard from "./indexViewCard";

@@ -1,6 +1,6 @@
 import { fork } from "redux-saga/effects";
-import { watchGetProjectByName } from "./getProjectByName/saga";
-import { watchGetProjects } from "./getProjects/saga";
+import { watchGetProjectByName } from "./data/getProjectByName/saga";
+import { watchGetProjects } from "./data/getProjects/saga";
 
 export const projectSagas = [
     fork(watchGetProjectByName),

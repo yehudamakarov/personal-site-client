@@ -1,5 +1,5 @@
-import { IApiResponse } from "../../../types/IApiResponse";
-import { IProject } from "../api";
+import { IApiResponse } from "../../../../baseTypes/IApiResponse";
+import { IProject } from "../../api";
 
 /* -------------------------------------------------------------------------- */
 /*                        getProjectByNameLoadingAction                       */

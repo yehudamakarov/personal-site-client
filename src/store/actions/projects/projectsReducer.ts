@@ -1,35 +1,56 @@
-import { IBaseCollectionUiState } from "../../types/IBaseCollectionUiState";
+import { IBaseCollectionUiState } from "../../baseTypes/IBaseCollectionUiState";
 import { IProject } from "./api";
 import {
     GET_PROJECT_BY_NAME_ERROR,
     GET_PROJECT_BY_NAME_LOADING,
     GET_PROJECT_BY_NAME_SUCCESS,
     GetProjectByNameActionsType,
-} from "./getProjectByName/actions";
+} from "./data/getProjectByName/actions";
 import {
     GET_PROJECTS_ERROR,
     GET_PROJECTS_LOADING,
     GET_PROJECTS_SUCCESS,
     GetProjectsActionTypes,
-} from "./getProjects/actions";
+} from "./data/getProjects/actions";
+import {
+    EDIT_PROJECT_DEPLOYMENT_URL,
+    EditProjectDeploymentUrlActionTypes,
+} from "./ui/editProject/editProjectDeploymentUrl/actions";
+import { EDIT_PROJECT_TAGS_IDS, EditProjectTagIdsActionTypes } from "./ui/editProject/editProjectTags/actions";
+import {
+    SET_ANY_PROJECT_IS_DONE_EDITING,
+    SET_ANY_PROJECT_IS_EDITABLE,
+    SetAnyProjectIsEditableActionTypes,
+} from "./ui/setAnyProjectIsEditable/actions";
+
 export interface IProjectsState {
     projectsData: IProject[];
     projectsUi: IProjectsUi;
 }
 
-type IProjectsUi = IBaseCollectionUiState;
+interface IProjectsUi extends IBaseCollectionUiState {
+    singleIsEditing: { [index: string]: boolean };
+    editableProjects: { [index: string]: IProject };
+}
 
 const INITIAL_STATE: IProjectsState = {
     projectsData: [],
     projectsUi: {
         allIsError: false,
         allIsLoading: false,
+        editableProjects: {},
+        singleIsEditing: {},
         singleIsError: {},
         singleIsLoading: {},
     },
 };
 
-type ProjectsActionTypes = GetProjectByNameActionsType | GetProjectsActionTypes;
+type ProjectsActionTypes =
+    | GetProjectByNameActionsType
+    | GetProjectsActionTypes
+    | SetAnyProjectIsEditableActionTypes
+    | EditProjectDeploymentUrlActionTypes
+    | EditProjectTagIdsActionTypes;
 
 export const projectsReducer = (
     state = INITIAL_STATE,
@@ -132,6 +153,79 @@ export const projectsReducer = (
                     },
                 };
             }
+        }
+
+        case SET_ANY_PROJECT_IS_EDITABLE: {
+            const projectId = action.payload;
+            const projectToEdit = state.projectsData.find(
+                (project) => project.githubRepoDatabaseId === projectId
+            );
+            return {
+                ...state,
+                projectsUi: {
+                    ...state.projectsUi,
+                    editableProjects: {
+                        ...state.projectsUi.editableProjects,
+                        [projectId]: projectToEdit as IProject,
+                    },
+                    singleIsEditing: {
+                        ...state.projectsUi.singleIsEditing,
+                        [projectId]: true,
+                    },
+                },
+            };
+        }
+
+        case SET_ANY_PROJECT_IS_DONE_EDITING: {
+            const projectId = action.payload;
+            const editableProjects = { ...state.projectsUi.editableProjects };
+            delete editableProjects[projectId];
+            return {
+                ...state,
+                projectsUi: {
+                    ...state.projectsUi,
+                    editableProjects,
+                    singleIsEditing: {
+                        ...state.projectsUi.singleIsEditing,
+                        [projectId]: false,
+                    },
+                },
+            };
+        }
+
+        case EDIT_PROJECT_DEPLOYMENT_URL: {
+            const { projectDeploymentUrl, projectId } = action.payload;
+
+            return {
+                ...state,
+                projectsUi: {
+                    ...state.projectsUi,
+                    editableProjects: {
+                        ...state.projectsUi.editableProjects,
+                        [projectId]: {
+                            ...state.projectsUi.editableProjects[projectId],
+                            deploymentUrl: projectDeploymentUrl,
+                        },
+                    },
+                },
+            };
+        }
+        case EDIT_PROJECT_TAGS_IDS: {
+            const { projectId, projectTagIds } = action.payload;
+
+            return {
+                ...state,
+                projectsUi: {
+                    ...state.projectsUi,
+                    editableProjects: {
+                        ...state.projectsUi.editableProjects,
+                        [projectId]: {
+                            ...state.projectsUi.editableProjects[projectId],
+                            tagIds: projectTagIds,
+                        },
+                    },
+                },
+            };
         }
 
         default:
