@@ -2,11 +2,10 @@ import { IApplicationState } from "../store/rootReducer";
 import { IFilter, IFilterListingTypes } from "../store/ui/IUiState";
 
 interface ITaggable {
-    tagIds: string[];
+    tagIds: string[] | null;
 }
 
 export class FilterHelpers {
-
     public static filterIndexEntities<T>(
         filter: IFilter,
         whichListingType: (filterListingTypes: IFilterListingTypes) => boolean,
@@ -43,9 +42,9 @@ export class FilterHelpers {
 
     private static getTagsContainAHighlightedTag(
         selectedTagIds: string[],
-        containedTagIds: string[],
+        containedTagIds: string[] | null,
     ) {
-        return selectedTagIds.length > 0
+        return selectedTagIds && selectedTagIds.length > 0
             ? containedTagIds
                 ? containedTagIds.some((tag) =>
                     selectedTagIds.some((tagId) => tagId === tag)

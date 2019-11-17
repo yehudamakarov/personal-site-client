@@ -57,9 +57,8 @@ export const TagSearchContainer = (props: IOwnProps) => {
             props.tagId &&
             props.location
         ) {
-            const routeTagId = props.location.href.slice(
-                props.location.href.lastIndexOf("/") + 1
-            );
+            const href = props.location.href;
+            const routeTagId = href.slice(href.lastIndexOf("/") + 1);
             tagsChange([routeTagId]);
         }
     }, [uri]);

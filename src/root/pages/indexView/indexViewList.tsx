@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { FilterHelpers } from "../../../helpers/filterHelpers";
 import { getBlogPostsLoadingAction } from "../../../store/actions/blogPost/getBlogPosts/actions";
+import { IProject } from "../../../store/actions/projects/api";
 import { getProjectsLoadingAction } from "../../../store/actions/projects/data/getProjects/actions";
 import { IApplicationState } from "../../../store/rootReducer";
 import { IFilterListingTypes } from "../../../store/ui/IUiState";
@@ -47,7 +48,7 @@ const IndexViewList = () => {
             (filterListingTypes: IFilterListingTypes) =>
                 filterListingTypes.projects,
             (state: IApplicationState) => state.projects.projectsData,
-            (project) => project.projectTitle
+            (project: IProject) => project.projectTitle,
         ),
         _.isEqual
     );
