@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const IndexViewCard = (props: {
     title: string;
     subTitle: string | null;
-    tagIds: string[];
+    tagIds: string[] | null;
     regularLink: string;
     githubLink: string | null;
     type: "project" | "blogPost";

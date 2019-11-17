@@ -19,13 +19,19 @@ export const TagEditContainer = (props: { project: IProject | undefined }) => {
     );
 
     const selectedTagValues = useSelector((state: IApplicationState) => {
-        if (props.project && props.project.githubRepoDatabaseId) {
-            return state.projects.projectsUi.editableProjects[
-                props.project.githubRepoDatabaseId
-                ].tagIds.map((tagId) => ({
-                label: tagId,
-                value: tagId,
-            }));
+        if (props.project) {
+            const tagIds =
+                state.projects.projectsUi.editableProjects[
+                    props.project.githubRepoDatabaseId
+                ].tagIds;
+            if (props.project.githubRepoDatabaseId && tagIds) {
+                return tagIds.map((tagId) => ({
+                    label: tagId,
+                    value: tagId,
+                }));
+            } else {
+                return [];
+            }
         } else {
             return [];
         }
@@ -36,8 +42,8 @@ export const TagEditContainer = (props: { project: IProject | undefined }) => {
             dispatch(
                 editProjectTagIdsAction(
                     values,
-                    props.project.githubRepoDatabaseId,
-                ),
+                    props.project.githubRepoDatabaseId
+                )
             );
         }
     };
@@ -45,7 +51,7 @@ export const TagEditContainer = (props: { project: IProject | undefined }) => {
     const handleChangeMulti = (values: ValueType<IOptionType>) => {
         if (values) {
             tagsChange(
-                (values as OptionsType<IOptionType>).map((value) => value.label),
+                (values as OptionsType<IOptionType>).map((value) => value.label)
             );
         } else {
             tagsChange([]);

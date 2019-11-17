@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const TagsComponent = (props: {
-    tags: string[];
+    tags: string[] | null;
     rtl?: boolean;
     small?: boolean;
     project?: IProject | undefined;
