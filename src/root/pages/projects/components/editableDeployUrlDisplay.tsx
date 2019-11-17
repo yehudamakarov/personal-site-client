@@ -1,9 +1,9 @@
 import { createStyles, Fab, makeStyles, TextField, Theme } from "@material-ui/core";
-import WebAssetIcon from "@material-ui/core/SvgIcon";
+import WebAssetIcon from "@material-ui/icons/WebAsset";
 import React from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { animated, useSpring } from "react-spring";
-import { editProjectAction } from "../../../../store/actions/projects/ui/editProject/actions";
+import { editProjectDeploymentUrlAction } from "../../../../store/actions/projects/ui/editProject/editProjectDeploymentUrl/actions";
 import { IApplicationState } from "../../../../store/rootReducer";
 
 const AnimatedFab = animated(Fab);
@@ -25,20 +25,6 @@ export const EditableDeployUrlDisplay = (props: {
 
     const classes = useStyles();
 
-    const onEditProjectDeploymentUrl = (
-        event: React.ChangeEvent<HTMLInputElement>,
-    ) => {
-        const newDeploymentUrl = event.target.value;
-        if (!editableProject) {
-            return;
-        }
-        const editedProject = {
-            ...editableProject,
-            deploymentUrl: newDeploymentUrl,
-        };
-        dispatch(editProjectAction(editedProject));
-    };
-
     const { opacity, display } = useSpring({
         display: props.projectDeploymentUrl ? "flex" : "none",
         opacity: props.projectDeploymentUrl ? 1 : 0,
@@ -53,6 +39,19 @@ export const EditableDeployUrlDisplay = (props: {
     const editableProjectDeploymentUrl = editableProject
         ? editableProject.deploymentUrl
         : undefined;
+
+    const onEditProjectDeploymentUrl = (
+        event: React.ChangeEvent<HTMLInputElement>,
+    ) => {
+        const newDeploymentUrl = event.target.value;
+        if (!editableProject || !props.projectId) {
+            return;
+        }
+
+        dispatch(
+            editProjectDeploymentUrlAction(newDeploymentUrl, props.projectId),
+        );
+    };
 
     return (
         <>

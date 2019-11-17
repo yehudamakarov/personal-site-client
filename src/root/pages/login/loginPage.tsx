@@ -7,11 +7,12 @@ import TextField from "@material-ui/core/TextField";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { Link as RouterLink } from "@reach/router";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { roleType } from "../../../store/actions/auth/authReducer";
 import { loginLoadingAction } from "../../../store/actions/auth/login/actions";
 import { logoutLoadingAction } from "../../../store/actions/auth/logout/actions";
-import { IApplicationState } from "../../../store/rootReducer";
 import { Routes } from "../../../store/ui/IUiState";
+import { useAuth } from "../../hooks/useAuth";
 import { BasePage } from "../basePage";
 
 function Copyright() {
@@ -51,9 +52,7 @@ export const LoginPage = (props: { path: string }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
 
-    const isLoggedIn = useSelector(
-        (state: IApplicationState) => state.auth.loggedIn,
-    );
+    const isLoggedIn = useAuth([roleType.administrator]);
 
     const [firstName, setFirstName] = React.useState("");
     const [lastName, setLastName] = React.useState("");

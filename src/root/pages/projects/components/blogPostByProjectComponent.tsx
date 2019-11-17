@@ -1,5 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Box, Card, createStyles, Grid, makeStyles, Theme, Typography, useTheme } from "@material-ui/core";
+import {
+    Card,
+    createStyles,
+    Grid,
+    makeStyles,
+    Theme,
+    Typography,
+    useTheme,
+} from "@material-ui/core";
 import React, { useCallback, useLayoutEffect } from "react";
 import { SizeMeProps, withSize } from "react-sizeme";
 import { IBlogPost } from "../../../../store/actions/blogPost/api";
@@ -35,25 +43,21 @@ export const BlogPostByProjectComponent = React.memo(
             memo();
         }, [size.height]);
         return (
-            <Box border={1} borderColor="secondary.main">
-                <Card className={classes.root}>
-                    <Grid container direction="column" spacing={1}>
-                        <Grid item>
-                            <Typography variant="h6">
-                                {blogPost.title}
-                            </Typography>
-                        </Grid>
-                        <Grid item>
-                            <Typography variant="body2">
-                                {blogPost.description}
-                            </Typography>
-                        </Grid>
-                        <Grid item>
-                            <TagsComponent small rtl tags={blogPost.tagIds} />
-                        </Grid>
+            <Card square elevation={5} className={classes.root}>
+                <Grid container direction="column" spacing={1}>
+                    <Grid item>
+                        <Typography variant="h6">{blogPost.title}</Typography>
                     </Grid>
-                </Card>
-            </Box>
+                    <Grid item>
+                        <Typography variant="body2">
+                            {blogPost.description}
+                        </Typography>
+                    </Grid>
+                    <Grid item>
+                        <TagsComponent small rtl tags={blogPost.tagIds} />
+                    </Grid>
+                </Grid>
+            </Card>
         );
     })
 );

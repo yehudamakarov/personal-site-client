@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { OptionsType, ValueType } from "react-select/src/types";
 import { IProject } from "../../../../store/actions/projects/api";
+import { editProjectTagIdsAction } from "../../../../store/actions/projects/ui/editProject/editProjectTags/actions";
 import { getTagsLoadingAction } from "../../../../store/actions/tags/getTags/actions";
 import { IApplicationState } from "../../../../store/rootReducer";
 import { TagSearchDisplay } from "../../indexView/filter/tagSearch/tagSearchDisplay";
@@ -31,8 +32,14 @@ export const TagEditContainer = (props: { project: IProject | undefined }) => {
     });
 
     const tagsChange = (values: string[]) => {
-        // dispatch(editProjectAction());
-        debugger;
+        if (props.project) {
+            dispatch(
+                editProjectTagIdsAction(
+                    values,
+                    props.project.githubRepoDatabaseId,
+                ),
+            );
+        }
     };
 
     const handleChangeMulti = (values: ValueType<IOptionType>) => {

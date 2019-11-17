@@ -27,7 +27,7 @@ export const EditProjectButton = (props: {
     };
 
     return (
-        <Grid container>
+        <Grid container spacing={2}>
             {isAuthorized && (
                 <Grid item>
                     <Fab

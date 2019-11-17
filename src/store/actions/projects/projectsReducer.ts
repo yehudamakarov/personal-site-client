@@ -12,7 +12,11 @@ import {
     GET_PROJECTS_SUCCESS,
     GetProjectsActionTypes,
 } from "./data/getProjects/actions";
-import { EDIT_PROJECT, EditProjectActionTypes } from "./ui/editProject/actions";
+import {
+    EDIT_PROJECT_DEPLOYMENT_URL,
+    EditProjectDeploymentUrlActionTypes,
+} from "./ui/editProject/editProjectDeploymentUrl/actions";
+import { EDIT_PROJECT_TAGS_IDS, EditProjectTagIdsActionTypes } from "./ui/editProject/editProjectTags/actions";
 import {
     SET_ANY_PROJECT_IS_DONE_EDITING,
     SET_ANY_PROJECT_IS_EDITABLE,
@@ -45,7 +49,8 @@ type ProjectsActionTypes =
     | GetProjectByNameActionsType
     | GetProjectsActionTypes
     | SetAnyProjectIsEditableActionTypes
-    | EditProjectActionTypes;
+    | EditProjectDeploymentUrlActionTypes
+    | EditProjectTagIdsActionTypes;
 
 export const projectsReducer = (
     state = INITIAL_STATE,
@@ -188,9 +193,8 @@ export const projectsReducer = (
             };
         }
 
-        case EDIT_PROJECT: {
-            const project = action.payload;
-            const projectId = project.githubRepoDatabaseId;
+        case EDIT_PROJECT_DEPLOYMENT_URL: {
+            const { projectDeploymentUrl, projectId } = action.payload;
 
             return {
                 ...state,
@@ -198,7 +202,27 @@ export const projectsReducer = (
                     ...state.projectsUi,
                     editableProjects: {
                         ...state.projectsUi.editableProjects,
-                        [projectId]: project,
+                        [projectId]: {
+                            ...state.projectsUi.editableProjects[projectId],
+                            deploymentUrl: projectDeploymentUrl,
+                        },
+                    },
+                },
+            };
+        }
+        case EDIT_PROJECT_TAGS_IDS: {
+            const { projectId, projectTagIds } = action.payload;
+
+            return {
+                ...state,
+                projectsUi: {
+                    ...state.projectsUi,
+                    editableProjects: {
+                        ...state.projectsUi.editableProjects,
+                        [projectId]: {
+                            ...state.projectsUi.editableProjects[projectId],
+                            tagIds: projectTagIds,
+                        },
                     },
                 },
             };
