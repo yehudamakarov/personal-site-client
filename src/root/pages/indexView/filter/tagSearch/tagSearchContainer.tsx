@@ -52,8 +52,15 @@ export const TagSearchContainer = (props: IOwnProps) => {
     };
 
     useEffect(() => {
-        if (props.path === Routes.tagsTagIdParam && props.tagId) {
-            tagsChange([props.tagId]);
+        if (
+            props.path === Routes.tagsTagIdParam &&
+            props.tagId &&
+            props.location
+        ) {
+            const routeTagId = props.location.href.slice(
+                props.location.href.lastIndexOf("/") + 1
+            );
+            tagsChange([routeTagId]);
         }
     }, [uri]);
 
