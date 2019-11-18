@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { roleType } from "../../store/actions/auth/authReducer";
+import { roleType } from "../../store/entities/auth/actions/authReducer";
 import { IApplicationState } from "../../store/rootReducer";
 
 export const useAuth = (roles: roleType[]) => {

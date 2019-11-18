@@ -16,7 +16,7 @@ import {
 import SubjectIcon from "@material-ui/icons/Subject";
 import { Link, navigate } from "@reach/router";
 import React, { useState } from "react";
-import { IPinnedRepository } from "../../../../../../store/actions/pinnedRepositories/api";
+import { IPinnedRepository } from "../../../../../../store/entities/pinnedRepositories/actions/api";
 import { GithubIcon } from "../../../../../iconButtons/icons/githubIcon";
 
 const useStyles = makeStyles((theme: Theme) =>

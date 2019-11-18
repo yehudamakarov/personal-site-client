@@ -1,29 +1,46 @@
 import { Fab, Grid } from "@material-ui/core";
 import React from "react";
-import { useDispatch } from "react-redux";
-import { roleType } from "../../../../store/actions/auth/authReducer";
+import { useDispatch, useSelector } from "react-redux";
+import { roleType } from "../../../../store/entities/auth/actions/authReducer";
+import { ProjectDataHelper } from "../../../../store/entities/projects/helper";
+import { IProject } from "../../../../store/entities/projects/ui/actions/api";
 import {
-    setAnyProjectIsDoneEditingAction,
     setAnyProjectIsEditableAction,
-} from "../../../../store/actions/projects/ui/setAnyProjectIsEditable/actions";
+    setAnyProjectIsNotEditableAction,
+} from "../../../../store/entities/projects/ui/actions/setAnyProjectIsEditable/actions";
+import { updateProjectLoading } from "../../../../store/entities/projects/ui/actions/updateProject/actions";
+import { editableProjectSelector, projectIsEditableSelector } from "../../../../store/entities/projects/ui/selectors";
 import { useAuth } from "../../../hooks/useAuth";
 
-export const EditProjectButton = (props: {
-    projectIsEditable: boolean;
-    projectId: string | undefined;
-}) => {
+export const EditProjectButton = (props: { project?: IProject }) => {
     const dispatch = useDispatch();
     const isAuthorized = useAuth([roleType.administrator]);
+
+    const projectIsEditable = useSelector(
+        projectIsEditableSelector(props.project),
+    );
+
+    const projectId = ProjectDataHelper.getProjectId(props.project);
+    const editableProject = useSelector(editableProjectSelector(projectId));
+
     const handleProjectEdit = () => {
-        const editing = !props.projectIsEditable;
-        if (!props.projectId) {
+        if (!projectId) {
             return;
         }
-        if (editing) {
-            dispatch(setAnyProjectIsEditableAction(props.projectId));
+        if (!projectIsEditable) {
+            dispatch(setAnyProjectIsEditableAction(projectId));
         } else {
-            dispatch(setAnyProjectIsDoneEditingAction(props.projectId));
+            if (editableProject) {
+                dispatch(updateProjectLoading(editableProject));
+            }
         }
+    };
+
+    const handleProjectEditCancel = () => {
+        if (!projectId) {
+            return;
+        }
+        dispatch(setAnyProjectIsNotEditableAction(projectId));
     };
 
     return (
@@ -36,17 +53,17 @@ export const EditProjectButton = (props: {
                         size="small"
                         onClick={handleProjectEdit}
                     >
-                        {props.projectIsEditable ? "Done" : "Edit"}
+                        {projectIsEditable ? "Save" : "Edit"}
                     </Fab>
                 </Grid>
             )}
-            {isAuthorized && props.projectIsEditable && (
+            {isAuthorized && projectIsEditable && (
                 <Grid item>
                     <Fab
                         variant="extended"
                         color="secondary"
                         size="small"
-                        onClick={handleProjectEdit}
+                        onClick={handleProjectEditCancel}
                     >
                         Cancel
                     </Fab>

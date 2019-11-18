@@ -1,6 +1,6 @@
 import { Card, createStyles, makeStyles, Theme, Typography } from "@material-ui/core";
 import React from "react";
-import { IProject } from "../../../../store/actions/projects/api";
+import { IProject } from "../../../../store/entities/projects/ui/actions/api";
 import { ProjectActionButtons } from "./projectActionButtons";
 import ProjectPageTitle from "./projectPageTitle";
 

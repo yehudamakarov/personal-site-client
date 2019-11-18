@@ -22,7 +22,7 @@ import WorkIcon from "@material-ui/icons/Work";
 import { Link } from "@reach/router";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutLoadingAction } from "../../../store/actions/auth/logout/actions";
+import { logoutLoadingAction } from "../../../store/entities/auth/actions/logout/actions";
 import { IApplicationState } from "../../../store/rootReducer";
 import { closeDrawerAction } from "../../../store/ui/uiActions";
 import { ApiIcon } from "../../iconButtons/icons/apiIcon";

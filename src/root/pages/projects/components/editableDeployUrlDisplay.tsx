@@ -1,10 +1,15 @@
 import { createStyles, Fab, makeStyles, TextField, Theme } from "@material-ui/core";
 import WebAssetIcon from "@material-ui/icons/WebAsset";
 import React from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { animated, useSpring } from "react-spring";
-import { editProjectDeploymentUrlAction } from "../../../../store/actions/projects/ui/editProject/editProjectDeploymentUrl/actions";
-import { IApplicationState } from "../../../../store/rootReducer";
+import { ProjectDataHelper } from "../../../../store/entities/projects/helper";
+import { IProject } from "../../../../store/entities/projects/ui/actions/api";
+import { editProjectDeploymentUrlAction } from "../../../../store/entities/projects/ui/actions/editProject/editProjectDeploymentUrl/actions";
+import {
+    editableProjectDeploymentUrlSelector,
+    projectIsEditableSelector,
+} from "../../../../store/entities/projects/ui/selectors";
 
 const AnimatedFab = animated(Fab);
 
@@ -16,46 +21,40 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 );
 
-export const EditableDeployUrlDisplay = (props: {
-    projectIsEditable: boolean;
-    projectDeploymentUrl: string | undefined;
-    projectId: string | undefined;
-}) => {
+export const EditableDeployUrlDisplay = (props: { project?: IProject }) => {
     const dispatch = useDispatch();
-
     const classes = useStyles();
 
-    const { opacity, display } = useSpring({
-        display: props.projectDeploymentUrl ? "flex" : "none",
-        opacity: props.projectDeploymentUrl ? 1 : 0,
-    });
-
-    const editableProject = useSelector((state: IApplicationState) => {
-        if (props.projectIsEditable && props.projectId) {
-            return state.projects.projectsUi.editableProjects[props.projectId];
-        }
-    }, shallowEqual);
-
-    const editableProjectDeploymentUrl = editableProject
-        ? editableProject.deploymentUrl
-        : undefined;
+    const projectId = ProjectDataHelper.getProjectId(props.project);
+    const projectIsEditable = useSelector(
+        projectIsEditableSelector(props.project),
+    );
+    const projectDeploymentUrl = ProjectDataHelper.getProjectDeploymentUrl(
+        props.project,
+    );
+    const editableProjectDeploymentUrl = useSelector(
+        editableProjectDeploymentUrlSelector(props.project),
+    );
 
     const onEditProjectDeploymentUrl = (
         event: React.ChangeEvent<HTMLInputElement>,
     ) => {
         const newDeploymentUrl = event.target.value;
-        if (!editableProject || !props.projectId) {
+        if (!projectId) {
             return;
         }
 
-        dispatch(
-            editProjectDeploymentUrlAction(newDeploymentUrl, props.projectId),
-        );
+        dispatch(editProjectDeploymentUrlAction(newDeploymentUrl, projectId));
     };
+
+    const { opacity, display } = useSpring({
+        display: projectDeploymentUrl ? "flex" : "none",
+        opacity: projectDeploymentUrl ? 1 : 0,
+    });
 
     return (
         <>
-            {props.projectIsEditable ? (
+            {projectIsEditable ? (
                 <TextField
                     helperText={"Where this project is deployed to."}
                     value={editableProjectDeploymentUrl}
@@ -67,7 +66,7 @@ export const EditableDeployUrlDisplay = (props: {
                     variant="extended"
                     color="primary"
                     size="small"
-                    href={props.projectDeploymentUrl}
+                    href={projectDeploymentUrl}
                 >
                     <WebAssetIcon className={classes.iconMarginRight} />
                     See Live

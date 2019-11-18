@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { OptionsType, ValueType } from "react-select/src/types";
-import { IProject } from "../../../../store/actions/projects/api";
-import { editProjectTagIdsAction } from "../../../../store/actions/projects/ui/editProject/editProjectTags/actions";
-import { getTagsLoadingAction } from "../../../../store/actions/tags/getTags/actions";
+import { IProject } from "../../../../store/entities/projects/ui/actions/api";
+import { editProjectTagIdsAction } from "../../../../store/entities/projects/ui/actions/editProject/editProjectTags/actions";
+import { getTagsLoadingAction } from "../../../../store/entities/tags/actions/getTags/actions";
 import { IApplicationState } from "../../../../store/rootReducer";
 import { TagSearchDisplay } from "../../indexView/filter/tagSearch/tagSearchDisplay";
 import { IOptionType } from "../../indexView/filter/tagSearch/tagSearchHelpers";
@@ -19,12 +19,12 @@ export const TagEditContainer = (props: { project: IProject | undefined }) => {
     );
 
     const selectedTagValues = useSelector((state: IApplicationState) => {
-        if (props.project) {
+        if (props.project && props.project.githubRepoDatabaseId) {
             const tagIds =
                 state.projects.projectsUi.editableProjects[
                     props.project.githubRepoDatabaseId
                 ].tagIds;
-            if (props.project.githubRepoDatabaseId && tagIds) {
+            if (tagIds) {
                 return tagIds.map((tagId) => ({
                     label: tagId,
                     value: tagId,

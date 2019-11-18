@@ -1,16 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import {
-    Card,
-    createStyles,
-    Grid,
-    makeStyles,
-    Theme,
-    Typography,
-    useTheme,
-} from "@material-ui/core";
+import { Card, createStyles, Grid, makeStyles, Theme, Typography, useTheme } from "@material-ui/core";
 import React, { useCallback, useLayoutEffect } from "react";
 import { SizeMeProps, withSize } from "react-sizeme";
-import { IBlogPost } from "../../../../store/actions/blogPost/api";
+import { IBlogPost } from "../../../../store/entities/blogPost/actions/api";
 import TagsComponent from "./tagsComponent";
 
 const useStyles = makeStyles((theme: Theme) =>

@@ -2,7 +2,7 @@ import { navigate, RouteComponentProps } from "@reach/router";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { OptionsType, ValueType } from "react-select/src/types";
-import { getTagsLoadingAction } from "../../../../../store/actions/tags/getTags/actions";
+import { getTagsLoadingAction } from "../../../../../store/entities/tags/actions/getTags/actions";
 import { IApplicationState } from "../../../../../store/rootReducer";
 import { IndexTypeRoute, Routes } from "../../../../../store/ui/IUiState";
 import { setTagsForFilterAction } from "../../../../../store/ui/uiActions";

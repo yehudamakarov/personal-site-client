@@ -3,7 +3,7 @@ import LabelIcon from "@material-ui/icons/Label";
 import { Link } from "@reach/router";
 import React from "react";
 import { useSelector } from "react-redux";
-import { IProject } from "../../../../store/actions/projects/api";
+import { IProject } from "../../../../store/entities/projects/ui/actions/api";
 import { IApplicationState } from "../../../../store/rootReducer";
 import { TagEditContainer } from "./tagEditContainer";
 
