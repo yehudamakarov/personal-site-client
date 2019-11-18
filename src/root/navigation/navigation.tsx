@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getTagsLoadingAction } from "../../store/actions/tags/getTags/actions";
+import { getTagsLoadingAction } from "../../store/entities/tags/actions/getTags/actions";
 import { MainNavDrawer } from "./drawer/mainNavDrawer";
 import { TopBar } from "./topBar/topBar";
 

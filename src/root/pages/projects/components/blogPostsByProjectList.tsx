@@ -5,9 +5,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SizeMeProps, withSize } from "react-sizeme";
 import { animated, useSpring } from "react-spring";
-import { IBlogPost } from "../../../../store/actions/blogPost/api";
-import { getBlogPostsByProjectIdLoadingAction } from "../../../../store/actions/blogPost/getBlogPostsByProjectId/actions";
-import { IProject } from "../../../../store/actions/projects/api";
+import { IBlogPost } from "../../../../store/entities/blogPost/actions/api";
+import { getBlogPostsByProjectIdLoadingAction } from "../../../../store/entities/blogPost/actions/getBlogPostsByProjectId/actions";
+import { IProject } from "../../../../store/entities/projects/ui/actions/api";
 import { IApplicationState } from "../../../../store/rootReducer";
 import { BlogPostByProjectComponent } from "./blogPostByProjectComponent";
 

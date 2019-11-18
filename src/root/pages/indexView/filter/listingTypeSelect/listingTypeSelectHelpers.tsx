@@ -1,18 +1,15 @@
-import { IFilterListingTypes, IndexTypeRoute } from "../../../../../store/ui/IUiState";
+import { IFilterListingTypes, IndexTypeRoute, Routes } from "../../../../../store/ui/IUiState";
 
 export const getArrayOfListingTypesSelected = (
     filterListingTypes: IFilterListingTypes,
 ) => {
     const listingTypeKeys: string[] = Object.keys(filterListingTypes);
-    return listingTypeKeys.reduce(
-        (agg, el) => {
-            if (filterListingTypes[el]) {
-                agg.push(el);
-            }
-            return agg;
-        },
-        [] as string[],
-    );
+    return listingTypeKeys.reduce((agg, el) => {
+        if (filterListingTypes[el]) {
+            agg.push(el);
+        }
+        return agg;
+    }, [] as string[]);
 };
 
 export const getSelectedAsDisplayString = (selected: any) => {
@@ -38,6 +35,12 @@ export const getFilterListTypesFromPath = (
     path: IndexTypeRoute,
     filterListingTypes: IFilterListingTypes,
 ) => {
+    if (path === Routes.tagsTagIdParam || path === Routes.tags) {
+        return {
+            blogPosts: true,
+            projects: true,
+        };
+    }
     const cleanedFilterListTypes: any = {};
     const clearListingTypesNotSelected = (listingTypeKey: string) => {
         if (listingTypeKey !== path) {

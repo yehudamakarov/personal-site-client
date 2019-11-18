@@ -1,12 +1,12 @@
 import { combineReducers } from "redux-starter-kit";
-import { authReducer, IAuthState } from "./actions/auth/authReducer";
-import { blogPostsReducer, IBlogPostState } from "./actions/blogPost/blogPostReducer";
+import { authReducer, IAuthState } from "./entities/auth/actions/authReducer";
+import { blogPostsReducer, IBlogPostState } from "./entities/blogPost/actions/blogPostReducer";
 import {
     IPinnedRepositoriesState,
     pinnedRepositoriesReducer,
-} from "./actions/pinnedRepositories/pinnedRepositoriesReducer";
-import { IProjectsState, projectsReducer } from "./actions/projects/projectsReducer";
-import { ITagsState, tagsReducer } from "./actions/tags/tagsReducer";
+} from "./entities/pinnedRepositories/actions/pinnedRepositoriesReducer";
+import { IProjectsState, projectsReducer } from "./entities/projects/ui/actions/projectsReducer";
+import { ITagsState, tagsReducer } from "./entities/tags/actions/tagsReducer";
 import { IUiState } from "./ui/IUiState";
 import { uiReducer } from "./ui/uiReducer";
 

@@ -1,7 +1,7 @@
 import { createStyles, Grid, LinearProgress, makeStyles, Theme, Typography } from "@material-ui/core";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPinnedRepositoriesLoadingAction } from "../../../../../../store/actions/pinnedRepositories/getPinnedRepositories/actions";
+import { getPinnedRepositoriesLoadingAction } from "../../../../../../store/entities/pinnedRepositories/actions/getPinnedRepositories/actions";
 import { IApplicationState } from "../../../../../../store/rootReducer";
 import HomeProjectCard from "./homeProjectCard";
 

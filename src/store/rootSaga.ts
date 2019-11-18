@@ -1,9 +1,9 @@
 import { all } from "redux-saga/effects";
-import { authSagas } from "./actions/auth/authSagas";
-import { blogPostSagas } from "./actions/blogPost/blogPostSagas";
-import { pinnedRepositoriesSagas } from "./actions/pinnedRepositories/pinnedRepositoriesSagas";
-import { projectSagas } from "./actions/projects/projectsSagas";
-import { tagsSagas } from "./actions/tags/tagsSagas";
+import { authSagas } from "./entities/auth/actions/authSagas";
+import { blogPostSagas } from "./entities/blogPost/actions/blogPostSagas";
+import { pinnedRepositoriesSagas } from "./entities/pinnedRepositories/actions/pinnedRepositoriesSagas";
+import { projectSagas } from "./entities/projects/ui/actions/projectsSagas";
+import { tagsSagas } from "./entities/tags/actions/tagsSagas";
 
 export function* rootSaga() {
     yield all([...tagsSagas]);
