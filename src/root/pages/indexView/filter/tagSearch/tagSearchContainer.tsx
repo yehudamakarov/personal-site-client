@@ -72,6 +72,7 @@ export const TagSearchContainer = (props: IOwnProps) => {
             selectedTagValues={selectedTagValues}
             allTagValues={allTagValues}
             handleChangeMulti={handleChangeMulti}
+            editable={false}
         />
     );
 };

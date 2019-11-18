@@ -6,72 +6,12 @@
     <option name="FILTER_RESOLVED_ITEMS" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="can edit project, need to update">
-      <change afterPath="$PROJECT_DIR$/src/store/entities/projects/helper/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/entities/projects/ui/actions/projectsSagas.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/entities/projects/ui/actions/updateProject/actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/entities/projects/ui/actions/updateProject/saga.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/entities/projects/ui/selectors/index.ts" afterDir="false" />
+    <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/hooks/useAuth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/hooks/useAuth.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/navigation/drawer/mainNavDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/navigation/drawer/mainNavDrawer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/navigation/navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/navigation/navigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homePinnedRepositories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homePinnedRepositories.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homeProjectCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homeProjectCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/filter/listingTypeSelect/listingTypeSelectHelpers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/filter/listingTypeSelect/listingTypeSelectHelpers.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/filter/tagSearch/tagSearchContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/filter/tagSearch/tagSearchContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/indexViewList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/indexViewList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/login/loginPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/login/loginPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/blogPostByProjectComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/blogPostByProjectComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/blogPostsByProjectList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/blogPostsByProjectList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/editProjectButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/editProjectButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/editableDeployUrlDisplay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/editableDeployUrlDisplay.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/projectActionButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/projectActionButtons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/projectTitleCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/projectTitleCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/filter/tagSearch/tagSearchDisplay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/filter/tagSearch/tagSearchDisplay.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/tagEditContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/tagEditContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/tagsComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/tagsComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/projectPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/projectPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/auth/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/auth/actions/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/auth/authReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/auth/actions/authReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/auth/authSagas.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/auth/actions/authSagas.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/auth/login/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/auth/actions/login/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/auth/login/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/auth/actions/login/saga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/auth/logout/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/auth/actions/logout/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/blogPost/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/blogPost/actions/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/blogPost/blogPostReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/blogPost/actions/blogPostReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/blogPost/blogPostSagas.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/blogPost/actions/blogPostSagas.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/blogPost/getBlogPostById/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/blogPost/actions/getBlogPostById/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/blogPost/getBlogPostById/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/blogPost/actions/getBlogPostById/saga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/blogPost/getBlogPostByName/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/blogPost/actions/getBlogPostByName/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/blogPost/getBlogPosts/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/blogPost/actions/getBlogPosts/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/blogPost/getBlogPosts/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/blogPost/actions/getBlogPosts/saga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/blogPost/getBlogPostsByProjectId/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/blogPost/actions/getBlogPostsByProjectId/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/blogPost/getBlogPostsByProjectId/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/blogPost/actions/getBlogPostsByProjectId/saga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/pinnedRepositories/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/pinnedRepositories/actions/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/pinnedRepositories/getPinnedRepositories/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/pinnedRepositories/actions/getPinnedRepositories/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/pinnedRepositories/getPinnedRepositories/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/pinnedRepositories/actions/getPinnedRepositories/saga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/pinnedRepositories/pinnedRepositoriesReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/pinnedRepositories/actions/pinnedRepositoriesReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/pinnedRepositories/pinnedRepositoriesSagas.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/pinnedRepositories/actions/pinnedRepositoriesSagas.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/projects/ui/actions/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/data/getProjectByName/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/projects/data/actions/getProjectByName/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/data/getProjectByName/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/projects/data/actions/getProjectByName/saga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/data/getProjects/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/projects/data/actions/getProjects/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/data/getProjects/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/projects/data/actions/getProjects/saga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/projectsReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/projects/ui/actions/projectsReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/projectsSagas.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/ui/editProject/editProjectDeploymentUrl/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/projects/ui/actions/editProject/editProjectDeploymentUrl/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/ui/editProject/editProjectTags/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/projects/ui/actions/editProject/editProjectTags/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/ui/editProject/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/projects/ui/actions/editProject/saga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/projects/ui/setAnyProjectIsEditable/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/projects/ui/actions/setAnyProjectIsEditable/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/tags/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tags/actions/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/tags/createOrFindTagByTagId/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tags/actions/createOrFindTagByTagId/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/tags/createOrFindTagByTagId/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tags/actions/createOrFindTagByTagId/saga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/tags/getTags/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tags/actions/getTags/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/tags/getTags/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tags/actions/getTags/saga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/tags/tagsReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tags/actions/tagsReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/tags/tagsSagas.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tags/actions/tagsSagas.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/rootReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/rootReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/rootSaga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/rootSaga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/storeConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/storeConfig.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -173,7 +113,8 @@
       <workItem from="1573178871485" duration="7631000" />
       <workItem from="1573482928460" duration="13000" />
       <workItem from="1573487037555" duration="4968000" />
-      <workItem from="1573568623087" duration="37566000" />
+      <workItem from="1573568623087" duration="37884000" />
+      <workItem from="1574087619977" duration="3639000" />
     </task>
     <task id="LOCAL-00001" summary="project styles for webstorm">
       <created>1568176773387</created>
@@ -357,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574023783587</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="update">
+      <created>1574061953358</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1574061953361</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -413,7 +361,8 @@
     <MESSAGE value="need to fix grid" />
     <MESSAGE value="tags edit in progress" />
     <MESSAGE value="can edit project, need to update" />
-    <option name="LAST_COMMIT_MESSAGE" value="can edit project, need to update" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

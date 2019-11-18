@@ -2,6 +2,7 @@
 import { createStyles, emphasize, makeStyles, Theme, useTheme } from "@material-ui/core/styles";
 import React, { CSSProperties } from "react";
 import Select from "react-select";
+import CreatableSelect from "react-select/creatable";
 import { ValueType } from "react-select/src/types";
 import {
     Control,
@@ -85,6 +86,7 @@ interface IOwnProps {
     selectedTagValues: IOptionType[];
     allTagValues: IOptionType[];
     handleChangeMulti: (values: ValueType<IOptionType>) => void;
+    editable: boolean;
 }
 
 export const TagSearchDisplay = (props: IOwnProps) => {
@@ -92,35 +94,41 @@ export const TagSearchDisplay = (props: IOwnProps) => {
     const theme = useTheme();
     const selectStyles = getSelectStyles(theme);
 
+    const selectProps = {
+        TextFieldProps: {
+            InputLabelProps: {
+                htmlFor: "react-select-multiple",
+                shrink: true,
+            },
+            label: "Tags",
+        },
+        classes,
+        components: {
+            Control,
+            Menu,
+            MultiValue,
+            NoOptionsMessage,
+            Option,
+            Placeholder,
+            SingleValue,
+            ValueContainer,
+        },
+        inputId: "react-select-multiple",
+        isMulti: true,
+        onChange: props.handleChangeMulti,
+        options: props.allTagValues,
+        placeholder: "Filter by tag",
+        styles: selectStyles,
+        value: props.selectedTagValues,
+    };
+
     return (
         <div className={classes.root}>
-            <Select
-                classes={classes}
-                styles={selectStyles}
-                inputId="react-select-multiple"
-                TextFieldProps={{
-                    InputLabelProps: {
-                        htmlFor: "react-select-multiple",
-                        shrink: true,
-                    },
-                    label: "Tags",
-                }}
-                placeholder="Filter by tag"
-                options={props.allTagValues}
-                components={{
-                    Control,
-                    Menu,
-                    MultiValue,
-                    NoOptionsMessage,
-                    Option,
-                    Placeholder,
-                    SingleValue,
-                    ValueContainer,
-                }}
-                value={props.selectedTagValues}
-                onChange={props.handleChangeMulti}
-                isMulti
-            />
+            {props.editable ? (
+                <CreatableSelect {...selectProps} />
+            ) : (
+                <Select {...selectProps} />
+            )}
         </div>
     );
 };

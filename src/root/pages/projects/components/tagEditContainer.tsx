@@ -67,6 +67,7 @@ export const TagEditContainer = (props: { project: IProject | undefined }) => {
             selectedTagValues={selectedTagValues}
             allTagValues={allTagValues}
             handleChangeMulti={handleChangeMulti}
+            editable
         />
     );
 };
