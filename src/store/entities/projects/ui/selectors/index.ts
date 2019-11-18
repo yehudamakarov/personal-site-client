@@ -19,9 +19,18 @@ export const editableProjectDeploymentUrlSelector = (project?: IProject) => (
 ) => {
     const projectId = ProjectDataHelper.getProjectId(project);
     if (projectId) {
-        const editableProject =
-            state.projects.projectsUi.editableProjects[projectId];
+        const editableProject = editableProjectSelector(projectId)(state);
         return editableProject ? editableProject.deploymentUrl : undefined;
+    }
+};
+
+export const editableProjectTitleSelector = (project?: IProject) => (
+    state: IApplicationState,
+) => {
+    const projectId = ProjectDataHelper.getProjectId(project);
+    if (projectId) {
+        const editableProject = editableProjectSelector(projectId)(state);
+        return editableProject ? editableProject.projectTitle : undefined;
     }
 };
 

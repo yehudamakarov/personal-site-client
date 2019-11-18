@@ -16,13 +16,24 @@ import {
     EDIT_PROJECT_DEPLOYMENT_URL,
     EditProjectDeploymentUrlActionTypes,
 } from "./editProject/editProjectDeploymentUrl/actions";
-import { EDIT_PROJECT_TAGS_IDS, EditProjectTagIdsActionTypes } from "./editProject/editProjectTags/actions";
+import {
+    EDIT_PROJECT_TAGS_IDS,
+    EditProjectTagIdsActionTypes,
+} from "./editProject/editProjectTags/actions";
+import {
+    EDIT_PROJECT_TITLE,
+    EditProjectTitleActionTypes,
+} from "./editProject/editProjectTitle/actions";
 import {
     SET_ANY_PROJECT_IS_EDITABLE,
     SET_ANY_PROJECT_IS_NOT_EDITABLE,
     SetAnyProjectIsEditableActionTypes,
 } from "./setAnyProjectIsEditable/actions";
-import { UPDATE_PROJECT_LOADING, UPDATE_PROJECT_SUCCESS, UpdateProjectActionTypes } from "./updateProject/actions";
+import {
+    UPDATE_PROJECT_LOADING,
+    UPDATE_PROJECT_SUCCESS,
+    UpdateProjectActionTypes,
+} from "./updateProject/actions";
 
 export interface IProjectsState {
     projectsData: IProject[];
@@ -52,7 +63,8 @@ type ProjectsActionTypes =
     | SetAnyProjectIsEditableActionTypes
     | EditProjectDeploymentUrlActionTypes
     | EditProjectTagIdsActionTypes
-    | UpdateProjectActionTypes;
+    | UpdateProjectActionTypes
+    | EditProjectTitleActionTypes;
 
 export const projectsReducer = (
     state = INITIAL_STATE,
@@ -111,14 +123,13 @@ export const projectsReducer = (
                 loadingMap[projectName] = true;
             }
 
-            const newState = {
+            return {
                 ...state,
                 projectsUi: {
                     ...state.projectsUi,
                     singleIsLoading: loadingMap,
                 },
             };
-            return newState;
         }
         case GET_PROJECT_BY_NAME_SUCCESS: {
             const projects = state.projectsData;
@@ -156,7 +167,6 @@ export const projectsReducer = (
                 };
             }
         }
-
         case SET_ANY_PROJECT_IS_EDITABLE: {
             const projectId = action.payload;
             const projectToEdit = state.projectsData.find(
@@ -177,7 +187,6 @@ export const projectsReducer = (
                 },
             };
         }
-
         case SET_ANY_PROJECT_IS_NOT_EDITABLE: {
             const projectId = action.payload;
             const editableProjects = { ...state.projectsUi.editableProjects };
@@ -194,7 +203,6 @@ export const projectsReducer = (
                 },
             };
         }
-
         case UPDATE_PROJECT_LOADING: {
             const projectId = action.payload.githubRepoDatabaseId;
             const editableProjects = { ...state.projectsUi.editableProjects };
@@ -211,13 +219,12 @@ export const projectsReducer = (
                 },
             };
         }
-
         case UPDATE_PROJECT_SUCCESS: {
             const updatedProject = action.payload;
             const projectToUpdateIndex = state.projectsData.findIndex(
                 (project) =>
                     project.githubRepoDatabaseId ===
-                    updatedProject.githubRepoDatabaseId,
+                    updatedProject.githubRepoDatabaseId
             );
             return {
                 ...state,
@@ -228,7 +235,23 @@ export const projectsReducer = (
                 ],
             };
         }
+        case EDIT_PROJECT_TITLE: {
+            const { projectTitle, projectId } = action.payload;
 
+            return {
+                ...state,
+                projectsUi: {
+                    ...state.projectsUi,
+                    editableProjects: {
+                        ...state.projectsUi.editableProjects,
+                        [projectId]: {
+                            ...state.projectsUi.editableProjects[projectId],
+                            projectTitle,
+                        },
+                    },
+                },
+            };
+        }
         case EDIT_PROJECT_DEPLOYMENT_URL: {
             const { projectDeploymentUrl, projectId } = action.payload;
 

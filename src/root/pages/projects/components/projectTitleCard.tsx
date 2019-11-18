@@ -24,6 +24,7 @@ export const ProjectPageTitleCard = (props: {
         <Card className={classes.topCard} elevation={8} square>
             {/* Title */}
             <ProjectPageTitle
+                project={props.project}
                 currentProjectName={
                     props.project
                         ? props.project.projectTitle
