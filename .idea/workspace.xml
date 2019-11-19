@@ -6,13 +6,12 @@
     <option name="FILTER_RESOLVED_ITEMS" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="update project title">
-      <change afterPath="$PROJECT_DIR$/src/store/entities/projects/ui/actions/editProject/editProjectTitle/actions.ts" afterDir="false" />
+    <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/projectPageTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/projectPageTitle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/projectTitleCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/projectTitleCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/projects/ui/actions/projectsReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/projects/ui/actions/projectsReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/projects/ui/selectors/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/projects/ui/selectors/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/navigation/drawer/mainNavDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/navigation/drawer/mainNavDrawer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/filter/tagSearch/tagSearchContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/filter/tagSearch/tagSearchContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/blogPostsByProjectList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/blogPostsByProjectList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/entities/projects/ui/actions/updateProject/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/projects/ui/actions/updateProject/saga.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -115,7 +114,7 @@
       <workItem from="1573482928460" duration="13000" />
       <workItem from="1573487037555" duration="4968000" />
       <workItem from="1573568623087" duration="37884000" />
-      <workItem from="1574087619977" duration="6563000" />
+      <workItem from="1574087619977" duration="11824000" />
     </task>
     <task id="LOCAL-00001" summary="project styles for webstorm">
       <created>1568176773387</created>
@@ -313,7 +312,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574094357366</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="update project title">
+      <created>1574097486256</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1574097486256</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

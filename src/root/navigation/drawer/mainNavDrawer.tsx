@@ -12,19 +12,23 @@ import {
     Theme,
 } from "@material-ui/core";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import DashboardIcon from "@material-ui/icons/Dashboard";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import LabelTwoToneIcon from "@material-ui/icons/LabelTwoTone";
+import LockOpenIcon from "@material-ui/icons/LockOpen";
 import NotesRoundedIcon from "@material-ui/icons/NotesRounded";
 import PortraitIcon from "@material-ui/icons/Portrait";
 import WorkIcon from "@material-ui/icons/Work";
 import { Link } from "@reach/router";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { roleType } from "../../../store/entities/auth/actions/authReducer";
 import { logoutLoadingAction } from "../../../store/entities/auth/actions/logout/actions";
 import { IApplicationState } from "../../../store/rootReducer";
 import { closeDrawerAction } from "../../../store/ui/uiActions";
+import { useAuth } from "../../hooks/useAuth";
 import { ApiIcon } from "../../iconButtons/icons/apiIcon";
 import { TagListItem } from "./tagListItem";
 
@@ -33,7 +37,7 @@ const useStyles = makeStyles((theme: Theme) =>
         actions: {
             display: "flex",
             flexDirection: "row-reverse",
-            margin: theme.spacing(1),
+            margin: theme.spacing(2),
         },
         drawerBackground: {
             [theme.breakpoints.down("xs")]: {
@@ -56,9 +60,7 @@ export const MainNavDrawer = () => {
     const drawerOpen = useSelector(
         (state: IApplicationState) => state.ui.drawerOpen
     );
-    const isLoggedIn = useSelector(
-        (state: IApplicationState) => state.auth.loggedIn,
-    );
+    const isLoggedIn = useAuth([roleType.administrator]);
     const tags = useSelector((state: IApplicationState) => state.tags.tagsData);
     const dispatch = useDispatch();
     const handleDrawerClose = () => dispatch(closeDrawerAction());
@@ -87,6 +89,39 @@ export const MainNavDrawer = () => {
                             <ArrowBackIosIcon />
                         </ListItemIcon>
                     </ListItem>
+                    {!isLoggedIn ? (
+                        <ListItem
+                            button
+                            component={Link}
+                            to="login"
+                            onClick={handleDrawerClose}
+                        >
+                            <ListItemIcon>
+                                <LockOpenIcon />
+                            </ListItemIcon>
+                            <ListItemText
+                                primaryTypographyProps={{ variant: "h6" }}
+                            >
+                                Login
+                            </ListItemText>
+                        </ListItem>
+                    ) : (
+                        <ListItem
+                            button
+                            component={Link}
+                            to="dashboard"
+                            onClick={handleDrawerClose}
+                        >
+                            <ListItemIcon>
+                                <DashboardIcon />
+                            </ListItemIcon>
+                            <ListItemText
+                                primaryTypographyProps={{ variant: "h6" }}
+                            >
+                                Dashboard
+                            </ListItemText>
+                        </ListItem>
+                    )}
                     <ListItem
                         button
                         component={Link}
@@ -185,7 +220,11 @@ export const MainNavDrawer = () => {
             </Paper>
             {isLoggedIn && (
                 <div className={classes.actions}>
-                    <Button onClick={handleLogout} variant={"contained"} color={"secondary"}>
+                    <Button
+                        onClick={handleLogout}
+                        variant={"contained"}
+                        color={"secondary"}
+                    >
                         Log Out
                     </Button>
                 </div>

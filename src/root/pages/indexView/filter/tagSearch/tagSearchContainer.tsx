@@ -13,6 +13,12 @@ interface IOwnProps extends RouteComponentProps<{ tagId?: string }> {
     path: IndexTypeRoute;
 }
 
+const navigateToTags = (props: IOwnProps) => {
+    if (props.path === Routes.tagsTagIdParam && props.tagId) {
+        navigate("/tags").then(() => null);
+    }
+};
+
 export const TagSearchContainer = (props: IOwnProps) => {
     const dispatch = useDispatch();
 
@@ -43,11 +49,7 @@ export const TagSearchContainer = (props: IOwnProps) => {
             );
         } else {
             tagsChange([]);
-            // todo when the tags list is empty and you click on a tag you should load the filter again...
-            // todo also, figure out routing for tags in general
-            if (props.path === Routes.tagsTagIdParam && props.tagId) {
-                navigate("/tags").then(() => null);
-            }
+            navigateToTags(props);
         }
     };
 
