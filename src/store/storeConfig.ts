@@ -1,5 +1,5 @@
 import { navigate } from "@reach/router";
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { throttle } from "lodash";
 import createSagaMiddleware from "redux-saga";
 import { configureStore, getDefaultMiddleware } from "redux-starter-kit";
@@ -72,18 +72,25 @@ const responseInterceptorId = axios.interceptors.response.use(
     (response: AxiosResponse) => {
         return response;
     },
-    (error) => {
-        switch (error.response.status) {
-            case 401:
-                // todo set state for a login prompt
-                store.dispatch(logoutLoadingAction());
-                navigate(Routes.login).then(() => null);
-                break;
-            case 403:
-                // todo set state for a login prompt
-                store.dispatch(logoutLoadingAction());
-                navigate(Routes.login).then(() => null);
-                break;
+    (error: AxiosError) => {
+        debugger;
+        if (error.response && error.response.status) {
+            switch (error.response.status) {
+                case 401: {
+                    // todo set state for a login prompt
+                    store.dispatch(logoutLoadingAction());
+                    navigate(Routes.login).then(() => null);
+                    break;
+                }
+                case 403: {
+                    // todo set state for a login prompt
+                    store.dispatch(logoutLoadingAction());
+                    navigate(Routes.login).then(() => null);
+                    break;
+                }
+                default:
+                    break;
+            }
         }
 
         return Promise.reject(error);

@@ -1,7 +1,11 @@
 import { AxiosResponse } from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
 import { IProjectsResponse, projectsApi } from "../../../ui/actions/api";
-import { GET_PROJECTS_LOADING, getProjectsErrorAction, getProjectsSuccessAction } from "./actions";
+import {
+    GET_PROJECTS_LOADING,
+    getProjectsErrorAction,
+    getProjectsSuccessAction,
+} from "./actions";
 
 function* getProjects() {
     try {
@@ -10,8 +14,7 @@ function* getProjects() {
         );
         yield put(getProjectsSuccessAction(response.data.data));
     } catch (error) {
-        const errorContent = JSON.stringify(error.toJSON());
-        yield put(getProjectsErrorAction(errorContent));
+        yield put(getProjectsErrorAction(JSON.parse(error)));
     }
 }
 

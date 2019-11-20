@@ -2,7 +2,6 @@ import { navigate, RouteComponentProps } from "@reach/router";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { OptionsType, ValueType } from "react-select/src/types";
-import { getTagsLoadingAction } from "../../../../../store/entities/tags/actions/getTags/actions";
 import { IApplicationState } from "../../../../../store/rootReducer";
 import { IndexTypeRoute, Routes } from "../../../../../store/ui/IUiState";
 import { setTagsForFilterAction } from "../../../../../store/ui/uiActions";
@@ -23,6 +22,17 @@ export const TagSearchContainer = (props: IOwnProps) => {
     const dispatch = useDispatch();
 
     const uri = useSelector((state: IApplicationState) => state.ui.uri);
+    useEffect(() => {
+        if (
+            props.path === Routes.tagsTagIdParam &&
+            props.tagId &&
+            props.location
+        ) {
+            const href = props.location.href;
+            const routeTagId = href.slice(href.lastIndexOf("/") + 1);
+            tagsChange([routeTagId]);
+        }
+    }, [uri]);
 
     const allTagValues = useSelector((state: IApplicationState) =>
         state.tags.tagsData.map((tag) => ({
@@ -53,21 +63,7 @@ export const TagSearchContainer = (props: IOwnProps) => {
         }
     };
 
-    useEffect(() => {
-        if (
-            props.path === Routes.tagsTagIdParam &&
-            props.tagId &&
-            props.location
-        ) {
-            const href = props.location.href;
-            const routeTagId = href.slice(href.lastIndexOf("/") + 1);
-            tagsChange([routeTagId]);
-        }
-    }, [uri]);
-
-    useEffect(() => {
-        dispatch(getTagsLoadingAction());
-    }, []);
+    //
 
     return (
         <TagSearchDisplay

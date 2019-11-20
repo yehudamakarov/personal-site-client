@@ -10,7 +10,7 @@ function* getBlogPosts() {
         );
         yield put(getBlogPostsSuccessAction(response.data.data));
     } catch (error) {
-        const errorContent = JSON.stringify(error.toJSON());
+        const errorContent = JSON.stringify(error.stack);
         yield put(getBlogPostsErrorAction(errorContent));
     }
 }
