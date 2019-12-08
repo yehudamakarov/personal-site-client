@@ -10,7 +10,7 @@ import { setCheckedProjectsAction } from "../../../store/entities/tagsTransferLi
 import { setLeftProjectsAction } from "../../../store/entities/tagsTransferList/actions/setLeftProjects";
 import { setRightProjectsAction } from "../../../store/entities/tagsTransferList/actions/setRightProjects";
 import { IApplicationState } from "../../../store/rootReducer";
-import { CustomList } from "./transferList";
+import { TransferList } from "./transferList";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
         root: {
             margin: "auto",
         },
-    }),
+    })
 );
 
 export const TransferListForProjectsAndBlogPosts = (props: { tagId?: ITag["tagId"] }) => {
@@ -33,10 +33,9 @@ export const TransferListForProjectsAndBlogPosts = (props: { tagId?: ITag["tagId
                 id: project.githubRepoDatabaseId,
                 tagIds: project.tagIds,
                 title: project.projectTitle,
-            })),
-        ),
+            }))
+        )
     );
-    console.log(projectFacades);
 
     const checked = useSelector((state: IApplicationState) => state.tagsTransferList.projects.checked);
     const left = useSelector((state: IApplicationState) => state.tagsTransferList.projects.left);
@@ -48,14 +47,12 @@ export const TransferListForProjectsAndBlogPosts = (props: { tagId?: ITag["tagId
 
     useEffect(() => {
         const mappedToTag = projectFacades.filter(
-            (projectFacade) => projectFacade.tagIds && projectFacade.tagIds.some((tagId) => tagId === props.tagId),
+            (projectFacade) => projectFacade.tagIds && projectFacade.tagIds.some((tagId) => tagId === props.tagId)
         );
         const availableToMapToTag = projectFacades.filter(
             (projectFacade) =>
-                projectFacade.tagIds === null || projectFacade.tagIds.every((tagId) => tagId !== props.tagId),
+                projectFacade.tagIds === null || projectFacade.tagIds.every((tagId) => tagId !== props.tagId)
         );
-        console.log("dep: ", projectFacades.length);
-        console.log("running ", "mapped: ", mappedToTag, "available: ", availableToMapToTag);
         dispatch(setLeft(mappedToTag));
         dispatch(setRight(availableToMapToTag));
     }, [projectFacades.length]);
@@ -78,7 +75,7 @@ export const TransferListForProjectsAndBlogPosts = (props: { tagId?: ITag["tagId
     return (
         <Grid container spacing={2} justify="center" alignItems="center" className={classes.root}>
             <Grid item>
-                <CustomList title={"Choices"} items={left} checked={checked} setChecked={setChecked} />
+                <TransferList title={"Mapped"} items={left} checked={checked} setChecked={setChecked} />
             </Grid>
             <Grid item>
                 <Grid container direction="column" alignItems="center">
@@ -105,7 +102,7 @@ export const TransferListForProjectsAndBlogPosts = (props: { tagId?: ITag["tagId
                 </Grid>
             </Grid>
             <Grid item>
-                <CustomList title={"Chosen"} items={right} checked={checked} setChecked={setChecked} />
+                <TransferList title={"Available to Map"} items={right} checked={checked} setChecked={setChecked} />
             </Grid>
         </Grid>
     );

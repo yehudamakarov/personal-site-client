@@ -7,21 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/helpers/transferListHelpers.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForProjectsAndBlogPosts.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForProjectsAndBlogPostsContainer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/setCheckedProjects.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/setLeftProjects.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/setRightProjects.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/tagsTransferListReducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/tagsMapPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/tagsMapPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/indexViewPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/indexViewPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/blogPost/actions/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/blogPost/actions/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/projects/ui/selectors/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/projects/ui/selectors/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/tags/actions/getTags/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tags/actions/getTags/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/rootReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/rootReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForProjectsAndBlogPosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForProjectsAndBlogPosts.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -363,7 +351,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575523369092</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="rough draft transfer list for projects. todo: extract and replicate for blogPosts">
+      <created>1575835655594</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1575835655595</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -423,7 +418,8 @@
     <MESSAGE value="update project title" />
     <MESSAGE value="rbac, visibility, container, presentational" />
     <MESSAGE value="working on tags mapping/renaming/deleting" />
-    <option name="LAST_COMMIT_MESSAGE" value="working on tags mapping/renaming/deleting" />
+    <MESSAGE value="rough draft transfer list for projects. todo: extract and replicate for blogPosts" />
+    <option name="LAST_COMMIT_MESSAGE" value="rough draft transfer list for projects. todo: extract and replicate for blogPosts" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -441,11 +437,12 @@
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="452" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1575305999269" />
-    <state x="296" y="242" key="CommitChangelistDialog2" timestamp="1575554908474">
-      <screen x="0" y="0" width="1920" height="1200" />
+    <state x="395" y="95" width="1717" height="1141" key="CommitChangelistDialog2" timestamp="1575835654418">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1593" y="383" key="CommitChangelistDialog2/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575523368488" />
     <state x="296" y="242" key="CommitChangelistDialog2/0.0.1920.1200@0.0.1920.1200" timestamp="1575554908474" />
+    <state x="395" y="95" width="1717" height="1141" key="CommitChangelistDialog2/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575835654418" />
     <state x="689" y="253" key="RollbackChangesDialog" timestamp="1575306209906">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
