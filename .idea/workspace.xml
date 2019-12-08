@@ -6,10 +6,22 @@
     <option name="FILTER_RESOLVED_ITEMS" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="working on tags mapping/renaming/deleting">
-      <change afterPath="$PROJECT_DIR$/src/root/pages/dashboard/tagsMapPage.tsx" afterDir="false" />
+    <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/helpers/transferListHelpers.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForProjectsAndBlogPosts.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForProjectsAndBlogPostsContainer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/setCheckedProjects.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/setLeftProjects.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/setRightProjects.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/tagsTransferListReducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/root.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/tagsMapPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/tagsMapPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/indexViewPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/indexViewPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/entities/blogPost/actions/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/blogPost/actions/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/entities/projects/ui/selectors/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/projects/ui/selectors/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/entities/tags/actions/getTags/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tags/actions/getTags/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/rootReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/rootReducer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -452,11 +464,16 @@
     </state>
     <state x="898" y="250" width="1213" height="1193" key="find.popup/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575523292985" />
     <state x="573" y="177" width="774" height="846" key="find.popup/0.0.1920.1200@0.0.1920.1200" timestamp="1575321289452" />
-    <state x="848" y="237" width="1313" height="1456" key="search.everywhere.popup" timestamp="1575607900405">
-      <screen x="0" y="0" width="3008" height="1692" />
+    <state x="936" y="330" key="run.anything.popup" timestamp="1575823471946">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="936" y="330" key="run.anything.popup/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575823471946" />
+    <state x="722" y="196" width="1118" height="1205" key="search.everywhere.popup" timestamp="1575832342693">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="848" y="237" width="1313" height="1456" key="search.everywhere.popup/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575607900405" />
     <state x="541" y="168" width="838" height="1032" key="search.everywhere.popup/0.0.1920.1200@0.0.1920.1200" timestamp="1575315568683" />
+    <state x="722" y="196" width="1118" height="1205" key="search.everywhere.popup/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575832342693" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

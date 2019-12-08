@@ -10,23 +10,18 @@ export interface IBlogPost {
     description: string;
     content: string;
     projectId: string;
-    tagIds: string[];
+    tagIds: string[] | null;
     slug: string;
 }
 
 export const blogPostsApi = {
     getBlogPostById: (blogPostId: string) =>
-        axios.get<IBlogPostResponse>(
-            `${process.env.REACT_APP_API_URL}blogPosts/blogPostById`,
-            { params: { blogPostId } }
-        ),
-    getBlogPosts: () =>
-        axios.get<IBlogPostsResponse>(
-            `${process.env.REACT_APP_API_URL}blogPosts/allBlogPosts`
-        ),
+        axios.get<IBlogPostResponse>(`${process.env.REACT_APP_API_URL}blogPosts/blogPostById`, {
+            params: { blogPostId },
+        }),
+    getBlogPosts: () => axios.get<IBlogPostsResponse>(`${process.env.REACT_APP_API_URL}blogPosts/allBlogPosts`),
     getBlogPostsByProjectId: (projectId: string) =>
-        axios.get<IBlogPostsResponse>(
-            `${process.env.REACT_APP_API_URL}blogPosts/BlogPostsByProjectId`,
-            { params: { projectId } }
-        ),
+        axios.get<IBlogPostsResponse>(`${process.env.REACT_APP_API_URL}blogPosts/BlogPostsByProjectId`, {
+            params: { projectId },
+        }),
 };

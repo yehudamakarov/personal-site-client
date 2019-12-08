@@ -24,9 +24,9 @@ export interface IGetTagsSuccessAction {
 }
 
 export const getTagsSuccessAction = (
-    projects: ITag[]
+    tags: ITag[],
 ): IGetTagsSuccessAction => ({
-    payload: projects,
+    payload: tags,
     type: GET_TAGS_SUCCESS,
 });
 

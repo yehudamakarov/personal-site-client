@@ -7,6 +7,7 @@ import {
 } from "./entities/pinnedRepositories/actions/pinnedRepositoriesReducer";
 import { IProjectsState, projectsReducer } from "./entities/projects/ui/actions/projectsReducer";
 import { ITagsState, tagsReducer } from "./entities/tags/actions/tagsReducer";
+import { ITagsTransferListState, tagsTransferListReducer } from "./entities/tagsTransferList/tagsTransferListReducer";
 import { IUiState } from "./ui/IUiState";
 import { uiReducer } from "./ui/uiReducer";
 
@@ -16,6 +17,7 @@ export interface IApplicationState {
     ui: IUiState;
     blogPosts: IBlogPostState;
     tags: ITagsState;
+    tagsTransferList: ITagsTransferListState;
     auth: IAuthState;
 }
 
@@ -25,5 +27,6 @@ export const rootReducer = combineReducers<IApplicationState>({
     pinnedRepositories: pinnedRepositoriesReducer,
     projects: projectsReducer,
     tags: tagsReducer,
+    tagsTransferList: tagsTransferListReducer,
     ui: uiReducer,
 });
