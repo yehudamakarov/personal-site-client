@@ -12,6 +12,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { TransferListHelpers } from "../../../helpers/transferListHelpers";
 import { IFacade } from "../../../store/entities/projects/ui/selectors";
+import { ISetCheckedBlogPosts } from "../../../store/entities/tagsTransferList/actions/setCheckedBlogPosts";
 import { ISetCheckedProjects } from "../../../store/entities/tagsTransferList/actions/setCheckedProjects";
 import { IApplicationState } from "../../../store/rootReducer";
 
@@ -36,7 +37,7 @@ export const TransferList = (props: {
     title: React.ReactNode;
     items: IFacade[];
     checked: IFacade[];
-    setChecked: (projects: IFacade[]) => ISetCheckedProjects;
+    setChecked: (projects: IFacade[]) => ISetCheckedProjects | ISetCheckedBlogPosts;
 }) => {
     const classes = useStyles();
     const isLoading = useSelector((state: IApplicationState) => {

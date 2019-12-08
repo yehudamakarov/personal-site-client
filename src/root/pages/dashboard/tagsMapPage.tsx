@@ -3,7 +3,7 @@ import { RouteComponentProps } from "@reach/router";
 import React from "react";
 import { ITag } from "../../../store/entities/tags/actions/api";
 import { BasePage } from "../basePage";
-import { TransferListForProjectsAndBlogPostsContainer } from "./transferListForProjectsAndBlogPostsContainer";
+import { TransferListForProjectsAndBlogPosts } from "./transferListForProjectsAndBlogPosts";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -21,7 +21,7 @@ export const TagsMapPage = (props: RouteComponentProps<{ tagId: ITag["tagId"] }>
             <Typography variant={"h4"}>Map Tag: {`${props.tagId}`}</Typography>
             <Grid container>
                 <Grid item xs={12}>
-                    <TransferListForProjectsAndBlogPostsContainer tagId={props.tagId} />
+                    <TransferListForProjectsAndBlogPosts tagId={props.tagId} />
                 </Grid>
             </Grid>
         </BasePage>
