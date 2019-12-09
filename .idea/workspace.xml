@@ -6,19 +6,11 @@
     <option name="FILTER_RESOLVED_ITEMS" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="rough draft transfer list for projects. todo: extract and replicate for blogPosts">
-      <change afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListBase.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForBlogPosts.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForProjects.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/setCheckedBlogPosts.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/setLeftBlogPosts.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/setRightBlogPosts.ts" afterDir="false" />
+    <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/tagsMapPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/tagsMapPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferListBase.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListBase.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForProjectsAndBlogPosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForProjectsAndBlogPosts.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForProjectsAndBlogPostsContainer.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/tagsTransferList/tagsTransferListReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/tagsTransferListReducer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +52,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.last.introduce.type" value="CONST" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -79,9 +71,6 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions" />
-    </key>
     <key name="es6.move.members.recent.items">
       <recent name="$PROJECT_DIR$/src/root/pages/projects/components/projectTitleCard.tsx" />
     </key>
@@ -370,7 +359,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575835655595</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="loading support">
+      <created>1575837195150</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1575837195150</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,7 +427,8 @@
     <MESSAGE value="rbac, visibility, container, presentational" />
     <MESSAGE value="working on tags mapping/renaming/deleting" />
     <MESSAGE value="rough draft transfer list for projects. todo: extract and replicate for blogPosts" />
-    <option name="LAST_COMMIT_MESSAGE" value="rough draft transfer list for projects. todo: extract and replicate for blogPosts" />
+    <MESSAGE value="loading support" />
+    <option name="LAST_COMMIT_MESSAGE" value="loading support" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -449,16 +446,16 @@
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="452" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1575305999269" />
-    <state x="1593" y="383" width="1717" height="1141" key="CommitChangelistDialog2" timestamp="1575839671638">
-      <screen x="0" y="0" width="3008" height="1692" />
+    <state x="395" y="95" width="1717" height="1141" key="CommitChangelistDialog2" timestamp="1575837193933">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1593" y="383" key="CommitChangelistDialog2/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575839671638" />
+    <state x="1593" y="383" key="CommitChangelistDialog2/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575523368488" />
     <state x="296" y="242" key="CommitChangelistDialog2/0.0.1920.1200@0.0.1920.1200" timestamp="1575554908474" />
-    <state x="395" y="95" width="1717" height="1141" key="CommitChangelistDialog2/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575835654418" />
-    <state x="198" y="213" key="DiffContextDialog" timestamp="1575839664984">
-      <screen x="0" y="0" width="3008" height="1692" />
+    <state x="395" y="95" width="1717" height="1141" key="CommitChangelistDialog2/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575837193933" />
+    <state x="992" y="415" key="MultipleFileMergeDialog" timestamp="1575849708115">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="198" y="213" key="DiffContextDialog/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575839664984" />
+    <state x="992" y="415" key="MultipleFileMergeDialog/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575849708115" />
     <state x="689" y="253" key="RollbackChangesDialog" timestamp="1575306209906">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
@@ -468,14 +465,15 @@
     </state>
     <state x="553" y="213" key="SettingsEditor/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575517065196" />
     <state x="353" y="151" key="SettingsEditor/0.0.1920.1200@0.0.1920.1200" timestamp="1575305769373" />
-    <state x="460" y="277" key="Vcs.Push.Dialog.v2" timestamp="1575554913394">
-      <screen x="0" y="0" width="1920" height="1200" />
+    <state x="613" y="323" key="Vcs.Push.Dialog.v2" timestamp="1575837221156">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="460" y="277" key="Vcs.Push.Dialog.v2/0.0.1920.1200@0.0.1920.1200" timestamp="1575554913394" />
-    <state x="898" y="250" width="1213" height="1193" key="find.popup" timestamp="1575840313765">
+    <state x="613" y="323" key="Vcs.Push.Dialog.v2/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575837221156" />
+    <state x="898" y="250" width="1213" height="1193" key="find.popup" timestamp="1575523292985">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
-    <state x="898" y="250" width="1213" height="1193" key="find.popup/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575840313765" />
+    <state x="898" y="250" width="1213" height="1193" key="find.popup/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575523292985" />
     <state x="573" y="177" width="774" height="846" key="find.popup/0.0.1920.1200@0.0.1920.1200" timestamp="1575321289452" />
     <state x="936" y="330" key="run.anything.popup" timestamp="1575823471946">
       <screen x="0" y="0" width="2560" height="1400" />

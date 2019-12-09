@@ -1,6 +1,8 @@
-import { createStyles, Divider, makeStyles, Theme, Typography } from "@material-ui/core";
+import { createStyles, makeStyles, Theme, Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
+import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import React from "react";
 import { TransferListHelpers } from "../../../helpers/transferListHelpers";
 import { IFacade } from "../../../store/entities/projects/ui/selectors";
@@ -17,10 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
         button: {
             margin: theme.spacing(0.5, 0),
         },
-        root: {
-            margin: "auto",
-        },
-    }),
+    })
 );
 
 export const TransferListBase = (props: {
@@ -50,51 +49,56 @@ export const TransferListBase = (props: {
     };
 
     return (
-        <div>
-            <Typography variant={"h6"}>{props.title}</Typography>
-            <Divider />
-            <Grid container spacing={2} alignItems="center" className={classes.root}>
-                <Grid item>
-                    <TransferList
-                        title={"Mapped"}
-                        items={props.left}
-                        checked={props.checked}
-                        setChecked={props.setChecked}
-                    />
-                </Grid>
-                <Grid item>
-                    <Grid container direction="column" alignItems="center">
-                        <Button
-                            variant="outlined"
-                            size="small"
-                            className={classes.button}
-                            onClick={handleCheckedRight}
-                            disabled={leftChecked.length === 0}
-                            aria-label="move selected right"
-                        >
-                            &gt;
-                        </Button>
-                        <Button
-                            variant="outlined"
-                            size="small"
-                            className={classes.button}
-                            onClick={handleCheckedLeft}
-                            disabled={rightChecked.length === 0}
-                            aria-label="move selected left"
-                        >
-                            &lt;
-                        </Button>
+        <Grid container justify={"center"}>
+            <Grid item>
+                <Typography variant={"h6"}>{props.title}</Typography>
+                <Grid container spacing={2} alignItems="center">
+                    <Grid item>
+                        <TransferList
+                            title={"Mapped"}
+                            items={props.left}
+                            checked={props.checked}
+                            setChecked={props.setChecked}
+                        />
+                    </Grid>
+                    <Grid item>
+                        <Grid container direction="column" alignItems="center">
+                            <Button
+                                variant="outlined"
+                                size="small"
+                                className={classes.button}
+                                onClick={handleCheckedRight}
+                                disabled={leftChecked.length === 0}
+                                aria-label="move selected right"
+                                startIcon={<ArrowRightIcon />}
+                                fullWidth
+                            >
+                                Unselect
+                            </Button>
+                            <Button
+                                variant="outlined"
+                                size="small"
+                                className={classes.button}
+                                onClick={handleCheckedLeft}
+                                disabled={rightChecked.length === 0}
+                                aria-label="move selected left"
+                                startIcon={<ArrowLeftIcon />}
+                                fullWidth
+                            >
+                                Select
+                            </Button>
+                        </Grid>
+                    </Grid>
+                    <Grid item>
+                        <TransferList
+                            title={"Available to Map"}
+                            items={props.right}
+                            checked={props.checked}
+                            setChecked={props.setChecked}
+                        />
                     </Grid>
                 </Grid>
-                <Grid item>
-                    <TransferList
-                        title={"Available to Map"}
-                        items={props.right}
-                        checked={props.checked}
-                        setChecked={props.setChecked}
-                    />
-                </Grid>
             </Grid>
-        </div>
+        </Grid>
     );
 };
