@@ -1,54 +1,44 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { facadeSelector, IFacade } from "../../../store/entities/projects/ui/selectors";
+import { facadeSelector, FacadeType, IFacade } from "../../../store/entities/projects/ui/selectors";
 import { ITag } from "../../../store/entities/tags/actions/api";
-import { setCheckedProjectsAction } from "../../../store/entities/tagsTransferList/actions/setCheckedProjects";
-import { setLeftProjectsAction } from "../../../store/entities/tagsTransferList/actions/setLeftProjects";
-import { setRightProjectsAction } from "../../../store/entities/tagsTransferList/actions/setRightProjects";
+import { setLeftAction } from "../../../store/entities/tagsTransferList/actions/setLeft";
+import { setRightAction } from "../../../store/entities/tagsTransferList/actions/setRight";
 import { IApplicationState } from "../../../store/rootReducer";
 import { TransferListBase } from "./transferListBase";
 
 export const TransferListForProjects = (props: { tagId?: ITag["tagId"] }) => {
     const dispatch = useDispatch();
-    const projectFacades = useSelector(
-        facadeSelector((state: IApplicationState) =>
-            state.projects.projectsData.map((project) => ({
+    const facades = useSelector(
+        facadeSelector((state: IApplicationState) => {
+            const fromProjects = state.projects.projectsData.map((project) => ({
                 id: project.githubRepoDatabaseId,
                 tagIds: project.tagIds,
                 title: project.projectTitle,
-            })),
-        ),
+                type: FacadeType.Project,
+            }));
+            const fromBlogPosts = state.blogPosts.blogPostData.map((blogPost) => ({
+                id: blogPost.id,
+                tagIds: blogPost.tagIds,
+                title: blogPost.title,
+                type: FacadeType.BlogPost,
+            }));
+            return [...fromProjects, ...fromBlogPosts];
+        }),
     );
-
-    const checked = useSelector((state: IApplicationState) => state.tagsTransferList.projects.checked);
-    const left = useSelector((state: IApplicationState) => state.tagsTransferList.projects.left);
-    const right = useSelector((state: IApplicationState) => state.tagsTransferList.projects.right);
-
-    const setChecked = (projects: IFacade[]) => dispatch(setCheckedProjectsAction(projects));
-    const setRight = (projects: IFacade[]) => dispatch(setRightProjectsAction(projects));
-    const setLeft = (projects: IFacade[]) => dispatch(setLeftProjectsAction(projects));
 
     useEffect(() => {
-        const mappedToTag = projectFacades.filter(
-            (projectFacade) => projectFacade.tagIds && projectFacade.tagIds.some((tagId) => tagId === props.tagId),
+        const setRight = (elements: IFacade[]) => dispatch(setRightAction(elements));
+        const setLeft = (elements: IFacade[]) => dispatch(setLeftAction(elements));
+        const mappedToTag = facades.filter(
+            (facade) => facade.tagIds && facade.tagIds.some((tagId) => tagId === props.tagId),
         );
-        const availableToMapToTag = projectFacades.filter(
-            (projectFacade) =>
-                projectFacade.tagIds === null || projectFacade.tagIds.every((tagId) => tagId !== props.tagId),
+        const availableToMapToTag = facades.filter(
+            (facade) => facade.tagIds === null || facade.tagIds.every((tagId) => tagId !== props.tagId),
         );
-        dispatch(setLeft(mappedToTag));
-        dispatch(setRight(availableToMapToTag));
-    }, [projectFacades.length]);
+        setLeft(mappedToTag);
+        setRight(availableToMapToTag);
+    }, [dispatch, facades.length, props.tagId]);
 
-    return (
-        <TransferListBase
-            title={"Projects"}
-            checked={checked}
-            left={left}
-            right={right}
-            setChecked={setChecked}
-            setRight={setRight}
-            setLeft={setLeft}
-        />
-    );
+    return <TransferListBase title={"Projects"} />;
 };

@@ -2,14 +2,13 @@ import { createStyles, Divider, makeStyles, Theme, Typography } from "@material-
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { TransferListHelpers } from "../../../helpers/transferListHelpers";
 import { IFacade } from "../../../store/entities/projects/ui/selectors";
-import { ISetCheckedBlogPosts } from "../../../store/entities/tagsTransferList/actions/setCheckedBlogPosts";
-import { ISetCheckedProjects } from "../../../store/entities/tagsTransferList/actions/setCheckedProjects";
-import { ISetLeftBlogPosts } from "../../../store/entities/tagsTransferList/actions/setLeftBlogPosts";
-import { ISetLeftProjects } from "../../../store/entities/tagsTransferList/actions/setLeftProjects";
-import { ISetRightBlogPosts } from "../../../store/entities/tagsTransferList/actions/setRightBlogPosts";
-import { ISetRightProjects } from "../../../store/entities/tagsTransferList/actions/setRightProjects";
+import { setCheckedAction } from "../../../store/entities/tagsTransferList/actions/setChecked";
+import { setLeftAction } from "../../../store/entities/tagsTransferList/actions/setLeft";
+import { setRightAction } from "../../../store/entities/tagsTransferList/actions/setRight";
+import { IApplicationState } from "../../../store/rootReducer";
 import { TransferList } from "./transferList";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -23,30 +22,35 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-export const TransferListBase = (props: {
-    title: string;
-    checked: IFacade[];
-    right: IFacade[];
-    left: IFacade[];
-    setChecked: (projects: IFacade[]) => ISetCheckedProjects | ISetCheckedBlogPosts;
-    setRight: (projects: IFacade[]) => ISetRightProjects | ISetRightBlogPosts;
-    setLeft: (projects: IFacade[]) => ISetLeftProjects | ISetLeftBlogPosts;
-}) => {
+export const TransferListBase = (props: { title: string }) => {
     const classes = useStyles();
+    const dispatch = useDispatch();
 
-    const leftChecked = TransferListHelpers.intersection(props.checked, props.left);
-    const rightChecked = TransferListHelpers.intersection(props.checked, props.right);
+    const setChecked = (elements: IFacade[]) => dispatch(setCheckedAction(elements));
+    const setRight = (elements: IFacade[]) => dispatch(setRightAction(elements));
+    const setLeft = (elements: IFacade[]) => dispatch(setLeftAction(elements));
+
+    const checkedSelector = (state: IApplicationState) => state.tagsTransferList.checked;
+    const leftSelector = (state: IApplicationState) => state.tagsTransferList.left;
+    const rightSelector = (state: IApplicationState) => state.tagsTransferList.right;
+
+    const checked = useSelector(checkedSelector);
+    const right = useSelector(rightSelector);
+    const left = useSelector(leftSelector);
+
+    const leftChecked = TransferListHelpers.intersection(checked, left);
+    const rightChecked = TransferListHelpers.intersection(checked, right);
 
     const handleCheckedRight = () => {
-        props.setRight(props.right.concat(leftChecked));
-        props.setLeft(TransferListHelpers.not(props.left, leftChecked));
-        props.setChecked(TransferListHelpers.not(props.checked, leftChecked));
+        setRight(right.concat(leftChecked));
+        setLeft(TransferListHelpers.not(left, leftChecked));
+        setChecked(TransferListHelpers.not(checked, leftChecked));
     };
 
     const handleCheckedLeft = () => {
-        props.setLeft(props.left.concat(rightChecked));
-        props.setRight(TransferListHelpers.not(props.right, rightChecked));
-        props.setChecked(TransferListHelpers.not(props.checked, rightChecked));
+        setLeft(left.concat(rightChecked));
+        setRight(TransferListHelpers.not(right, rightChecked));
+        setChecked(TransferListHelpers.not(checked, rightChecked));
     };
 
     return (
@@ -55,12 +59,7 @@ export const TransferListBase = (props: {
             <Divider />
             <Grid container spacing={2} alignItems="center" className={classes.root}>
                 <Grid item>
-                    <TransferList
-                        title={"Mapped"}
-                        items={props.left}
-                        checked={props.checked}
-                        setChecked={props.setChecked}
-                    />
+                    <TransferList title={"Mapped"} items={left} checked={checked} setChecked={setChecked} />
                 </Grid>
                 <Grid item>
                     <Grid container direction="column" alignItems="center">
@@ -87,12 +86,7 @@ export const TransferListBase = (props: {
                     </Grid>
                 </Grid>
                 <Grid item>
-                    <TransferList
-                        title={"Available to Map"}
-                        items={props.right}
-                        checked={props.checked}
-                        setChecked={props.setChecked}
-                    />
+                    <TransferList title={"Available to Map"} items={right} checked={checked} setChecked={setChecked} />
                 </Grid>
             </Grid>
         </div>

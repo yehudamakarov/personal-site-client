@@ -35,10 +35,16 @@ export const editableProjectSelector = (projectId: IProject["githubRepoDatabaseI
     }
 };
 
+export enum FacadeType {
+    Project,
+    BlogPost,
+}
+
 export interface IFacade {
     id: IProject["githubRepoDatabaseId"] | IBlogPost["id"];
     title: IProject["projectTitle"] | IBlogPost["title"];
     tagIds: IProject["tagIds"] | IBlogPost["tagIds"];
+    type: FacadeType;
 }
 
 export const facadeSelector = (selector: (state: IApplicationState) => IFacade[]) => (
