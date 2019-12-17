@@ -58,22 +58,40 @@ function getToken() {
     return store.getState().auth.token;
 }
 
-const requestInterceptorId = axios.interceptors.request.use(
-    (config: AxiosRequestConfig) => {
-        const token = getToken();
-        if (token !== null) {
-            config.headers.Authorization = `Bearer ${token}`;
+interface IApiCache {
+    [index: string]: { lastFetchAt: number; currentData: any };
+}
+
+const cache: IApiCache = {};
+
+const apiCacheRequestHandler = axios.interceptors.request.use((config: AxiosRequestConfig) => {
+    // how do i not send request, and return data of my choice
+    return config;
+});
+
+const apiCacheResponseHandler = axios.interceptors.response.use(
+    (response: AxiosResponse) => {
+        if (response.config.url) {
+            cache[response.config.url] = { currentData: response, lastFetchAt: Date.now() };
         }
-        return config;
-    }
+        return response;
+    },
+    (error: AxiosError) => error,
 );
 
-const responseInterceptorId = axios.interceptors.response.use(
+const tokenInsertRequestHandler = axios.interceptors.request.use((config: AxiosRequestConfig) => {
+    const token = getToken();
+    if (token !== null) {
+        config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+});
+
+const tokenExpiredResponseHandler = axios.interceptors.response.use(
     (response: AxiosResponse) => {
         return response;
     },
     (error: AxiosError) => {
-        debugger;
         if (error.response && error.response.status) {
             switch (error.response.status) {
                 case 401: {

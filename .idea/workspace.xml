@@ -7,16 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/getTransferListFacades.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/api.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/transferListSagas.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForProjects.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForProjects.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForProjectsAndBlogPosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForProjectsAndBlogPosts.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/projects/ui/actions/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/projects/ui/actions/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/getTransferListFacades" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/sagas/getTransferListFacadesSaga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/tagsTransferList/tagsTransferListReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/tagsTransferListReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/rootSaga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/rootSaga.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/storeConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/storeConfig.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +131,7 @@
       <workItem from="1575900316807" duration="290000" />
       <workItem from="1576028340795" duration="744000" />
       <workItem from="1576453493875" duration="12775000" />
-      <workItem from="1576550324592" duration="5522000" />
+      <workItem from="1576550324592" duration="7199000" />
     </task>
     <task id="LOCAL-00001" summary="project styles for webstorm">
       <created>1568176773387</created>
@@ -386,7 +378,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576479804634</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="working on fixing transfer list architecture">
+      <created>1576563532787</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1576563532787</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -478,11 +477,11 @@
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="1179" y="544" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1576461939717" />
-    <state x="252" y="51" width="1717" height="1141" key="CommitChangelistDialog2" timestamp="1576479804342">
+    <state x="252" y="51" width="1717" height="1141" key="CommitChangelistDialog2" timestamp="1576563532475">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="1593" y="383" key="CommitChangelistDialog2/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575848306443" />
-    <state x="252" y="51" key="CommitChangelistDialog2/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1576479804342" />
+    <state x="252" y="51" key="CommitChangelistDialog2/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1576563532475" />
     <state x="296" y="242" key="CommitChangelistDialog2/0.0.1920.1200@0.0.1920.1200" timestamp="1575554908474" />
     <state x="804" y="289" key="CommitChangelistDialog2/0.23.1874.1177@0.23.1874.1177" timestamp="1575900332338" />
     <state x="395" y="95" width="1717" height="1141" key="CommitChangelistDialog2/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575835654418" />
@@ -500,11 +499,11 @@
     <state x="553" y="213" key="SettingsEditor/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575517065196" />
     <state x="968" y="162" width="1434" height="1335" key="SettingsEditor/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1576551329854" />
     <state x="353" y="151" key="SettingsEditor/0.0.1920.1200@0.0.1920.1200" timestamp="1575305769373" />
-    <state x="721" y="391" key="Vcs.Push.Dialog.v2" timestamp="1576479813961">
+    <state x="721" y="391" key="Vcs.Push.Dialog.v2" timestamp="1576563538150">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="721" y="391" key="Vcs.Push.Dialog.v2/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575848311517" />
-    <state x="721" y="391" key="Vcs.Push.Dialog.v2/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1576479813961" />
+    <state x="721" y="391" key="Vcs.Push.Dialog.v2/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1576563538150" />
     <state x="460" y="277" key="Vcs.Push.Dialog.v2/0.0.1920.1200@0.0.1920.1200" timestamp="1575554913394" />
     <state x="449" y="295" key="Vcs.Push.Dialog.v2/0.23.1874.1177@0.23.1874.1177" timestamp="1575900335626" />
     <state x="898" y="250" width="1213" height="1193" key="find.popup" timestamp="1576561461889">
@@ -517,11 +516,11 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="936" y="330" key="run.anything.popup/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575823471946" />
-    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup" timestamp="1576563420976">
+    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup" timestamp="1576564368443">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="848" y="237" width="1313" height="1456" key="search.everywhere.popup/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575607900405" />
-    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1576563420976" />
+    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1576564368443" />
     <state x="541" y="168" width="838" height="1032" key="search.everywhere.popup/0.0.1920.1200@0.0.1920.1200" timestamp="1575315568683" />
     <state x="722" y="196" width="1118" height="1205" key="search.everywhere.popup/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575832342693" />
   </component>
