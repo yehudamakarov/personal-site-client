@@ -1,5 +1,6 @@
 import { IApplicationState } from "../../../../rootReducer";
 import { IBlogPost } from "../../../blogPost/actions/api";
+import { TransferListFacadeId } from "../../../tagsTransferList/tagsTransferListReducer";
 import { ProjectDataHelper } from "../../helper";
 import { IProject } from "../actions/api";
 
@@ -41,7 +42,8 @@ export enum FacadeType {
 }
 
 export interface IFacade {
-    id: IProject["githubRepoDatabaseId"] | IBlogPost["id"];
+    id: TransferListFacadeId;
+    link: string;
     title: IProject["projectTitle"] | IBlogPost["title"];
     tagIds: IProject["tagIds"] | IBlogPost["tagIds"];
     type: FacadeType;

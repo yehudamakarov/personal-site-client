@@ -10,7 +10,7 @@ export const TransferListForProjectsAndBlogPosts = (props: { tagId?: ITag["tagId
 
     useEffect(() => {
         dispatch(getTransferListFacadesLoadingAction(props.tagId));
-    }, [dispatch]);
+    }, [dispatch, props.tagId]);
 
     return (
         <Grid container>

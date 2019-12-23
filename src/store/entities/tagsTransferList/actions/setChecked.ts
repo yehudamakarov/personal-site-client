@@ -1,13 +1,13 @@
-import { IFacade } from "../../projects/ui/selectors";
+import { FacadeIds } from "../tagsTransferListReducer";
 
 export const SET_CHECKED = "SET_CHECKED";
 
 export interface ISetChecked {
     type: typeof SET_CHECKED;
-    payload: IFacade[];
+    payload: FacadeIds;
 }
 
-export const setCheckedAction = (elements: IFacade[]): ISetChecked => ({
-    payload: elements,
+export const setCheckedAction = (facadeIds: FacadeIds): ISetChecked => ({
+    payload: facadeIds,
     type: SET_CHECKED,
 });

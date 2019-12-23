@@ -14,34 +14,40 @@ import { setRightAction } from "../setRight";
 
 function* getTransferListFacades(action: IGetTransferListFacadesLoadingAction) {
     try {
+        const currentTagId = action.payload;
         const [projectsResponse, blogPostsResponse]: [
             AxiosResponse<IProjectsResponse>,
             AxiosResponse<IBlogPostsResponse>
         ] = yield all([call(projectsApi.getProjects), call(blogPostsApi.getBlogPosts)]);
+
         const projectFacades: IFacade[] = projectsResponse.data.data.map((value) => ({
             id: value.githubRepoDatabaseId,
+            link: `/projects/${value.slug}`,
             tagIds: value.tagIds,
             title: value.projectTitle,
             type: FacadeType.Project,
         }));
         const blogPostFacades: IFacade[] = blogPostsResponse.data.data.map((value) => ({
             id: value.id,
+            link: `/blogPosts/${value.slug}`,
             tagIds: value.tagIds,
             title: value.title,
             type: FacadeType.BlogPost,
         }));
-        const facades = [...projectFacades, ...blogPostFacades];
+        const facades = projectFacades.concat(blogPostFacades);
         yield put(getTransferListFacadesSuccessAction(facades));
-        const availableToMapToTag = facades.filter(
-            (facade) => facade.tagIds === null || facade.tagIds.every((tagId) => tagId !== action.payload)
-        );
-        const mappedToTag = facades.filter(
-            (facade) => facade.tagIds && facade.tagIds.some((tagId) => tagId === action.payload)
-        );
+
+        const availableToMapToTag = facades
+            .filter((facade) => facade.tagIds === null || facade.tagIds.every((tagId) => tagId !== currentTagId))
+            .map((facade) => facade.id);
         yield put(setRightAction(availableToMapToTag));
+
+        const mappedToTag = facades
+            .filter((facade) => facade.tagIds && facade.tagIds.some((tagId) => tagId === currentTagId))
+            .map((facade) => facade.id);
         yield put(setLeftAction(mappedToTag));
     } catch (error) {
-        yield put(getTransferListFacadesErrorAction(JSON.parse(error)));
+        yield put(getTransferListFacadesErrorAction(JSON.stringify(error)));
     }
 }
 

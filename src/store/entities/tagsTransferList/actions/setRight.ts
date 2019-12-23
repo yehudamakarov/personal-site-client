@@ -1,13 +1,13 @@
-import { IFacade } from "../../projects/ui/selectors";
+import { FacadeIds } from "../tagsTransferListReducer";
 
 export const SET_RIGHT = "SET_RIGHT";
 
 export interface ISetRight {
     type: typeof SET_RIGHT;
-    payload: IFacade[];
+    payload: FacadeIds;
 }
 
-export const setRightAction = (elements: IFacade[]): ISetRight => ({
-    payload: elements,
+export const setRightAction = (ids: FacadeIds): ISetRight => ({
+    payload: ids,
     type: SET_RIGHT,
 });

@@ -1,13 +1,13 @@
-import { IFacade } from "../../projects/ui/selectors";
+import { FacadeIds } from "../tagsTransferListReducer";
 
 export const SET_LEFT = "SET_LEFT";
 
 export interface ISetLeft {
     type: typeof SET_LEFT;
-    payload: IFacade[];
+    payload: FacadeIds;
 }
 
-export const setLeftAction = (elements: IFacade[]): ISetLeft => ({
-    payload: elements,
+export const setLeftAction = (facadeIds: FacadeIds): ISetLeft => ({
+    payload: facadeIds,
     type: SET_LEFT,
 });

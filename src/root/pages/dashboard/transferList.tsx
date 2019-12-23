@@ -5,15 +5,14 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Divider from "@material-ui/core/Divider";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import React from "react";
 import { useSelector } from "react-redux";
 import { TransferListHelpers } from "../../../helpers/transferListHelpers";
-import { IFacade } from "../../../store/entities/projects/ui/selectors";
 import { ISetChecked } from "../../../store/entities/tagsTransferList/actions/setChecked";
+import { FacadeIds, TransferListFacadeId } from "../../../store/entities/tagsTransferList/tagsTransferListReducer";
 import { IApplicationState } from "../../../store/rootReducer";
+import { TransferListItem } from "./transferListItem";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -34,16 +33,16 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const TransferList = (props: {
     title: React.ReactNode;
-    items: IFacade[];
-    checked: IFacade[];
-    setChecked: (elements: IFacade[]) => ISetChecked;
+    items: FacadeIds;
+    checked: FacadeIds;
+    setChecked: (facadeIds: FacadeIds) => ISetChecked;
 }) => {
     const classes = useStyles();
     const isLoading = useSelector((state: IApplicationState) => {
         return state.projects.projectsUi.allIsLoading || state.blogPosts.blogPostUi.allIsLoading;
     });
 
-    const handleToggleAll = (items: IFacade[]) => () => {
+    const handleToggleAll = (items: FacadeIds) => () => {
         if (numberOfChecked(items) === items.length) {
             props.setChecked(TransferListHelpers.not(props.checked, items));
         } else {
@@ -51,10 +50,10 @@ export const TransferList = (props: {
         }
     };
 
-    const numberOfChecked = (items: IFacade[]) => TransferListHelpers.intersection(props.checked, items).length;
+    const numberOfChecked = (items: FacadeIds) => TransferListHelpers.intersection(props.checked, items).length;
 
-    const handleToggle = (value: IFacade) => () => {
-        const currentIndex = props.checked.findIndex((facade) => facade.id === value.id);
+    const handleToggle = (value: TransferListFacadeId) => () => {
+        const currentIndex = props.checked.findIndex((facadeId) => facadeId === value);
         const newChecked = [...props.checked];
 
         if (currentIndex === -1) {
@@ -83,6 +82,7 @@ export const TransferList = (props: {
                 <CardHeader
                     className={classes.cardHeader}
                     avatar={titleCheckbox}
+                    titleTypographyProps={{ variant: "button" }}
                     title={props.title}
                     subheader={`${numberOfChecked(props.items)}/${props.items.length} selected`}
                 />
@@ -95,21 +95,14 @@ export const TransferList = (props: {
                         <CircularProgress variant={"indeterminate"} />
                     </div>
                 ) : (
-                    props.items.map((value: IFacade) => {
-                        const labelId = `transfer-list-all-item-${value}-label`;
-
+                    props.items.map((value: TransferListFacadeId) => {
                         return (
-                            <ListItem key={value.id} role="listitem" button onClick={handleToggle(value)}>
-                                <ListItemIcon>
-                                    <Checkbox
-                                        checked={props.checked.indexOf(value) !== -1}
-                                        tabIndex={-1}
-                                        disableRipple
-                                        inputProps={{ "aria-labelledby": labelId }}
-                                    />
-                                </ListItemIcon>
-                                <ListItemText id={labelId} primary={value.title} />
-                            </ListItem>
+                            <TransferListItem
+                                key={value}
+                                onClick={handleToggle(value)}
+                                checked={props.checked.indexOf(value) !== -1}
+                                searchElement={value}
+                            />
                         );
                     })
                 )}

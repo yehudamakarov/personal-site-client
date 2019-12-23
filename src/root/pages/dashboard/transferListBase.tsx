@@ -1,13 +1,13 @@
-import { createStyles, Divider, makeStyles, Theme, Typography } from "@material-ui/core";
+import { createStyles, makeStyles, Theme } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TransferListHelpers } from "../../../helpers/transferListHelpers";
-import { IFacade } from "../../../store/entities/projects/ui/selectors";
 import { setCheckedAction } from "../../../store/entities/tagsTransferList/actions/setChecked";
 import { setLeftAction } from "../../../store/entities/tagsTransferList/actions/setLeft";
 import { setRightAction } from "../../../store/entities/tagsTransferList/actions/setRight";
+import { FacadeIds } from "../../../store/entities/tagsTransferList/tagsTransferListReducer";
 import { IApplicationState } from "../../../store/rootReducer";
 import { TransferList } from "./transferList";
 
@@ -19,16 +19,16 @@ const useStyles = makeStyles((theme: Theme) =>
         root: {
             margin: "auto",
         },
-    }),
+    })
 );
 
-export const TransferListBase = (props: { title: string }) => {
+export const TransferListBase = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
 
-    const setChecked = (elements: IFacade[]) => dispatch(setCheckedAction(elements));
-    const setRight = (elements: IFacade[]) => dispatch(setRightAction(elements));
-    const setLeft = (elements: IFacade[]) => dispatch(setLeftAction(elements));
+    const setChecked = (facadeIds: FacadeIds) => dispatch(setCheckedAction(facadeIds));
+    const setRight = (facadeIds: FacadeIds) => dispatch(setRightAction(facadeIds));
+    const setLeft = (facadeIds: FacadeIds) => dispatch(setLeftAction(facadeIds));
 
     const checkedSelector = (state: IApplicationState) => state.tagsTransferList.checked;
     const leftSelector = (state: IApplicationState) => state.tagsTransferList.left;
@@ -55,8 +55,6 @@ export const TransferListBase = (props: { title: string }) => {
 
     return (
         <div>
-            <Typography variant={"h6"}>{props.title}</Typography>
-            <Divider />
             <Grid container spacing={2} alignItems="center" className={classes.root}>
                 <Grid item>
                     <TransferList title={"Mapped"} items={left} checked={checked} setChecked={setChecked} />

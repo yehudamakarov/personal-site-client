@@ -6,13 +6,16 @@ import { ISetChecked } from "./actions/setChecked";
 import { ISetLeft } from "./actions/setLeft";
 import { ISetRight } from "./actions/setRight";
 
+export type FacadeIds = TransferListFacadeId[];
+export type TransferListFacadeId = IProject["githubRepoDatabaseId"] | IBlogPost["id"];
+
 export interface ITagsTransferListState {
     allIsLoading: boolean;
     allIsError: boolean;
-    checked: IFacade[];
-    right: IFacade[];
-    left: IFacade[];
-    facadeIds: Array<IProject["githubRepoDatabaseId"] | IBlogPost["id"]>;
+    checked: FacadeIds;
+    right: FacadeIds;
+    left: FacadeIds;
+    facadeIds: FacadeIds;
     facadeItems: { [index: string]: IFacade };
 }
 
