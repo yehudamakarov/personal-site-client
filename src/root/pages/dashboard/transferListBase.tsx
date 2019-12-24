@@ -1,104 +1,190 @@
-import { createStyles, makeStyles, Theme, Typography } from "@material-ui/core";
+import { createStyles, makeStyles, Theme, useMediaQuery } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
-import ArrowRightIcon from "@material-ui/icons/ArrowRight";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import SaveOutlinedIcon from "@material-ui/icons/SaveOutlined";
+import { ToggleButton } from "@material-ui/lab";
+import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { TransferListHelpers } from "../../../helpers/transferListHelpers";
-import { IFacade } from "../../../store/entities/projects/ui/selectors";
-import { ISetCheckedBlogPosts } from "../../../store/entities/tagsTransferList/actions/setCheckedBlogPosts";
-import { ISetCheckedProjects } from "../../../store/entities/tagsTransferList/actions/setCheckedProjects";
-import { ISetLeftBlogPosts } from "../../../store/entities/tagsTransferList/actions/setLeftBlogPosts";
-import { ISetLeftProjects } from "../../../store/entities/tagsTransferList/actions/setLeftProjects";
-import { ISetRightBlogPosts } from "../../../store/entities/tagsTransferList/actions/setRightBlogPosts";
-import { ISetRightProjects } from "../../../store/entities/tagsTransferList/actions/setRightProjects";
+import { setCheckedAction } from "../../../store/entities/tagsTransferList/actions/setChecked";
+import { setLeftAction } from "../../../store/entities/tagsTransferList/actions/setLeft";
+import { setRightAction } from "../../../store/entities/tagsTransferList/actions/setRight";
+import { FacadeIds } from "../../../store/entities/tagsTransferList/tagsTransferListReducer";
+import { IApplicationState } from "../../../store/rootReducer";
 import { TransferList } from "./transferList";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        button: {
-            margin: theme.spacing(0.5, 0),
+        fabIcon: {
+            marginRight: theme.spacing(1),
+        },
+        fabSpan: {
+            paddingLeft: theme.spacing(1),
+            paddingRight: theme.spacing(1),
+        },
+        root: {
+            [theme.breakpoints.down("xs")]: {
+                marginTop: theme.spacing(1),
+            },
+            [theme.breakpoints.up("sm")]: {
+                marginTop: theme.spacing(3),
+            },
+        },
+        toggleButton: {
+            backgroundColor: `${theme.palette.primary.main} !important`,
+            color: `${theme.palette.primary.contrastText} !important`,
         },
     })
 );
 
-export const TransferListBase = (props: {
-    title: string;
-    checked: IFacade[];
-    right: IFacade[];
-    left: IFacade[];
-    setChecked: (projects: IFacade[]) => ISetCheckedProjects | ISetCheckedBlogPosts;
-    setRight: (projects: IFacade[]) => ISetRightProjects | ISetRightBlogPosts;
-    setLeft: (projects: IFacade[]) => ISetLeftProjects | ISetLeftBlogPosts;
-}) => {
+export const TransferListBase = () => {
     const classes = useStyles();
+    const isXs = useMediaQuery((theme: Theme) => theme.breakpoints.down("xs"));
+    const dispatch = useDispatch();
 
-    const leftChecked = TransferListHelpers.intersection(props.checked, props.left);
-    const rightChecked = TransferListHelpers.intersection(props.checked, props.right);
+    const [currentList, setCurrentList] = React.useState("left");
+    const handleChangeList = (event: React.MouseEvent<HTMLElement>, value: "left" | "right") => {
+        setCurrentList(value);
+    };
+
+    const setChecked = (facadeIds: FacadeIds) => dispatch(setCheckedAction(facadeIds));
+    const setRight = (facadeIds: FacadeIds) => dispatch(setRightAction(facadeIds));
+    const setLeft = (facadeIds: FacadeIds) => dispatch(setLeftAction(facadeIds));
+
+    const checkedSelector = (state: IApplicationState) => state.tagsTransferList.checked;
+    const leftSelector = (state: IApplicationState) => state.tagsTransferList.left;
+    const rightSelector = (state: IApplicationState) => state.tagsTransferList.right;
+
+    const checked = useSelector(checkedSelector);
+    const right = useSelector(rightSelector);
+    const left = useSelector(leftSelector);
+
+    const leftChecked = TransferListHelpers.intersection(checked, left);
+    const rightChecked = TransferListHelpers.intersection(checked, right);
 
     const handleCheckedRight = () => {
-        props.setRight(props.right.concat(leftChecked));
-        props.setLeft(TransferListHelpers.not(props.left, leftChecked));
-        props.setChecked(TransferListHelpers.not(props.checked, leftChecked));
+        setRight(right.concat(leftChecked));
+        setLeft(TransferListHelpers.not(left, leftChecked));
+        setChecked(TransferListHelpers.not(checked, leftChecked));
     };
 
     const handleCheckedLeft = () => {
-        props.setLeft(props.left.concat(rightChecked));
-        props.setRight(TransferListHelpers.not(props.right, rightChecked));
-        props.setChecked(TransferListHelpers.not(props.checked, rightChecked));
+        setLeft(left.concat(rightChecked));
+        setRight(TransferListHelpers.not(right, rightChecked));
+        setChecked(TransferListHelpers.not(checked, rightChecked));
     };
 
+    const leftList = <TransferList title={"Mapped"} items={left} checked={checked} setChecked={setChecked} />;
+    const leftButton = (
+        <Button
+            endIcon={<ArrowForwardIcon />}
+            fullWidth
+            color={"primary"}
+            variant="contained"
+            onClick={handleCheckedRight}
+            disabled={leftChecked.length === 0}
+            aria-label="move selected right"
+        >
+            Un-map Tag
+        </Button>
+    );
+    const rightList = (
+        <TransferList title={"Available to Map"} items={right} checked={checked} setChecked={setChecked} />
+    );
+    const rightButton = (
+        <Button
+            startIcon={<ArrowBackIcon />}
+            color={"primary"}
+            fullWidth
+            variant="contained"
+            onClick={handleCheckedLeft}
+            disabled={rightChecked.length === 0}
+            aria-label="move selected left"
+        >
+            Map Tag
+        </Button>
+    );
     return (
-        <Grid container justify={"center"}>
-            <Grid item>
-                <Typography variant={"h6"}>{props.title}</Typography>
-                <Grid container spacing={2} alignItems="center">
-                    <Grid item>
-                        <TransferList
-                            title={"Mapped"}
-                            items={props.left}
-                            checked={props.checked}
-                            setChecked={props.setChecked}
-                        />
-                    </Grid>
-                    <Grid item>
-                        <Grid container direction="column" alignItems="center">
+        <div className={classes.root}>
+            {isXs ? (
+                // ToggleButton on top, use words of title
+                // set state on switch to show either the left list and left button, or the right list and right button
+                <div>
+                    <Grid container justify={"center"} spacing={1}>
+                        <Grid item>
+                            <ToggleButtonGroup size={"small"} exclusive value={currentList} onChange={handleChangeList}>
+                                <ToggleButton classes={{ selected: classes.toggleButton }} value={"left"}>
+                                    Mapped
+                                </ToggleButton>
+                                <ToggleButton classes={{ selected: classes.toggleButton }} value={"right"}>
+                                    Available To Map
+                                </ToggleButton>
+                            </ToggleButtonGroup>
+                        </Grid>
+                        <Grid item xs>
                             <Button
-                                variant="outlined"
-                                size="small"
-                                className={classes.button}
-                                onClick={handleCheckedRight}
-                                disabled={leftChecked.length === 0}
-                                aria-label="move selected right"
-                                startIcon={<ArrowRightIcon />}
                                 fullWidth
+                                startIcon={<SaveOutlinedIcon />}
+                                variant={"contained"}
+                                color={"secondary"}
                             >
-                                Unselect
-                            </Button>
-                            <Button
-                                variant="outlined"
-                                size="small"
-                                className={classes.button}
-                                onClick={handleCheckedLeft}
-                                disabled={rightChecked.length === 0}
-                                aria-label="move selected left"
-                                startIcon={<ArrowLeftIcon />}
-                                fullWidth
-                            >
-                                Select
+                                save
                             </Button>
                         </Grid>
+                        {currentList === "left" && (
+                            <Grid item xs={12}>
+                                <Grid container spacing={1}>
+                                    <Grid item xs={12}>
+                                        {leftList}
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        {leftButton}
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        )}
+                        {currentList === "right" && (
+                            <Grid item xs={12}>
+                                <Grid container spacing={1}>
+                                    <Grid item xs={12}>
+                                        {rightList}
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        {rightButton}
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        )}
                     </Grid>
-                    <Grid item>
-                        <TransferList
-                            title={"Available to Map"}
-                            items={props.right}
-                            checked={props.checked}
-                            setChecked={props.setChecked}
-                        />
+                </div>
+            ) : (
+                <Grid container spacing={5}>
+                    <Grid item xs={6}>
+                        <Grid container spacing={3}>
+                            <Grid item xs={12}>
+                                {leftList}
+                            </Grid>
+                            <Grid item xs={12}>
+                                {leftButton}
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                    <Grid item xs={6}>
+                        <Grid container spacing={3}>
+                            <Grid item xs={12}>
+                                {rightList}
+                            </Grid>
+                            <Grid item xs={12}>
+                                {rightButton}
+                            </Grid>
+                        </Grid>
                     </Grid>
                 </Grid>
-            </Grid>
-        </Grid>
+            )}
+        </div>
     );
 };

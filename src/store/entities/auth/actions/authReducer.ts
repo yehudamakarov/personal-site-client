@@ -20,6 +20,7 @@ export interface IAuthState extends ITokenState {
     loading: boolean;
     loggedIn: boolean;
     errorReadingToken: boolean;
+    responseError: string | null;
 }
 
 type AuthActionTypes = LoginActionTypes | LogoutActionTypes;
@@ -31,6 +32,7 @@ const INITIAL_STATE: IAuthState = {
     lastName: null,
     loading: false,
     loggedIn: false,
+    responseError: null,
     role: roleType.user,
     token: null,
 };
@@ -67,21 +69,17 @@ function readToken(token: string): ITokenState {
     }
 }
 
-export const authReducer = (
-    state = INITIAL_STATE,
-    action: AuthActionTypes
-): IAuthState => {
+export const authReducer = (state = INITIAL_STATE, action: AuthActionTypes): IAuthState => {
     switch (action.type) {
         case "LOGIN_LOADING":
-            return { ...state, loading: true };
+            return { ...state, responseError: null, loading: true };
         case "LOGIN_SUCCESS":
             const token = action.payload;
             const tokenInfo = readToken(token);
             return { ...state, loading: false, loggedIn: true, ...tokenInfo };
         case "LOGIN_ERROR":
-            return state;
+            return { ...state, responseError: action.payload };
         case "LOGOUT_LOADING":
-            localStorage.clear();
             return { ...INITIAL_STATE };
         case "LOGOUT_SUCCESS":
             return state;

@@ -5,9 +5,7 @@ import { GET_TAGS_LOADING, getTagsErrorAction, getTagsSuccessAction } from "./ac
 
 function* getTags() {
     try {
-        const response: AxiosResponse<ITagsResponse> = yield call(
-            tagsApi.getTags,
-        );
+        const response: AxiosResponse<ITagsResponse> = yield call(tagsApi.getTags);
         yield put(getTagsSuccessAction(response.data.data));
     } catch (error) {
         const errorContent = JSON.stringify(error);

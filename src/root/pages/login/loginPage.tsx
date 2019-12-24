@@ -7,10 +7,11 @@ import TextField from "@material-ui/core/TextField";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { Link as RouterLink } from "@reach/router";
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { roleType } from "../../../store/entities/auth/actions/authReducer";
 import { loginLoadingAction } from "../../../store/entities/auth/actions/login/actions";
 import { logoutLoadingAction } from "../../../store/entities/auth/actions/logout/actions";
+import { IApplicationState } from "../../../store/rootReducer";
 import { Routes } from "../../../store/ui/IUiState";
 import { useAuth } from "../../hooks/useAuth";
 import { BasePage } from "../basePage";
@@ -54,6 +55,8 @@ export const LoginPage = (props: { path: string }) => {
 
     const isLoggedIn = useAuth([roleType.administrator]);
 
+    const responseError = useSelector((state: IApplicationState) => state.auth.responseError);
+
     const [firstName, setFirstName] = React.useState("");
     const [lastName, setLastName] = React.useState("");
     const [password, setPassword] = React.useState("");
@@ -86,10 +89,7 @@ export const LoginPage = (props: { path: string }) => {
         <BasePage>
             {isLoggedIn ? (
                 <Container className={classes.container} maxWidth={"xs"}>
-                    <Typography variant={"subtitle2"}>
-                        {" "}
-                        You are already logged in.
-                    </Typography>
+                    <Typography variant={"subtitle2"}> You are already logged in.</Typography>
                     <Button
                         variant="contained"
                         color="primary"
@@ -99,12 +99,7 @@ export const LoginPage = (props: { path: string }) => {
                     >
                         Browse around
                     </Button>
-                    <Button
-                        variant="contained"
-                        color="secondary"
-                        className={classes.submit}
-                        onClick={handleLogOut}
-                    >
+                    <Button variant="contained" color="secondary" className={classes.submit} onClick={handleLogOut}>
                         Log out
                     </Button>
                 </Container>
@@ -155,13 +150,12 @@ export const LoginPage = (props: { path: string }) => {
                             value={password}
                             onChange={handleFormChange}
                         />
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            className={classes.submit}
-                        >
+                        {responseError && (
+                            <Typography variant={"button"} color={"error"}>
+                                {responseError}
+                            </Typography>
+                        )}
+                        <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
                             Sign In
                         </Button>
                     </form>

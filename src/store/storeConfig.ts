@@ -43,7 +43,7 @@ export const store = configureStore({
 store.subscribe(
     throttle(() => {
         saveState({
-            auth: store.getState().auth,
+            auth: { ...store.getState().auth, responseError: null },
             ui: {
                 ...INITIAL_STATE,
                 filter: { ...store.getState().ui.filter, searchText: "" },
@@ -58,22 +58,19 @@ function getToken() {
     return store.getState().auth.token;
 }
 
-const requestInterceptorId = axios.interceptors.request.use(
-    (config: AxiosRequestConfig) => {
-        const token = getToken();
-        if (token !== null) {
-            config.headers.Authorization = `Bearer ${token}`;
-        }
-        return config;
+const tokenInsertRequestHandler = axios.interceptors.request.use((config: AxiosRequestConfig) => {
+    const token = getToken();
+    if (token !== null) {
+        config.headers.Authorization = `Bearer ${token}`;
     }
-);
+    return config;
+});
 
-const responseInterceptorId = axios.interceptors.response.use(
+const tokenExpiredResponseHandler = axios.interceptors.response.use(
     (response: AxiosResponse) => {
         return response;
     },
     (error: AxiosError) => {
-        debugger;
         if (error.response && error.response.status) {
             switch (error.response.status) {
                 case 401: {
