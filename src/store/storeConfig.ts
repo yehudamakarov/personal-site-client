@@ -10,8 +10,6 @@ import { rootSaga } from "./rootSaga";
 import { IUiState, Routes } from "./ui/IUiState";
 import { INITIAL_STATE } from "./ui/uiReducer";
 
-const CancelToken = axios.CancelToken;
-
 const sagaMiddleware = createSagaMiddleware();
 
 function loadState() {
@@ -45,7 +43,7 @@ export const store = configureStore({
 store.subscribe(
     throttle(() => {
         saveState({
-            auth: store.getState().auth,
+            auth: { ...store.getState().auth, responseError: null },
             ui: {
                 ...INITIAL_STATE,
                 filter: { ...store.getState().ui.filter, searchText: "" },
@@ -59,33 +57,6 @@ sagaMiddleware.run(rootSaga);
 function getToken() {
     return store.getState().auth.token;
 }
-
-// interface IApiCache {
-//     [index: string]: { lastFetchAt: number; currentData: any };
-// }
-//
-// const cache: IApiCache = {};
-// //https://github.com/kuitos/axios-extensions#api
-// //https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching
-// const apiCacheRequestHandler = axios.interceptors.request.use((config: AxiosRequestConfig) => {
-//     // how do i not send request, and return data of my choice
-//     debugger;
-//     // return {
-//     //     ...config,
-//     //     cancelToken: new CancelToken((cancel) => cancel("returning cached data")),
-//     // };
-//     // return config;
-// });
-//
-// const apiCacheResponseHandler = axios.interceptors.response.use(
-//     (response: AxiosResponse) => {
-//         if (response.config.url) {
-//             cache[response.config.url] = { currentData: response, lastFetchAt: Date.now() };
-//         }
-//         return response;
-//     },
-//     (error: AxiosError) => error
-// );
 
 const tokenInsertRequestHandler = axios.interceptors.request.use((config: AxiosRequestConfig) => {
     const token = getToken();

@@ -7,29 +7,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/yehudamakarov.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/yehudamakarov.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/transferListHelpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/transferListHelpers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/basePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/basePage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/tagsManagementPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/tagsManagementPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/tagsMapPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/tagsMapPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferListBase.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListBase.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForProjects.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForProjects.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForProjectsAndBlogPosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForProjectsAndBlogPosts.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/login/loginPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/login/loginPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/baseTypes/IApiResponse.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/baseTypes/IApiResponse.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/baseTypes/IResultDetails.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/baseTypes/IResultDetails.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/auth/actions/authReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/auth/actions/authReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/auth/actions/login/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/auth/actions/login/saga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/projects/ui/selectors/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/projects/ui/selectors/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/tags/actions/getTags/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tags/actions/getTags/saga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/sagas/getTransferListFacadesSaga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/sagas/getTransferListFacadesSaga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/setChecked.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/setChecked.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/setLeft.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/setLeft.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/setRight.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/setRight.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/tagsTransferList/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/tagsTransferList/tagsTransferListReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/tagsTransferListReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListItem.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/storeConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/storeConfig.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +145,7 @@
       <workItem from="1576453493875" duration="12775000" />
       <workItem from="1576550324592" duration="12756000" />
       <workItem from="1577035992780" duration="1502000" />
-      <workItem from="1577039917888" duration="10013000" />
+      <workItem from="1577039917888" duration="23928000" />
     </task>
     <task id="LOCAL-00001" summary="project styles for webstorm">
       <created>1568176773387</created>
@@ -416,7 +406,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576565412907</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="no cache for now, cleaned up transfer list selectors etc">
+      <created>1577078944805</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1577078944805</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -453,7 +450,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="missing files?" />
     <MESSAGE value="webstorm and tag filtering" />
     <MESSAGE value="webstorm and tag filtering tags" />
     <MESSAGE value="spare changes" />
@@ -478,7 +474,8 @@
     <MESSAGE value="rough draft transfer list for projects. todo: extract and replicate for blogPosts" />
     <MESSAGE value="working on fixing transfer list architecture" />
     <MESSAGE value="cache" />
-    <option name="LAST_COMMIT_MESSAGE" value="cache" />
+    <MESSAGE value="no cache for now, cleaned up transfer list selectors etc" />
+    <option name="LAST_COMMIT_MESSAGE" value="no cache for now, cleaned up transfer list selectors etc" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -513,11 +510,11 @@
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="1179" y="544" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1576461939717" />
-    <state x="252" y="51" width="1717" height="1141" key="CommitChangelistDialog2" timestamp="1576565412623">
+    <state x="252" y="51" width="1717" height="1141" key="CommitChangelistDialog2" timestamp="1577078944461">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="1593" y="383" key="CommitChangelistDialog2/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575848306443" />
-    <state x="252" y="51" key="CommitChangelistDialog2/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1576565412623" />
+    <state x="252" y="51" key="CommitChangelistDialog2/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1577078944461" />
     <state x="296" y="242" key="CommitChangelistDialog2/0.0.1920.1200@0.0.1920.1200" timestamp="1575554908474" />
     <state x="804" y="289" key="CommitChangelistDialog2/0.23.1874.1177@0.23.1874.1177" timestamp="1575900332338" />
     <state x="395" y="95" width="1717" height="1141" key="CommitChangelistDialog2/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575835654418" />
@@ -535,44 +532,36 @@
     <state x="553" y="213" key="SettingsEditor/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575517065196" />
     <state x="968" y="162" width="1434" height="1335" key="SettingsEditor/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1577078101639" />
     <state x="353" y="151" key="SettingsEditor/0.0.1920.1200@0.0.1920.1200" timestamp="1575305769373" />
-    <state x="721" y="391" key="Vcs.Push.Dialog.v2" timestamp="1576593498447">
+    <state x="721" y="391" key="Vcs.Push.Dialog.v2" timestamp="1577078954139">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="721" y="391" key="Vcs.Push.Dialog.v2/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575848311517" />
-    <state x="721" y="391" key="Vcs.Push.Dialog.v2/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1576593498447" />
+    <state x="721" y="391" key="Vcs.Push.Dialog.v2/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1577078954139" />
     <state x="460" y="277" key="Vcs.Push.Dialog.v2/0.0.1920.1200@0.0.1920.1200" timestamp="1575554913394" />
     <state x="449" y="295" key="Vcs.Push.Dialog.v2/0.23.1874.1177@0.23.1874.1177" timestamp="1575900335626" />
-    <state x="898" y="250" width="1213" height="1193" key="find.popup" timestamp="1577053101300">
+    <state x="898" y="250" width="1213" height="1193" key="find.popup" timestamp="1577160210330">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="898" y="250" width="1213" height="1193" key="find.popup/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575840313765" />
     <state x="898" y="250" width="1213" height="1193" key="find.popup/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1577053101300" />
     <state x="573" y="177" width="774" height="846" key="find.popup/0.0.1920.1200@0.0.1920.1200" timestamp="1575321289452" />
+    <state x="898" y="250" width="1213" height="1193" key="find.popup/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1577160210330" />
     <state x="936" y="330" key="run.anything.popup" timestamp="1575823471946">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="936" y="330" key="run.anything.popup/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575823471946" />
-    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup" timestamp="1577075729197">
+    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup" timestamp="1577204736050">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="848" y="237" width="1313" height="1456" key="search.everywhere.popup/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575607900405" />
     <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1577075729197" />
     <state x="541" y="168" width="838" height="1032" key="search.everywhere.popup/0.0.1920.1200@0.0.1920.1200" timestamp="1576827939549" />
+    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1577204736050" />
     <state x="722" y="196" width="1118" height="1205" key="search.everywhere.popup/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575832342693" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/App.tsx</url>
-          <line>56</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/App.tsx</url>
-          <line>60</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/root/pages/projects/components/projectPageTitle.tsx</url>
           <option name="timeStamp" value="3" />

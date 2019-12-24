@@ -15,7 +15,7 @@ export const TransferListForProjectsAndBlogPosts = (props: { tagId?: ITag["tagId
     return (
         <Grid container>
             <Grid item xs={12}>
-                <TransferListForProjects tagId={props.tagId} />
+                <TransferListForProjects />
             </Grid>
         </Grid>
     );

@@ -1,8 +1,9 @@
 import {
     Avatar,
+    Chip,
     createStyles,
     ListItemAvatar,
-    ListItemSecondaryAction,
+    ListItemIcon,
     makeStyles,
     Theme,
     Typography,
@@ -10,9 +11,9 @@ import {
 import Checkbox from "@material-ui/core/Checkbox";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import LabelIcon from "@material-ui/icons/Label";
 import NotesRoundedIcon from "@material-ui/icons/NotesRounded";
 import WorkIcon from "@material-ui/icons/Work";
-import { Link } from "@reach/router";
 import React from "react";
 import { useSelector } from "react-redux";
 import { FacadeType } from "../../../store/entities/projects/ui/selectors";
@@ -24,10 +25,14 @@ const facadeItemSelector = (facadeId: TransferListFacadeId) => (state: IApplicat
 };
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
+        chip: {
+            marginRight: theme.spacing(0.5),
+            marginTop: theme.spacing(0.5),
+        },
         tagSecondaryText: {
             display: "block",
         },
-    }),
+    })
 );
 export const TransferListItem = (props: {
     onClick: () => void;
@@ -38,7 +43,7 @@ export const TransferListItem = (props: {
     const element = useSelector(facadeItemSelector(props.searchElement));
 
     return (
-        <ListItem role="listitem" button component={Link} to={element.link} alignItems={"flex-start"}>
+        <ListItem role="listitem" button onClick={props.onClick} alignItems={"flex-start"}>
             <ListItemAvatar>
                 <Avatar>
                     {element.type === FacadeType.BlogPost && <NotesRoundedIcon />}
@@ -47,15 +52,21 @@ export const TransferListItem = (props: {
             </ListItemAvatar>
             <ListItemText
                 id={`transfer-list-all-item-${props.searchElement}-label`}
-                primaryTypographyProps={{ variant: "button" }}
+                primaryTypographyProps={{ variant: "subtitle2" }}
                 primary={element.title}
                 secondary={
                     element.tagIds ? (
                         <React.Fragment>
                             {element.tagIds.map((tagId) => (
-                                <Typography variant={"caption"} className={classes.tagSecondaryText} key={tagId}>
-                                    {tagId}
-                                </Typography>
+                                <Chip
+                                    component={"span"}
+                                    key={tagId}
+                                    className={classes.chip}
+                                    color="primary"
+                                    size="small"
+                                    icon={<LabelIcon />}
+                                    label={tagId}
+                                />
                             ))}
                         </React.Fragment>
                     ) : (
@@ -65,16 +76,16 @@ export const TransferListItem = (props: {
                     )
                 }
             />
-            <ListItemSecondaryAction>
+            <ListItemIcon>
                 <Checkbox
+                    color={"primary"}
                     edge={"end"}
-                    onClick={props.onClick}
                     checked={props.checked}
                     tabIndex={-1}
                     disableRipple
                     inputProps={{ "aria-labelledby": `transfer-list-all-item-${props.searchElement}-label` }}
                 />
-            </ListItemSecondaryAction>
+            </ListItemIcon>
         </ListItem>
     );
 };

@@ -21,9 +21,13 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         list: {
             backgroundColor: theme.palette.background.paper,
-            height: 400,
+            [theme.breakpoints.up("sm")]: {
+                height: `calc(100vh - ${theme.mixins.toolbar.minHeight}px - ${theme.spacing(32)}px)`,
+            },
+            [theme.breakpoints.down("sm")]: {
+                height: `calc(100vh - ${theme.mixins.toolbar.minHeight}px - ${theme.spacing(30)}px)`,
+            },
             overflow: "auto",
-            width: 300,
         },
         progress: {
             textAlign: "center",
@@ -67,6 +71,7 @@ export const TransferList = (props: {
 
     const titleCheckbox = (
         <Checkbox
+            color={"primary"}
             onClick={handleToggleAll(props.items)}
             checked={numberOfChecked(props.items) === props.items.length && props.items.length !== 0}
             indeterminate={numberOfChecked(props.items) !== props.items.length && numberOfChecked(props.items) !== 0}
@@ -82,7 +87,7 @@ export const TransferList = (props: {
                 <CardHeader
                     className={classes.cardHeader}
                     avatar={titleCheckbox}
-                    titleTypographyProps={{ variant: "button" }}
+                    titleTypographyProps={{ variant: "subtitle2" }}
                     title={props.title}
                     subheader={`${numberOfChecked(props.items)}/${props.items.length} selected`}
                 />

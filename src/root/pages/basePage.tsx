@@ -4,7 +4,12 @@ import React from "react";
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         container: {
-            marginTop: theme.spacing(4),
+            [theme.breakpoints.down("xs")]: {
+                marginTop: theme.spacing(1),
+            },
+            [theme.breakpoints.up("sm")]: {
+                marginTop: theme.spacing(3),
+            },
         },
     })
 );
