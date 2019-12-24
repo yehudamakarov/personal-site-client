@@ -1,4 +1,4 @@
-import { createStyles, Fab, makeStyles, Theme, useMediaQuery } from "@material-ui/core";
+import { createStyles, makeStyles, Theme, useMediaQuery } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
@@ -18,12 +18,12 @@ import { TransferList } from "./transferList";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
+        fabIcon: {
+            marginRight: theme.spacing(1),
+        },
         fabSpan: {
             paddingLeft: theme.spacing(1),
             paddingRight: theme.spacing(1),
-        },
-        fabIcon: {
-            marginRight: theme.spacing(1),
         },
         root: {
             [theme.breakpoints.down("xs")]: {
@@ -124,18 +124,15 @@ export const TransferListBase = () => {
                                 </ToggleButton>
                             </ToggleButtonGroup>
                         </Grid>
-                        <Grid item container xs justify={"center"} alignItems={"center"}>
-                            <Grid item>
-                                <Fab
-                                    classes={{ label: classes.fabSpan }}
-                                    variant={"extended"}
-                                    color={"secondary"}
-                                    size={"small"}
-                                >
-                                    <SaveOutlinedIcon className={classes.fabIcon} />
-                                    save
-                                </Fab>
-                            </Grid>
+                        <Grid item xs>
+                            <Button
+                                fullWidth
+                                startIcon={<SaveOutlinedIcon />}
+                                variant={"contained"}
+                                color={"secondary"}
+                            >
+                                save
+                            </Button>
                         </Grid>
                         {currentList === "left" && (
                             <Grid item xs={12}>
@@ -149,17 +146,14 @@ export const TransferListBase = () => {
                                 </Grid>
                             </Grid>
                         )}
-
                         {currentList === "right" && (
-                            <Grid container spacing={1}>
-                                <Grid item xs={12}>
-                                    <Grid container spacing={1}>
-                                        <Grid item xs={12}>
-                                            {rightList}
-                                        </Grid>
-                                        <Grid item xs={12}>
-                                            {rightButton}
-                                        </Grid>
+                            <Grid item xs={12}>
+                                <Grid container spacing={1}>
+                                    <Grid item xs={12}>
+                                        {rightList}
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        {rightButton}
                                     </Grid>
                                 </Grid>
                             </Grid>
