@@ -1,4 +1,4 @@
-import { createStyles, makeStyles, Theme, useMediaQuery } from "@material-ui/core";
+import { createStyles, Fab, makeStyles, Theme, useMediaQuery } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
@@ -124,15 +124,18 @@ export const TransferListBase = () => {
                                 </ToggleButton>
                             </ToggleButtonGroup>
                         </Grid>
-                        <Grid item xs>
-                            <Button
-                                fullWidth
-                                startIcon={<SaveOutlinedIcon />}
-                                variant={"contained"}
-                                color={"secondary"}
-                            >
-                                save
-                            </Button>
+                        <Grid item container xs justify={"center"} alignItems={"center"}>
+                            <Grid item>
+                                <Fab
+                                    classes={{ label: classes.fabSpan }}
+                                    variant={"extended"}
+                                    color={"secondary"}
+                                    size={"small"}
+                                >
+                                    <SaveOutlinedIcon className={classes.fabIcon} />
+                                    save
+                                </Fab>
+                            </Grid>
                         </Grid>
                         {currentList === "left" && (
                             <Grid item xs={12}>
