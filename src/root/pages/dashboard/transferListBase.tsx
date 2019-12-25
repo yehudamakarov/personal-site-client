@@ -107,6 +107,12 @@ export const TransferListBase = () => {
             Map Tag
         </Button>
     );
+    const saveButton = (
+        <Fab classes={{ label: classes.fabSpan }} variant={"extended"} color={"secondary"} size={"small"}>
+            <SaveOutlinedIcon className={classes.fabIcon} />
+            save
+        </Fab>
+    );
     return (
         <div className={classes.root}>
             {isXs ? (
@@ -125,17 +131,7 @@ export const TransferListBase = () => {
                             </ToggleButtonGroup>
                         </Grid>
                         <Grid item container xs justify={"center"} alignItems={"center"}>
-                            <Grid item>
-                                <Fab
-                                    classes={{ label: classes.fabSpan }}
-                                    variant={"extended"}
-                                    color={"secondary"}
-                                    size={"small"}
-                                >
-                                    <SaveOutlinedIcon className={classes.fabIcon} />
-                                    save
-                                </Fab>
-                            </Grid>
+                            <Grid item>{saveButton}</Grid>
                         </Grid>
                         {currentList === "left" && (
                             <Grid item xs={12}>
