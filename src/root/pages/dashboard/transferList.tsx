@@ -19,16 +19,6 @@ const useStyles = makeStyles((theme: Theme) =>
         cardHeader: {
             padding: theme.spacing(1, 2),
         },
-        list: {
-            backgroundColor: theme.palette.background.paper,
-            [theme.breakpoints.up("sm")]: {
-                height: `calc(100vh - ${theme.mixins.toolbar.minHeight}px - ${theme.spacing(32)}px)`,
-            },
-            [theme.breakpoints.down("sm")]: {
-                height: `calc(100vh - ${theme.mixins.toolbar.minHeight}px - ${theme.spacing(30)}px)`,
-            },
-            overflow: "auto",
-        },
         progress: {
             textAlign: "center",
         },
@@ -40,6 +30,7 @@ export const TransferList = (props: {
     items: FacadeIds;
     checked: FacadeIds;
     setChecked: (facadeIds: FacadeIds) => ISetChecked;
+    listClassName?: string;
 }) => {
     const classes = useStyles();
     const isLoading = useSelector((state: IApplicationState) => {
@@ -79,6 +70,7 @@ export const TransferList = (props: {
             inputProps={{ "aria-label": "all items selected" }}
         />
     );
+
     return (
         <Card>
             {isLoading ? (
@@ -94,7 +86,7 @@ export const TransferList = (props: {
             )}
             <Divider />
 
-            <List className={classes.list} dense component="div" role="list">
+            <List className={props.listClassName} dense component="div" role="list">
                 {isLoading ? (
                     <div className={classes.progress}>
                         <CircularProgress variant={"indeterminate"} />
