@@ -23,7 +23,7 @@ function* mapTag(action: IMapTagLoadingAction) {
         const response: AxiosResponse<MapTagResponse> = yield call(
             tagsTransferListApi.mapTag,
             facadesToBeMapped,
-            tagId,
+            tagId
         );
         yield put(mapTagSuccessAction(response.data.data));
     } catch (error) {
