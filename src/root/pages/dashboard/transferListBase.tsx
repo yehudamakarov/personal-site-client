@@ -9,6 +9,8 @@ import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TransferListHelpers } from "../../../helpers/transferListHelpers";
+import { ITag } from "../../../store/entities/tags/actions/api";
+import { mapTagLoadingAction } from "../../../store/entities/tagsTransferList/actions/mapTag";
 import { setCheckedAction } from "../../../store/entities/tagsTransferList/actions/setChecked";
 import { setLeftAction } from "../../../store/entities/tagsTransferList/actions/setLeft";
 import { setRightAction } from "../../../store/entities/tagsTransferList/actions/setRight";
@@ -56,14 +58,14 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 );
 
-export const TransferListBase = () => {
+export const TransferListBase = (props: { tagId?: ITag["tagId"] }) => {
     const classes = useStyles();
     const isXs = useMediaQuery((theme: Theme) => theme.breakpoints.down("xs"));
     const dispatch = useDispatch();
 
-    const [currentList, setCurrentList] = React.useState("left");
+    const [currentList, switchVisibleTransferList] = React.useState("left");
     const handleChangeList = (event: React.MouseEvent<HTMLElement>, value: "left" | "right") => {
-        setCurrentList(value);
+        switchVisibleTransferList(value);
     };
 
     const setChecked = (facadeIds: FacadeIds, meta?: string) => dispatch(setCheckedAction(facadeIds, meta));
@@ -91,6 +93,12 @@ export const TransferListBase = () => {
         setLeft(left.concat(rightChecked));
         setRight(TransferListHelpers.not(right, rightChecked));
         setChecked(TransferListHelpers.not(checked, rightChecked), "moveCheckedItemsFromLeftToRight");
+    };
+
+    const handleSave = () => {
+        if (props.tagId) {
+            dispatch(mapTagLoadingAction(props.tagId));
+        }
     };
 
     const leftList = (
@@ -138,7 +146,13 @@ export const TransferListBase = () => {
         </Button>
     );
     const saveButton = (
-        <Fab classes={{ label: classes.fabSpan }} variant={"extended"} color={"secondary"} size={"small"}>
+        <Fab
+            onClick={handleSave}
+            classes={{ label: classes.fabSpan }}
+            variant={"extended"}
+            color={"secondary"}
+            size={"small"}
+        >
             <SaveOutlinedIcon className={classes.fabIcon} />
             save
         </Fab>

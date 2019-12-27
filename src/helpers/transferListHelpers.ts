@@ -9,7 +9,7 @@ export class TransferListHelpers {
         return a.filter((value) => b.some((facadeId) => value === facadeId));
     }
 
-    public static union(a: FacadeIds, b: FacadeIds) {
+    public static union(a: FacadeIds, b: FacadeIds): FacadeIds {
         return [...a, ...this.not(b, a)];
     }
 }

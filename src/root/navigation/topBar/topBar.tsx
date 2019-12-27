@@ -29,33 +29,20 @@ export const TopBar = () => {
             <Container>
                 <Toolbar disableGutters>
                     <Tooltip title="Navigation" placement="bottom-start">
-                        <MyIconButtonBase
-                            styleProp={classes.menuButton}
-                            onClick={handleDrawerOpen}
-                            edge="start"
-                        >
+                        <MyIconButtonBase styleProp={classes.menuButton} onClick={handleDrawerOpen} edge="start">
                             <MenuIcon />
                         </MyIconButtonBase>
                     </Tooltip>
                     <BrandLogo />
                     {/* ********** */}
                     {/* RIGHT SIDE */}
-                    <Link
-                        target="_blank"
-                        href={`${process.env.REACT_APP_API_URL}/swagger`}
-                    >
+                    <Link target="_blank" href={`${process.env.REACT_APP_API_URL}/swagger`}>
                         <Tooltip title="Backend API" placement="bottom">
                             <ApiIconButton />
                         </Tooltip>
                     </Link>
-                    <Link
-                        target="_blank"
-                        href={process.env.REACT_APP_GITHUB_PROJECT_URL}
-                    >
-                        <Tooltip
-                            title="Github Repository"
-                            placement="bottom-end"
-                        >
+                    <Link target="_blank" href={process.env.REACT_APP_GITHUB_PROJECT_URL}>
+                        <Tooltip title="Github Repository" placement="bottom-end">
                             <GithubIconButton />
                         </Tooltip>
                     </Link>

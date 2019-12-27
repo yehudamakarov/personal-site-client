@@ -58,6 +58,8 @@ function getToken() {
     return store.getState().auth.token;
 }
 
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+
 const tokenInsertRequestHandler = axios.interceptors.request.use((config: AxiosRequestConfig) => {
     const token = getToken();
     if (token !== null) {

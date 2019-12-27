@@ -34,7 +34,7 @@ export const TransferList = (props: {
 }) => {
     const classes = useStyles();
     const isLoading = useSelector((state: IApplicationState) => {
-        return state.projects.projectsUi.allIsLoading || state.blogPosts.blogPostUi.allIsLoading;
+        return state.tagsTransferList.allIsLoading;
     });
 
     const handleToggleAll = (items: FacadeIds) => () => {
