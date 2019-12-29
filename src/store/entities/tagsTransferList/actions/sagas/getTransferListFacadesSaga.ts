@@ -9,6 +9,7 @@ import {
     getTransferListFacadesSuccessAction,
     IGetTransferListFacadesLoadingAction,
 } from "../getTransferListFacades";
+import { setInitiallyMappedAction } from "../setInitiallyMapped";
 import { setLeftAction } from "../setLeft";
 import { setRightAction } from "../setRight";
 
@@ -46,6 +47,7 @@ function* getTransferListFacades(action: IGetTransferListFacadesLoadingAction) {
             .filter((facade) => facade.tagIds && facade.tagIds.some((tagId) => tagId === currentTagId))
             .map((facade) => facade.id);
         yield put(setLeftAction(mappedToTag));
+        yield put(setInitiallyMappedAction(mappedToTag));
     } catch (error) {
         yield put(getTransferListFacadesErrorAction(JSON.stringify(error)));
     }

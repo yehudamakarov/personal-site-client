@@ -16,12 +16,12 @@ export interface IBlogPost {
 
 export const blogPostsApi = {
     getBlogPostById: (blogPostId: string) =>
-        axios.get<IBlogPostResponse>(`${process.env.REACT_APP_API_URL}blogPosts/blogPostById`, {
+        axios.get<IBlogPostResponse>(`/blogPosts/blogPostById`, {
             params: { blogPostId },
         }),
-    getBlogPosts: () => axios.get<IBlogPostsResponse>(`${process.env.REACT_APP_API_URL}blogPosts/allBlogPosts`),
+    getBlogPosts: () => axios.get<IBlogPostsResponse>(`/blogPosts/allBlogPosts`),
     getBlogPostsByProjectId: (projectId: string) =>
-        axios.get<IBlogPostsResponse>(`${process.env.REACT_APP_API_URL}blogPosts/BlogPostsByProjectId`, {
+        axios.get<IBlogPostsResponse>(`/blogPosts/BlogPostsByProjectId`, {
             params: { projectId },
         }),
 };

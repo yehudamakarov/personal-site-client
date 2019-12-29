@@ -17,6 +17,6 @@ export interface IPinnedRepository {
 export const pinnedRepositoriesApi = {
     getPinnedRepositoriesRequest: () =>
         axios.get<IPinnedReposResponse>(
-            `${process.env.REACT_APP_API_URL}repos/pinnedrepos`
+            `/repos/pinnedrepos`,
         ),
 };

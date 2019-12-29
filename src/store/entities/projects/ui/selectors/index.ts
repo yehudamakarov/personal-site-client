@@ -48,9 +48,3 @@ export interface IFacade {
     tagIds: IProject["tagIds"] | IBlogPost["tagIds"];
     type: FacadeType;
 }
-
-export const facadeSelector = (selector: (state: IApplicationState) => IFacade[]) => (
-    state: IApplicationState,
-): IFacade[] => {
-    return selector(state);
-};

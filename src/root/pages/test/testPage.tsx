@@ -9,7 +9,7 @@ export const TestPage = (props: { path: string }) => {
     const handleClick = (event: any) => {
         axios
             .get(
-                `${process.env.REACT_APP_API_URL}authentication/testAuthentication`,
+                `/authentication/testAuthentication`,
             )
             .then((response) => console.log(response));
     };

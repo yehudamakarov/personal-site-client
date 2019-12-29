@@ -14,7 +14,7 @@ export interface ILoginRequest {
 export const loginApi = {
     login: (credentials: ILoginRequest) =>
         axios.post<ITokenResponse>(
-            `${process.env.REACT_APP_API_URL}authentication/login`,
+            `/authentication/login`,
             credentials,
         ),
 };
