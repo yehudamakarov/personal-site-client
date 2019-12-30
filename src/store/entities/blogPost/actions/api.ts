@@ -10,7 +10,7 @@ export interface IBlogPost {
     description: string;
     content: string;
     projectId: string;
-    tagIds: string[] | null;
+    tagIds: string[];
     slug: string;
 }
 

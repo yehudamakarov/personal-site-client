@@ -31,10 +31,10 @@ export interface IProject {
     projectDescription: string;
     projectOverview: string;
     githubUrl: string | null;
-    tagIds: string[] | null;
+    tagIds: string[];
     isPinnedRepo: boolean;
-    projectHighlights: IProjectHighlight[] | null;
-    projectPictures: IProjectPicture[] | null;
+    projectHighlights: IProjectHighlight[];
+    projectPictures: IProjectPicture[];
     slug: string;
     deploymentUrl: string | null;
 }

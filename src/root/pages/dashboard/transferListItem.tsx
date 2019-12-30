@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
         tagSecondaryText: {
             display: "block",
         },
-    })
+    }),
 );
 export const TransferListItem = (props: {
     onClick: () => void;
@@ -55,7 +55,7 @@ export const TransferListItem = (props: {
                 primaryTypographyProps={{ variant: "subtitle2" }}
                 primary={element.title}
                 secondary={
-                    element.tagIds ? (
+                    element.tagIds.length > 0 ? (
                         <React.Fragment>
                             {element.tagIds.map((tagId) => (
                                 <Chip

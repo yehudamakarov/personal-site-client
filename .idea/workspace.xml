@@ -6,32 +6,12 @@
     <option name="FILTER_RESOLVED_ITEMS" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/mapTag.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/sagas/saveMappedTagsSaga.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/setInitiallyMapped.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.production" beforeDir="false" afterPath="$PROJECT_DIR$/.env.production" afterDir="false" />
+    <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="added some meta">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/transferListHelpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/transferListHelpers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/navigation/topBar/topBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/navigation/topBar/topBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferListBase.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListBase.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForProjects.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForProjectsAndBlogPosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForProjectsAndBlogPosts.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/test/testPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/test/testPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/auth/actions/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/auth/actions/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListItem.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/entities/blogPost/actions/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/blogPost/actions/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/pinnedRepositories/actions/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/pinnedRepositories/actions/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/projects/data/actions/getProjects/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/projects/data/actions/getProjects/saga.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/entities/projects/ui/actions/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/projects/ui/actions/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/projects/ui/selectors/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/projects/ui/selectors/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/tags/actions/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tags/actions/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/sagas/getTransferListFacadesSaga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/sagas/getTransferListFacadesSaga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/tagsTransferList/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/tagsTransferList/tagsTransferListReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/tagsTransferListReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/tagsTransferList/transferListSagas.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/transferListSagas.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/storeConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/storeConfig.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -575,14 +555,15 @@
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="1179" y="544" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1576461939717" />
-    <state x="296" y="242" width="1292" height="1314" key="CommitChangelistDialog2" timestamp="1577369903142">
-      <screen x="0" y="0" width="1920" height="1200" />
+    <state x="-2165" y="0" width="1723" height="1400" key="CommitChangelistDialog2" timestamp="1577654560303">
+      <screen x="-2560" y="0" width="2560" height="1400" />
     </state>
     <state x="1593" y="383" key="CommitChangelistDialog2/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575848306443" />
     <state x="252" y="51" key="CommitChangelistDialog2/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1577078944461" />
     <state x="296" y="242" key="CommitChangelistDialog2/0.0.1920.1200@0.0.1920.1200" timestamp="1577369903142" />
     <state x="252" y="51" width="1292" height="1314" key="CommitChangelistDialog2/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1577228525054" />
     <state x="804" y="289" key="CommitChangelistDialog2/0.23.1874.1177@0.23.1874.1177" timestamp="1575900332338" />
+    <state x="-2165" y="0" width="1723" height="1400" key="CommitChangelistDialog2/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@-2560.0.2560.1400" timestamp="1577654560303" />
     <state x="395" y="95" width="1717" height="1141" key="CommitChangelistDialog2/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575835654418" />
     <state x="198" y="213" width="2406" height="1353" key="DiffContextDialog" timestamp="1577207845763">
       <screen x="0" y="0" width="3008" height="1692" />
