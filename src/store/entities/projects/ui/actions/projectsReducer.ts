@@ -16,24 +16,14 @@ import {
     EDIT_PROJECT_DEPLOYMENT_URL,
     EditProjectDeploymentUrlActionTypes,
 } from "./editProject/editProjectDeploymentUrl/actions";
-import {
-    EDIT_PROJECT_TAGS_IDS,
-    EditProjectTagIdsActionTypes,
-} from "./editProject/editProjectTags/actions";
-import {
-    EDIT_PROJECT_TITLE,
-    EditProjectTitleActionTypes,
-} from "./editProject/editProjectTitle/actions";
+import { EDIT_PROJECT_TAGS_IDS, EditProjectTagIdsActionTypes } from "./editProject/editProjectTags/actions";
+import { EDIT_PROJECT_TITLE, EditProjectTitleActionTypes } from "./editProject/editProjectTitle/actions";
 import {
     SET_ANY_PROJECT_IS_EDITABLE,
     SET_ANY_PROJECT_IS_NOT_EDITABLE,
     SetAnyProjectIsEditableActionTypes,
 } from "./setAnyProjectIsEditable/actions";
-import {
-    UPDATE_PROJECT_LOADING,
-    UPDATE_PROJECT_SUCCESS,
-    UpdateProjectActionTypes,
-} from "./updateProject/actions";
+import { UPDATE_PROJECT_LOADING, UPDATE_PROJECT_SUCCESS, UpdateProjectActionTypes } from "./updateProject/actions";
 
 export interface IProjectsState {
     projectsData: IProject[];
@@ -66,10 +56,7 @@ type ProjectsActionTypes =
     | UpdateProjectActionTypes
     | EditProjectTitleActionTypes;
 
-export const projectsReducer = (
-    state = INITIAL_STATE,
-    action: ProjectsActionTypes
-): IProjectsState => {
+export const projectsReducer = (state = INITIAL_STATE, action: ProjectsActionTypes): IProjectsState => {
     switch (action.type) {
         case GET_PROJECTS_LOADING: {
             return {
@@ -101,6 +88,7 @@ export const projectsReducer = (
                 },
             };
         }
+
         case GET_PROJECT_BY_NAME_ERROR: {
             const erroredProjectId = action.payload.projectName;
             const errorMap = { ...state.projectsUi.singleIsError };
@@ -141,10 +129,7 @@ export const projectsReducer = (
             delete loadingMap[incomingProjectName];
 
             const projectAlreadyInState = projects.some((project) => {
-                return (
-                    project.githubRepoDatabaseId ===
-                    incomingProject.githubRepoDatabaseId
-                );
+                return project.githubRepoDatabaseId === incomingProject.githubRepoDatabaseId;
             });
             if (projectAlreadyInState) {
                 return {
@@ -167,11 +152,10 @@ export const projectsReducer = (
                 };
             }
         }
+
         case SET_ANY_PROJECT_IS_EDITABLE: {
             const projectId = action.payload;
-            const projectToEdit = state.projectsData.find(
-                (project) => project.githubRepoDatabaseId === projectId
-            );
+            const projectToEdit = state.projectsData.find((project) => project.githubRepoDatabaseId === projectId);
             return {
                 ...state,
                 projectsUi: {
@@ -203,6 +187,7 @@ export const projectsReducer = (
                 },
             };
         }
+
         case UPDATE_PROJECT_LOADING: {
             const projectId = action.payload.githubRepoDatabaseId;
             const editableProjects = { ...state.projectsUi.editableProjects };
@@ -216,15 +201,15 @@ export const projectsReducer = (
                         ...state.projectsUi.singleIsEditing,
                         [projectId]: false,
                     },
+                    singleIsLoading: { ...state.projectsUi.singleIsLoading, [projectId]: true },
                 },
             };
         }
         case UPDATE_PROJECT_SUCCESS: {
             const updatedProject = action.payload;
+            const projectId = updatedProject.githubRepoDatabaseId;
             const projectToUpdateIndex = state.projectsData.findIndex(
-                (project) =>
-                    project.githubRepoDatabaseId ===
-                    updatedProject.githubRepoDatabaseId
+                (project) => project.githubRepoDatabaseId === updatedProject.githubRepoDatabaseId,
             );
             return {
                 ...state,
@@ -233,6 +218,10 @@ export const projectsReducer = (
                     updatedProject,
                     ...state.projectsData.slice(projectToUpdateIndex + 1),
                 ],
+                projectsUi: {
+                    ...state.projectsUi,
+                    singleIsLoading: { ...state.projectsUi.singleIsLoading, [projectId]: false },
+                },
             };
         }
         case EDIT_PROJECT_TITLE: {

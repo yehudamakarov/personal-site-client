@@ -2,13 +2,14 @@ import { navigate, RouteComponentProps } from "@reach/router";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { OptionsType, ValueType } from "react-select/src/types";
+import { TagTitleHelpers } from "../../../../../helpers/tagTitleHelpers";
 import { IApplicationState } from "../../../../../store/rootReducer";
 import { IndexTypeRoute, Routes } from "../../../../../store/ui/IUiState";
 import { setTagsForFilterAction } from "../../../../../store/ui/uiActions";
 import { TagSearchDisplay } from "./tagSearchDisplay";
 import { IOptionType } from "./tagSearchHelpers";
 
-interface IOwnProps extends RouteComponentProps<{ tagId?: string }> {
+interface IOwnProps extends RouteComponentProps<{ tagId: string }> {
     path: IndexTypeRoute;
 }
 
@@ -23,14 +24,9 @@ export const TagSearchContainer = (props: IOwnProps) => {
 
     const uri = useSelector((state: IApplicationState) => state.ui.uri);
     useEffect(() => {
-        if (
-            props.path === Routes.tagsTagIdParam &&
-            props.tagId &&
-            props.location
-        ) {
-            const href = props.location.href;
-            const routeTagId = href.slice(href.lastIndexOf("/") + 1);
-            tagsChange([routeTagId]);
+        if (props.path === Routes.tagsTagIdParam) {
+            const currentTagInFilter = TagTitleHelpers.getTagTitle(props);
+            tagsChange([currentTagInFilter]);
         }
     }, [uri]);
 
@@ -54,9 +50,7 @@ export const TagSearchContainer = (props: IOwnProps) => {
 
     const handleChangeMulti = (values: ValueType<IOptionType>) => {
         if (values) {
-            tagsChange(
-                (values as OptionsType<IOptionType>).map((value) => value.label)
-            );
+            tagsChange((values as OptionsType<IOptionType>).map((value) => value.label));
         } else {
             tagsChange([]);
             navigateToTags(props);

@@ -19,7 +19,6 @@ function* mapTag(action: IMapTagLoadingAction) {
         const tagId = action.payload;
         const facadeIdsToBeMapped: FacadeIds = yield select((state: IApplicationState) => state.tagsTransferList.left);
         const facadesToBeMapped: IFacade[] = yield select(facadeItemsFromIdsSelector(facadeIdsToBeMapped));
-        debugger;
         const response: AxiosResponse<MapTagResponse> = yield call(
             tagsTransferListApi.mapTag,
             facadesToBeMapped,

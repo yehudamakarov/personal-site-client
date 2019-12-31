@@ -16,7 +16,8 @@ export const editableProjectDeploymentUrlSelector = (project?: IProject) => (sta
     const projectId = ProjectDataHelper.getProjectId(project);
     if (projectId) {
         const editableProject = editableProjectSelector(projectId)(state);
-        return editableProject ? editableProject.deploymentUrl : undefined;
+        const url = editableProject ? editableProject.deploymentUrl : undefined;
+        return url ? url : "";
     }
 };
 

@@ -14,9 +14,13 @@ export const TagsManagementPage = (props: { path: string }) => {
             <Grid container>
                 <Grid item xs={12}>
                     <List>
-                        {tags.map((tag) => (
-                            <TagsManagementTagListItem key={tag.tagId} tagId={tag.tagId} />
-                        ))}
+                        {tags.length > 0 ? (
+                            tags.map((tag) => <TagsManagementTagListItem key={tag.tagId} tagId={tag.tagId} />)
+                        ) : (
+                            <Typography variant={"subtitle2"} color={"error"}>
+                                There are no tags to display...
+                            </Typography>
+                        )}
                     </List>
                 </Grid>
             </Grid>

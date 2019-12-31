@@ -7,11 +7,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="added some meta">
+      <change afterPath="$PROJECT_DIR$/src/helpers/tagTitleHelpers.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/blogPost/actions/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/blogPost/actions/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/projects/ui/actions/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/projects/ui/actions/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/tagsManagementPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/tagsManagementPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/tagsManagementTagListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/tagsManagementTagListItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/tagsMapPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/tagsMapPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/filter/tagSearch/tagSearchContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/filter/tagSearch/tagSearchContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/editProjectButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/editProjectButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/baseTypes/IBaseCollectionUiState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/baseTypes/IBaseCollectionUiState.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/baseTypes/IErrorMap.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/baseTypes/IBooleanMap.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/entities/projects/ui/actions/projectsReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/projects/ui/actions/projectsReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/entities/projects/ui/selectors/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/projects/ui/selectors/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/entities/tags/actions/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tags/actions/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/sagas/saveMappedTagsSaga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/sagas/saveMappedTagsSaga.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -530,10 +538,10 @@
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="968" y="503" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575607229543" />
-    <state x="1159" y="641" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1576474722544">
+    <state x="1159" y="641" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1577756702664">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
-    <state x="1159" y="641" key="#com.intellij.fileTypes.FileTypeChooser/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1576474722544" />
+    <state x="1159" y="641" key="#com.intellij.fileTypes.FileTypeChooser/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1577756702664" />
     <state x="1273" y="503" key="#com.intellij.ide.util.MemberChooser" timestamp="1577417457984">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
@@ -588,22 +596,22 @@
     <state x="460" y="277" key="Vcs.Push.Dialog.v2/0.0.1920.1200@0.0.1920.1200" timestamp="1577369911006" />
     <state x="721" y="391" key="Vcs.Push.Dialog.v2/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1577228527944" />
     <state x="449" y="295" key="Vcs.Push.Dialog.v2/0.23.1874.1177@0.23.1874.1177" timestamp="1575900335626" />
-    <state x="898" y="250" width="1213" height="1193" key="find.popup" timestamp="1577419348884">
+    <state x="898" y="250" width="1213" height="1193" key="find.popup" timestamp="1577756157058">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="898" y="250" width="1213" height="1193" key="find.popup/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575840313765" />
-    <state x="898" y="250" width="1213" height="1193" key="find.popup/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1577419348884" />
+    <state x="898" y="250" width="1213" height="1193" key="find.popup/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1577756157058" />
     <state x="573" y="177" width="774" height="846" key="find.popup/0.0.1920.1200@0.0.1920.1200" timestamp="1575321289452" />
     <state x="898" y="250" width="1213" height="1193" key="find.popup/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1577160210330" />
     <state x="936" y="330" key="run.anything.popup" timestamp="1575823471946">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="936" y="330" key="run.anything.popup/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575823471946" />
-    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup" timestamp="1577424058351">
+    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup" timestamp="1577758856751">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="848" y="237" width="1313" height="1456" key="search.everywhere.popup/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575607900405" />
-    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1577424058351" />
+    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1577758856751" />
     <state x="541" y="168" width="838" height="1032" key="search.everywhere.popup/0.0.1920.1200@0.0.1920.1200" timestamp="1576827939549" />
     <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1577204736050" />
     <state x="722" y="196" width="1118" height="1205" key="search.everywhere.popup/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575832342693" />

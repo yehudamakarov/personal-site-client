@@ -51,7 +51,7 @@ export const TagsManagementTagListItem = (props: { tagId: ITag["tagId"] }) => {
     return tag ? (
         <ListItem>
             <ListItemAvatar>
-                <Avatar>{tag.articleCount}</Avatar>
+                <Avatar>{tag.articleCount ? tag.articleCount : 0}</Avatar>
             </ListItemAvatar>
             <ListItemText primaryTypographyProps={{ variant: "subtitle2" }} primary={tag.tagId} />
             <ListItemSecondaryAction>
