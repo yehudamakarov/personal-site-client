@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
         tagSecondaryText: {
             display: "block",
         },
-    }),
+    })
 );
 export const TransferListItem = (props: {
     onClick: () => void;
@@ -62,7 +62,7 @@ export const TransferListItem = (props: {
                                     component={"span"}
                                     key={tagId}
                                     className={classes.chip}
-                                    color="primary"
+                                    color="secondary"
                                     size="small"
                                     icon={<LabelIcon />}
                                     label={tagId}

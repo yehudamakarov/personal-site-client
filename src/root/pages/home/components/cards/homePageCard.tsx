@@ -13,19 +13,19 @@ const useStyles = makeStyles((theme: Theme) =>
         cardButton: {
             "& svg": { fill: theme.palette.secondary.contrastText },
             "&:hover": {
-                "& svg": { fill: theme.palette.secondary.contrastText },
-                backgroundColor: theme.palette.secondary.dark,
-                color: theme.palette.secondary.contrastText,
+                "& svg": { fill: theme.palette.primary.contrastText },
+                backgroundColor: theme.palette.primary.dark,
+                color: theme.palette.primary.contrastText,
             },
             [theme.breakpoints.down("xs")]: {
                 width: theme.spacing(10),
             },
             alignItems: "center",
-            backgroundColor: theme.palette.secondary.main,
+            backgroundColor: theme.palette.primary.light,
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            // color: theme.palette.getContrastText(theme.palette.secondary.main),
+            color: theme.palette.getContrastText(theme.palette.primary.light),
             width: theme.spacing(16),
         },
         cardFace: {

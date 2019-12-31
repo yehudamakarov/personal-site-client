@@ -14,7 +14,7 @@ export const TagsMapPage = (props: RouteComponentProps<{ tagId: ITag["tagId"] }>
             <Typography variant={isXs ? "h6" : "h4"}>
                 Map Tag: {tagTitle}
             </Typography>
-            <TransferListForProjectsAndBlogPosts tagId={props.tagId} />
+            <TransferListForProjectsAndBlogPosts tagId={tagTitle} />
         </BasePage>
     );
 };

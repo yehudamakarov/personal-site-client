@@ -175,7 +175,7 @@ export const TransferListBase = (props: { tagId?: ITag["tagId"] }) => {
                                 </ToggleButton>
                             </ToggleButtonGroup>
                         </Grid>
-                        <Grid item container xs justify={"center"} alignItems={"center"}>
+                        <Grid item container xs justify={"flex-end"} alignItems={"center"}>
                             <Grid item>{saveButton}</Grid>
                         </Grid>
                         {currentList === "left" && (

@@ -1,3 +1,4 @@
+import * as signalR from "@microsoft/signalr";
 import { navigate } from "@reach/router";
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { throttle } from "lodash";
@@ -53,13 +54,36 @@ store.subscribe(
 );
 
 sagaMiddleware.run(rootSaga);
+console.log("connecting...");
+const connection = new signalR.HubConnectionBuilder()
+    .configureLogging(signalR.LogLevel.Information)
+    .withAutomaticReconnect()
+    .withUrl(process.env.REACT_APP_API_URL + "/hubs/repoSyncJobUpdates")
+    .build();
 
+connection.on("pushUpdate", (itemStatus: { [index: string]: string }, jobStatus: string) => {
+    // todo --------------------------------------------
+    //      make a jobNotificationReducer
+    //      dispatch an action on every call here.
+    //      make a component above app to use a snackbar
+    //      that component can useSelector for individually diffable pieces of state. on every change it will rerender and display newest message
+});
+
+connection
+    .start()
+    .then(() => {
+        console.log("connected");
+    })
+    .catch((error: Error) => console.log("error: ", error));
+
+// todo move out
 function getToken() {
     return store.getState().auth.token;
 }
 
+// todo move out
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
-
+// todo move out
 const tokenInsertRequestHandler = axios.interceptors.request.use((config: AxiosRequestConfig) => {
     const token = getToken();
     if (token !== null) {
@@ -67,7 +91,7 @@ const tokenInsertRequestHandler = axios.interceptors.request.use((config: AxiosR
     }
     return config;
 });
-
+// todo move out
 const tokenExpiredResponseHandler = axios.interceptors.response.use(
     (response: AxiosResponse) => {
         return response;

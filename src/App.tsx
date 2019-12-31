@@ -7,6 +7,11 @@ import { store } from "./store/storeConfig";
 
 // https://coolors.co/dce6ea-0e3b43-1e4571-3e505b-357266
 const theme = createMuiTheme({
+    overrides: {
+        MuiCheckbox: {
+            root: { color: "#F0F2EF" },
+        },
+    },
     palette: {
         action: {
             active: "rgba(0, 0, 0, 0.54)",
@@ -17,12 +22,12 @@ const theme = createMuiTheme({
             selected: "rgba(0, 0, 0, 0.14)",
         },
         background: {
-            default: "#EDEFF0",
-            paper: "#f5f7f8",
+            default: "#dbddde",
+            paper: "#EDEDED",
         },
         common: {
-            black: "#0B2B31",
-            white: "#EDEFF0",
+            black: "#12171A",
+            white: "#F0F2EF",
         },
         contrastThreshold: 3,
         divider: "rgba(0, 0, 0, 0.12)",
@@ -48,17 +53,17 @@ const theme = createMuiTheme({
             A400: "#303030",
             A700: "#616161",
         },
-        primary: {
-            // dark: "rgb(17, 82, 147)",
-            contrastText: "#F4F7F8",
-            // light: "rgb(71, 145, 219)",
-            main: "#1E4571",
-        },
         secondary: {
-            // dark: "rgb(154, 0, 54)",
-            contrastText: "#F4F7F8",
-            // light: "rgb(227, 51, 113)",
-            main: "#177269",
+            // contrastText: "#F0F2EF",
+            // dark: "#182023",
+            light: "#7d856a",
+            main: "#49523d",
+        },
+        primary: {
+            // contrastText: "#12171A",
+            dark: "#1a2529",
+            light: "#415c66",
+            main: "#2e4249",
         },
         text: {
             disabled: "#959FA5",

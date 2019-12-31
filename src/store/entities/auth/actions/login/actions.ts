@@ -14,9 +14,7 @@ export interface ILoginLoadingAction {
     };
 }
 
-export const loginLoadingAction = (
-    credentials: ILoginRequest,
-): ILoginLoadingAction => ({
+export const loginLoadingAction = (credentials: ILoginRequest): ILoginLoadingAction => ({
     payload: {
         firstName: credentials.firstName,
         lastName: credentials.lastName,
@@ -35,9 +33,7 @@ export interface ILoginSuccessAction {
     payload: ITokenData;
 }
 
-export const loginSuccessAction = (
-    projects: ITokenData,
-): ILoginSuccessAction => ({
+export const loginSuccessAction = (projects: ITokenData): ILoginSuccessAction => ({
     payload: projects,
     type: LOGIN_SUCCESS,
 });
@@ -49,11 +45,13 @@ export const LOGIN_ERROR = "LOGIN_ERROR";
 
 export interface ILoginErrorAction {
     type: typeof LOGIN_ERROR;
+    meta?: string;
     payload: string;
 }
 
-export const loginErrorAction = (error: string): ILoginErrorAction => ({
-    payload: error,
+export const loginErrorAction = (message: string, error: Error | null = null): ILoginErrorAction => ({
+    meta: JSON.stringify(error),
+    payload: message,
     type: LOGIN_ERROR,
 });
 
@@ -61,7 +59,4 @@ export const loginErrorAction = (error: string): ILoginErrorAction => ({
 /*                                Export Types                                */
 /* -------------------------------------------------------------------------- */
 
-export type LoginActionTypes =
-    | ILoginLoadingAction
-    | ILoginSuccessAction
-    | ILoginErrorAction;
+export type LoginActionTypes = ILoginLoadingAction | ILoginSuccessAction | ILoginErrorAction;

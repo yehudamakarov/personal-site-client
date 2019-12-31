@@ -17,6 +17,8 @@ import { TransferListItem } from "./transferListItem";
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         cardHeader: {
+            backgroundColor: theme.palette.primary.main,
+            color: theme.palette.primary.contrastText,
             padding: theme.spacing(1, 2),
         },
         progress: {
@@ -62,7 +64,7 @@ export const TransferList = (props: {
 
     const titleCheckbox = (
         <Checkbox
-            color={"primary"}
+            color={"default"}
             onClick={handleToggleAll(props.items)}
             checked={numberOfChecked(props.items) === props.items.length && props.items.length !== 0}
             indeterminate={numberOfChecked(props.items) !== props.items.length && numberOfChecked(props.items) !== 0}
@@ -80,6 +82,7 @@ export const TransferList = (props: {
                     className={classes.cardHeader}
                     avatar={titleCheckbox}
                     titleTypographyProps={{ variant: "subtitle2" }}
+                    subheaderTypographyProps={{ variant: "body2", color: "inherit" }}
                     title={props.title}
                     subheader={`${numberOfChecked(props.items)}/${props.items.length} selected`}
                 />

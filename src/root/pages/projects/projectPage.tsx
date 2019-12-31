@@ -10,40 +10,36 @@ import { BlogPostsByProjectList } from "./components/blogPostsByProjectList";
 import { ProjectPageTitleCard } from "./components/projectTitleCard";
 import TagsComponent from "./components/tagsComponent";
 
-
 const ProjectPage = (props: RouteComponentProps<{ projectName?: string }>) => {
     const dispatch = useDispatch();
-    const { projectName: projectNameFromRoute } = props;
 
-    const projectFromRoute: IProject | undefined = useSelector(
-        (state: IApplicationState) => {
-            return state.projects.projectsData.find((project) => {
-                return project.projectName === props.projectName;
-            });
-        },
-    );
+    // todo get projectId from project name, pass down to any component that needs project data.
+    //      can use a projectId instead.
+    //      no need to pass down a project and check it all over the place
 
+    const projectFromRoute: IProject | undefined = useSelector((state: IApplicationState) => {
+        return state.projects.projectsData.find((project) => {
+            return project.projectName === props.projectName;
+        });
+    });
+
+    // todo dispatch regardless on every page load. set isLoading.
+    //      if isLoading, render a loader instead of all the components.
     useEffect(() => {
         if (!projectFromRoute) {
-            dispatch(getProjectByNameLoadingAction(projectNameFromRoute));
+            dispatch(getProjectByNameLoadingAction(props.projectName));
         }
-    }, [projectNameFromRoute]);
+    }, [props.projectName]);
 
     return (
         <BasePage>
             <Grid container spacing={2}>
                 <Grid item xs={12}>
-                    <ProjectPageTitleCard
-                        projectNameFromRoute={projectNameFromRoute}
-                        project={projectFromRoute}
-                    />
+                    <ProjectPageTitleCard projectNameFromRoute={props.projectName} project={projectFromRoute} />
                 </Grid>
                 {/* Tags */}
                 <Grid item xs={12}>
-                    <TagsComponent
-                        project={projectFromRoute}
-                        tags={projectFromRoute ? projectFromRoute.tagIds : []}
-                    />
+                    <TagsComponent project={projectFromRoute} tags={projectFromRoute ? projectFromRoute.tagIds : []} />
                 </Grid>
                 {/* Highlights */}
 

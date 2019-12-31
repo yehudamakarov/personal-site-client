@@ -18,8 +18,7 @@ function* login(action: ILoginLoadingAction) {
             navigate(Routes.home).then(() => null);
         }
     } catch (error) {
-        const errorContent = JSON.stringify(error);
-        yield put(loginErrorAction(errorContent));
+        yield put(loginErrorAction(error.message, error));
     }
 }
 
