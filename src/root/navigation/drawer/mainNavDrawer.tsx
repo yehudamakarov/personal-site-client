@@ -57,9 +57,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export const MainNavDrawer = () => {
-    const drawerOpen = useSelector(
-        (state: IApplicationState) => state.ui.drawerOpen
-    );
+    const drawerOpen = useSelector((state: IApplicationState) => state.ui.drawerOpen);
     const isLoggedIn = useAuth([roleType.administrator]);
     const tags = useSelector((state: IApplicationState) => state.tags.tagsData);
     const dispatch = useDispatch();
@@ -79,152 +77,75 @@ export const MainNavDrawer = () => {
         <Drawer open={drawerOpen} onClose={handleDrawerClose}>
             <Paper className={classes.drawerBackground}>
                 <List className={classes.list}>
-                    <ListItem
-                        button
-                        divider
-                        className={classes.exitArrow}
-                        onClick={handleDrawerClose}
-                    >
+                    <ListItem button divider className={classes.exitArrow} onClick={handleDrawerClose}>
                         <ListItemIcon>
                             <ArrowBackIosIcon />
                         </ListItemIcon>
                     </ListItem>
                     {!isLoggedIn ? (
-                        <ListItem
-                            button
-                            component={Link}
-                            to="login"
-                            onClick={handleDrawerClose}
-                        >
+                        <ListItem button component={Link} to="login" onClick={handleDrawerClose}>
                             <ListItemIcon>
                                 <LockOpenIcon />
                             </ListItemIcon>
-                            <ListItemText
-                                primaryTypographyProps={{ variant: "h6" }}
-                            >
-                                Login
-                            </ListItemText>
+                            <ListItemText primaryTypographyProps={{ variant: "h6" }}>Login</ListItemText>
                         </ListItem>
                     ) : (
-                        <ListItem
-                            button
-                            component={Link}
-                            to="dashboard"
-                            onClick={handleDrawerClose}
-                        >
+                        <ListItem button component={Link} to="dashboard" onClick={handleDrawerClose}>
                             <ListItemIcon>
                                 <DashboardIcon />
                             </ListItemIcon>
-                            <ListItemText
-                                primaryTypographyProps={{ variant: "h6" }}
-                            >
-                                Dashboard
-                            </ListItemText>
+                            <ListItemText primaryTypographyProps={{ variant: "h6" }}>Dashboard</ListItemText>
                         </ListItem>
                     )}
-                    <ListItem
-                        button
-                        component={Link}
-                        to="/"
-                        onClick={handleDrawerClose}
-                    >
+                    <ListItem button component={Link} to="/" onClick={handleDrawerClose}>
                         <ListItemIcon>
                             <HomeRoundedIcon />
                         </ListItemIcon>
-                        <ListItemText
-                            primaryTypographyProps={{ variant: "h6" }}
-                        >
-                            Home
-                        </ListItemText>
+                        <ListItemText primaryTypographyProps={{ variant: "h6" }}>Home</ListItemText>
                     </ListItem>
-                    <ListItem
-                        button
-                        component={Link}
-                        to="about"
-                        onClick={handleDrawerClose}
-                    >
+                    <ListItem button component={Link} to="about" onClick={handleDrawerClose}>
                         <ListItemIcon>
                             <PortraitIcon />
                         </ListItemIcon>
-                        <ListItemText
-                            primaryTypographyProps={{ variant: "h6" }}
-                        >
-                            About
-                        </ListItemText>
+                        <ListItemText primaryTypographyProps={{ variant: "h6" }}>About</ListItemText>
                     </ListItem>
-                    <ListItem
-                        button
-                        component={Link}
-                        to="projects"
-                        onClick={handleDrawerClose}
-                    >
+                    <ListItem button component={Link} to="projects" onClick={handleDrawerClose}>
                         <ListItemIcon>
                             <WorkIcon />
                         </ListItemIcon>
-                        <ListItemText
-                            primary="Projects"
-                            primaryTypographyProps={{ variant: "h6" }}
-                        />
+                        <ListItemText primary="Projects" primaryTypographyProps={{ variant: "h6" }} />
                     </ListItem>
-                    <ListItem
-                        button
-                        component={Link}
-                        to="blogPosts"
-                        onClick={handleDrawerClose}
-                    >
+                    <ListItem button component={Link} to="blogPosts" onClick={handleDrawerClose}>
                         <ListItemIcon>
                             <NotesRoundedIcon />
                         </ListItemIcon>
-                        <ListItemText
-                            primaryTypographyProps={{ variant: "h6" }}
-                            primary="Blog"
-                        />
+                        <ListItemText primaryTypographyProps={{ variant: "h6" }} primary="Blog" />
                     </ListItem>
                     <ListItem button onClick={handleTagsOpen}>
                         <ListItemIcon>
                             <LabelTwoToneIcon />
                         </ListItemIcon>
-                        <ListItemText
-                            primaryTypographyProps={{ variant: "h6" }}
-                            primary="Tags"
-                        />
+                        <ListItemText primaryTypographyProps={{ variant: "h6" }} primary="Tags" />
                         {tagsAreOpen ? <ExpandLess /> : <ExpandMore />}
                     </ListItem>
                     <Collapse in={tagsAreOpen} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
                             {tags.map((tag) => (
-                                <TagListItem
-                                    onClick={handleDrawerClose}
-                                    key={tag.tagId}
-                                    name={tag.tagId}
-                                />
+                                <TagListItem onClick={handleDrawerClose} key={tag.tagId} name={tag.tagId} />
                             ))}
                         </List>
                     </Collapse>
-                    <ListItem
-                        button
-                        component="a"
-                        href="/api/swagger"
-                        onClick={handleDrawerClose}
-                    >
+                    <ListItem button component="a" href="/api/swagger" onClick={handleDrawerClose}>
                         <ListItemIcon>
                             <ApiIcon />
                         </ListItemIcon>
-                        <ListItemText
-                            primaryTypographyProps={{ variant: "h6" }}
-                        >
-                            API
-                        </ListItemText>
+                        <ListItemText primaryTypographyProps={{ variant: "h6" }}>API</ListItemText>
                     </ListItem>
                 </List>
             </Paper>
             {isLoggedIn && (
                 <div className={classes.actions}>
-                    <Button
-                        onClick={handleLogout}
-                        variant={"contained"}
-                        color={"secondary"}
-                    >
+                    <Button onClick={handleLogout} variant={"contained"} color={"default"}>
                         Log Out
                     </Button>
                 </div>

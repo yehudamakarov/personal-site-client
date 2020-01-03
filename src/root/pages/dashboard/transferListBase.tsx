@@ -20,6 +20,9 @@ import { TransferList } from "./transferList";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
+        avatarColorClassName: {
+            backgroundColor: theme.palette.secondary.main,
+        },
         fabIcon: {
             marginRight: theme.spacing(1),
         },
@@ -108,6 +111,7 @@ export const TransferListBase = (props: { tagId?: ITag["tagId"] }) => {
             items={left}
             checked={checked}
             setChecked={setChecked}
+            avatarColorClassName={classes.avatarColorClassName}
         />
     );
     const leftButton = (

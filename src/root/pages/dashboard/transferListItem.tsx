@@ -25,6 +25,9 @@ const facadeItemSelector = (facadeId: TransferListFacadeId) => (state: IApplicat
 };
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
+        avatarIcon: {
+            // backgroundColor: theme.palette.primary.light,
+        },
         chip: {
             marginRight: theme.spacing(0.5),
             marginTop: theme.spacing(0.5),
@@ -38,6 +41,7 @@ export const TransferListItem = (props: {
     onClick: () => void;
     checked: boolean;
     searchElement: TransferListFacadeId;
+    avatarColorClassName?: string;
 }) => {
     const classes = useStyles();
     const element = useSelector(facadeItemSelector(props.searchElement));
@@ -45,7 +49,7 @@ export const TransferListItem = (props: {
     return (
         <ListItem role="listitem" button onClick={props.onClick} alignItems={"flex-start"}>
             <ListItemAvatar>
-                <Avatar>
+                <Avatar className={props.avatarColorClassName}>
                     {element.type === FacadeType.BlogPost && <NotesRoundedIcon />}
                     {element.type === FacadeType.Project && <WorkIcon />}
                 </Avatar>
@@ -62,7 +66,7 @@ export const TransferListItem = (props: {
                                     component={"span"}
                                     key={tagId}
                                     className={classes.chip}
-                                    color="secondary"
+                                    // color="primary"
                                     size="small"
                                     icon={<LabelIcon />}
                                     label={tagId}

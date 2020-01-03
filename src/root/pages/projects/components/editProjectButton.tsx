@@ -64,7 +64,7 @@ export const EditProjectButton = (props: { project?: IProject }) => {
             )}
             {isAuthorized && projectIsEditable && (
                 <Grid item>
-                    <Fab variant="extended" color="secondary" size="small" onClick={handleProjectEditCancel}>
+                    <Fab variant="extended" size="small" onClick={handleProjectEditCancel}>
                         Cancel
                     </Fab>
                 </Grid>

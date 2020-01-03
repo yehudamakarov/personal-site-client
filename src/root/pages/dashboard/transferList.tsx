@@ -17,8 +17,8 @@ import { TransferListItem } from "./transferListItem";
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         cardHeader: {
-            backgroundColor: theme.palette.primary.main,
-            color: theme.palette.primary.contrastText,
+            // backgroundColor: theme.palette.primary.main,
+            // color: theme.palette.primary.contrastText,
             padding: theme.spacing(1, 2),
         },
         progress: {
@@ -33,6 +33,7 @@ export const TransferList = (props: {
     checked: FacadeIds;
     setChecked: (facadeIds: FacadeIds) => ISetChecked;
     listClassName?: string;
+    avatarColorClassName?: string;
 }) => {
     const classes = useStyles();
     const isLoading = useSelector((state: IApplicationState) => {
@@ -64,7 +65,7 @@ export const TransferList = (props: {
 
     const titleCheckbox = (
         <Checkbox
-            color={"default"}
+            color={"primary"}
             onClick={handleToggleAll(props.items)}
             checked={numberOfChecked(props.items) === props.items.length && props.items.length !== 0}
             indeterminate={numberOfChecked(props.items) !== props.items.length && numberOfChecked(props.items) !== 0}
@@ -98,6 +99,7 @@ export const TransferList = (props: {
                     props.items.map((value: TransferListFacadeId) => {
                         return (
                             <TransferListItem
+                                avatarColorClassName={props.avatarColorClassName}
                                 key={value}
                                 onClick={handleToggle(value)}
                                 checked={props.checked.indexOf(value) !== -1}

@@ -22,9 +22,7 @@ import { GithubIcon } from "../../../../../iconButtons/icons/githubIcon";
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         cardLeftPadding: {
-            borderLeft: `${theme.spacing(1)}px solid ${
-                theme.palette.secondary.light
-            }`,
+            borderLeft: `${theme.spacing(1)}px solid ${theme.palette.secondary.light}`,
             borderRadius: theme.spacing(1),
             paddingLeft: theme.spacing(1),
             paddingRight: theme.spacing(1),
@@ -60,9 +58,7 @@ const HomeProjectCard = (props: IOwnProps) => {
                 <Typography className={classes.title} variant="h6">
                     {project.name}
                 </Typography>
-                <Typography variant="overline">
-                    {project.description}
-                </Typography>
+                <Typography variant="overline">{project.description}</Typography>
             </CardContent>
             <CardActions>
                 <Grid container spacing={1}>
@@ -78,12 +74,7 @@ const HomeProjectCard = (props: IOwnProps) => {
                         </Button>
                     </Grid>
                     <Grid item>
-                        <Button
-                            endIcon={<SubjectIcon />}
-                            size="small"
-                            color="primary"
-                            disableTouchRipple
-                        >
+                        <Button endIcon={<SubjectIcon />} size="small" color="primary" disableTouchRipple>
                             See More
                         </Button>
                     </Grid>
@@ -101,13 +92,13 @@ const HomeProjectCard = (props: IOwnProps) => {
                 className={hovered ? classes.cardSideButtonHover : ""}
             >
                 <Hidden xsDown>
-                    <Card elevation={0} square>
+                    <Card elevation={1} square>
                         {CardBody}
                     </Card>
                 </Hidden>
                 <Hidden smUp>
                     <div className={classes.cardLeftPadding}>
-                        <Card elevation={0} square>
+                        <Card elevation={1} square>
                             {CardBody}
                         </Card>
                     </div>

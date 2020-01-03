@@ -8,9 +8,9 @@ import { store } from "./store/storeConfig";
 // https://coolors.co/dce6ea-0e3b43-1e4571-3e505b-357266
 const theme = createMuiTheme({
     overrides: {
-        MuiCheckbox: {
-            root: { color: "#F0F2EF" },
-        },
+        // MuiCheckbox: {
+        //     root: { color: "#F0F2EF" },
+        // },
     },
     palette: {
         action: {
@@ -22,12 +22,12 @@ const theme = createMuiTheme({
             selected: "rgba(0, 0, 0, 0.14)",
         },
         background: {
-            default: "#dbddde",
-            paper: "#EDEDED",
+            default: "#F2F7F2",
+            paper: "#F6F7F6",
         },
         common: {
-            black: "#12171A",
-            white: "#F0F2EF",
+            black: "#212121",
+            white: "#FAFCFD",
         },
         contrastThreshold: 3,
         divider: "rgba(0, 0, 0, 0.12)",
@@ -38,12 +38,12 @@ const theme = createMuiTheme({
             main: "#f44336",
         },
         grey: {
-            50: "#fafafa",
-            100: "#f5f5f5",
-            200: "#eeeeee",
-            300: "#e0e0e0",
-            400: "#bdbdbd",
-            500: "#9e9e9e",
+            50: "#F7F8F9",
+            100: "#EEF0F2",
+            200: "#E9EBEE",
+            300: "#E1E4E8",
+            400: "#B9BBBE",
+            500: "#94999E",
             600: "#757575",
             700: "#616161",
             800: "#424242",
@@ -53,25 +53,22 @@ const theme = createMuiTheme({
             A400: "#303030",
             A700: "#616161",
         },
-        secondary: {
-            // contrastText: "#F0F2EF",
-            // dark: "#182023",
-            light: "#7d856a",
-            main: "#49523d",
-        },
         primary: {
-            // contrastText: "#12171A",
-            dark: "#1a2529",
-            light: "#415c66",
-            main: "#2e4249",
+            contrastText: "#f0f6fb",
+            // light: "#445D77",
+            main: "#19395D",
+        },
+        secondary: {
+            // main: "#3F5642",
+            main: "#367C40",
         },
         text: {
-            disabled: "#959FA5",
-            hint: "#959FA5",
-            primary: "#3E505B",
-            secondary: "#616F78",
+            // disabled: "#959FA5",
+            // hint: "#959FA5",
+            // primary: "#232323",
+            // secondary: "#616F78",
         },
-        tonalOffset: 0.3,
+        // tonalOffset: 0.3,
         type: "light",
     },
     typography: {

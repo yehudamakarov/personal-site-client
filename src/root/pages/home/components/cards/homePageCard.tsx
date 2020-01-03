@@ -11,21 +11,21 @@ const useStyles = makeStyles((theme: Theme) =>
             display: "flex",
         },
         cardButton: {
-            "& svg": { fill: theme.palette.secondary.contrastText },
+            "& svg": { fill: theme.palette.common.white },
             "&:hover": {
-                "& svg": { fill: theme.palette.primary.contrastText },
+                "& svg": { fill: theme.palette.common.white },
                 backgroundColor: theme.palette.primary.dark,
-                color: theme.palette.primary.contrastText,
+                color: theme.palette.common.white,
             },
             [theme.breakpoints.down("xs")]: {
                 width: theme.spacing(10),
             },
             alignItems: "center",
-            backgroundColor: theme.palette.primary.light,
+            backgroundColor: theme.palette.primary.main,
+            color: theme.palette.text.primary,
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            color: theme.palette.getContrastText(theme.palette.primary.light),
             width: theme.spacing(16),
         },
         cardFace: {

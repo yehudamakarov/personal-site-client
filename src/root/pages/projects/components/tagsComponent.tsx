@@ -19,9 +19,7 @@ const TagsComponent = (props: {
     small?: boolean;
     project?: IProject | undefined;
 }) => {
-    const projectId = props.project
-        ? (props.project.githubRepoDatabaseId as string)
-        : undefined;
+    const projectId = props.project ? (props.project.githubRepoDatabaseId as string) : undefined;
     const projectIsEditable = useSelector((state: IApplicationState) => {
         if (projectId) {
             return state.projects.projectsUi.singleIsEditing[projectId];
@@ -46,7 +44,7 @@ const TagsComponent = (props: {
                                 to={`/tags/${tag}`}
                                 clickable
                                 size={small ? "small" : "medium"}
-                                color={"secondary"}
+                                color={"primary"}
                                 icon={<LabelIcon />}
                                 variant={"outlined"}
                             />
