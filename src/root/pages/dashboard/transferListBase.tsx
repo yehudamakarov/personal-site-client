@@ -11,7 +11,6 @@ import _ from "lodash";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TransferListHelpers } from "../../../helpers/transferListHelpers";
-import { ITag } from "../../../store/entities/tags/actions/api";
 import { openTagMapSaveDialogAction } from "../../../store/entities/tagsTransferList/actions/openTagMapSaveDialog";
 import { setCheckedAction } from "../../../store/entities/tagsTransferList/actions/setChecked";
 import { setLeftAction } from "../../../store/entities/tagsTransferList/actions/setLeft";
@@ -22,18 +21,15 @@ import { TransferList } from "./transferList";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        greenAvatarClassName: {
-            backgroundColor: theme.palette.secondary.main,
-        },
-        redAvatarClassName: {
-            backgroundColor: theme.palette.error.main,
-        },
         fabIcon: {
             [theme.breakpoints.up("sm")]: { marginRight: theme.spacing(1) },
         },
         fabSpan: {
             paddingLeft: theme.spacing(1),
             paddingRight: theme.spacing(1),
+        },
+        greenAvatarClassName: {
+            backgroundColor: theme.palette.secondary.main,
         },
         list: {
             backgroundColor: theme.palette.background.paper,
@@ -51,6 +47,9 @@ const useStyles = makeStyles((theme: Theme) =>
             },
             overflow: "auto",
         },
+        redAvatarClassName: {
+            backgroundColor: theme.palette.error.main,
+        },
         root: {
             [theme.breakpoints.down("xs")]: {
                 marginTop: theme.spacing(1),
@@ -66,7 +65,7 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 );
 
-export const TransferListBase = (props: { tagId?: ITag["tagId"] }) => {
+export const TransferListBase = () => {
     const classes = useStyles();
     const isXs = useMediaQuery((theme: Theme) => theme.breakpoints.down("xs"));
     const dispatch = useDispatch();
@@ -187,7 +186,7 @@ export const TransferListBase = (props: { tagId?: ITag["tagId"] }) => {
             size={"small"}
             classes={{ label: classes.fabSpan }}
         >
-            <ReplayIcon />
+            <ReplayIcon className={classes.fabIcon} />
             {isXs ? "" : "Reset"}
         </Fab>
     );
@@ -249,12 +248,8 @@ export const TransferListBase = (props: { tagId?: ITag["tagId"] }) => {
                             <Grid item xs={12}>
                                 {leftButton}
                             </Grid>
-                            <Grid item xs>
-                                {saveButton}
-                            </Grid>
-                            <Grid item xs>
-                                {resetButton}
-                            </Grid>
+                            <Grid item>{saveButton}</Grid>
+                            <Grid item>{resetButton}</Grid>
                         </Grid>
                     </Grid>
 
