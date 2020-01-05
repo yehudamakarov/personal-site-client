@@ -12,7 +12,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TransferListHelpers } from "../../../helpers/transferListHelpers";
 import { ITag } from "../../../store/entities/tags/actions/api";
-import { mapTagLoadingAction } from "../../../store/entities/tagsTransferList/actions/mapTag";
+import { openTagMapSaveDialogAction } from "../../../store/entities/tagsTransferList/actions/openTagMapSaveDialog";
 import { setCheckedAction } from "../../../store/entities/tagsTransferList/actions/setChecked";
 import { setLeftAction } from "../../../store/entities/tagsTransferList/actions/setLeft";
 import { setRightAction } from "../../../store/entities/tagsTransferList/actions/setRight";
@@ -22,8 +22,11 @@ import { TransferList } from "./transferList";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        avatarColorClassName: {
+        greenAvatarClassName: {
             backgroundColor: theme.palette.secondary.main,
+        },
+        redAvatarClassName: {
+            backgroundColor: theme.palette.error.main,
         },
         fabIcon: {
             [theme.breakpoints.up("sm")]: { marginRight: theme.spacing(1) },
@@ -98,23 +101,33 @@ export const TransferListBase = (props: { tagId?: ITag["tagId"] }) => {
     };
 
     const handleSave = () => {
-        if (props.tagId) {
-            dispatch(mapTagLoadingAction(props.tagId));
-        }
+        dispatch(openTagMapSaveDialogAction());
     };
 
     const handleReset = () => {
         dispatch(setLeftAction(initial));
     };
 
+    const decideIconColorForMapped = (value: string) => {
+        if (initial.indexOf(value) === -1) {
+            return classes.greenAvatarClassName;
+        }
+    };
+    const decideIconColorForAvailableToMap = (value: string) => {
+        if (initial.indexOf(value) !== -1) {
+            return classes.redAvatarClassName;
+        }
+    };
+
     const leftList = (
         <TransferList
+            initial={initial}
             listClassName={classes.list}
             title={"Mapped"}
             items={left}
             checked={checked}
             setChecked={setChecked}
-            avatarColorClassName={classes.avatarColorClassName}
+            iconColorDecider={decideIconColorForMapped}
         />
     );
     const leftButton = (
@@ -132,6 +145,8 @@ export const TransferListBase = (props: { tagId?: ITag["tagId"] }) => {
     );
     const rightList = (
         <TransferList
+            iconColorDecider={decideIconColorForAvailableToMap}
+            initial={initial}
             listClassName={classes.list}
             title={"Available to Map"}
             items={right}

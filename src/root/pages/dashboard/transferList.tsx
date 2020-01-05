@@ -28,12 +28,15 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export const TransferList = (props: {
+    initial: FacadeIds;
     title: React.ReactNode;
     items: FacadeIds;
     checked: FacadeIds;
     setChecked: (facadeIds: FacadeIds) => ISetChecked;
     listClassName?: string;
-    avatarColorClassName?: string;
+    greenAvatarClassName?: string;
+    redAvatarClassName?: string;
+    iconColorDecider: (value: string) => string | undefined;
 }) => {
     const classes = useStyles();
     const isLoading = useSelector((state: IApplicationState) => {
@@ -99,7 +102,7 @@ export const TransferList = (props: {
                     props.items.map((value: TransferListFacadeId) => {
                         return (
                             <TransferListItem
-                                avatarColorClassName={props.avatarColorClassName}
+                                avatarColorClassName={props.iconColorDecider(value)}
                                 key={value}
                                 onClick={handleToggle(value)}
                                 checked={props.checked.indexOf(value) !== -1}

@@ -4,6 +4,7 @@ import React from "react";
 import { TagTitleHelpers } from "../../../helpers/tagTitleHelpers";
 import { ITag } from "../../../store/entities/tags/actions/api";
 import { BasePage } from "../basePage";
+import { TagMapSaveDialog } from "./tagMapSaveDialog";
 import { TransferListForProjectsAndBlogPosts } from "./transferListForProjectsAndBlogPosts";
 
 export const TagsMapPage = (props: RouteComponentProps<{ tagId: ITag["tagId"] }>) => {
@@ -15,6 +16,7 @@ export const TagsMapPage = (props: RouteComponentProps<{ tagId: ITag["tagId"] }>
                 Map Tag: {tagTitle}
             </Typography>
             <TransferListForProjectsAndBlogPosts tagId={tagTitle} />
+            <TagMapSaveDialog tagId={tagTitle} />
         </BasePage>
     );
 };
