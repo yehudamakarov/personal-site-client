@@ -82,7 +82,8 @@ export const TransferListBase = () => {
     const checked = useSelector((state: IApplicationState) => state.tagsTransferList.checked);
     const right = useSelector((state: IApplicationState) => state.tagsTransferList.right);
     const left = useSelector((state: IApplicationState) => state.tagsTransferList.left);
-    const initial = useSelector((state: IApplicationState) => state.tagsTransferList.initial);
+    const initialLeft = useSelector((state: IApplicationState) => state.tagsTransferList.initialLeft);
+    const initialRight = useSelector((state: IApplicationState) => state.tagsTransferList.initialRight);
 
     const leftChecked = TransferListHelpers.intersection(checked, left);
     const rightChecked = TransferListHelpers.intersection(checked, right);
@@ -104,23 +105,24 @@ export const TransferListBase = () => {
     };
 
     const handleReset = () => {
-        dispatch(setLeftAction(initial));
+        dispatch(setLeftAction(initialLeft));
+        dispatch(setRightAction(initialRight));
     };
 
     const decideIconColorForMapped = (value: string) => {
-        if (initial.indexOf(value) === -1) {
+        if (initialLeft.indexOf(value) === -1) {
             return classes.greenAvatarClassName;
         }
     };
     const decideIconColorForAvailableToMap = (value: string) => {
-        if (initial.indexOf(value) !== -1) {
+        if (initialLeft.indexOf(value) !== -1) {
             return classes.redAvatarClassName;
         }
     };
 
     const leftList = (
         <TransferList
-            initial={initial}
+            initial={initialLeft}
             listClassName={classes.list}
             title={"Mapped"}
             items={left}
@@ -145,7 +147,7 @@ export const TransferListBase = () => {
     const rightList = (
         <TransferList
             iconColorDecider={decideIconColorForAvailableToMap}
-            initial={initial}
+            initial={initialLeft}
             listClassName={classes.list}
             title={"Available to Map"}
             items={right}
@@ -173,7 +175,7 @@ export const TransferListBase = () => {
             variant={isXs ? "round" : "extended"}
             color={"secondary"}
             size={"small"}
-            disabled={_.isEqual(_.sortBy(initial), _.sortBy(left))}
+            disabled={_.isEqual(_.sortBy(initialLeft), _.sortBy(left))}
         >
             <SaveOutlinedIcon className={classes.fabIcon} />
             {isXs ? "" : "Save Changes"}

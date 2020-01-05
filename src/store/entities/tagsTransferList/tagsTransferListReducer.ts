@@ -26,7 +26,8 @@ export interface ITagsTransferListState {
     allIsLoading: boolean;
     allIsError: boolean;
     checked: FacadeIds;
-    initial: FacadeIds;
+    initialLeft: FacadeIds;
+    initialRight: FacadeIds;
     right: FacadeIds;
     left: FacadeIds;
     facadeIds: FacadeIds;
@@ -39,7 +40,8 @@ const INITIAL_STATE: ITagsTransferListState = {
     checked: [],
     facadeIds: [],
     facadeItems: {},
-    initial: [],
+    initialLeft: [],
+    initialRight: [],
     left: [],
     right: [],
     saveDialogIsOpen: false,
@@ -77,7 +79,7 @@ export const tagsTransferListReducer = (
             return { ...state, saveIsLoading: false, saveIsSuccess: false, saveIsError: true };
         }
         case SET_INITIALLY_MAPPED: {
-            return { ...state, initial: action.payload };
+            return { ...state, initialLeft: action.payload.left, initialRight: action.payload.right };
         }
         case GET_TRANSFER_LIST_FACADES_LOADING: {
             return { ...state, allIsLoading: true };

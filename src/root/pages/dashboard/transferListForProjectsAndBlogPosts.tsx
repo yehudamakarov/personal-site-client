@@ -12,5 +12,5 @@ export const TransferListForProjectsAndBlogPosts = (props: { tagId?: ITag["tagId
         dispatch(getTransferListFacadesLoadingAction(props.tagId));
     }, [dispatch, props.tagId]);
 
-    return <TransferListBase tagId={props.tagId} />;
+    return <TransferListBase />;
 };
