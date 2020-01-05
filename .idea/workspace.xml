@@ -6,20 +6,10 @@
     <option name="FILTER_RESOLVED_ITEMS" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="signalR">
+    <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/navigation/drawer/mainNavDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/navigation/drawer/mainNavDrawer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferListBase.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListBase.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/home/components/cards/homePageCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/home/components/cards/homePageCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homeCardTextPinnedRepositories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homeCardTextPinnedRepositories.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homeProjectCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/home/components/cards/pinnedRepositories/homeProjectCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/indexView/filter/listingTypeSelect/listingTypeSelectPresentational.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/indexView/filter/listingTypeSelect/listingTypeSelectPresentational.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/editProjectButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/editProjectButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/projectActionButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/projectActionButtons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/projects/components/tagsComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/projects/components/tagsComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/sagas/getTransferListFacadesSaga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/sagas/getTransferListFacadesSaga.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,6 +137,8 @@
       <workItem from="1577035992780" duration="1502000" />
       <workItem from="1577039917888" duration="38719000" />
       <workItem from="1578060759291" duration="84000" />
+      <workItem from="1578060868415" duration="130000" />
+      <workItem from="1578189873122" duration="3028000" />
     </task>
     <task id="LOCAL-00001" summary="project styles for webstorm">
       <created>1568176773387</created>
@@ -477,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577804273381</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="cleaning up theme and colors">
+      <created>1578060921230</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1578060921230</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -514,7 +513,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="logo" />
     <MESSAGE value="fixed up home cards for projects" />
     <MESSAGE value="added close icon to drawer" />
     <MESSAGE value="refactoring" />
@@ -539,7 +537,8 @@
     <MESSAGE value="added some meta" />
     <MESSAGE value=". depression phase. why does it matter. now i feel like i have to gut out so many parts and redo them. OY" />
     <MESSAGE value="signalR" />
-    <option name="LAST_COMMIT_MESSAGE" value="signalR" />
+    <MESSAGE value="cleaning up theme and colors" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleaning up theme and colors" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -578,13 +577,13 @@
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="1179" y="544" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1576461939717" />
-    <state x="296" y="242" width="1723" height="1400" key="CommitChangelistDialog2" timestamp="1577974206259">
-      <screen x="0" y="0" width="1920" height="1200" />
+    <state x="252" y="51" width="1723" height="1400" key="CommitChangelistDialog2" timestamp="1578060920954">
+      <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="1593" y="383" key="CommitChangelistDialog2/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575848306443" />
     <state x="252" y="51" key="CommitChangelistDialog2/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1577804272974" />
     <state x="296" y="242" key="CommitChangelistDialog2/0.0.1920.1200@0.0.1920.1200" timestamp="1577974206259" />
-    <state x="252" y="51" width="1292" height="1314" key="CommitChangelistDialog2/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1577228525054" />
+    <state x="252" y="51" width="1292" height="1314" key="CommitChangelistDialog2/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1578060920954" />
     <state x="804" y="289" key="CommitChangelistDialog2/0.23.1874.1177@0.23.1874.1177" timestamp="1575900332338" />
     <state x="-2165" y="0" width="1723" height="1400" key="CommitChangelistDialog2/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@-2560.0.2560.1400" timestamp="1577654560303" />
     <state x="395" y="95" width="1717" height="1141" key="CommitChangelistDialog2/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575835654418" />
@@ -603,33 +602,33 @@
     <state x="553" y="213" key="SettingsEditor/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575517065196" />
     <state x="968" y="162" width="1434" height="1335" key="SettingsEditor/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1577078101639" />
     <state x="353" y="151" key="SettingsEditor/0.0.1920.1200@0.0.1920.1200" timestamp="1575305769373" />
-    <state x="460" y="277" key="Vcs.Push.Dialog.v2" timestamp="1577974210651">
-      <screen x="0" y="0" width="1920" height="1200" />
+    <state x="721" y="391" key="Vcs.Push.Dialog.v2" timestamp="1578060929628">
+      <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="721" y="391" key="Vcs.Push.Dialog.v2/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575848311517" />
     <state x="721" y="391" key="Vcs.Push.Dialog.v2/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1577804278188" />
     <state x="460" y="277" key="Vcs.Push.Dialog.v2/0.0.1920.1200@0.0.1920.1200" timestamp="1577974210651" />
-    <state x="721" y="391" key="Vcs.Push.Dialog.v2/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1577228527944" />
+    <state x="721" y="391" key="Vcs.Push.Dialog.v2/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1578060929628" />
     <state x="449" y="295" key="Vcs.Push.Dialog.v2/0.23.1874.1177@0.23.1874.1177" timestamp="1575900335626" />
-    <state x="-1360" y="442" width="774" height="830" key="find.popup" timestamp="1578023022749">
-      <screen x="-1920" y="268" width="1877" height="1177" />
+    <state x="898" y="250" width="1213" height="1193" key="find.popup" timestamp="1578201941321">
+      <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="898" y="250" width="1213" height="1193" key="find.popup/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575840313765" />
     <state x="898" y="250" width="1213" height="1193" key="find.popup/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1577775649809" />
     <state x="573" y="177" width="774" height="846" key="find.popup/0.0.1920.1200@0.0.1920.1200" timestamp="1575321289452" />
-    <state x="898" y="250" width="1213" height="1193" key="find.popup/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1577160210330" />
+    <state x="898" y="250" width="1213" height="1193" key="find.popup/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1578201941321" />
     <state x="-1360" y="442" width="774" height="830" key="find.popup/0.23.3008.1669/-1920.268.1877.1177@-1920.268.1877.1177" timestamp="1578023022749" />
     <state x="936" y="330" key="run.anything.popup" timestamp="1575823471946">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="936" y="330" key="run.anything.popup/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575823471946" />
-    <state x="-1379" y="433" width="858" height="1014" key="search.everywhere.popup" timestamp="1578034882455">
-      <screen x="-1920" y="268" width="1920" height="1177" />
+    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup" timestamp="1578201932257">
+      <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="848" y="237" width="1313" height="1456" key="search.everywhere.popup/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575607900405" />
     <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1577777864369" />
     <state x="541" y="168" width="838" height="1032" key="search.everywhere.popup/0.0.1920.1200@0.0.1920.1200" timestamp="1576827939549" />
-    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1578020272586" />
+    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1578201932257" />
     <state x="-1379" y="433" width="858" height="1014" key="search.everywhere.popup/0.23.2953.1669/-1920.268.1920.1177@-1920.268.1920.1177" timestamp="1578034882455" />
     <state x="-1391" y="433" width="838" height="1014" key="search.everywhere.popup/0.23.3008.1669/-1920.268.1877.1177@-1920.268.1877.1177" timestamp="1578022308246" />
     <state x="722" y="196" width="1118" height="1205" key="search.everywhere.popup/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575832342693" />

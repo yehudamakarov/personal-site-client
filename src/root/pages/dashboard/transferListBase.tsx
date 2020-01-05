@@ -3,9 +3,11 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import ReplayIcon from "@material-ui/icons/Replay";
 import SaveOutlinedIcon from "@material-ui/icons/SaveOutlined";
 import { ToggleButton } from "@material-ui/lab";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
+import _ from "lodash";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TransferListHelpers } from "../../../helpers/transferListHelpers";
@@ -24,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
             backgroundColor: theme.palette.secondary.main,
         },
         fabIcon: {
-            marginRight: theme.spacing(1),
+            [theme.breakpoints.up("sm")]: { marginRight: theme.spacing(1) },
         },
         fabSpan: {
             paddingLeft: theme.spacing(1),
@@ -32,7 +34,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         list: {
             backgroundColor: theme.palette.background.paper,
-            [theme.breakpoints.down("xs")]: {
+            [theme.breakpoints.down("sm")]: {
                 height: `calc(100vh - ${theme.mixins.toolbar.minHeight}px - ${theme.spacing(30)}px)`,
             },
             [theme.breakpoints.up("sm")]: {
@@ -75,13 +77,10 @@ export const TransferListBase = (props: { tagId?: ITag["tagId"] }) => {
     const setRight = (facadeIds: FacadeIds) => dispatch(setRightAction(facadeIds));
     const setLeft = (facadeIds: FacadeIds) => dispatch(setLeftAction(facadeIds));
 
-    const checkedSelector = (state: IApplicationState) => state.tagsTransferList.checked;
-    const leftSelector = (state: IApplicationState) => state.tagsTransferList.left;
-    const rightSelector = (state: IApplicationState) => state.tagsTransferList.right;
-
-    const checked = useSelector(checkedSelector);
-    const right = useSelector(rightSelector);
-    const left = useSelector(leftSelector);
+    const checked = useSelector((state: IApplicationState) => state.tagsTransferList.checked);
+    const right = useSelector((state: IApplicationState) => state.tagsTransferList.right);
+    const left = useSelector((state: IApplicationState) => state.tagsTransferList.left);
+    const initial = useSelector((state: IApplicationState) => state.tagsTransferList.initial);
 
     const leftChecked = TransferListHelpers.intersection(checked, left);
     const rightChecked = TransferListHelpers.intersection(checked, right);
@@ -102,6 +101,10 @@ export const TransferListBase = (props: { tagId?: ITag["tagId"] }) => {
         if (props.tagId) {
             dispatch(mapTagLoadingAction(props.tagId));
         }
+    };
+
+    const handleReset = () => {
+        dispatch(setLeftAction(initial));
     };
 
     const leftList = (
@@ -153,12 +156,24 @@ export const TransferListBase = (props: { tagId?: ITag["tagId"] }) => {
         <Fab
             onClick={handleSave}
             classes={{ label: classes.fabSpan }}
-            variant={"extended"}
+            variant={isXs ? "round" : "extended"}
             color={"secondary"}
             size={"small"}
+            disabled={_.isEqual(_.sortBy(initial), _.sortBy(left))}
         >
             <SaveOutlinedIcon className={classes.fabIcon} />
-            save
+            {isXs ? "" : "Save Changes"}
+        </Fab>
+    );
+    const resetButton = (
+        <Fab
+            onClick={handleReset}
+            variant={isXs ? "round" : "extended"}
+            size={"small"}
+            classes={{ label: classes.fabSpan }}
+        >
+            <ReplayIcon />
+            {isXs ? "" : "Reset"}
         </Fab>
     );
 
@@ -179,7 +194,8 @@ export const TransferListBase = (props: { tagId?: ITag["tagId"] }) => {
                                 </ToggleButton>
                             </ToggleButtonGroup>
                         </Grid>
-                        <Grid item container xs justify={"flex-end"} alignItems={"center"}>
+                        <Grid item container xs justify={"flex-end"} alignItems={"center"} spacing={1}>
+                            <Grid item>{resetButton}</Grid>
                             <Grid item>{saveButton}</Grid>
                         </Grid>
                         {currentList === "left" && (
@@ -218,8 +234,11 @@ export const TransferListBase = (props: { tagId?: ITag["tagId"] }) => {
                             <Grid item xs={12}>
                                 {leftButton}
                             </Grid>
-                            <Grid item xs={12}>
+                            <Grid item xs>
                                 {saveButton}
+                            </Grid>
+                            <Grid item xs>
+                                {resetButton}
                             </Grid>
                         </Grid>
                     </Grid>

@@ -15,7 +15,6 @@ import { setRightAction } from "../setRight";
 
 function* getTransferListFacades(action: IGetTransferListFacadesLoadingAction) {
     try {
-        debugger;
         const currentTagId = action.payload;
         const [projectsResponse, blogPostsResponse]: [
             AxiosResponse<IProjectsResponse>,
