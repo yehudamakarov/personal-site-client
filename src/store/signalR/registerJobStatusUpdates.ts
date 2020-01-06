@@ -15,6 +15,7 @@ export enum GithubRepoFetcherJobStage {
 
 const registerServerMethods = (connection: signalR.HubConnection, dispatch: EnhancedStore["dispatch"]) => {
     connection.on("PushGithubRepoFetcherJobStatusUpdate", (status: IGithubRepoFetcherStatus) => {
+        console.log(status);
         dispatch(handleGithubRepoFetcherJobStatusUpdateAction(status));
 
         // todo --------------------------------------------

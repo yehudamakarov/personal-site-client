@@ -25,6 +25,8 @@ const INITIAL_STATE: IJobStatusState = {
 export const jobStatusReducer = (state = INITIAL_STATE, action: jobStatusActionTypes): IJobStatusState => {
     switch (action.type) {
         case HANDLE_GITHUB_REPO_FETCHER_JOB_STATUS_UPDATE: {
+            // const currentStatus = action.payload;
+            // currentStatus.jobStatus ===
             return { ...state, githubRepoFetcherStatus: action.payload };
         }
         default: {

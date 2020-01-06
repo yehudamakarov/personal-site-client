@@ -3,6 +3,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import React from "react";
 import { Provider } from "react-redux";
 import { Root } from "./root/root";
+import { SnackBarService } from "./root/snackBarService";
 import { store } from "./store/storeConfig";
 
 // https://coolors.co/dce6ea-0e3b43-1e4571-3e505b-357266
