@@ -107,6 +107,7 @@ export const App = () => {
                 <React.Fragment>
                     <CssBaseline />
                     {/* <Background /> */}
+                    <SnackBarService />
                     <Root />
                 </React.Fragment>
             </Provider>

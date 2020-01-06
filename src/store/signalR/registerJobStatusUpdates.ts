@@ -25,7 +25,7 @@ const registerServerMethods = (connection: signalR.HubConnection, dispatch: Enha
     });
 };
 
-let connection: signalR.HubConnection;
+let existingConnection: signalR.HubConnection;
 
 export const registerJobStatusUpdates = (dispatch: EnhancedStore["dispatch"], token: ITokenState["token"]) => {
     // tslint:disable-next-line:no-console
@@ -33,23 +33,23 @@ export const registerJobStatusUpdates = (dispatch: EnhancedStore["dispatch"], to
     if (token === null) {
         return;
     }
-    if (connection) {
-        connection.stop().then((value) => {
+    if (existingConnection) {
+        existingConnection.stop().then((value) => {
             // tslint:disable-next-line:no-console
-            console.log("cleaned connection");
+            console.log("cleaned existing connection");
         });
     }
-    connection = new signalR.HubConnectionBuilder()
+    existingConnection = new signalR.HubConnectionBuilder()
         .configureLogging(
-            process.env.NODE_ENV === "development" ? signalR.LogLevel.Information : signalR.LogLevel.Error
+            process.env.NODE_ENV === "development" ? signalR.LogLevel.Information : signalR.LogLevel.Error,
         )
         .withAutomaticReconnect()
         .withUrl(process.env.REACT_APP_API_URL + "/hubs/JobStatusUpdates", { accessTokenFactory: () => token })
         .build();
 
-    registerServerMethods(connection, dispatch);
+    registerServerMethods(existingConnection, dispatch);
 
-    connection
+    existingConnection
         .start()
         .then(() => {
             // tslint:disable-next-line:no-console

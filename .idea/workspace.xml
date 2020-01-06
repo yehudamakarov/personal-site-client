@@ -7,10 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/root/snackBarService.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/middleware/joStatusMiddleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/middleware/joStatusMiddleware.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/signalR/registerJobStatusUpdates.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/signalR/registerJobStatusUpdates.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/storeConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/storeConfig.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,14 +142,7 @@
       <workItem from="1577039917888" duration="38719000" />
       <workItem from="1578060759291" duration="84000" />
       <workItem from="1578060868415" duration="130000" />
-      <workItem from="1578189873122" duration="26887000" />
-    </task>
-    <task id="LOCAL-00005" summary=".">
-      <created>1572009457859</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1572009457859</updated>
+      <workItem from="1578189873122" duration="27658000" />
     </task>
     <task id="LOCAL-00006" summary="action buttons for project Page">
       <created>1572202484127</created>
@@ -487,7 +480,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578286302693</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="preemptively cleaning connection">
+      <created>1578287545600</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1578287545600</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -524,7 +524,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="login / logout" />
     <MESSAGE value="state persistence / tags routing" />
     <MESSAGE value="need to fix grid" />
     <MESSAGE value="tags edit in progress" />
@@ -549,17 +548,18 @@
     <MESSAGE value="colors are side specific" />
     <MESSAGE value="setting initial was only keeping left. and right wouldn't reset properly" />
     <MESSAGE value="web socket security and helpers etc" />
-    <option name="LAST_COMMIT_MESSAGE" value="web socket security and helpers etc" />
+    <MESSAGE value="preemptively cleaning connection" />
+    <option name="LAST_COMMIT_MESSAGE" value="preemptively cleaning connection" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1422" y="646" width="951" height="366" key="#com.intellij.codeInsight.template.impl.EditVariableDialog" timestamp="1578207091851">
+    <state x="1422" y="646" width="951" height="366" key="#com.intellij.codeInsight.template.impl.EditVariableDialog" timestamp="1578288810614">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="1422" y="646" width="951" height="366" key="#com.intellij.codeInsight.template.impl.EditVariableDialog/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1576551328010" />
-    <state x="1422" y="646" key="#com.intellij.codeInsight.template.impl.EditVariableDialog/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1578207091851" />
+    <state x="1422" y="646" key="#com.intellij.codeInsight.template.impl.EditVariableDialog/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1578288810614" />
     <state x="968" y="503" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1575607229543">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
@@ -594,13 +594,13 @@
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="1206" y="680" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1578211402187" />
-    <state x="252" y="51" width="1723" height="1400" key="CommitChangelistDialog2" timestamp="1578286302392">
+    <state x="252" y="51" width="1723" height="1400" key="CommitChangelistDialog2" timestamp="1578287545326">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="1593" y="383" key="CommitChangelistDialog2/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575848306443" />
     <state x="252" y="51" key="CommitChangelistDialog2/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1577804272974" />
     <state x="296" y="242" key="CommitChangelistDialog2/0.0.1920.1200@0.0.1920.1200" timestamp="1577974206259" />
-    <state x="252" y="51" width="1292" height="1314" key="CommitChangelistDialog2/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1578286302392" />
+    <state x="252" y="51" width="1292" height="1314" key="CommitChangelistDialog2/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1578287545326" />
     <state x="252" y="51" key="CommitChangelistDialog2/0.0.3008.1692/-1920.268.1920.1177@0.0.3008.1692" timestamp="1578210951521" />
     <state x="804" y="289" key="CommitChangelistDialog2/0.23.1874.1177@0.23.1874.1177" timestamp="1575900332338" />
     <state x="-2165" y="0" width="1723" height="1400" key="CommitChangelistDialog2/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@-2560.0.2560.1400" timestamp="1577654560303" />
@@ -614,13 +614,13 @@
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="689" y="253" key="RollbackChangesDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1575306209906" />
-    <state x="968" y="162" width="1396" height="1267" key="SettingsEditor" timestamp="1578207132107">
+    <state x="968" y="162" width="1396" height="1267" key="SettingsEditor" timestamp="1578288811946">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="553" y="213" key="SettingsEditor/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575517065196" />
     <state x="968" y="162" width="1434" height="1335" key="SettingsEditor/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1577078101639" />
     <state x="353" y="151" key="SettingsEditor/0.0.1920.1200@0.0.1920.1200" timestamp="1575305769373" />
-    <state x="968" y="162" width="1396" height="1267" key="SettingsEditor/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1578207132107" />
+    <state x="968" y="162" width="1396" height="1267" key="SettingsEditor/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1578288811946" />
     <state x="721" y="391" key="Vcs.Push.Dialog.v2" timestamp="1578210970285">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
@@ -630,25 +630,25 @@
     <state x="721" y="391" key="Vcs.Push.Dialog.v2/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1578060929628" />
     <state x="721" y="391" key="Vcs.Push.Dialog.v2/0.0.3008.1692/-1920.268.1920.1177@0.0.3008.1692" timestamp="1578210970285" />
     <state x="449" y="295" key="Vcs.Push.Dialog.v2/0.23.1874.1177@0.23.1874.1177" timestamp="1575900335626" />
-    <state x="898" y="250" width="1213" height="1193" key="find.popup" timestamp="1578287447651">
+    <state x="898" y="250" width="1213" height="1193" key="find.popup" timestamp="1578288830635">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="898" y="250" width="1213" height="1193" key="find.popup/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575840313765" />
     <state x="898" y="250" width="1213" height="1193" key="find.popup/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1577775649809" />
     <state x="573" y="177" width="774" height="846" key="find.popup/0.0.1920.1200@0.0.1920.1200" timestamp="1575321289452" />
-    <state x="898" y="250" width="1213" height="1193" key="find.popup/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1578287447651" />
+    <state x="898" y="250" width="1213" height="1193" key="find.popup/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1578288830635" />
     <state x="-1360" y="442" width="774" height="830" key="find.popup/0.23.3008.1669/-1920.268.1877.1177@-1920.268.1877.1177" timestamp="1578023022749" />
     <state x="936" y="330" key="run.anything.popup" timestamp="1575823471946">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="936" y="330" key="run.anything.popup/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575823471946" />
-    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup" timestamp="1578286524216">
+    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup" timestamp="1578288819254">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="848" y="237" width="1313" height="1456" key="search.everywhere.popup/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575607900405" />
     <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1577777864369" />
     <state x="541" y="168" width="838" height="1032" key="search.everywhere.popup/0.0.1920.1200@0.0.1920.1200" timestamp="1576827939549" />
-    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1578286524216" />
+    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1578288819254" />
     <state x="-1379" y="433" width="858" height="1014" key="search.everywhere.popup/0.23.2953.1669/-1920.268.1920.1177@-1920.268.1920.1177" timestamp="1578034882455" />
     <state x="-1391" y="433" width="838" height="1014" key="search.everywhere.popup/0.23.3008.1669/-1920.268.1877.1177@-1920.268.1877.1177" timestamp="1578022308246" />
     <state x="722" y="196" width="1118" height="1205" key="search.everywhere.popup/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575832342693" />
