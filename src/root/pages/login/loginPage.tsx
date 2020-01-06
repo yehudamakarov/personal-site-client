@@ -86,7 +86,7 @@ export const LoginPage = (props: { path: string }) => {
     };
 
     return (
-        <BasePage>
+        <BasePage isLoginPage={true}>
             {isLoggedIn ? (
                 <Container className={classes.container} maxWidth={"xs"}>
                     <Typography variant={"subtitle2"}> You are already logged in.</Typography>
@@ -155,7 +155,13 @@ export const LoginPage = (props: { path: string }) => {
                                 {responseError}
                             </Typography>
                         )}
-                        <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="secondary"
+                            className={classes.submit}
+                        >
                             Sign In
                         </Button>
                     </form>

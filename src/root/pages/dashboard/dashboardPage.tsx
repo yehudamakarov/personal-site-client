@@ -14,7 +14,9 @@ import {
 import LabelTwoToneIcon from "@material-ui/icons/LabelTwoTone";
 import { Link } from "@reach/router";
 import React from "react";
+import { roleType } from "../../../store/entities/auth/actions/authReducer";
 import { Routes } from "../../../store/ui/IUiState";
+
 import { BasePage } from "../basePage";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -36,9 +38,8 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const DashboardPage = (props: { path: string }) => {
     const classes = useStyles();
-
     return (
-        <BasePage>
+        <BasePage redirectIfNot={[roleType.administrator]}>
             <Typography className={classes.title} variant={"h4"}>
                 Dashboard
             </Typography>

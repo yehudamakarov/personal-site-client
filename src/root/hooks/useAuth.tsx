@@ -1,21 +1,12 @@
 import { useSelector } from "react-redux";
+import { authHelper } from "../../helpers/authHelpers";
 import { roleType } from "../../store/entities/auth/actions/authReducer";
 import { IApplicationState } from "../../store/rootReducer";
 
-export const useAuth = (roles: roleType[]) => {
-    const isLoggedIn = useSelector(
-        (state: IApplicationState) => state.auth.loggedIn,
-    );
-    const expiryTime = useSelector(
-        (state: IApplicationState) => state.auth.expiryTime,
-    );
+export const useAuth = (allowedRoles?: roleType[]) => {
+    const isLoggedIn = useSelector((state: IApplicationState) => state.auth.loggedIn);
+    const expiryTime = useSelector((state: IApplicationState) => state.auth.expiryTime);
     const role = useSelector((state: IApplicationState) => state.auth.role);
 
-    if (!isLoggedIn) {
-        return false;
-    }
-    if (expiryTime && expiryTime * 1000 <= Date.now()) {
-        return false;
-    }
-    return roles.some((possibleRole) => possibleRole === role);
+    return authHelper(isLoggedIn, expiryTime, role, allowedRoles);
 };

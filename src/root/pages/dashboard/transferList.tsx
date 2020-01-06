@@ -1,4 +1,4 @@
-import { CircularProgress, LinearProgress } from "@material-ui/core";
+import { CircularProgress } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -79,18 +79,15 @@ export const TransferList = (props: {
 
     return (
         <Card>
-            {isLoading ? (
-                <LinearProgress variant={"query"} />
-            ) : (
-                <CardHeader
-                    className={classes.cardHeader}
-                    avatar={titleCheckbox}
-                    titleTypographyProps={{ variant: "subtitle2" }}
-                    subheaderTypographyProps={{ variant: "body2", color: "inherit" }}
-                    title={props.title}
-                    subheader={`${numberOfChecked(props.items)}/${props.items.length} selected`}
-                />
-            )}
+            <CardHeader
+                className={classes.cardHeader}
+                avatar={titleCheckbox}
+                titleTypographyProps={{ variant: "subtitle2" }}
+                subheaderTypographyProps={{ variant: "body2", color: "inherit" }}
+                title={props.title}
+                subheader={`${numberOfChecked(props.items)}/${props.items.length} selected`}
+            />
+
             <Divider />
 
             <List className={props.listClassName} dense component="div" role="list">

@@ -7,7 +7,7 @@ export enum roleType {
     user = "User",
 }
 
-interface ITokenState {
+export interface ITokenState {
     token: string | null;
     errorReadingToken: boolean;
     expiryTime: number | null;
