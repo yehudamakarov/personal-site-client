@@ -14,10 +14,10 @@ export const SnackBarService = (props: {}) => {
             return;
         }
         console.log("setting Closed", reason);
-        if (reason === "timeout" && currentJobStage !== GithubRepoFetcherJobStage.None) {
-            console.log("returned early");
-            return;
-        }
+        // if (reason === "timeout" && currentJobStage !== GithubRepoFetcherJobStage.None) {
+        //     console.log("returned early");
+        //     return;
+        // }
         setOpen(false);
     };
     useEffect(() => {
@@ -50,13 +50,15 @@ export const SnackBarService = (props: {}) => {
         }
     };
 
+    const message = `Fetching and syncing repos: Currently ${getRepoMessage(currentJobStage)}`;
     return (
         <Snackbar
             open={currentJobStage !== GithubRepoFetcherJobStage.None && manuallyOpen}
             anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-            message={`Fetching and syncing repos: Currently ${getRepoMessage(currentJobStage)}`}
+            message={message}
+            key={message}
             onClose={handleClose}
-            autoHideDuration={6000}
+            autoHideDuration={3000}
             action={[gotItButton]}
         />
     );
