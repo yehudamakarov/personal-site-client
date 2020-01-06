@@ -25,18 +25,30 @@ const registerServerMethods = (connection: signalR.HubConnection, dispatch: Enha
     });
 };
 
+let connection: signalR.HubConnection;
+
 export const registerJobStatusUpdates = (dispatch: EnhancedStore["dispatch"], token: ITokenState["token"]) => {
     // tslint:disable-next-line:no-console
     console.log("connecting...");
     if (token === null) {
         return;
     }
-    const connection = new signalR.HubConnectionBuilder()
-        .configureLogging(signalR.LogLevel.Information)
+    if (connection) {
+        connection.stop().then((value) => {
+            // tslint:disable-next-line:no-console
+            console.log("cleaned connection");
+        });
+    }
+    connection = new signalR.HubConnectionBuilder()
+        .configureLogging(
+            process.env.NODE_ENV === "development" ? signalR.LogLevel.Information : signalR.LogLevel.Error
+        )
         .withAutomaticReconnect()
         .withUrl(process.env.REACT_APP_API_URL + "/hubs/JobStatusUpdates", { accessTokenFactory: () => token })
         .build();
+
     registerServerMethods(connection, dispatch);
+
     connection
         .start()
         .then(() => {

@@ -5,7 +5,7 @@ import { authHelper } from "../helpers/authHelpers";
 import { loadState, saveState } from "../helpers/storeHelpers";
 import { configureAxios } from "./axiosConfig";
 import { roleType } from "./entities/auth/actions/authReducer";
-import { connectToJobStatus } from "./middleware/joStatusMiddleware";
+import { connectToJobStatusReduxMiddleware } from "./middleware/joStatusMiddleware";
 import { rootReducer } from "./rootReducer";
 import { rootSaga } from "./rootSaga";
 import { registerJobStatusUpdates } from "./signalR/registerJobStatusUpdates";
@@ -13,7 +13,7 @@ import { INITIAL_STATE } from "./ui/uiReducer";
 
 const sagaMiddleware = createSagaMiddleware();
 export const store = configureStore({
-    middleware: [...getDefaultMiddleware(), connectToJobStatus, sagaMiddleware],
+    middleware: [...getDefaultMiddleware(), connectToJobStatusReduxMiddleware, sagaMiddleware],
     preloadedState: loadState(),
     reducer: rootReducer,
 });
