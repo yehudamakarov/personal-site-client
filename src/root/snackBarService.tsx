@@ -1,65 +1,30 @@
-import { Button, Snackbar } from "@material-ui/core";
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import { IApplicationState } from "../store/rootReducer";
-import { GithubRepoFetcherJobStage } from "../store/signalR/registerJobStatusUpdates";
+import { JobStage } from "../store/signalR/registerJobStatusUpdates";
+import { GenericJobStatusSnackbar } from "./genericJobStatusSnackbar";
 
 export const SnackBarService = (props: {}) => {
-    const [manuallyOpen, setOpen] = React.useState(true);
-    const currentJobStage = useSelector((state: IApplicationState) => {
-        return state.jobStatus.githubRepoFetcherStatus.jobStatus;
-    });
-    const handleClose = (event: React.SyntheticEvent | React.MouseEvent, reason?: string) => {
-        if (reason === "clickaway") {
-            return;
-        }
-        console.log("setting Closed", reason);
-        // if (reason === "timeout" && currentJobStage !== GithubRepoFetcherJobStage.None) {
-        //     console.log("returned early");
-        //     return;
-        // }
-        setOpen(false);
+    const githubRepoFetcherJobSelector = (state: IApplicationState) => {
+        return state.jobStatus.githubRepoFetcherStatus.jobStage;
     };
-    useEffect(() => {
-        if (currentJobStage !== GithubRepoFetcherJobStage.None) {
-            setOpen(true);
-        }
-    }, [currentJobStage]);
-    const gotItButton = (
-        <Button key="got-it" onClick={handleClose} size="small" variant="contained" color="secondary">
-            Got it.
-        </Button>
-    );
-
-    const getRepoMessage = (githubRepoFetcherJobStageElement: GithubRepoFetcherJobStage): string => {
-        switch (githubRepoFetcherJobStageElement) {
-            case GithubRepoFetcherJobStage.None:
-                return "...";
-            case GithubRepoFetcherJobStage.PreparingDatabase:
-                return "preparing the database...";
-            case GithubRepoFetcherJobStage.Fetching:
-                return "fetching remote data...";
-            case GithubRepoFetcherJobStage.Uploading:
-                return "uploading processed data...";
-            case GithubRepoFetcherJobStage.Done:
-                return "done!";
-            case GithubRepoFetcherJobStage.Error:
-                return "encountering a problem...";
-            default:
-                return "...";
-        }
+    const handleTagCountsJobSelector = (state: IApplicationState) => {
+        return state.jobStatus.calculateTagCountsStatus.jobStage;
     };
 
-    const message = `Fetching and syncing repos: Currently ${getRepoMessage(currentJobStage)}`;
     return (
-        <Snackbar
-            open={currentJobStage !== GithubRepoFetcherJobStage.None && manuallyOpen}
-            anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-            message={message}
-            key={message}
-            onClose={handleClose}
-            autoHideDuration={3000}
-            action={[gotItButton]}
-        />
+        <React.Fragment>
+            <GenericJobStatusSnackbar
+                currentJobStateSelector={githubRepoFetcherJobSelector}
+                baseCase={JobStage.None}
+                title={"Github Repositories Syncing"}
+            />
+            <GenericJobStatusSnackbar
+                currentJobStateSelector={handleTagCountsJobSelector}
+                baseCase={JobStage.None}
+                title={"Calculating Tag Counts"}
+            />
+
+            {/*<AddToProjectsSnackbar />*/}
+        </React.Fragment>
     );
 };

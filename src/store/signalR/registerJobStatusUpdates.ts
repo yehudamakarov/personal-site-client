@@ -1,28 +1,28 @@
 import * as signalR from "@microsoft/signalr";
 import { EnhancedStore } from "@reduxjs/toolkit";
 import { ITokenState } from "../entities/auth/actions/authReducer";
+import { handleCalculateTagCountsJobStatusUpdateAction } from "./actions/handleCalculateTagCountsJobStatusUpdate";
 import { handleGithubRepoFetcherJobStatusUpdateAction } from "./actions/handleGithubRepoFetcherJobStatusUpdate";
-import { IGithubRepoFetcherStatus } from "./reducer";
+import { ICalculateTagCountsStatus, IGithubRepoFetcherStatus } from "./reducer";
 
-export enum GithubRepoFetcherJobStage {
+export enum JobStage {
     None,
     PreparingDatabase,
-    Fetching,
-    Uploading,
+    FetchingFromGithub,
+    CountingTagged,
+    UploadingToDatabase,
     Done,
     Error,
 }
 
+
+
 const registerServerMethods = (connection: signalR.HubConnection, dispatch: EnhancedStore["dispatch"]) => {
     connection.on("PushGithubRepoFetcherJobStatusUpdate", (status: IGithubRepoFetcherStatus) => {
-        console.log(status);
         dispatch(handleGithubRepoFetcherJobStatusUpdateAction(status));
-
-        // todo --------------------------------------------
-        //      make a jobNotificationReducer
-        //      dispatch an action on every call here.
-        //      make a component above app to use a snackbar
-        //      that component can useSelector for individually diffable pieces of state. on every change it will rerender and display newest message
+    });
+    connection.on("PushCalculateTagCountsJobStatusUpdate", (status: ICalculateTagCountsStatus) => {
+        dispatch(handleCalculateTagCountsJobStatusUpdateAction(status));
     });
 };
 

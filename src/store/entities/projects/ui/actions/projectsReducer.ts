@@ -23,7 +23,12 @@ import {
     SET_ANY_PROJECT_IS_NOT_EDITABLE,
     SetAnyProjectIsEditableActionTypes,
 } from "./setAnyProjectIsEditable/actions";
-import { UPDATE_PROJECT_LOADING, UPDATE_PROJECT_SUCCESS, UpdateProjectActionTypes } from "./updateProject/actions";
+import {
+    UPDATE_PROJECT_ERROR,
+    UPDATE_PROJECT_LOADING,
+    UPDATE_PROJECT_SUCCESS,
+    UpdateProjectActionTypes,
+} from "./updateProject/actions";
 
 export interface IProjectsState {
     projectsData: IProject[];
@@ -190,8 +195,12 @@ export const projectsReducer = (state = INITIAL_STATE, action: ProjectsActionTyp
 
         case UPDATE_PROJECT_LOADING: {
             const projectId = action.payload.githubRepoDatabaseId;
+            // todo take this editableProject out from here and put it in the success branch
+            // clone object
             const editableProjects = { ...state.projectsUi.editableProjects };
+            // delete from clone
             delete editableProjects[projectId];
+
             return {
                 ...state,
                 projectsUi: {
@@ -209,7 +218,7 @@ export const projectsReducer = (state = INITIAL_STATE, action: ProjectsActionTyp
             const updatedProject = action.payload;
             const projectId = updatedProject.githubRepoDatabaseId;
             const projectToUpdateIndex = state.projectsData.findIndex(
-                (project) => project.githubRepoDatabaseId === updatedProject.githubRepoDatabaseId,
+                (project) => project.githubRepoDatabaseId === updatedProject.githubRepoDatabaseId
             );
             return {
                 ...state,
@@ -223,6 +232,10 @@ export const projectsReducer = (state = INITIAL_STATE, action: ProjectsActionTyp
                     singleIsLoading: { ...state.projectsUi.singleIsLoading, [projectId]: false },
                 },
             };
+        }
+        case UPDATE_PROJECT_ERROR: {
+            // todo display error and make project not loading, rather make project errored. (key by projectId - it doesn't matter)
+            return { ...state, projectsUi: { ...state.projectsUi } };
         }
         case EDIT_PROJECT_TITLE: {
             const { projectTitle, projectId } = action.payload;
