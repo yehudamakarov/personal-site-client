@@ -1,4 +1,4 @@
-import { JobStage } from "../store/signalR/registerJobStatusUpdates";
+import { JobStage } from "../store/signalR/init";
 
 export const getJobStatusMessage = (jobStage: JobStage): string => {
     switch (jobStage) {

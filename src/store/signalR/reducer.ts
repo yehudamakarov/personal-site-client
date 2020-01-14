@@ -6,7 +6,7 @@ import {
     HANDLE_GITHUB_REPO_FETCHER_JOB_STATUS_UPDATE,
     IHandleGithubRepoFetcherJobStatusUpdateAction,
 } from "./actions/handleGithubRepoFetcherJobStatusUpdate";
-import { JobStage } from "./registerJobStatusUpdates";
+import { JobStage } from "./init";
 
 type JobStatusActionTypes =
     | IHandleGithubRepoFetcherJobStatusUpdateAction

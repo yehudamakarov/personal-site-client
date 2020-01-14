@@ -15,9 +15,14 @@ export enum JobStage {
     Error,
 }
 
-
-
 const registerServerMethods = (connection: signalR.HubConnection, dispatch: EnhancedStore["dispatch"]) => {
+    // todo
+    // Lifecycle
+    // connection.onreconnecting();
+    // connection.onclose();
+    // connection.onreconnected();
+
+    // Update Events
     connection.on("PushGithubRepoFetcherJobStatusUpdate", (status: IGithubRepoFetcherStatus) => {
         dispatch(handleGithubRepoFetcherJobStatusUpdateAction(status));
     });
@@ -28,7 +33,7 @@ const registerServerMethods = (connection: signalR.HubConnection, dispatch: Enha
 
 let existingConnection: signalR.HubConnection;
 
-export const registerJobStatusUpdates = (dispatch: EnhancedStore["dispatch"], token: ITokenState["token"]) => {
+export const init = (dispatch: EnhancedStore["dispatch"], token: ITokenState["token"]) => {
     // tslint:disable-next-line:no-console
     console.log("connecting...");
     if (token === null) {
@@ -42,9 +47,9 @@ export const registerJobStatusUpdates = (dispatch: EnhancedStore["dispatch"], to
     }
     existingConnection = new signalR.HubConnectionBuilder()
         .configureLogging(
-            process.env.NODE_ENV === "development" ? signalR.LogLevel.Information : signalR.LogLevel.Error,
+            process.env.NODE_ENV === "development" ? signalR.LogLevel.Information : signalR.LogLevel.Error
         )
-        .withAutomaticReconnect()
+        .withAutomaticReconnect([0, 2000, 10000, 30000, 45000])
         .withUrl(process.env.REACT_APP_API_URL + "/hubs/JobStatusUpdates", { accessTokenFactory: () => token })
         .build();
 
@@ -55,9 +60,13 @@ export const registerJobStatusUpdates = (dispatch: EnhancedStore["dispatch"], to
         .then(() => {
             // tslint:disable-next-line:no-console
             console.log("connected");
+            // todo dispatch that socket is connected
         })
         .catch((error: Error) => {
             // tslint:disable-next-line:no-console
+            // todo dispatch that socket is disconnected
+            // todo offer to reconnect
+            // or set timeout to reconnect again
             console.log("error: ", error);
         });
 };

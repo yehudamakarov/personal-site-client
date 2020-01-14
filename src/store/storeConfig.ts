@@ -8,7 +8,7 @@ import { roleType } from "./entities/auth/actions/authReducer";
 import { connectToJobStatusReduxMiddleware } from "./middleware/joStatusMiddleware";
 import { rootReducer } from "./rootReducer";
 import { rootSaga } from "./rootSaga";
-import { registerJobStatusUpdates } from "./signalR/registerJobStatusUpdates";
+import { init } from "./signalR/init";
 import { INITIAL_STATE } from "./ui/uiReducer";
 
 const sagaMiddleware = createSagaMiddleware();
@@ -22,7 +22,7 @@ sagaMiddleware.run(rootSaga);
 const authInfo = store.getState().auth;
 const currentAuthStatus = authHelper(authInfo.loggedIn, authInfo.expiryTime, authInfo.role, [roleType.administrator]);
 if (currentAuthStatus) {
-    registerJobStatusUpdates(store.dispatch, authInfo.token);
+    init(store.dispatch, authInfo.token);
 }
 
 store.subscribe(

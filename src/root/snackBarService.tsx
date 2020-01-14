@@ -1,6 +1,6 @@
 import React from "react";
 import { IApplicationState } from "../store/rootReducer";
-import { JobStage } from "../store/signalR/registerJobStatusUpdates";
+import { JobStage } from "../store/signalR/init";
 import { GenericJobStatusSnackbar } from "./genericJobStatusSnackbar";
 
 export const SnackBarService = (props: {}) => {

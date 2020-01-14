@@ -4,7 +4,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import React from "react";
 import { getJobStatusMessage } from "../helpers/jobMessageHelpers";
 import { IApplicationState } from "../store/rootReducer";
-import { JobStage } from "../store/signalR/registerJobStatusUpdates";
+import { JobStage } from "../store/signalR/init";
 import { useSnackbarUtils } from "./hooks/useSnackBarUtils";
 
 const useStyles = makeStyles((theme: Theme) =>

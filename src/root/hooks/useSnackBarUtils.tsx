@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { IApplicationState } from "../../store/rootReducer";
-import { JobStage } from "../../store/signalR/registerJobStatusUpdates";
+import { JobStage } from "../../store/signalR/init";
 
 export const useSnackbarUtils = (
     currentJobStateSelector: (state: IApplicationState) => JobStage,
