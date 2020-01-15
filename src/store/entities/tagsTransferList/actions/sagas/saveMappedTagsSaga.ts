@@ -1,10 +1,20 @@
+import { HubConnection } from "@microsoft/signalr";
+import { EnhancedStore } from "@reduxjs/toolkit";
 import { AxiosResponse } from "axios";
 import { call, put, select, takeEvery } from "redux-saga/effects";
+import { ResultStatus } from "../../../../baseTypes/ResultStatus";
 import { IApplicationState } from "../../../../rootReducer";
+import { JobStage } from "../../../../signalR/init";
+import { IMapTagJobStatus } from "../../../../signalR/reducer";
 import { IFacade } from "../../../projects/ui/selectors";
 import { MapTagResponse, tagsTransferListApi } from "../../api";
 import { FacadeIds } from "../../tagsTransferListReducer";
-import { IMapTagLoadingAction, MAP_TAG_LOADING, mapTagErrorAction, mapTagSuccessAction } from "../mapTag";
+import {
+    handleMapTagJobStatusUpdateAction,
+    IMapTagLoadingAction,
+    MAP_TAG_JOB_BEGINNING,
+    mapTagJobFailedAction,
+} from "../handleMapTagJobStatusUpdate";
 
 const facadeItemsFromIdsSelector = (facadeIds: FacadeIds) => (state: IApplicationState): IFacade[] => {
     const results: IFacade[] = [];
@@ -24,12 +34,29 @@ function* mapTag(action: IMapTagLoadingAction) {
             facadesToBeMapped,
             tagId
         );
-        yield put(mapTagSuccessAction(response.data.data));
+        yield put(
+            handleMapTagJobStatusUpdateAction({
+                jobStage: JobStage.InProgress,
+                tagResult: {
+                    data: { tagId: response.data.data },
+                    details: { resultStatus: ResultStatus.Success, message: "Received 202, began job." },
+                },
+            })
+        );
+        // yield put();
+        // when web socket broadcasts success, save tagId to 'map successful'
+        // after delay(10000) check if successful or error and then if socket is connected
     } catch (error) {
-        yield put(mapTagErrorAction(JSON.stringify(error)));
+        yield put(mapTagJobFailedAction(JSON.stringify(error)));
     }
 }
 
+export const registerMapTagSagaEvents = (connection: HubConnection, dispatch: EnhancedStore["dispatch"]) => {
+    connection.on("pushMapTagJobStatusUpdate", (status: IMapTagJobStatus) => {
+        dispatch(handleMapTagJobStatusUpdateAction(status));
+    });
+};
+
 export function* watchMapTag() {
-    yield takeEvery(MAP_TAG_LOADING, mapTag);
+    yield takeEvery(MAP_TAG_JOB_BEGINNING, mapTag);
 }

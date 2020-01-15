@@ -1,6 +1,6 @@
 import { IResultDetails } from "./IResultDetails";
 
-export interface IApiResponse<T> {
+export interface IResult<T> {
     data: T;
     details: IResultDetails;
 }

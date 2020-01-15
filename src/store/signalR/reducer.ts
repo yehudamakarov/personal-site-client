@@ -1,3 +1,5 @@
+import { IResult } from "../baseTypes/IResult";
+import { ITag } from "../entities/tags/actions/api";
 import {
     HANDLE_CALCULATE_TAG_COUNTS_JOB_STATUS_UPDATE,
     IHandleCalculateTagCountsJobStatusUpdateAction,
@@ -18,6 +20,11 @@ export interface IGithubRepoFetcherStatus {
 }
 
 export interface ICalculateTagCountsStatus {
+    jobStage: JobStage;
+}
+
+export interface IMapTagJobStatus {
+    tagResult: IResult<ITag>;
     jobStage: JobStage;
 }
 

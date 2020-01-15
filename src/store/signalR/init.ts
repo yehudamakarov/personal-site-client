@@ -1,6 +1,7 @@
 import * as signalR from "@microsoft/signalr";
 import { EnhancedStore } from "@reduxjs/toolkit";
 import { ITokenState } from "../entities/auth/actions/authReducer";
+import { registerMapTagSagaEvents } from "../entities/tagsTransferList/actions/sagas/saveMappedTagsSaga";
 import { handleCalculateTagCountsJobStatusUpdateAction } from "./actions/handleCalculateTagCountsJobStatusUpdate";
 import { handleGithubRepoFetcherJobStatusUpdateAction } from "./actions/handleGithubRepoFetcherJobStatusUpdate";
 import { ICalculateTagCountsStatus, IGithubRepoFetcherStatus } from "./reducer";
@@ -13,6 +14,7 @@ export enum JobStage {
     UploadingToDatabase,
     Done,
     Error,
+    InProgress,
 }
 
 const registerServerMethods = (connection: signalR.HubConnection, dispatch: EnhancedStore["dispatch"]) => {
@@ -29,6 +31,7 @@ const registerServerMethods = (connection: signalR.HubConnection, dispatch: Enha
     connection.on("PushCalculateTagCountsJobStatusUpdate", (status: ICalculateTagCountsStatus) => {
         dispatch(handleCalculateTagCountsJobStatusUpdateAction(status));
     });
+    registerMapTagSagaEvents(connection, dispatch);
 };
 
 let existingConnection: signalR.HubConnection;

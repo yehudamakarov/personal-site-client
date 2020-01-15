@@ -1,7 +1,7 @@
 import axios from "axios";
-import { IApiResponse } from "../../../baseTypes/IApiResponse";
+import { IResult } from "../../../baseTypes/IResult";
 
-export type IPinnedReposResponse = IApiResponse<IPinnedRepository[]>;
+export type IPinnedReposResponse = IResult<IPinnedRepository[]>;
 
 export interface IPinnedRepository {
     databaseId: string;

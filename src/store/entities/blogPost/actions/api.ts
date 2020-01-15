@@ -1,8 +1,8 @@
 import axios from "axios";
-import { IApiResponse } from "../../../baseTypes/IApiResponse";
+import { IResult } from "../../../baseTypes/IResult";
 
-export type IBlogPostResponse = IApiResponse<IBlogPost>;
-export type IBlogPostsResponse = IApiResponse<IBlogPost[]>;
+export type IBlogPostResponse = IResult<IBlogPost>;
+export type IBlogPostsResponse = IResult<IBlogPost[]>;
 
 export interface IBlogPost {
     id: string;

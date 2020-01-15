@@ -8,7 +8,12 @@ import {
     GET_TRANSFER_LIST_FACADES_SUCCESS,
     GetTransferListFacadesActionTypes,
 } from "./actions/getTransferListFacades";
-import { MAP_TAG_ERROR, MAP_TAG_LOADING, MAP_TAG_SUCCESS, mapTag } from "./actions/mapTag";
+import {
+    MAP_TAG_JOB_BEGAN_SUCCESSFULLY,
+    MAP_TAG_JOB_BEGINNING,
+    MAP_TAG_JOB_FAILED_BEGIN_FAILED,
+    mapTag,
+} from "./actions/handleMapTagJobStatusUpdate";
 import { IOpenTagMapSaveDialogAction, OPEN_TAG_MAP_SAVE_DIALOG } from "./actions/openTagMapSaveDialog";
 import { ISetChecked, SET_CHECKED } from "./actions/setChecked";
 import { ISetInitiallyMapped, SET_INITIALLY_MAPPED } from "./actions/setInitiallyMapped";
@@ -20,9 +25,6 @@ export type TransferListFacadeId = IProject["githubRepoDatabaseId"] | IBlogPost[
 
 export interface ITagsTransferListState {
     saveDialogIsOpen: boolean;
-    saveIsLoading: boolean;
-    saveIsError: boolean;
-    saveIsSuccess: boolean;
     allIsLoading: boolean;
     allIsError: boolean;
     checked: FacadeIds;
@@ -45,9 +47,6 @@ const INITIAL_STATE: ITagsTransferListState = {
     left: [],
     right: [],
     saveDialogIsOpen: false,
-    saveIsError: false,
-    saveIsLoading: false,
-    saveIsSuccess: false,
 };
 
 type TagsTransferListActionTypes =
@@ -65,22 +64,6 @@ export const tagsTransferListReducer = (
     action: TagsTransferListActionTypes
 ): ITagsTransferListState => {
     switch (action.type) {
-        case OPEN_TAG_MAP_SAVE_DIALOG:
-            return { ...state, saveDialogIsOpen: true };
-        case CLOSE_TAG_MAP_SAVE_DIALOG:
-            return { ...state, saveDialogIsOpen: false };
-        case MAP_TAG_LOADING: {
-            return { ...state, saveIsLoading: true };
-        }
-        case MAP_TAG_SUCCESS: {
-            return { ...state, saveIsLoading: false, saveIsSuccess: true, saveIsError: false };
-        }
-        case MAP_TAG_ERROR: {
-            return { ...state, saveIsLoading: false, saveIsSuccess: false, saveIsError: true };
-        }
-        case SET_INITIALLY_MAPPED: {
-            return { ...state, initialLeft: action.payload.left, initialRight: action.payload.right };
-        }
         case GET_TRANSFER_LIST_FACADES_LOADING: {
             return { ...state, allIsLoading: true };
         }
@@ -95,14 +78,35 @@ export const tagsTransferListReducer = (
         case GET_TRANSFER_LIST_FACADES_ERROR: {
             return { ...state, allIsLoading: false, allIsError: true };
         }
+
+        case SET_INITIALLY_MAPPED: {
+            return { ...state, initialLeft: action.payload.left, initialRight: action.payload.right };
+        }
         case SET_CHECKED: {
             return { ...state, checked: action.payload };
         }
         case SET_RIGHT: {
             return { ...state, right: action.payload };
         }
+
         case SET_LEFT: {
             return { ...state, left: action.payload };
+        }
+        case OPEN_TAG_MAP_SAVE_DIALOG: {
+            return { ...state, saveDialogIsOpen: true };
+        }
+
+        case CLOSE_TAG_MAP_SAVE_DIALOG: {
+            return { ...state, saveDialogIsOpen: false };
+        }
+        case MAP_TAG_JOB_BEGINNING: {
+            return { ...state };
+        }
+        case MAP_TAG_JOB_BEGAN_SUCCESSFULLY: {
+            return { ...state };
+        }
+        case MAP_TAG_JOB_FAILED_BEGIN_FAILED: {
+            return { ...state };
         }
         default: {
             return state;

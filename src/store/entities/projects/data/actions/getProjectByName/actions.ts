@@ -1,4 +1,4 @@
-import { IApiResponse } from "../../../../../baseTypes/IApiResponse";
+import { IResult } from "../../../../../baseTypes/IResult";
 import { IProject } from "../../../ui/actions/api";
 
 /* -------------------------------------------------------------------------- */
@@ -25,11 +25,11 @@ export const getProjectByNameLoadingAction = (
 export const GET_PROJECT_BY_NAME_SUCCESS = "GET_PROJECT_BY_NAME_SUCCESS";
 export interface IGetProjectByNameSuccessAction {
     type: typeof GET_PROJECT_BY_NAME_SUCCESS;
-    payload: IApiResponse<IProject>;
+    payload: IResult<IProject>;
 }
 
 export const getProjectByNameSuccessAction = (
-    projectResponse: IApiResponse<IProject>
+    projectResponse: IResult<IProject>,
 ): IGetProjectByNameSuccessAction => ({
     payload: projectResponse,
     type: GET_PROJECT_BY_NAME_SUCCESS,

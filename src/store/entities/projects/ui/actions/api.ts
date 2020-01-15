@@ -1,8 +1,8 @@
 import axios, { AxiosResponse } from "axios";
-import { IApiResponse } from "../../../../baseTypes/IApiResponse";
+import { IResult } from "../../../../baseTypes/IResult";
 
-export type IProjectResponse = IApiResponse<IProject>;
-export type IProjectsResponse = IApiResponse<IProject[]>;
+export type IProjectResponse = IResult<IProject>;
+export type IProjectsResponse = IResult<IProject[]>;
 
 export const projectsApi = {
     getProjectById: (projectId: string) =>

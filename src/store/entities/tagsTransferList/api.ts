@@ -1,9 +1,9 @@
 import axios from "axios";
-import { IApiResponse } from "../../baseTypes/IApiResponse";
+import { IResult } from "../../baseTypes/IResult";
 import { IFacade } from "../projects/ui/selectors";
 import { ITag } from "../tags/actions/api";
 
-export type MapTagResponse = IApiResponse<boolean>;
+export type MapTagResponse = IResult<ITag["tagId"]>;
 
 export const tagsTransferListApi = {
     mapTag: (facadesToMap: IFacade[], tagId: ITag["tagId"]) => {

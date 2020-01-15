@@ -1,9 +1,9 @@
 import axios from "axios";
-import { IApiResponse } from "../../../baseTypes/IApiResponse";
+import { IResult } from "../../../baseTypes/IResult";
 
 export type ITokenData = string;
 
-export type ITokenResponse = IApiResponse<ITokenData>;
+export type ITokenResponse = IResult<ITokenData>;
 
 export interface ILoginRequest {
     firstName: string;

@@ -1,12 +1,12 @@
 import axios from "axios";
-import { IApiResponse } from "../../../baseTypes/IApiResponse";
+import { IResult } from "../../../baseTypes/IResult";
 
 export interface ITag {
     articleCount?: number;
     tagId: string;
 }
 
-export type ITagsResponse = IApiResponse<ITag[]>;
+export type ITagsResponse = IResult<ITag[]>;
 
 export const tagsApi = {
     getTags: () => {

@@ -1,4 +1,4 @@
-import { IApiResponse } from "../../../../baseTypes/IApiResponse";
+import { IResult } from "../../../../baseTypes/IResult";
 import { IBlogPost, IBlogPostsResponse } from "../api";
 
 /* -------------------------------------------------------------------------- */
@@ -50,7 +50,7 @@ export interface IGetBlogPostsByProjectIdSuccessAction {
 }
 
 export const getBlogPostsByProjectIdSuccessAction = (
-    blogPostsResponse: IApiResponse<IBlogPost[]>
+    blogPostsResponse: IResult<IBlogPost[]>,
 ): IGetBlogPostsByProjectIdSuccessAction => ({
     payload: blogPostsResponse,
     type: GET_BLOG_POSTS_BY_PROJECT_ID_SUCCESS,
