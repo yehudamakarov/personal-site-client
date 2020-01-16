@@ -7,14 +7,9 @@ import { IApplicationState } from "../../../../rootReducer";
 import { JobStage } from "../../../../signalR/init";
 import { IMapTagJobStatus } from "../../../../signalR/reducer";
 import { IFacade } from "../../../projects/ui/selectors";
-import { MapTagResponse, tagsTransferListApi } from "../../api";
+import { tagsTransferListApi } from "../../api";
 import { FacadeIds } from "../../tagsTransferListReducer";
-import {
-    handleMapTagJobStatusUpdateAction,
-    IMapTagLoadingAction,
-    MAP_TAG_JOB_BEGINNING,
-    mapTagJobFailedAction,
-} from "../handleMapTagJobStatusUpdate";
+import { handleMapTagJobStatusUpdateAction, IMapTagLoadingAction, MAP_TAG_LOADING } from "../tagsTransferListActions";
 
 const facadeItemsFromIdsSelector = (facadeIds: FacadeIds) => (state: IApplicationState): IFacade[] => {
     const results: IFacade[] = [];
@@ -25,29 +20,54 @@ const facadeItemsFromIdsSelector = (facadeIds: FacadeIds) => (state: IApplicatio
 };
 
 function* mapTag(action: IMapTagLoadingAction) {
+    const tagId = action.payload;
     try {
-        const tagId = action.payload;
         const facadeIdsToBeMapped: FacadeIds = yield select((state: IApplicationState) => state.tagsTransferList.left);
         const facadesToBeMapped: IFacade[] = yield select(facadeItemsFromIdsSelector(facadeIdsToBeMapped));
-        const response: AxiosResponse<MapTagResponse> = yield call(
+        const response: AxiosResponse<IMapTagJobStatus> = yield call(
             tagsTransferListApi.mapTag,
             facadesToBeMapped,
-            tagId
+            tagId,
         );
-        yield put(
-            handleMapTagJobStatusUpdateAction({
-                jobStage: JobStage.InProgress,
-                tagResult: {
-                    data: { tagId: response.data.data },
-                    details: { resultStatus: ResultStatus.Success, message: "Received 202, began job." },
-                },
-            })
-        );
+        yield put(handleMapTagJobStatusUpdateAction(response.data));
+
+        // class Person {
+        //     public name: string = "default"
+        //     public address: string = "default"
+        //     public age: number = 0;
+        //
+        //     public constructor(init?:Partial<Person>) {
+        //         Object.assign(this, init);
+        //     }
+        // }
+        //
+        // let persons = [
+        //     new Person(),
+        //     new Person({}),
+        //     new Person({name:"John"}),
+        //     new Person({address:"Earth"}),
+        //     new Person({age:20, address:"Earth", name:"John"}),
+        // ];
+
         // yield put();
         // when web socket broadcasts success, save tagId to 'map successful'
         // after delay(10000) check if successful or error and then if socket is connected
     } catch (error) {
-        yield put(mapTagJobFailedAction(JSON.stringify(error)));
+        const errorInfo = JSON.stringify(error);
+        yield put(
+            handleMapTagJobStatusUpdateAction({
+                tagId: {
+                    item: {
+                        data: { tagId },
+                        details: {
+                            message: error,
+                            resultStatus: ResultStatus.Failure,
+                        },
+                    },
+                    jobStage: JobStage.Error,
+                },
+            }),
+        );
     }
 }
 
@@ -58,5 +78,5 @@ export const registerMapTagSagaEvents = (connection: HubConnection, dispatch: En
 };
 
 export function* watchMapTag() {
-    yield takeEvery(MAP_TAG_JOB_BEGINNING, mapTag);
+    yield takeEvery(MAP_TAG_LOADING, mapTag);
 }

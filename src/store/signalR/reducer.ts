@@ -14,23 +14,25 @@ type JobStatusActionTypes =
     | IHandleGithubRepoFetcherJobStatusUpdateAction
     | IHandleCalculateTagCountsJobStatusUpdateAction;
 
-export interface IGithubRepoFetcherStatus {
-    itemStatus: { [index: string]: JobStage };
+interface IJobStatus<T> {
+    item: T;
     jobStage: JobStage;
 }
 
-export interface ICalculateTagCountsStatus {
-    jobStage: JobStage;
+export interface IGithubRepoFetcherStatus extends IJobStatus<{ [index: string]: JobStage }> {
+}
+
+export interface ICalculateTagCountsStatus extends IJobStatus<IResult<ITag>> {
 }
 
 export interface IMapTagJobStatus {
-    tagResult: IResult<ITag>;
-    jobStage: JobStage;
+    [index: string]: IJobStatus<IResult<ITag>>;
 }
 
 export interface IJobStatusState {
     githubRepoFetcherStatus: IGithubRepoFetcherStatus;
     calculateTagCountsStatus: ICalculateTagCountsStatus;
+    mapTagStatus: IMapTagJobStatus;
 }
 
 const INITIAL_STATE: IJobStatusState = {

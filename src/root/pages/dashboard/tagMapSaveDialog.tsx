@@ -12,8 +12,8 @@ import {
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ITag } from "../../../store/entities/tags/actions/api";
-import { closeTagMapSaveDialogAction } from "../../../store/entities/tagsTransferList/actions/closeTagMapSaveDialog";
 import { mapTagLoadingAction } from "../../../store/entities/tagsTransferList/actions/handleMapTagJobStatusUpdate";
+import { closeTagMapSaveDialogAction } from "../../../store/entities/tagsTransferList/actions/tagsTransferListActions";
 import { IApplicationState } from "../../../store/rootReducer";
 
 const useStyles = makeStyles((theme: Theme) =>
