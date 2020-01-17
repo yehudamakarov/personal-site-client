@@ -1,3 +1,4 @@
+import { Tag } from "../../entities/tags/actions/api";
 import { ICalculateTagCountsStatus, IGithubRepoFetcherStatus, IMapTagJobStatus } from "../reducer";
 // =============================================================================== //
 export const HANDLE_GITHUB_REPO_FETCHER_JOB_STATUS_UPDATE = "HANDLE_GITHUB_REPO_FETCHER_JOB_STATUS_UPDATE";
@@ -12,6 +13,18 @@ export const handleGithubRepoFetcherJobStatusUpdateAction = (
 ): IHandleGithubRepoFetcherJobStatusUpdateAction => ({
     payload: status,
     type: HANDLE_GITHUB_REPO_FETCHER_JOB_STATUS_UPDATE,
+});
+// =============================================================================== //
+export const MAP_TAG_LOADING = "MAP_TAG_LOADING";
+
+export interface IMapTagLoadingAction {
+    type: typeof MAP_TAG_LOADING;
+    payload: Tag["tagId"];
+}
+
+export const mapTagLoadingAction = (tagId: Tag["tagId"]): IMapTagLoadingAction => ({
+    payload: tagId,
+    type: MAP_TAG_LOADING,
 });
 // =============================================================================== //
 export const HANDLE_MAP_TAG_JOB_STATUS_UPDATE = "HANDLE_MAP_TAG_JOB_STATUS_UPDATE";
@@ -44,4 +57,5 @@ export const handleCalculateTagCountsJobStatusUpdateAction = (
 export type JobStatusUpdateActions =
     | IHandleGithubRepoFetcherJobStatusUpdateAction
     | IHandleCalculateTagCountsJobStatusUpdateAction
-    | IHandleMapTagJobStatusUpdateAction;
+    | IHandleMapTagJobStatusUpdateAction
+    | IMapTagLoadingAction;

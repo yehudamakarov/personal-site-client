@@ -12,18 +12,16 @@ import {
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Tag } from "../../../store/entities/tags/actions/api";
-import {
-    closeTagMapSaveDialogAction,
-    mapTagLoadingAction,
-} from "../../../store/entities/tagsTransferList/actions/tagsTransferListActions";
+import { closeTagMapSaveDialogAction } from "../../../store/entities/tagsTransferList/actions/tagsTransferListActions";
 import { IApplicationState } from "../../../store/rootReducer";
+import { mapTagLoadingAction } from "../../../store/signalR/actions/JobStatusUpdateActions";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             margin: theme.spacing(1),
         },
-    }),
+    })
 );
 
 export const TagMapSaveDialog = (props: { tagId?: Tag["tagId"] }) => {

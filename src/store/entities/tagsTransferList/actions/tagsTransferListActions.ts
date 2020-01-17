@@ -1,5 +1,5 @@
+import { IHandleMapTagJobStatusUpdateAction } from "../../../signalR/actions/JobStatusUpdateActions";
 import { IFacade } from "../../projects/ui/selectors";
-import { Tag } from "../../tags/actions/api";
 import { FacadeIds } from "../tagsTransferListReducer";
 // =============================================================================== //
 export const GET_TRANSFER_LIST_FACADES_LOADING = "GET_TRANSFER_LIST_FACADES_LOADING";
@@ -106,16 +106,6 @@ export const closeTagMapSaveDialogAction = (): ICloseTagMapSaveDialogAction => (
     type: CLOSE_TAG_MAP_SAVE_DIALOG,
 });
 // =============================================================================== //
-export const MAP_TAG_LOADING = "MAP_TAG_LOADING";
-export interface IMapTagLoadingAction {
-    type: typeof MAP_TAG_LOADING;
-    payload: Tag["tagId"];
-}
-
-export const mapTagLoadingAction = (tagId: Tag["tagId"]): IMapTagLoadingAction => ({
-    payload: tagId,
-    type: MAP_TAG_LOADING,
-});
 
 export type TagsTransferListActionTypes =
     | IGetTransferListFacadesLoadingAction
@@ -127,4 +117,4 @@ export type TagsTransferListActionTypes =
     | ISetLeft
     | IOpenTagMapSaveDialogAction
     | ICloseTagMapSaveDialogAction
-    | IMapTagLoadingAction;
+    | IHandleMapTagJobStatusUpdateAction;

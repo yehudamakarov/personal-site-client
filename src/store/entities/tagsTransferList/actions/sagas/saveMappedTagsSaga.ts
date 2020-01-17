@@ -4,13 +4,16 @@ import { AxiosResponse } from "axios";
 import { call, put, select, takeEvery } from "redux-saga/effects";
 import { ResultStatus } from "../../../../baseTypes/ResultStatus";
 import { IApplicationState } from "../../../../rootReducer";
-import { handleMapTagJobStatusUpdateAction } from "../../../../signalR/actions/JobStatusUpdateActions";
+import {
+    handleMapTagJobStatusUpdateAction,
+    IMapTagLoadingAction,
+    MAP_TAG_LOADING,
+} from "../../../../signalR/actions/JobStatusUpdateActions";
 import { JobStage } from "../../../../signalR/init";
 import { IMapTagJobStatus } from "../../../../signalR/reducer";
 import { IFacade } from "../../../projects/ui/selectors";
 import { tagsTransferListApi } from "../../api";
 import { FacadeIds } from "../../tagsTransferListReducer";
-import { IMapTagLoadingAction, MAP_TAG_LOADING } from "../tagsTransferListActions";
 
 const facadeItemsFromIdsSelector = (facadeIds: FacadeIds) => (state: IApplicationState): IFacade[] => {
     const results: IFacade[] = [];
