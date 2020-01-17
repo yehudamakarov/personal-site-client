@@ -57,9 +57,7 @@ export const jobStatusReducer = (state = INITIAL_STATE, action: JobStatusUpdateA
         }
         // =============================================================================== //
         case HANDLE_GITHUB_REPO_FETCHER_JOB_STATUS_UPDATE: {
-            {
-                return { ...state, githubRepoFetcherStatus: action.payload };
-            }
+            return { ...state, githubRepoFetcherStatus: action.payload };
         }
         // =============================================================================== //
         default: {
