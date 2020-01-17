@@ -8,10 +8,10 @@ import {
     getTransferListFacadesErrorAction,
     getTransferListFacadesSuccessAction,
     IGetTransferListFacadesLoadingAction,
-} from "../getTransferListFacades";
-import { setInitiallyMappedAction } from "../setInitiallyMapped";
-import { setLeftAction } from "../setLeft";
-import { setRightAction } from "../setRight";
+    setInitiallyMappedAction,
+    setLeftAction,
+    setRightAction,
+} from "../tagsTransferListActions";
 
 function* getTransferListFacades(action: IGetTransferListFacadesLoadingAction) {
     try {

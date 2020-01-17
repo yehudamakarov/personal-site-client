@@ -9,7 +9,7 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import React from "react";
 import { useSelector } from "react-redux";
 import { TransferListHelpers } from "../../../helpers/transferListHelpers";
-import { ISetChecked } from "../../../store/entities/tagsTransferList/actions/setChecked";
+import { ISetChecked } from "../../../store/entities/tagsTransferList/actions/tagsTransferListActions";
 import { FacadeIds, TransferListFacadeId } from "../../../store/entities/tagsTransferList/tagsTransferListReducer";
 import { IApplicationState } from "../../../store/rootReducer";
 import { TransferListItem } from "./transferListItem";

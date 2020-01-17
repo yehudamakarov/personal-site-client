@@ -11,9 +11,11 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ITag } from "../../../store/entities/tags/actions/api";
-import { mapTagLoadingAction } from "../../../store/entities/tagsTransferList/actions/handleMapTagJobStatusUpdate";
-import { closeTagMapSaveDialogAction } from "../../../store/entities/tagsTransferList/actions/tagsTransferListActions";
+import { Tag } from "../../../store/entities/tags/actions/api";
+import {
+    closeTagMapSaveDialogAction,
+    mapTagLoadingAction,
+} from "../../../store/entities/tagsTransferList/actions/tagsTransferListActions";
 import { IApplicationState } from "../../../store/rootReducer";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -24,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-export const TagMapSaveDialog = (props: { tagId?: ITag["tagId"] }) => {
+export const TagMapSaveDialog = (props: { tagId?: Tag["tagId"] }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const saveDialogIsOpen = useSelector((state: IApplicationState) => state.tagsTransferList.saveDialogIsOpen);

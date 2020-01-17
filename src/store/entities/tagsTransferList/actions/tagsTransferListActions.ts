@@ -1,6 +1,5 @@
-import { IMapTagJobStatus } from "../../../signalR/reducer";
 import { IFacade } from "../../projects/ui/selectors";
-import { ITag } from "../../tags/actions/api";
+import { Tag } from "../../tags/actions/api";
 import { FacadeIds } from "../tagsTransferListReducer";
 // =============================================================================== //
 export const GET_TRANSFER_LIST_FACADES_LOADING = "GET_TRANSFER_LIST_FACADES_LOADING";
@@ -30,24 +29,20 @@ export const getTransferListFacadesSuccessAction = (facades: IFacade[]): IGetTra
 });
 // =============================================================================== //
 export const GET_TRANSFER_LIST_FACADES_ERROR = "GET_TRANSFER_LIST_FACADES_ERROR";
-
 export interface IGetTransferListFacadesErrorAction {
     type: typeof GET_TRANSFER_LIST_FACADES_ERROR;
     payload: string;
 }
-
 export const getTransferListFacadesErrorAction = (error: string): IGetTransferListFacadesErrorAction => ({
     payload: error,
     type: GET_TRANSFER_LIST_FACADES_ERROR,
 });
 // =============================================================================== //
 export const SET_INITIALLY_MAPPED = "SET_INITIALLY_MAPPED";
-
 export interface ISetInitiallyMapped {
     type: typeof SET_INITIALLY_MAPPED;
     payload: { left: FacadeIds; right: FacadeIds };
 }
-
 export const setInitiallyMappedAction = (left: FacadeIds, right: FacadeIds): ISetInitiallyMapped => ({
     payload: { left, right },
     type: SET_INITIALLY_MAPPED,
@@ -111,30 +106,13 @@ export const closeTagMapSaveDialogAction = (): ICloseTagMapSaveDialogAction => (
     type: CLOSE_TAG_MAP_SAVE_DIALOG,
 });
 // =============================================================================== //
-export const HANDLE_MAP_TAG_JOB_STATUS_UPDATE = "HANDLE_MAP_TAG_JOB_STATUS_UPDATE";
-
-export interface IHandleMapTagJobStatusUpdateAction {
-    type: typeof HANDLE_MAP_TAG_JOB_STATUS_UPDATE;
-    payload: IMapTagJobStatus;
-}
-
-export const handleMapTagJobStatusUpdateAction = (status: IMapTagJobStatus): IHandleMapTagJobStatusUpdateAction => ({
-    payload: status,
-    type: HANDLE_MAP_TAG_JOB_STATUS_UPDATE,
-});
-// =============================================================================== //
-/* -------------------------------------------------------------------------- */
-/*                          mapTagLoadingAction                         */
-/* -------------------------------------------------------------------------- */
-
 export const MAP_TAG_LOADING = "MAP_TAG_LOADING";
-
 export interface IMapTagLoadingAction {
     type: typeof MAP_TAG_LOADING;
-    payload: ITag["tagId"];
+    payload: Tag["tagId"];
 }
 
-export const mapTagLoadingAction = (tagId: ITag["tagId"]): IMapTagLoadingAction => ({
+export const mapTagLoadingAction = (tagId: Tag["tagId"]): IMapTagLoadingAction => ({
     payload: tagId,
     type: MAP_TAG_LOADING,
 });
@@ -149,4 +127,4 @@ export type TagsTransferListActionTypes =
     | ISetLeft
     | IOpenTagMapSaveDialogAction
     | ICloseTagMapSaveDialogAction
-    | IHandleMapTagJobStatusUpdateAction;
+    | IMapTagLoadingAction;

@@ -2,8 +2,10 @@ import * as signalR from "@microsoft/signalr";
 import { EnhancedStore } from "@reduxjs/toolkit";
 import { ITokenState } from "../entities/auth/actions/authReducer";
 import { registerMapTagSagaEvents } from "../entities/tagsTransferList/actions/sagas/saveMappedTagsSaga";
-import { handleCalculateTagCountsJobStatusUpdateAction } from "./actions/handleCalculateTagCountsJobStatusUpdate";
-import { handleGithubRepoFetcherJobStatusUpdateAction } from "./actions/handleGithubRepoFetcherJobStatusUpdate";
+import {
+    handleCalculateTagCountsJobStatusUpdateAction,
+    handleGithubRepoFetcherJobStatusUpdateAction,
+} from "./actions/JobStatusUpdateActions";
 import { ICalculateTagCountsStatus, IGithubRepoFetcherStatus } from "./reducer";
 
 export enum JobStage {

@@ -1,9 +1,9 @@
 import { IBaseCollectionUiState } from "../../../baseTypes/IBaseCollectionUiState";
-import { ITag } from "./api";
+import { Tag } from "./api";
 import { GET_TAGS_ERROR, GET_TAGS_LOADING, GET_TAGS_SUCCESS, GetTagsActionTypes } from "./getTags/actions";
 
 export interface ITagsState {
-    tagsData: ITag[];
+    tagsData: Tag[];
     tagsUi: ITagsUi;
 }
 
@@ -21,12 +21,9 @@ const INITIAL_STATE: ITagsState = {
 
 type TagsActionTypes = GetTagsActionTypes;
 
-export const tagsReducer = (
-    state = INITIAL_STATE,
-    action: TagsActionTypes
-): ITagsState => {
+export const tagsReducer = (state = INITIAL_STATE, action: TagsActionTypes): ITagsState => {
     switch (action.type) {
-        case GET_TAGS_LOADING:
+        case GET_TAGS_LOADING: {
             return {
                 ...state,
                 tagsUi: {
@@ -35,6 +32,7 @@ export const tagsReducer = (
                     allIsLoading: true,
                 },
             };
+        }
         case GET_TAGS_SUCCESS:
             return {
                 tagsData: action.payload,

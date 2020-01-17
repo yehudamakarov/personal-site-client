@@ -15,15 +15,15 @@ import SyncAltIcon from "@material-ui/icons/SyncAlt";
 import { navigate } from "@reach/router";
 import React from "react";
 import { useSelector } from "react-redux";
-import { ITag } from "../../../store/entities/tags/actions/api";
+import { Tag } from "../../../store/entities/tags/actions/api";
 import { IApplicationState } from "../../../store/rootReducer";
 import { Routes } from "../../../store/ui/IUiState";
 import { TagListItemActionButton } from "./tagListItemActionButton";
 
-const tagSelector = (tagId: ITag["tagId"]) => (state: IApplicationState) =>
+const tagSelector = (tagId: Tag["tagId"]) => (state: IApplicationState) =>
     state.tags.tagsData.find((tag) => tag.tagId === tagId);
 
-export const TagsManagementTagListItem = (props: { tagId: ITag["tagId"] }) => {
+export const TagsManagementTagListItem = (props: { tagId: Tag["tagId"] }) => {
     const tag = useSelector(tagSelector(props.tagId));
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 

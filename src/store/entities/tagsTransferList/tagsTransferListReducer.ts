@@ -17,25 +17,37 @@ import {
 export type FacadeIds = TransferListFacadeId[];
 export type TransferListFacadeId = IProject["githubRepoDatabaseId"] | IBlogPost["id"];
 
-export class TagsTransferListState {
-    public saveDialogIsOpen: boolean = false;
-    public allIsLoading: boolean = false;
-    public allIsError: boolean = false;
-    public checked: FacadeIds = [];
-    public initialLeft: FacadeIds = [];
-    public initialRight: FacadeIds = [];
-    public right: FacadeIds = [];
-    public left: FacadeIds = [];
-    public facadeIds: FacadeIds = [];
-    public facadeItems: { [index: string]: IFacade } = {};
+export interface ITagsTransferListState {
+    saveDialogIsOpen: boolean;
+    allIsLoading: boolean;
+    allIsError: boolean;
+    checked: FacadeIds;
+    initialLeft: FacadeIds;
+    initialRight: FacadeIds;
+    right: FacadeIds;
+    left: FacadeIds;
+    facadeIds: FacadeIds;
+    facadeItems: { [index: string]: IFacade };
 }
 
-const INITIAL_STATE = new TagsTransferListState();
+// const INITIAL_STATE =
+const INITIAL_STATE: ITagsTransferListState = {
+    allIsError: false,
+    allIsLoading: false,
+    checked: [],
+    facadeIds: [],
+    facadeItems: {},
+    initialLeft: [],
+    initialRight: [],
+    left: [],
+    right: [],
+    saveDialogIsOpen: false,
+};
 
 export const tagsTransferListReducer = (
-    state: TagsTransferListState = INITIAL_STATE,
+    state: ITagsTransferListState = INITIAL_STATE,
     action: TagsTransferListActionTypes,
-): TagsTransferListState => {
+): ITagsTransferListState => {
     switch (action.type) {
         // =============================================================================== //
         case GET_TRANSFER_LIST_FACADES_LOADING: {
@@ -47,7 +59,7 @@ export const tagsTransferListReducer = (
             const facadeItems = action.payload.reduce((facadeItemsObject, facade) => {
                 facadeItemsObject[facade.id] = facade;
                 return facadeItemsObject;
-            }, {} as TagsTransferListState["facadeItems"]);
+            }, {} as ITagsTransferListState["facadeItems"]);
             return { ...state, allIsLoading: false, facadeIds, facadeItems, allIsError: false };
         }
         // =============================================================================== //

@@ -26,22 +26,24 @@ export const TagSearchContainer = (props: IOwnProps) => {
     useEffect(() => {
         if (props.path === Routes.tagsTagIdParam) {
             const currentTagInFilter = TagTitleHelpers.getTagTitle(props);
-            tagsChange([currentTagInFilter]);
+            tagsChange([currentTagInFilter ? currentTagInFilter : ""]);
         }
     }, [uri]);
 
     const allTagValues = useSelector((state: IApplicationState) =>
-        state.tags.tagsData.map((tag) => ({
-            label: tag.tagId,
-            value: tag.tagId,
-        }))
+        state.tags.tagsData.map((tag) => {
+            return {
+                label: tag.tagId,
+                value: tag.tagId,
+            };
+        }),
     );
 
     const selectedTagValues = useSelector((state: IApplicationState) =>
         state.ui.filter.tagIds.map((tagId) => ({
             label: tagId,
             value: tagId,
-        }))
+        })),
     );
 
     const tagsChange = (values: string[]) => {

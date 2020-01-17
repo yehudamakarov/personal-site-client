@@ -10,6 +10,9 @@ export const SnackBarService = (props: {}) => {
     const handleTagCountsJobSelector = (state: IApplicationState) => {
         return state.jobStatus.calculateTagCountsStatus.jobStage;
     };
+    const mapTagJobSelector = (state: IApplicationState) => {
+        return state.jobStatus.mapTagStatus.jobStage;
+    };
 
     return (
         <React.Fragment>
@@ -23,8 +26,11 @@ export const SnackBarService = (props: {}) => {
                 baseCase={JobStage.None}
                 title={"Calculating Tag Counts"}
             />
-
-            {/*<AddToProjectsSnackbar />*/}
+            <GenericJobStatusSnackbar
+                currentJobStateSelector={mapTagJobSelector}
+                baseCase={JobStage.None}
+                title={"Mapping Tag"}
+            />
         </React.Fragment>
     );
 };

@@ -3,12 +3,12 @@ import { RouteComponentProps } from "@reach/router";
 import React from "react";
 import { TagTitleHelpers } from "../../../helpers/tagTitleHelpers";
 import { roleType } from "../../../store/entities/auth/actions/authReducer";
-import { ITag } from "../../../store/entities/tags/actions/api";
+import { Tag } from "../../../store/entities/tags/actions/api";
 import { BasePage } from "../basePage";
 import { TagMapSaveDialog } from "./tagMapSaveDialog";
 import { TransferListForProjectsAndBlogPosts } from "./transferListForProjectsAndBlogPosts";
 
-export const TagsMapPage = (props: RouteComponentProps<{ tagId: ITag["tagId"] }>) => {
+export const TagsMapPage = (props: RouteComponentProps<{ tagId: Tag["tagId"] }>) => {
     const isXs = useMediaQuery((theme: Theme) => theme.breakpoints.down("xs"));
     const tagTitle = TagTitleHelpers.getTagTitle(props);
     return (

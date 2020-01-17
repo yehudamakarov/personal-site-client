@@ -11,10 +11,12 @@ import _ from "lodash";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TransferListHelpers } from "../../../helpers/transferListHelpers";
-import { setCheckedAction } from "../../../store/entities/tagsTransferList/actions/setChecked";
-import { setLeftAction } from "../../../store/entities/tagsTransferList/actions/setLeft";
-import { setRightAction } from "../../../store/entities/tagsTransferList/actions/setRight";
-import { openTagMapSaveDialogAction } from "../../../store/entities/tagsTransferList/actions/tagsTransferListActions";
+import {
+    openTagMapSaveDialogAction,
+    setCheckedAction,
+    setLeftAction,
+    setRightAction,
+} from "../../../store/entities/tagsTransferList/actions/tagsTransferListActions";
 import { FacadeIds } from "../../../store/entities/tagsTransferList/tagsTransferListReducer";
 import { IApplicationState } from "../../../store/rootReducer";
 import { TransferList } from "./transferList";

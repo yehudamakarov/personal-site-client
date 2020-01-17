@@ -10,7 +10,7 @@ import { useSnackbarUtils } from "./hooks/useSnackBarUtils";
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         success: { backgroundColor: theme.palette.success.dark },
-    }),
+    })
 );
 
 export const GenericJobStatusSnackbar = (props: {
@@ -40,7 +40,7 @@ export const GenericJobStatusSnackbar = (props: {
             onClose={handleClose}
             autoHideDuration={5000}
         >
-            <SnackbarContent className={isDone ? classes.success : ""} message={message} action={[gotIt]} />
+            <SnackbarContent className={isDone ? classes.success : ""} message={message} action={gotIt} />
         </Snackbar>
     );
 };

@@ -1,4 +1,4 @@
-import { ITag } from "../api";
+import { Tag } from "../api";
 
 /* -------------------------------------------------------------------------- */
 /*                          getTagsLoadingAction                          */
@@ -20,12 +20,10 @@ export const GET_TAGS_SUCCESS = "GET_TAGS_SUCCESS";
 
 export interface IGetTagsSuccessAction {
     type: typeof GET_TAGS_SUCCESS;
-    payload: ITag[];
+    payload: Tag[];
 }
 
-export const getTagsSuccessAction = (
-    tags: ITag[],
-): IGetTagsSuccessAction => ({
+export const getTagsSuccessAction = (tags: Tag[]): IGetTagsSuccessAction => ({
     payload: tags,
     type: GET_TAGS_SUCCESS,
 });
@@ -49,7 +47,4 @@ export const getTagsErrorAction = (error: string): IGetTagsErrorAction => ({
 /*                                Export Types                                */
 /* -------------------------------------------------------------------------- */
 
-export type GetTagsActionTypes =
-    | IGetTagsLoadingAction
-    | IGetTagsSuccessAction
-    | IGetTagsErrorAction;
+export type GetTagsActionTypes = IGetTagsLoadingAction | IGetTagsSuccessAction | IGetTagsErrorAction;

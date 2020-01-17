@@ -4,12 +4,13 @@ import { AxiosResponse } from "axios";
 import { call, put, select, takeEvery } from "redux-saga/effects";
 import { ResultStatus } from "../../../../baseTypes/ResultStatus";
 import { IApplicationState } from "../../../../rootReducer";
+import { handleMapTagJobStatusUpdateAction } from "../../../../signalR/actions/JobStatusUpdateActions";
 import { JobStage } from "../../../../signalR/init";
 import { IMapTagJobStatus } from "../../../../signalR/reducer";
 import { IFacade } from "../../../projects/ui/selectors";
 import { tagsTransferListApi } from "../../api";
 import { FacadeIds } from "../../tagsTransferListReducer";
-import { handleMapTagJobStatusUpdateAction, IMapTagLoadingAction, MAP_TAG_LOADING } from "../tagsTransferListActions";
+import { IMapTagLoadingAction, MAP_TAG_LOADING } from "../tagsTransferListActions";
 
 const facadeItemsFromIdsSelector = (facadeIds: FacadeIds) => (state: IApplicationState): IFacade[] => {
     const results: IFacade[] = [];
@@ -56,17 +57,15 @@ function* mapTag(action: IMapTagLoadingAction) {
         const errorInfo = JSON.stringify(error);
         yield put(
             handleMapTagJobStatusUpdateAction({
-                tagId: {
-                    item: {
-                        data: { tagId },
-                        details: {
-                            message: error,
-                            resultStatus: ResultStatus.Failure,
-                        },
+                item: {
+                    data: { tagId },
+                    details: {
+                        message: error,
+                        resultStatus: ResultStatus.Failure,
                     },
-                    jobStage: JobStage.Error,
                 },
-            }),
+                jobStage: JobStage.Error,
+            })
         );
     }
 }
