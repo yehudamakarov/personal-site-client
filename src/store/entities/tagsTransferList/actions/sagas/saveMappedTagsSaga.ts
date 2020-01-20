@@ -88,9 +88,9 @@ function* mapTag(action: IMapTagLoadingAction) {
 export const registerMapTagSagaEvents = (connection: HubConnection, dispatch: EnhancedStore["dispatch"]) => {
     connection.on("pushMapTagJobStatusUpdate", (status: IMapTagJobStatus) => {
         dispatch(handleMapTagJobStatusUpdateAction(status));
-        // todo take this out
+        const jobIsDone = status.jobStage === JobStage.Done;
         const currentTag = status.item;
-        if (status.jobStage === JobStage.Done && currentTag) {
+        if (jobIsDone && currentTag) {
             dispatch(getTransferListFacadesLoadingAction(currentTag.data.tagId));
         }
     });
