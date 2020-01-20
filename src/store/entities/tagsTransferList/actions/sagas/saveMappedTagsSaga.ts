@@ -49,7 +49,7 @@ function* mapTag(action: IMapTagLoadingAction) {
         const response: AxiosResponse<IMapTagJobStatus> = yield call(
             tagsTransferListApi.mapTag,
             facadesToBeMapped,
-            tagId
+            tagId,
         );
         yield put(handleMapTagJobStatusUpdateAction(response.data));
         yield delay(10000);
@@ -65,7 +65,7 @@ function* mapTag(action: IMapTagLoadingAction) {
                         },
                     },
                     jobStage: JobStage.Warning,
-                })
+                }),
             );
         }
     } catch (error) {
@@ -80,7 +80,7 @@ function* mapTag(action: IMapTagLoadingAction) {
                     },
                 },
                 jobStage: JobStage.Error,
-            })
+            }),
         );
     }
 }
@@ -88,6 +88,7 @@ function* mapTag(action: IMapTagLoadingAction) {
 export const registerMapTagSagaEvents = (connection: HubConnection, dispatch: EnhancedStore["dispatch"]) => {
     connection.on("pushMapTagJobStatusUpdate", (status: IMapTagJobStatus) => {
         dispatch(handleMapTagJobStatusUpdateAction(status));
+        // todo what is the gain of this? whatever state diff there is, handle it in the appropriate reducer for this action
         const jobIsDone = status.jobStage === JobStage.Done;
         const currentTag = status.item;
         if (jobIsDone && currentTag) {

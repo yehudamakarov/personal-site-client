@@ -609,8 +609,8 @@
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="1206" y="680" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1578211402187" />
-    <state x="252" y="51" width="1723" height="1400" key="CommitChangelistDialog2" timestamp="1579478607147">
-      <screen x="0" y="0" width="3008" height="1692" />
+    <state x="-2165" y="0" width="1723" height="1400" key="CommitChangelistDialog2" timestamp="1579530325941">
+      <screen x="-2560" y="0" width="2560" height="1400" />
     </state>
     <state x="1593" y="383" key="CommitChangelistDialog2/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575848306443" />
     <state x="252" y="51" key="CommitChangelistDialog2/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1578579357762" />
@@ -618,13 +618,14 @@
     <state x="252" y="51" width="1292" height="1314" key="CommitChangelistDialog2/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1579478607147" />
     <state x="252" y="51" key="CommitChangelistDialog2/0.0.3008.1692/-1920.268.1920.1177@0.0.3008.1692" timestamp="1578210951521" />
     <state x="804" y="289" key="CommitChangelistDialog2/0.23.1874.1177@0.23.1874.1177" timestamp="1575900332338" />
-    <state x="-2165" y="0" width="1723" height="1400" key="CommitChangelistDialog2/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@-2560.0.2560.1400" timestamp="1577654560303" />
+    <state x="-2165" y="0" width="1723" height="1400" key="CommitChangelistDialog2/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@-2560.0.2560.1400" timestamp="1579530325941" />
     <state x="395" y="95" width="1717" height="1141" key="CommitChangelistDialog2/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575835654418" />
-    <state x="198" y="213" width="2406" height="1353" key="DiffContextDialog" timestamp="1578210068889">
-      <screen x="0" y="0" width="3008" height="1692" />
+    <state x="-2391" y="176" width="2048" height="1120" key="DiffContextDialog" timestamp="1579530431869">
+      <screen x="-2560" y="0" width="2560" height="1400" />
     </state>
     <state x="198" y="213" key="DiffContextDialog/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575839664984" />
     <state x="198" y="213" width="2406" height="1353" key="DiffContextDialog/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1578210068889" />
+    <state x="-2391" y="176" width="2048" height="1120" key="DiffContextDialog/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@-2560.0.2560.1400" timestamp="1579530431869" />
     <state width="2532" height="404" key="GridCell.Tab.0.bottom" timestamp="1579528407675">
       <screen x="-2560" y="0" width="2560" height="1400" />
     </state>
