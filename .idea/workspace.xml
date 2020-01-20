@@ -8,17 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferListBase.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListBase.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForProjectsAndBlogPosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListForProjectsAndBlogPosts.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/tags/actions/tagsReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tags/actions/tagsReducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/sagas/saveMappedTagsSaga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/sagas/saveMappedTagsSaga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/tagsTransferListActions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/tagsTransferListActions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/tagsTransferList/tagsTransferListReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/tagsTransferListReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/signalR/actions/JobStatusUpdateActions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/signalR/actions/JobStatusUpdateActions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/signalR/init.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/signalR/init.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/ui/IUiState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/ui/IUiState.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/ui/uiActions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/ui/uiActions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/ui/uiReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/ui/uiReducer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,14 +151,9 @@
       <workItem from="1579230286553" duration="1097000" />
       <workItem from="1579231417739" duration="8966000" />
       <workItem from="1579467038740" duration="5480000" />
-      <workItem from="1579474018447" duration="3724000" />
-    </task>
-    <task id="LOCAL-00016" summary="refactoring">
-      <created>1572874005267</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1572874005268</updated>
+      <workItem from="1579474018447" duration="3842000" />
+      <workItem from="1579486812197" duration="962000" />
+      <workItem from="1579491215587" duration="131000" />
     </task>
     <task id="LOCAL-00017" summary="refactoring">
       <created>1572930499724</created>
@@ -506,7 +491,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579243563008</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="need to clean up button status logic">
+      <created>1579478607360</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1579478607360</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -543,7 +535,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="update tags done" />
     <MESSAGE value="update project title" />
     <MESSAGE value="rbac, visibility, container, presentational" />
     <MESSAGE value="working on tags mapping/renaming/deleting" />
@@ -568,7 +559,8 @@
     <MESSAGE value="..." />
     <MESSAGE value="working" />
     <MESSAGE value="updating tag state when job complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating tag state when job complete" />
+    <MESSAGE value="need to clean up button status logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="need to clean up button status logic" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -615,13 +607,13 @@
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="1206" y="680" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1578211402187" />
-    <state x="252" y="51" width="1723" height="1400" key="CommitChangelistDialog2" timestamp="1579243562657">
+    <state x="252" y="51" width="1723" height="1400" key="CommitChangelistDialog2" timestamp="1579478607147">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="1593" y="383" key="CommitChangelistDialog2/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575848306443" />
     <state x="252" y="51" key="CommitChangelistDialog2/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1578579357762" />
     <state x="296" y="242" key="CommitChangelistDialog2/0.0.1920.1200@0.0.1920.1200" timestamp="1579098353401" />
-    <state x="252" y="51" width="1292" height="1314" key="CommitChangelistDialog2/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1579243562657" />
+    <state x="252" y="51" width="1292" height="1314" key="CommitChangelistDialog2/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1579478607147" />
     <state x="252" y="51" key="CommitChangelistDialog2/0.0.3008.1692/-1920.268.1920.1177@0.0.3008.1692" timestamp="1578210951521" />
     <state x="804" y="289" key="CommitChangelistDialog2/0.23.1874.1177@0.23.1874.1177" timestamp="1575900332338" />
     <state x="-2165" y="0" width="1723" height="1400" key="CommitChangelistDialog2/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@-2560.0.2560.1400" timestamp="1577654560303" />
