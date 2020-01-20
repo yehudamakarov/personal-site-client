@@ -6,8 +6,17 @@ import {
     SET_LISTING_TYPES_FOR_FILTER,
     SET_ROUTE,
     SET_TAGS_FOR_FILTER,
+    SOCKET_CONNECTED,
+    SOCKET_CONNECTING,
+    SOCKET_DISCONNECTED,
     UiActionTypes,
 } from "./uiActions";
+
+export enum SocketStatus {
+    connected,
+    connecting,
+    disconnected,
+}
 
 export const INITIAL_STATE: IUiState = {
     drawerOpen: false,
@@ -20,14 +29,18 @@ export const INITIAL_STATE: IUiState = {
         tagIds: [],
     },
     route: "/",
+    socketStatus: SocketStatus.disconnected,
     uri: "/",
 };
 
-export const uiReducer = (
-    state = INITIAL_STATE,
-    action: UiActionTypes
-): IUiState => {
+export const uiReducer = (state = INITIAL_STATE, action: UiActionTypes): IUiState => {
     switch (action.type) {
+        case SOCKET_CONNECTED:
+            return { ...state, socketStatus: SocketStatus.connected };
+        case SOCKET_DISCONNECTED:
+            return { ...state, socketStatus: SocketStatus.disconnected };
+        case SOCKET_CONNECTING:
+            return { ...state, socketStatus: SocketStatus.connecting };
         case OPEN_DRAWER: {
             return { ...state, drawerOpen: true };
         }

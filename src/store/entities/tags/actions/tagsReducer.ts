@@ -3,6 +3,7 @@ import {
     HANDLE_MAP_TAG_JOB_STATUS_UPDATE,
     IHandleMapTagJobStatusUpdateAction,
 } from "../../../signalR/actions/JobStatusUpdateActions";
+import { JobStage } from "../../../signalR/init";
 import { Tag } from "./api";
 import { GET_TAGS_ERROR, GET_TAGS_LOADING, GET_TAGS_SUCCESS, GetTagsActionTypes } from "./getTags/actions";
 
@@ -29,7 +30,8 @@ export const tagsReducer = (state = INITIAL_STATE, action: TagsActionTypes): ITa
     switch (action.type) {
         case HANDLE_MAP_TAG_JOB_STATUS_UPDATE: {
             const tagResult = action.payload.item;
-            if (tagResult) {
+            const jobStage = action.payload.jobStage;
+            if (tagResult && jobStage === JobStage.Done) {
                 return {
                     ...state,
                     tagsData: state.tagsData.map((tag) => {
@@ -40,6 +42,8 @@ export const tagsReducer = (state = INITIAL_STATE, action: TagsActionTypes): ITa
                         }
                     }),
                 };
+            } else {
+                return state;
             }
         }
         case GET_TAGS_LOADING: {

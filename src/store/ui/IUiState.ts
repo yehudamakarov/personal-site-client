@@ -1,3 +1,5 @@
+import { SocketStatus } from "./uiReducer";
+
 export type ProjectsRoute = "/projects/";
 export type BlogPostsRoute = "/blogPosts/";
 export type TagsTagIdParamRoute = "/tags/:tagId/";
@@ -50,4 +52,5 @@ export interface IUiState {
     route: Route;
     uri: string | undefined;
     filter: IFilter;
+    socketStatus: SocketStatus;
 }

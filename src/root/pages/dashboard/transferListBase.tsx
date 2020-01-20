@@ -1,16 +1,21 @@
-import { createStyles, Fab, makeStyles, Theme, useMediaQuery } from "@material-ui/core";
+import { CircularProgress, createStyles, Fab, makeStyles, Theme, useMediaQuery } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import ReplayIcon from "@material-ui/icons/Replay";
 import SaveOutlinedIcon from "@material-ui/icons/SaveOutlined";
+import WarningIcon from "@material-ui/icons/Warning";
 import { ToggleButton } from "@material-ui/lab";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import _ from "lodash";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TransferListHelpers } from "../../../helpers/transferListHelpers";
+import {
+    mapTagInProgressSelector,
+    mapTagStartableSelector,
+} from "../../../store/entities/tagsTransferList/actions/sagas/saveMappedTagsSaga";
 import {
     openTagMapSaveDialogAction,
     setCheckedAction,
@@ -19,6 +24,7 @@ import {
 } from "../../../store/entities/tagsTransferList/actions/tagsTransferListActions";
 import { FacadeIds } from "../../../store/entities/tagsTransferList/tagsTransferListReducer";
 import { IApplicationState } from "../../../store/rootReducer";
+import { JobStage } from "../../../store/signalR/init";
 import { TransferList } from "./transferList";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -87,6 +93,12 @@ export const TransferListBase = () => {
     const initialLeft = useSelector((state: IApplicationState) => state.tagsTransferList.initialLeft);
     const initialRight = useSelector((state: IApplicationState) => state.tagsTransferList.initialRight);
 
+    const mapTagsCanBeStarted = useSelector(mapTagStartableSelector);
+    const mapTagIsInProgress = useSelector(mapTagInProgressSelector);
+    const mapTagIsWarning = useSelector(
+        (state: IApplicationState) => state.jobStatus.mapTagStatus.jobStage === JobStage.Warning
+    );
+
     const leftChecked = TransferListHelpers.intersection(checked, left);
     const rightChecked = TransferListHelpers.intersection(checked, right);
 
@@ -121,6 +133,7 @@ export const TransferListBase = () => {
             return classes.redAvatarClassName;
         }
     };
+    const noChangesToLeftSide = _.isEqual(_.sortBy(initialLeft), _.sortBy(left));
 
     const leftList = (
         <TransferList
@@ -177,9 +190,11 @@ export const TransferListBase = () => {
             variant={isXs ? "round" : "extended"}
             color={"secondary"}
             size={"small"}
-            disabled={_.isEqual(_.sortBy(initialLeft), _.sortBy(left))}
+            disabled={noChangesToLeftSide || !mapTagsCanBeStarted}
         >
-            <SaveOutlinedIcon className={classes.fabIcon} />
+            {!mapTagIsInProgress && !mapTagIsWarning && <SaveOutlinedIcon className={classes.fabIcon} />}
+            {mapTagIsInProgress && <CircularProgress color={"inherit"} size={20} className={classes.fabIcon} />}
+            {mapTagIsWarning && <WarningIcon className={classes.fabIcon} />}
             {isXs ? "" : "Save Changes"}
         </Fab>
     );
@@ -198,8 +213,6 @@ export const TransferListBase = () => {
     return (
         <div className={classes.root}>
             {isXs ? (
-                // ToggleButton on top, use words of title
-                // set state on switch to show either the left list and left button, or the right list and right button
                 <div>
                     <Grid container justify={"center"} spacing={1}>
                         <Grid item>

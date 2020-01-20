@@ -1,7 +1,7 @@
 import { HubConnection } from "@microsoft/signalr";
 import { EnhancedStore } from "@reduxjs/toolkit";
 import { AxiosResponse } from "axios";
-import { call, put, select, takeEvery } from "redux-saga/effects";
+import { call, delay, put, select, takeEvery } from "redux-saga/effects";
 import { ResultStatus } from "../../../../baseTypes/ResultStatus";
 import { IApplicationState } from "../../../../rootReducer";
 import {
@@ -11,9 +11,11 @@ import {
 } from "../../../../signalR/actions/JobStatusUpdateActions";
 import { JobStage } from "../../../../signalR/init";
 import { IMapTagJobStatus } from "../../../../signalR/reducer";
+import { SocketStatus } from "../../../../ui/uiReducer";
 import { IFacade } from "../../../projects/ui/selectors";
 import { tagsTransferListApi } from "../../api";
 import { FacadeIds } from "../../tagsTransferListReducer";
+import { getTransferListFacadesLoadingAction } from "../tagsTransferListActions";
 
 const facadeItemsFromIdsSelector = (facadeIds: FacadeIds) => (state: IApplicationState): IFacade[] => {
     const results: IFacade[] = [];
@@ -21,6 +23,22 @@ const facadeItemsFromIdsSelector = (facadeIds: FacadeIds) => (state: IApplicatio
         results.push(state.tagsTransferList.facadeItems[transferListFacadeId]);
     }
     return results;
+};
+
+export const mapTagStartableSelector = (state: IApplicationState) => {
+    const jobStage = state.jobStatus.mapTagStatus.jobStage;
+    const socketStatus = state.ui.socketStatus;
+    const facadesAreLoading = state.tagsTransferList.allIsLoading;
+    return (
+        (jobStage === JobStage.Done || jobStage === JobStage.None) &&
+        socketStatus === SocketStatus.connected &&
+        !facadesAreLoading
+    );
+};
+
+export const mapTagInProgressSelector = (state: IApplicationState) => {
+    const jobStage = state.jobStatus.mapTagStatus.jobStage;
+    return jobStage !== JobStage.Done && jobStage !== JobStage.None && jobStage !== JobStage.Warning;
 };
 
 function* mapTag(action: IMapTagLoadingAction) {
@@ -34,28 +52,22 @@ function* mapTag(action: IMapTagLoadingAction) {
             tagId,
         );
         yield put(handleMapTagJobStatusUpdateAction(response.data));
-
-        // class Person {
-        //     public name: string = "default"
-        //     public address: string = "default"
-        //     public age: number = 0;
-        //
-        //     public constructor(init?:Partial<Person>) {
-        //         Object.assign(this, init);
-        //     }
-        // }
-        //
-        // let persons = [
-        //     new Person(),
-        //     new Person({}),
-        //     new Person({name:"John"}),
-        //     new Person({address:"Earth"}),
-        //     new Person({age:20, address:"Earth", name:"John"}),
-        // ];
-
-        // yield put();
-        // when web socket broadcasts success, save tagId to 'map successful'
-        // after delay(10000) check if successful or error and then if socket is connected
+        yield delay(10000);
+        const jobIsStartableAgain = yield select(mapTagStartableSelector);
+        if (!jobIsStartableAgain) {
+            yield put(
+                handleMapTagJobStatusUpdateAction({
+                    item: {
+                        data: { tagId },
+                        details: {
+                            message: "Something is taking a while.",
+                            resultStatus: ResultStatus.Warning,
+                        },
+                    },
+                    jobStage: JobStage.Warning,
+                }),
+            );
+        }
     } catch (error) {
         const errorInfo = JSON.stringify(error);
         yield put(
@@ -63,7 +75,7 @@ function* mapTag(action: IMapTagLoadingAction) {
                 item: {
                     data: { tagId },
                     details: {
-                        message: error,
+                        message: errorInfo,
                         resultStatus: ResultStatus.Failure,
                     },
                 },
@@ -76,6 +88,10 @@ function* mapTag(action: IMapTagLoadingAction) {
 export const registerMapTagSagaEvents = (connection: HubConnection, dispatch: EnhancedStore["dispatch"]) => {
     connection.on("pushMapTagJobStatusUpdate", (status: IMapTagJobStatus) => {
         dispatch(handleMapTagJobStatusUpdateAction(status));
+        const currentTag = status.item;
+        if (status.jobStage === JobStage.Done && currentTag) {
+            dispatch(getTransferListFacadesLoadingAction(currentTag.data.tagId));
+        }
     });
 };
 

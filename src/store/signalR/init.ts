@@ -2,6 +2,7 @@ import * as signalR from "@microsoft/signalr";
 import { EnhancedStore } from "@reduxjs/toolkit";
 import { ITokenState } from "../entities/auth/actions/authReducer";
 import { registerMapTagSagaEvents } from "../entities/tagsTransferList/actions/sagas/saveMappedTagsSaga";
+import { socketConnectedAction, socketConnectingAction, socketDisconnectedAction } from "../ui/uiActions";
 import {
     handleCalculateTagCountsJobStatusUpdateAction,
     handleGithubRepoFetcherJobStatusUpdateAction,
@@ -14,18 +15,13 @@ export enum JobStage {
     FetchingFromGithub,
     CountingTagged,
     UploadingToDatabase,
-    Done,
-    Error,
     InProgress,
+    Done,
+    Warning,
+    Error,
 }
 
 const registerServerMethods = (connection: signalR.HubConnection, dispatch: EnhancedStore["dispatch"]) => {
-    // todo
-    // Lifecycle
-    // connection.onreconnecting();
-    // connection.onclose();
-    // connection.onreconnected();
-
     // Update Events
     connection.on("PushGithubRepoFetcherJobStatusUpdate", (status: IGithubRepoFetcherStatus) => {
         dispatch(handleGithubRepoFetcherJobStatusUpdateAction(status));
@@ -39,39 +35,45 @@ const registerServerMethods = (connection: signalR.HubConnection, dispatch: Enha
 let existingConnection: signalR.HubConnection;
 
 export const init = (dispatch: EnhancedStore["dispatch"], token: ITokenState["token"]) => {
-    // tslint:disable-next-line:no-console
-    console.log("connecting...");
+    // =============================================================================== //
     if (token === null) {
+        dispatch(socketDisconnectedAction(new Error("token was null.")));
         return;
     }
+    dispatch(socketConnectingAction());
+    // =============================================================================== //
     if (existingConnection) {
         existingConnection.stop().then((value) => {
-            // tslint:disable-next-line:no-console
-            console.log("cleaned existing connection");
+            dispatch(socketDisconnectedAction(new Error("There was an existing connection that was cleaned up.")));
         });
     }
+    // =============================================================================== //
     existingConnection = new signalR.HubConnectionBuilder()
         .configureLogging(
-            process.env.NODE_ENV === "development" ? signalR.LogLevel.Information : signalR.LogLevel.Error
+            process.env.NODE_ENV === "development" ? signalR.LogLevel.Information : signalR.LogLevel.Error,
         )
         .withAutomaticReconnect([0, 2000, 10000, 30000, 45000])
         .withUrl(process.env.REACT_APP_API_URL + "/hubs/JobStatusUpdates", { accessTokenFactory: () => token })
         .build();
-
+    // =============================================================================== //
+    existingConnection.onreconnecting(() => {
+        dispatch(socketConnectingAction());
+    });
+    existingConnection.onclose(() => {
+        dispatch(socketDisconnectedAction(new Error("The connection was closed.")));
+    });
+    existingConnection.onreconnected(() => {
+        dispatch(socketConnectedAction());
+    });
     registerServerMethods(existingConnection, dispatch);
-
+    // =============================================================================== //
     existingConnection
         .start()
         .then(() => {
-            // tslint:disable-next-line:no-console
-            console.log("connected");
-            // todo dispatch that socket is connected
+            dispatch(socketConnectedAction());
         })
-        .catch((error: Error) => {
-            // tslint:disable-next-line:no-console
-            // todo dispatch that socket is disconnected
-            // todo offer to reconnect
-            // or set timeout to reconnect again
-            console.log("error: ", error);
+        .catch((err: Error) => {
+            dispatch(socketDisconnectedAction(err));
         });
+    // =============================================================================== //
 };

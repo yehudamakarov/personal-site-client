@@ -9,7 +9,9 @@ export const TransferListForProjectsAndBlogPosts = (props: { tagId?: Tag["tagId"
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getTransferListFacadesLoadingAction(props.tagId));
+        if (props.tagId) {
+            dispatch(getTransferListFacadesLoadingAction(props.tagId));
+        }
     }, [dispatch, props.tagId]);
 
     return <TransferListBase />;

@@ -1,4 +1,3 @@
-import { HANDLE_MAP_TAG_JOB_STATUS_UPDATE } from "../../signalR/actions/JobStatusUpdateActions";
 import { IBlogPost } from "../blogPost/actions/api";
 import { IProject } from "../projects/ui/actions/api";
 import { IFacade } from "../projects/ui/selectors";
@@ -90,14 +89,6 @@ export const tagsTransferListReducer = (
         // =============================================================================== //
         case CLOSE_TAG_MAP_SAVE_DIALOG: {
             return { ...state, saveDialogIsOpen: false };
-        }
-        // =============================================================================== //
-        case HANDLE_MAP_TAG_JOB_STATUS_UPDATE: {
-            return {
-                ...state,
-                initialLeft: state.left,
-                initialRight: state.initialRight,
-            };
         }
         // =============================================================================== //
         default: {
