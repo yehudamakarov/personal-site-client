@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
         tag: {
             paddingLeft: theme.spacing(0.5),
         },
-    }),
+    })
 );
 
 export const TagsMapPage = (props: RouteComponentProps<{ tagId: Tag["tagId"] }>) => {

@@ -53,4 +53,5 @@ export interface IUiState {
     uri: string | undefined;
     filter: IFilter;
     socketStatus: SocketStatus;
+    tagRenameDialogOpen: boolean;
 }

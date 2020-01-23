@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { roleType } from "../../../store/entities/auth/actions/authReducer";
 import { IApplicationState } from "../../../store/rootReducer";
 import { BasePage } from "../basePage";
+import { TagDeleteDialog } from "./tagDeleteDialog";
+import { TagRenameDialog } from "./tagRenameDialog";
 import { TagsManagementTagListItem } from "./tagsManagementTagListItem";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -12,7 +14,7 @@ const useStyles = makeStyles((theme: Theme) =>
             marginTop: theme.spacing(3),
             textAlign: "center",
         },
-    }),
+    })
 );
 export const TagsManagementPage = (props: { path: string }) => {
     const classes = useStyles();
@@ -36,6 +38,8 @@ export const TagsManagementPage = (props: { path: string }) => {
                     </Grid>
                 </Grid>
             )}
+            <TagRenameDialog />
+            <TagDeleteDialog />
         </BasePage>
     );
 };
