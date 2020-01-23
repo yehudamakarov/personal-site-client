@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { TransferListHelpers } from "../../../helpers/transferListHelpers";
 import {
     mapTagInProgressSelector,
-    mapTagStartableSelector,
+    mapTagJobSuccessfulSelector,
 } from "../../../store/entities/tagsTransferList/actions/sagas/saveMappedTagsSaga";
 import {
     openTagMapSaveDialogAction,
@@ -42,16 +42,16 @@ const useStyles = makeStyles((theme: Theme) =>
         list: {
             backgroundColor: theme.palette.background.paper,
             [theme.breakpoints.down("sm")]: {
-                height: `calc(100vh - ${theme.mixins.toolbar.minHeight}px - ${theme.spacing(30)}px)`,
+                height: `calc(100vh - ${theme.mixins.toolbar.minHeight}px - ${theme.spacing(33)}px)`,
             },
             [theme.breakpoints.up("sm")]: {
-                height: `calc(90vh - ${theme.mixins.toolbar.minHeight}px - ${theme.spacing(32)}px)`,
+                height: `calc(90vh - ${theme.mixins.toolbar.minHeight}px - ${theme.spacing(33)}px)`,
             },
             [theme.breakpoints.up("md")]: {
-                height: `calc(80vh - ${theme.mixins.toolbar.minHeight}px - ${theme.spacing(32)}px)`,
+                height: `calc(80vh - ${theme.mixins.toolbar.minHeight}px - ${theme.spacing(33)}px)`,
             },
             [theme.breakpoints.up("xl")]: {
-                height: `calc(75vh - ${theme.mixins.toolbar.minHeight}px - ${theme.spacing(32)}px)`,
+                height: `calc(75vh - ${theme.mixins.toolbar.minHeight}px - ${theme.spacing(33)}px)`,
             },
             overflow: "auto",
         },
@@ -93,7 +93,7 @@ export const TransferListBase = () => {
     const initialLeft = useSelector((state: IApplicationState) => state.tagsTransferList.initialLeft);
     const initialRight = useSelector((state: IApplicationState) => state.tagsTransferList.initialRight);
 
-    const mapTagsCanBeStarted = useSelector(mapTagStartableSelector);
+    const mapTagsCanBeStarted = useSelector(mapTagJobSuccessfulSelector);
     const mapTagIsInProgress = useSelector(mapTagInProgressSelector);
     const mapTagIsWarning = useSelector(
         (state: IApplicationState) => state.jobStatus.mapTagStatus.jobStage === JobStage.Warning

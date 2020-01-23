@@ -17,8 +17,6 @@ import { TransferListItem } from "./transferListItem";
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         cardHeader: {
-            // backgroundColor: theme.palette.primary.main,
-            // color: theme.palette.primary.contrastText,
             padding: theme.spacing(1, 2),
         },
         progress: {

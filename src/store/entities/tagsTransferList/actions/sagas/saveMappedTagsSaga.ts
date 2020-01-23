@@ -25,7 +25,7 @@ const facadeItemsFromIdsSelector = (facadeIds: FacadeIds) => (state: IApplicatio
     return results;
 };
 
-export const mapTagStartableSelector = (state: IApplicationState) => {
+export const mapTagJobSuccessfulSelector = (state: IApplicationState) => {
     const jobStage = state.jobStatus.mapTagStatus.jobStage;
     const socketStatus = state.ui.socketStatus;
     const facadesAreLoading = state.tagsTransferList.allIsLoading;
@@ -53,7 +53,7 @@ function* mapTag(action: IMapTagLoadingAction) {
         );
         yield put(handleMapTagJobStatusUpdateAction(response.data));
         yield delay(10000);
-        const jobIsStartableAgain = yield select(mapTagStartableSelector);
+        const jobIsStartableAgain = yield select(mapTagJobSuccessfulSelector);
         if (!jobIsStartableAgain) {
             yield put(
                 handleMapTagJobStatusUpdateAction({
@@ -85,13 +85,18 @@ function* mapTag(action: IMapTagLoadingAction) {
     }
 }
 
+function handleJobDone(status: IMapTagJobStatus, dispatch: EnhancedStore["dispatch"]) {
+    const currentTag = status.item;
+    if (currentTag) {
+        dispatch(getTransferListFacadesLoadingAction(currentTag.data.tagId));
+    }
+}
+
 export const registerMapTagSagaEvents = (connection: HubConnection, dispatch: EnhancedStore["dispatch"]) => {
     connection.on("pushMapTagJobStatusUpdate", (status: IMapTagJobStatus) => {
         dispatch(handleMapTagJobStatusUpdateAction(status));
-        // todo take this out
-        const currentTag = status.item;
-        if (status.jobStage === JobStage.Done && currentTag) {
-            dispatch(getTransferListFacadesLoadingAction(currentTag.data.tagId));
+        if (status.jobStage === JobStage.Done) {
+            handleJobDone(status, dispatch);
         }
     });
 };

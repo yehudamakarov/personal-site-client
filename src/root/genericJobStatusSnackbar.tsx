@@ -2,7 +2,7 @@ import { createStyles, IconButton, makeStyles, Snackbar, SnackbarContent, Theme 
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import CloseIcon from "@material-ui/icons/Close";
 import React from "react";
-import { getJobStatusMessage } from "../helpers/jobMessageHelpers";
+import { getJobStageMessage } from "../helpers/jobMessageHelpers";
 import { IApplicationState } from "../store/rootReducer";
 import { JobStage } from "../store/signalR/init";
 import { useSnackbarUtils } from "./hooks/useSnackBarUtils";
@@ -20,7 +20,7 @@ export const GenericJobStatusSnackbar = (props: {
 }) => {
     const classes = useStyles();
     const [open, handleClose, currentJobStage] = useSnackbarUtils(props.currentJobStateSelector, props.baseCase);
-    const message = `${props.title}: ${getJobStatusMessage(currentJobStage)}`;
+    const message = `${props.title}: ${getJobStageMessage(currentJobStage)}`;
     const isDone = currentJobStage === JobStage.Done;
     const gotIt = isDone ? (
         <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
