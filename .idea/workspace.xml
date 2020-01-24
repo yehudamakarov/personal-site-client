@@ -7,15 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/root/pages/dashboard/actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/root/pages/dashboard/tagDeleteDialog.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/root/pages/dashboard/tagRenameDialog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/tagsManagementPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/tagsManagementPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/tagsManagementTagListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/tagsManagementTagListItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/tagsMapPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/tagsMapPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/ui/IUiState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/ui/IUiState.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/ui/uiReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/ui/uiReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/sagas/saveMappedTagsSaga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/sagas/saveMappedTagsSaga.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

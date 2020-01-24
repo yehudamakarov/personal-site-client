@@ -49,7 +49,7 @@ function* mapTag(action: IMapTagLoadingAction) {
         const response: AxiosResponse<IMapTagJobStatus> = yield call(
             tagsTransferListApi.mapTag,
             facadesToBeMapped,
-            tagId,
+            tagId
         );
         yield put(handleMapTagJobStatusUpdateAction(response.data));
         yield delay(10000);
@@ -65,7 +65,7 @@ function* mapTag(action: IMapTagLoadingAction) {
                         },
                     },
                     jobStage: JobStage.Warning,
-                }),
+                })
             );
         }
     } catch (error) {
@@ -80,7 +80,7 @@ function* mapTag(action: IMapTagLoadingAction) {
                     },
                 },
                 jobStage: JobStage.Error,
-            }),
+            })
         );
     }
 }
