@@ -14,10 +14,11 @@ import SpellcheckIcon from "@material-ui/icons/Spellcheck";
 import SyncAltIcon from "@material-ui/icons/SyncAlt";
 import { navigate } from "@reach/router";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Tag } from "../../../store/entities/tags/actions/api";
 import { IApplicationState } from "../../../store/rootReducer";
 import { Routes } from "../../../store/ui/IUiState";
+import { openTagRenameDialogAction } from "./actions";
 import { TagListItemActionButton } from "./tagListItemActionButton";
 
 const tagSelector = (tagId: Tag["tagId"]) => (state: IApplicationState) =>
@@ -26,6 +27,7 @@ const tagSelector = (tagId: Tag["tagId"]) => (state: IApplicationState) =>
 export const TagsManagementTagListItem = (props: { tagId: Tag["tagId"] }) => {
     const tag = useSelector(tagSelector(props.tagId));
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const dispatch = useDispatch();
 
     const handleMenuOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
@@ -41,6 +43,7 @@ export const TagsManagementTagListItem = (props: { tagId: Tag["tagId"] }) => {
     };
 
     const handleRenameSelect = () => {
+        dispatch(openTagRenameDialogAction());
         handleMenuClose();
     };
 

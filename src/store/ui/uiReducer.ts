@@ -1,3 +1,4 @@
+import { CLOSE_TAG_RENAME_DIALOG, OPEN_TAG_RENAME_DIALOG, TagRenameActions } from "../../root/pages/dashboard/actions";
 import { IUiState } from "./IUiState";
 import {
     CLOSE_DRAWER,
@@ -30,17 +31,27 @@ export const INITIAL_STATE: IUiState = {
     },
     route: "/",
     socketStatus: SocketStatus.disconnected,
+    tagRenameDialogOpen: false,
     uri: "/",
 };
 
-export const uiReducer = (state = INITIAL_STATE, action: UiActionTypes): IUiState => {
+export const uiReducer = (state = INITIAL_STATE, action: UiActionTypes | TagRenameActions): IUiState => {
     switch (action.type) {
-        case SOCKET_CONNECTED:
+        case OPEN_TAG_RENAME_DIALOG: {
+            return { ...state, tagRenameDialogOpen: true };
+        }
+        case CLOSE_TAG_RENAME_DIALOG: {
+            return { ...state, tagRenameDialogOpen: false };
+        }
+        case SOCKET_CONNECTED: {
             return { ...state, socketStatus: SocketStatus.connected };
-        case SOCKET_DISCONNECTED:
+        }
+        case SOCKET_DISCONNECTED: {
             return { ...state, socketStatus: SocketStatus.disconnected };
-        case SOCKET_CONNECTING:
+        }
+        case SOCKET_CONNECTING: {
             return { ...state, socketStatus: SocketStatus.connecting };
+        }
         case OPEN_DRAWER: {
             return { ...state, drawerOpen: true };
         }

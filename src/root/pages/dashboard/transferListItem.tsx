@@ -17,6 +17,7 @@ import WorkIcon from "@material-ui/icons/Work";
 import React from "react";
 import { useSelector } from "react-redux";
 import { FacadeType } from "../../../store/entities/projects/ui/selectors";
+import { mapTagInProgressSelector } from "../../../store/entities/tagsTransferList/actions/sagas/saveMappedTagsSaga";
 import { TransferListFacadeId } from "../../../store/entities/tagsTransferList/tagsTransferListReducer";
 import { IApplicationState } from "../../../store/rootReducer";
 
@@ -45,9 +46,10 @@ export const TransferListItem = (props: {
 }) => {
     const classes = useStyles();
     const element = useSelector(facadeItemSelector(props.searchElement));
+    const jobInProgress = useSelector(mapTagInProgressSelector);
 
     return (
-        <ListItem role="listitem" button onClick={props.onClick} alignItems={"flex-start"}>
+        <ListItem role="listitem" button onClick={props.onClick} alignItems={"flex-start"} disabled={jobInProgress}>
             <ListItemAvatar>
                 <Avatar className={props.avatarColorClassName}>
                     {element.type === FacadeType.BlogPost && <NotesRoundedIcon />}

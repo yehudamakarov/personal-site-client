@@ -1,7 +1,11 @@
 import { JobStage } from "../store/signalR/init";
 
-export const getJobStatusMessage = (jobStage: JobStage): string => {
+export const getJobStageMessage = (jobStage: JobStage): string => {
     switch (jobStage) {
+        case JobStage.InProgress:
+            return "In progress";
+        case JobStage.Warning:
+            return "Something is going on...";
         case JobStage.None:
             return "...";
         case JobStage.PreparingDatabase:
