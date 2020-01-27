@@ -7,13 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/tagRenameDialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/tagRenameDialog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/signalR/actions/JobStatusUpdateActions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/signalR/actions/JobStatusUpdateActions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/signalR/reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/signalR/reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/ui/IUiState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/ui/IUiState.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/ui/uiReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/ui/uiReducer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,13 +154,6 @@
       <workItem from="1579474018447" duration="3842000" />
       <workItem from="1579486812197" duration="962000" />
       <workItem from="1579491215587" duration="8717000" />
-    </task>
-    <task id="LOCAL-00019" summary="login / logout">
-      <created>1573406301815</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1573406301815</updated>
     </task>
     <task id="LOCAL-00020" summary="login / logout">
       <created>1573406917977</created>
@@ -504,7 +491,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579750843613</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="actions for tag rename">
+      <created>1580134940330</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1580134940332</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -541,7 +535,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="rbac, visibility, container, presentational" />
     <MESSAGE value="working on tags mapping/renaming/deleting" />
     <MESSAGE value="rough draft transfer list for projects. todo: extract and replicate for blogPosts" />
     <MESSAGE value="working on fixing transfer list architecture" />
@@ -566,7 +559,8 @@
     <MESSAGE value="updating tag state when job complete" />
     <MESSAGE value="need to clean up button status logic" />
     <MESSAGE value="back button" />
-    <option name="LAST_COMMIT_MESSAGE" value="back button" />
+    <MESSAGE value="actions for tag rename" />
+    <option name="LAST_COMMIT_MESSAGE" value="actions for tag rename" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -613,12 +607,12 @@
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="1206" y="680" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1578211402187" />
-    <state x="252" y="51" width="1723" height="1400" key="CommitChangelistDialog2" timestamp="1579750843401">
-      <screen x="0" y="0" width="3008" height="1692" />
+    <state x="296" y="242" width="1723" height="1400" key="CommitChangelistDialog2" timestamp="1580134939424">
+      <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="1593" y="383" key="CommitChangelistDialog2/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575848306443" />
     <state x="252" y="51" key="CommitChangelistDialog2/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1578579357762" />
-    <state x="296" y="242" key="CommitChangelistDialog2/0.0.1920.1200@0.0.1920.1200" timestamp="1579098353401" />
+    <state x="296" y="242" key="CommitChangelistDialog2/0.0.1920.1200@0.0.1920.1200" timestamp="1580134939424" />
     <state x="252" y="51" width="1292" height="1314" key="CommitChangelistDialog2/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1579750843401" />
     <state x="252" y="51" key="CommitChangelistDialog2/0.0.3008.1692/-1920.268.1920.1177@0.0.3008.1692" timestamp="1578210951521" />
     <state x="804" y="289" key="CommitChangelistDialog2/0.23.1874.1177@0.23.1874.1177" timestamp="1575900332338" />

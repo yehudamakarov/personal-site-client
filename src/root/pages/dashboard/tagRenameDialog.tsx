@@ -2,14 +2,15 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IApplicationState } from "../../../store/rootReducer";
-import { closeTagRenameDialogAction, renameTagLoadingAction } from "./actions";
+import { renameTagLoadingAction } from "../../../store/signalR/actions/JobStatusUpdateActions";
+import { closeTagRenameDialogAction } from "./actions";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             margin: theme.spacing(1),
         },
-    }),
+    })
 );
 
 export const TagRenameDialog = (props: {}) => {
@@ -26,8 +27,9 @@ export const TagRenameDialog = (props: {}) => {
         dispatch(closeTagRenameDialogAction());
     };
     const handleSave = () => {
-
-        dispatch(renameTagLoadingAction(existingTagId, newTagId));
+        if (existingTagId) {
+            dispatch(renameTagLoadingAction(existingTagId, newTagId));
+        }
     };
     return <div className={classes.root} />;
 };
