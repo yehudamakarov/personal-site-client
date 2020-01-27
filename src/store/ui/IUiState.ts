@@ -1,3 +1,4 @@
+import { Tag } from "../entities/tags/actions/api";
 import { SocketStatus } from "./uiReducer";
 
 export type ProjectsRoute = "/projects/";
@@ -53,5 +54,10 @@ export interface IUiState {
     uri: string | undefined;
     filter: IFilter;
     socketStatus: SocketStatus;
+    tagRenameDialog: ITagRenameDialogSlice;
+}
+
+export interface ITagRenameDialogSlice {
     tagRenameDialogOpen: boolean;
+    existingTagId: Tag["tagId"] | null;
 }

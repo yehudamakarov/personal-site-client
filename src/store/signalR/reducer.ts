@@ -4,8 +4,10 @@ import {
     HANDLE_CALCULATE_TAG_COUNTS_JOB_STATUS_UPDATE,
     HANDLE_GITHUB_REPO_FETCHER_JOB_STATUS_UPDATE,
     HANDLE_MAP_TAG_JOB_STATUS_UPDATE,
+    HANDLE_RENAME_TAG_JOB_STATUS_UPDATE,
     JobStatusUpdateActions,
     MAP_TAG_LOADING,
+    RENAME_TAG_LOADING,
 } from "./actions/JobStatusUpdateActions";
 import { JobStage } from "./init";
 
@@ -18,12 +20,17 @@ export interface IGithubRepoFetcherStatus extends IJobStatus<{ [index: string]: 
 
 export interface ICalculateTagCountsStatus extends IJobStatus<IResult<Tag>> {}
 
-export interface IMapTagJobStatus extends IJobStatus<IResult<Tag>> {}
+export interface IMapTagJobStatus extends IJobStatus<IResult<Tag>> {
+}
+
+export interface IRenameTagJobStatus extends IJobStatus<IResult<Tag>> {
+}
 
 export interface IJobStatusState {
     githubRepoFetcherStatus: IGithubRepoFetcherStatus;
     calculateTagCountsStatus: ICalculateTagCountsStatus;
     mapTagStatus: IMapTagJobStatus;
+    renameTagStatus: IRenameTagJobStatus;
 }
 
 const INITIAL_STATE: IJobStatusState = {
@@ -36,6 +43,7 @@ const INITIAL_STATE: IJobStatusState = {
         jobStage: JobStage.None,
     },
     mapTagStatus: { item: null, jobStage: JobStage.None },
+    renameTagStatus: { item: null, jobStage: JobStage.None },
 };
 
 export const jobStatusReducer = (state = INITIAL_STATE, action: JobStatusUpdateActions): IJobStatusState => {
@@ -43,12 +51,20 @@ export const jobStatusReducer = (state = INITIAL_STATE, action: JobStatusUpdateA
         // =============================================================================== //
         // Triggered
         // =============================================================================== //
+        case RENAME_TAG_LOADING: {
+            return { ...state, renameTagStatus: { jobStage: JobStage.InProgress, item: null } };
+        }
+        case HANDLE_RENAME_TAG_JOB_STATUS_UPDATE: {
+            return { ...state, renameTagStatus: action.payload };
+        }
         case MAP_TAG_LOADING: {
             return { ...state, mapTagStatus: { jobStage: JobStage.InProgress, item: null } };
         }
         case HANDLE_MAP_TAG_JOB_STATUS_UPDATE: {
             return { ...state, mapTagStatus: action.payload };
         }
+        // =============================================================================== //
+
         // =============================================================================== //
         // Recurring
         // =============================================================================== //

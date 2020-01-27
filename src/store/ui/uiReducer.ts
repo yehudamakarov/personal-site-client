@@ -31,17 +31,17 @@ export const INITIAL_STATE: IUiState = {
     },
     route: "/",
     socketStatus: SocketStatus.disconnected,
-    tagRenameDialogOpen: false,
+    tagRenameDialog: { tagRenameDialogOpen: false, existingTagId: null },
     uri: "/",
 };
 
 export const uiReducer = (state = INITIAL_STATE, action: UiActionTypes | TagRenameActions): IUiState => {
     switch (action.type) {
         case OPEN_TAG_RENAME_DIALOG: {
-            return { ...state, tagRenameDialogOpen: true };
+            return { ...state, tagRenameDialog: { ...state.tagRenameDialog, tagRenameDialogOpen: true } };
         }
         case CLOSE_TAG_RENAME_DIALOG: {
-            return { ...state, tagRenameDialogOpen: false };
+            return { ...state, tagRenameDialog: { ...state.tagRenameDialog, tagRenameDialogOpen: false } };
         }
         case SOCKET_CONNECTED: {
             return { ...state, socketStatus: SocketStatus.connected };

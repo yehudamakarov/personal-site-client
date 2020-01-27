@@ -1,5 +1,5 @@
 import { Tag } from "../../entities/tags/actions/api";
-import { ICalculateTagCountsStatus, IGithubRepoFetcherStatus, IMapTagJobStatus } from "../reducer";
+import { ICalculateTagCountsStatus, IGithubRepoFetcherStatus, IMapTagJobStatus, IRenameTagJobStatus } from "../reducer";
 // =============================================================================== //
 export const HANDLE_GITHUB_REPO_FETCHER_JOB_STATUS_UPDATE = "HANDLE_GITHUB_REPO_FETCHER_JOB_STATUS_UPDATE";
 export interface IHandleGithubRepoFetcherJobStatusUpdateAction {
@@ -38,6 +38,7 @@ export interface IHandleCalculateTagCountsJobStatusUpdateAction {
     type: typeof HANDLE_CALCULATE_TAG_COUNTS_JOB_STATUS_UPDATE;
     payload: ICalculateTagCountsStatus;
 }
+
 export const handleCalculateTagCountsJobStatusUpdateAction = (
     status: ICalculateTagCountsStatus,
 ): IHandleCalculateTagCountsJobStatusUpdateAction => ({
@@ -45,8 +46,39 @@ export const handleCalculateTagCountsJobStatusUpdateAction = (
     type: HANDLE_CALCULATE_TAG_COUNTS_JOB_STATUS_UPDATE,
 });
 // =============================================================================== //
+export const RENAME_TAG_LOADING = "RENAME_TAG_LOADING";
+
+export interface IRenameTagLoadingAction {
+    type: typeof RENAME_TAG_LOADING;
+    payload: { existingTagId: Tag["tagId"]; newTagId: Tag["tagId"] };
+}
+
+export const renameTagLoadingAction = (
+    existingTagId: Tag["tagId"],
+    newTagId: Tag["tagId"],
+): IRenameTagLoadingAction => ({
+    payload: { existingTagId, newTagId },
+    type: RENAME_TAG_LOADING,
+});
+// =============================================================================== //
+export const HANDLE_RENAME_TAG_JOB_STATUS_UPDATE = "HANDLE_RENAME_TAG_JOB_STATUS_UPDATE";
+
+export interface IHandleRenameTagJobStatusUpdateAction {
+    type: typeof HANDLE_RENAME_TAG_JOB_STATUS_UPDATE;
+    payload: IRenameTagJobStatus;
+}
+
+export const handleRenameTagJobStatusUpdateAction = (
+    status: IRenameTagJobStatus,
+): IHandleRenameTagJobStatusUpdateAction => ({
+    payload: status,
+    type: HANDLE_RENAME_TAG_JOB_STATUS_UPDATE,
+});
+// =============================================================================== //
 
 export type JobStatusUpdateActions =
+    | IHandleRenameTagJobStatusUpdateAction
+    | IRenameTagLoadingAction
     | IHandleGithubRepoFetcherJobStatusUpdateAction
     | IHandleCalculateTagCountsJobStatusUpdateAction
     | IHandleMapTagJobStatusUpdateAction
