@@ -47,12 +47,10 @@ export const handleCalculateTagCountsJobStatusUpdateAction = (
 });
 // =============================================================================== //
 export const RENAME_TAG_LOADING = "RENAME_TAG_LOADING";
-
 export interface IRenameTagLoadingAction {
     type: typeof RENAME_TAG_LOADING;
     payload: { existingTagId: Tag["tagId"]; newTagId: Tag["tagId"] };
 }
-
 export const renameTagLoadingAction = (
     existingTagId: Tag["tagId"],
     newTagId: Tag["tagId"],

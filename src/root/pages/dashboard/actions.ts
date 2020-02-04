@@ -1,8 +1,14 @@
+import { Tag } from "../../../store/entities/tags/actions/api";
+
 export const OPEN_TAG_RENAME_DIALOG = "OPEN_TAG_RENAME_DIALOG";
+
 export interface IOpenTagRenameDialogAction {
     type: typeof OPEN_TAG_RENAME_DIALOG;
+    payload: Tag["tagId"];
 }
-export const openTagRenameDialogAction = (): IOpenTagRenameDialogAction => ({
+
+export const openTagRenameDialogAction = (tagId: Tag["tagId"]): IOpenTagRenameDialogAction => ({
+    payload: tagId,
     type: OPEN_TAG_RENAME_DIALOG,
 });
 // =============================================================================== //

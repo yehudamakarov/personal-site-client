@@ -7,7 +7,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/logic/dashboard/tags/rename/actions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/dashboard/tags/rename/saga.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/dashboard/tags/tagsJobsApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/yehudamakarov.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/yehudamakarov.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/tagRenameDialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/tagRenameDialog.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/tagsManagementTagListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/tagsManagementTagListItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/sagas/saveMappedTagsSaga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/sagas/saveMappedTagsSaga.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/entities/tagsTransferList/api.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/entities/tagsTransferList/transferListSagas.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/transferListSagas.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/signalR/actions/JobStatusUpdateActions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/signalR/actions/JobStatusUpdateActions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/signalR/init.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/signalR/init.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/ui/uiReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/ui/uiReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,13 +169,8 @@
       <workItem from="1579474018447" duration="3842000" />
       <workItem from="1579486812197" duration="962000" />
       <workItem from="1579491215587" duration="8717000" />
-    </task>
-    <task id="LOCAL-00020" summary="login / logout">
-      <created>1573406917977</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1573406917977</updated>
+      <workItem from="1580449069370" duration="28000" />
+      <workItem from="1580785757823" duration="9435000" />
     </task>
     <task id="LOCAL-00021" summary="state persistence / tags routing">
       <created>1573408579042</created>
@@ -498,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580134940332</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="actions for tag rename">
+      <created>1580135016868</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1580135016868</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -607,12 +624,12 @@
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="1206" y="680" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1578211402187" />
-    <state x="296" y="242" width="1723" height="1400" key="CommitChangelistDialog2" timestamp="1580134939424">
+    <state x="296" y="242" width="1723" height="1400" key="CommitChangelistDialog2" timestamp="1580135016522">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="1593" y="383" key="CommitChangelistDialog2/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575848306443" />
     <state x="252" y="51" key="CommitChangelistDialog2/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1578579357762" />
-    <state x="296" y="242" key="CommitChangelistDialog2/0.0.1920.1200@0.0.1920.1200" timestamp="1580134939424" />
+    <state x="296" y="242" key="CommitChangelistDialog2/0.0.1920.1200@0.0.1920.1200" timestamp="1580135016522" />
     <state x="252" y="51" width="1292" height="1314" key="CommitChangelistDialog2/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1579750843401" />
     <state x="252" y="51" key="CommitChangelistDialog2/0.0.3008.1692/-1920.268.1920.1177@0.0.3008.1692" timestamp="1578210951521" />
     <state x="804" y="289" key="CommitChangelistDialog2/0.23.1874.1177@0.23.1874.1177" timestamp="1575900332338" />
@@ -634,12 +651,12 @@
     <state x="968" y="162" width="1434" height="1335" key="SettingsEditor/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1577078101639" />
     <state x="353" y="151" key="SettingsEditor/0.0.1920.1200@0.0.1920.1200" timestamp="1575305769373" />
     <state x="968" y="162" width="1396" height="1267" key="SettingsEditor/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1580057817438" />
-    <state x="721" y="391" key="Vcs.Push.Dialog.v2" timestamp="1579526886841">
-      <screen x="0" y="0" width="3008" height="1692" />
+    <state x="460" y="277" key="Vcs.Push.Dialog.v2" timestamp="1580135022703">
+      <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="721" y="391" key="Vcs.Push.Dialog.v2/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575848311517" />
     <state x="721" y="391" key="Vcs.Push.Dialog.v2/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1578579363974" />
-    <state x="460" y="277" key="Vcs.Push.Dialog.v2/0.0.1920.1200@0.0.1920.1200" timestamp="1579098358886" />
+    <state x="460" y="277" key="Vcs.Push.Dialog.v2/0.0.1920.1200@0.0.1920.1200" timestamp="1580135022703" />
     <state x="721" y="391" key="Vcs.Push.Dialog.v2/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1579526886841" />
     <state x="721" y="391" key="Vcs.Push.Dialog.v2/0.0.3008.1692/-1920.268.1920.1177@0.0.3008.1692" timestamp="1578210970285" />
     <state x="449" y="295" key="Vcs.Push.Dialog.v2/0.23.1874.1177@0.23.1874.1177" timestamp="1575900335626" />
@@ -659,13 +676,13 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="936" y="330" key="run.anything.popup/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575823471946" />
-    <state x="541" y="168" width="838" height="1032" key="search.everywhere.popup" timestamp="1580104412871">
-      <screen x="0" y="0" width="1920" height="1200" />
+    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup" timestamp="1580795501661">
+      <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="848" y="237" width="1313" height="1456" key="search.everywhere.popup/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575607900405" />
     <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1579064479801" />
     <state x="541" y="168" width="838" height="1032" key="search.everywhere.popup/0.0.1920.1200@0.0.1920.1200" timestamp="1580104412871" />
-    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1579752181855" />
+    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1580795501661" />
     <state x="-1379" y="433" width="858" height="1014" key="search.everywhere.popup/0.23.2953.1669/-1920.268.1920.1177@-1920.268.1920.1177" timestamp="1578034882455" />
     <state x="-1391" y="433" width="838" height="1014" key="search.everywhere.popup/0.23.3008.1669/-1920.268.1877.1177@-1920.268.1877.1177" timestamp="1578022308246" />
     <state x="722" y="196" width="1118" height="1205" key="search.everywhere.popup/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575832342693" />

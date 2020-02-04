@@ -43,7 +43,7 @@ export const TagsManagementTagListItem = (props: { tagId: Tag["tagId"] }) => {
     };
 
     const handleRenameSelect = () => {
-        dispatch(openTagRenameDialogAction());
+        dispatch(openTagRenameDialogAction(props.tagId));
         handleMenuClose();
     };
 

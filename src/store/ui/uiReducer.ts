@@ -38,7 +38,10 @@ export const INITIAL_STATE: IUiState = {
 export const uiReducer = (state = INITIAL_STATE, action: UiActionTypes | TagRenameActions): IUiState => {
     switch (action.type) {
         case OPEN_TAG_RENAME_DIALOG: {
-            return { ...state, tagRenameDialog: { ...state.tagRenameDialog, tagRenameDialogOpen: true } };
+            return {
+                ...state,
+                tagRenameDialog: { ...state.tagRenameDialog, tagRenameDialogOpen: true, existingTagId: action.payload },
+            };
         }
         case CLOSE_TAG_RENAME_DIALOG: {
             return { ...state, tagRenameDialog: { ...state.tagRenameDialog, tagRenameDialogOpen: false } };
