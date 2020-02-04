@@ -60,12 +60,10 @@ export const renameTagLoadingAction = (
 });
 // =============================================================================== //
 export const HANDLE_RENAME_TAG_JOB_STATUS_UPDATE = "HANDLE_RENAME_TAG_JOB_STATUS_UPDATE";
-
 export interface IHandleRenameTagJobStatusUpdateAction {
     type: typeof HANDLE_RENAME_TAG_JOB_STATUS_UPDATE;
     payload: IRenameTagJobStatus;
 }
-
 export const handleRenameTagJobStatusUpdateAction = (
     status: IRenameTagJobStatus,
 ): IHandleRenameTagJobStatusUpdateAction => ({

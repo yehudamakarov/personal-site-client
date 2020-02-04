@@ -1,3 +1,4 @@
+import { ITagRenameJobDoneAction, TAG_RENAME_JOB_DONE } from "../../../../logic/dashboard/tags/rename/actions";
 import { IBaseCollectionUiState } from "../../../baseTypes/IBaseCollectionUiState";
 import {
     HANDLE_MAP_TAG_JOB_STATUS_UPDATE,
@@ -24,10 +25,21 @@ const INITIAL_STATE: ITagsState = {
     },
 };
 
-type TagsActionTypes = GetTagsActionTypes | IHandleMapTagJobStatusUpdateAction;
+type TagsActionTypes = GetTagsActionTypes | IHandleMapTagJobStatusUpdateAction | ITagRenameJobDoneAction;
 
 export const tagsReducer = (state = INITIAL_STATE, action: TagsActionTypes): ITagsState => {
     switch (action.type) {
+        case TAG_RENAME_JOB_DONE: {
+            const besidesNew = state.tagsData.filter((tag) => {
+                return tag.tagId !== action.payload?.details.message;
+            });
+            const newTag = action.payload?.data;
+            if (newTag) {
+                return { ...state, tagsData: [newTag, ...besidesNew] };
+            } else {
+                return { ...state };
+            }
+        }
         case HANDLE_MAP_TAG_JOB_STATUS_UPDATE: {
             const tagResult = action.payload.item;
             const jobStage = action.payload.jobStage;

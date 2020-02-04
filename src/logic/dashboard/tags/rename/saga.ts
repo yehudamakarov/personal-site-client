@@ -13,6 +13,7 @@ import { JobStage } from "../../../../store/signalR/init";
 import { IRenameTagJobStatus } from "../../../../store/signalR/reducer";
 import { SocketStatus } from "../../../../store/ui/uiReducer";
 import { dashboardTagsApi } from "../tagsJobsApi";
+import { tagRenameJobDoneAction } from "./actions";
 
 const renameTagJobSuccessfulSelector = (state: IApplicationState) => {
     const stage = state.jobStatus.renameTagStatus.jobStage;
@@ -20,7 +21,8 @@ const renameTagJobSuccessfulSelector = (state: IApplicationState) => {
     return (stage === JobStage.Done || stage === JobStage.None) && socketStatus === SocketStatus.connected;
 };
 
-function handleJobDone(status: IRenameTagJobStatus) {
+function handleJobDone(status: IRenameTagJobStatus, dispatch: EnhancedStore["dispatch"]) {
+    dispatch(tagRenameJobDoneAction(status.item));
 }
 
 let id: string;
@@ -51,7 +53,7 @@ export const registerRenameTagSagaEvents = (connection: HubConnection, dispatch:
         dispatch(handleRenameTagJobStatusUpdateAction(status));
         if (status.jobStage === JobStage.Done) {
             delete jobsInFlight[id];
-            handleJobDone(status);
+            handleJobDone(status, dispatch);
         }
     });
 };
