@@ -12,25 +12,34 @@ import {
 import { JobStage } from "./init";
 
 interface IJobStatus<T> {
+    uniqueKey?: string;
     item: T | null;
     jobStage: JobStage;
 }
 
-export interface IGithubRepoFetcherStatus extends IJobStatus<{ [index: string]: JobStage }> {}
-
-export interface ICalculateTagCountsStatus extends IJobStatus<IResult<Tag>> {}
-
-export interface IMapTagJobStatus extends IJobStatus<IResult<Tag>> {
+export interface IGithubRepoFetcherStatus extends IJobStatus<{ [index: string]: JobStage }> {
 }
 
-export interface IRenameTagJobStatus extends IJobStatus<IResult<Tag>> {
+export interface ICalculateTagCountsStatus extends IJobStatus<IResult<Tag>> {
+}
+
+export type MapTagJobStatus = IJobStatus<IResult<Tag>>;
+
+export interface IMapTagJobStatusLookup {
+    [indexer: string]: MapTagJobStatus;
+}
+
+export type RenameTagJobStatus = IJobStatus<IResult<Tag>>;
+
+export interface IRenameTagJobStatusLookup {
+    [indexer: string]: RenameTagJobStatus;
 }
 
 export interface IJobStatusState {
     githubRepoFetcherStatus: IGithubRepoFetcherStatus;
     calculateTagCountsStatus: ICalculateTagCountsStatus;
-    mapTagStatus: IMapTagJobStatus;
-    renameTagStatus: IRenameTagJobStatus;
+    mapTagStatus: IMapTagJobStatusLookup;
+    renameTagStatus: IRenameTagJobStatusLookup;
 }
 
 const INITIAL_STATE: IJobStatusState = {
@@ -42,8 +51,8 @@ const INITIAL_STATE: IJobStatusState = {
         item: {},
         jobStage: JobStage.None,
     },
-    mapTagStatus: { item: null, jobStage: JobStage.None },
-    renameTagStatus: { item: null, jobStage: JobStage.None },
+    mapTagStatus: {},
+    renameTagStatus: {},
 };
 
 export const jobStatusReducer = (state = INITIAL_STATE, action: JobStatusUpdateActions): IJobStatusState => {
@@ -52,16 +61,51 @@ export const jobStatusReducer = (state = INITIAL_STATE, action: JobStatusUpdateA
         // Triggered
         // =============================================================================== //
         case RENAME_TAG_LOADING: {
-            return { ...state, renameTagStatus: { jobStage: JobStage.InProgress, item: null } };
+            const { existingTagId } = action.payload;
+            return {
+                ...state,
+                renameTagStatus: {
+                    ...state.renameTagStatus,
+                    [existingTagId]: {
+                        item: null,
+                        jobStage: JobStage.InProgress,
+                    },
+                },
+            };
         }
         case HANDLE_RENAME_TAG_JOB_STATUS_UPDATE: {
-            return { ...state, renameTagStatus: action.payload };
+            const { jobStage, item, uniqueKey } = action.payload;
+            if (uniqueKey) {
+                return {
+                    ...state,
+                    renameTagStatus: { ...state.renameTagStatus, [uniqueKey]: { item, jobStage } },
+                };
+            } else {
+                return state;
+            }
         }
         case MAP_TAG_LOADING: {
-            return { ...state, mapTagStatus: { jobStage: JobStage.InProgress, item: null } };
+            return {
+                ...state,
+                mapTagStatus: {
+                    ...state.mapTagStatus,
+                    [action.payload]: { jobStage: JobStage.InProgress, item: null },
+                },
+            };
         }
         case HANDLE_MAP_TAG_JOB_STATUS_UPDATE: {
-            return { ...state, mapTagStatus: action.payload };
+            const { jobStage, item, uniqueKey } = action.payload;
+            if (uniqueKey) {
+                return {
+                    ...state,
+                    mapTagStatus: {
+                        ...state.mapTagStatus,
+                        [uniqueKey]: { item, jobStage },
+                    },
+                };
+            } else {
+                return state;
+            }
         }
         // =============================================================================== //
 

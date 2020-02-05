@@ -1,5 +1,5 @@
 import { Tag } from "../../entities/tags/actions/api";
-import { ICalculateTagCountsStatus, IGithubRepoFetcherStatus, IMapTagJobStatus, IRenameTagJobStatus } from "../reducer";
+import { ICalculateTagCountsStatus, IGithubRepoFetcherStatus, MapTagJobStatus, RenameTagJobStatus } from "../reducer";
 // =============================================================================== //
 export const HANDLE_GITHUB_REPO_FETCHER_JOB_STATUS_UPDATE = "HANDLE_GITHUB_REPO_FETCHER_JOB_STATUS_UPDATE";
 export interface IHandleGithubRepoFetcherJobStatusUpdateAction {
@@ -26,9 +26,10 @@ export const mapTagLoadingAction = (tagId: Tag["tagId"]): IMapTagLoadingAction =
 export const HANDLE_MAP_TAG_JOB_STATUS_UPDATE = "HANDLE_MAP_TAG_JOB_STATUS_UPDATE";
 export interface IHandleMapTagJobStatusUpdateAction {
     type: typeof HANDLE_MAP_TAG_JOB_STATUS_UPDATE;
-    payload: IMapTagJobStatus;
+    payload: MapTagJobStatus;
 }
-export const handleMapTagJobStatusUpdateAction = (status: IMapTagJobStatus): IHandleMapTagJobStatusUpdateAction => ({
+
+export const handleMapTagJobStatusUpdateAction = (status: MapTagJobStatus): IHandleMapTagJobStatusUpdateAction => ({
     payload: status,
     type: HANDLE_MAP_TAG_JOB_STATUS_UPDATE,
 });
@@ -62,10 +63,10 @@ export const renameTagLoadingAction = (
 export const HANDLE_RENAME_TAG_JOB_STATUS_UPDATE = "HANDLE_RENAME_TAG_JOB_STATUS_UPDATE";
 export interface IHandleRenameTagJobStatusUpdateAction {
     type: typeof HANDLE_RENAME_TAG_JOB_STATUS_UPDATE;
-    payload: IRenameTagJobStatus;
+    payload: RenameTagJobStatus;
 }
 export const handleRenameTagJobStatusUpdateAction = (
-    status: IRenameTagJobStatus,
+    status: RenameTagJobStatus,
 ): IHandleRenameTagJobStatusUpdateAction => ({
     payload: status,
     type: HANDLE_RENAME_TAG_JOB_STATUS_UPDATE,

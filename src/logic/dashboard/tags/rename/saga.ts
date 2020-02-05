@@ -1,8 +1,9 @@
 import { HubConnection } from "@microsoft/signalr";
 import { EnhancedStore } from "@reduxjs/toolkit";
 import { AxiosResponse } from "axios";
-import { call, delay, put, takeEvery } from "redux-saga/effects";
-import { v4 as uuid } from "uuid";
+import { call, delay, put, select, takeEvery } from "redux-saga/effects";
+import { Tag } from "../../../../store/entities/tags/actions/api";
+
 import { IApplicationState } from "../../../../store/rootReducer";
 import {
     handleRenameTagJobStatusUpdateAction,
@@ -10,49 +11,56 @@ import {
     RENAME_TAG_LOADING,
 } from "../../../../store/signalR/actions/JobStatusUpdateActions";
 import { JobStage } from "../../../../store/signalR/init";
-import { IRenameTagJobStatus } from "../../../../store/signalR/reducer";
+import { RenameTagJobStatus } from "../../../../store/signalR/reducer";
 import { SocketStatus } from "../../../../store/ui/uiReducer";
 import { dashboardTagsApi } from "../tagsJobsApi";
 import { tagRenameJobDoneAction } from "./actions";
 
-const renameTagJobSuccessfulSelector = (state: IApplicationState) => {
-    const stage = state.jobStatus.renameTagStatus.jobStage;
+enum JobButtonStatus {
+    Default,
+    InProgress,
+    Warning,
+}
+
+const renameTagJobSuccessfulSelector = (tagId: Tag["tagId"]) => (state: IApplicationState): JobButtonStatus => {
+    const stage = state.jobStatus.renameTagStatus[tagId].jobStage;
     const socketStatus = state.ui.socketStatus;
-    return (stage === JobStage.Done || stage === JobStage.None) && socketStatus === SocketStatus.connected;
+    if (socketStatus === SocketStatus.disconnected || socketStatus === SocketStatus.connecting) {
+        return JobButtonStatus.Warning;
+    }
+    if (stage === JobStage.Done || stage === JobStage.None) {
+        return JobButtonStatus.Default;
+    }
+    if (stage === JobStage.Warning) {
+        return JobButtonStatus.Warning;
+    }
+    return JobButtonStatus.InProgress;
 };
 
-function handleJobDone(status: IRenameTagJobStatus, dispatch: EnhancedStore["dispatch"]) {
+function handleJobDone(status: RenameTagJobStatus, dispatch: EnhancedStore["dispatch"]) {
     dispatch(tagRenameJobDoneAction(status.item));
 }
 
-let id: string;
-
-const jobsInFlight: { [index: string]: boolean } = {};
-
 function* renameTagLoading(action: IRenameTagLoadingAction) {
     try {
-        const response: AxiosResponse<IRenameTagJobStatus> = yield call(
+        const response: AxiosResponse<RenameTagJobStatus> = yield call(
             dashboardTagsApi.renameTag,
             action.payload.existingTagId,
-            action.payload.newTagId,
+            action.payload.newTagId
         );
         yield put(handleRenameTagJobStatusUpdateAction(response.data));
 
-        id = uuid();
-        jobsInFlight[id] = true;
         yield delay(10000);
-        const jobIsSuccessful = !jobsInFlight[id];
+        const jobIsSuccessful = yield select(renameTagJobSuccessfulSelector(action.payload.existingTagId));
         if (!jobIsSuccessful) {
         }
-    } catch (error) {
-    }
+    } catch (error) {}
 }
 
 export const registerRenameTagSagaEvents = (connection: HubConnection, dispatch: EnhancedStore["dispatch"]) => {
-    connection.on("pushRenameTagJobStatusUpdate", (status: IRenameTagJobStatus) => {
+    connection.on("pushRenameTagJobStatusUpdate", (status: RenameTagJobStatus) => {
         dispatch(handleRenameTagJobStatusUpdateAction(status));
         if (status.jobStage === JobStage.Done) {
-            delete jobsInFlight[id];
             handleJobDone(status, dispatch);
         }
     });

@@ -41,6 +41,7 @@ export const tagsReducer = (state = INITIAL_STATE, action: TagsActionTypes): ITa
             }
         }
         case HANDLE_MAP_TAG_JOB_STATUS_UPDATE: {
+            // replaces the old tag with the new tag from the completed job
             const tagResult = action.payload.item;
             const jobStage = action.payload.jobStage;
             if (tagResult && jobStage === JobStage.Done) {

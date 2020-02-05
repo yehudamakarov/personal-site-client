@@ -11,7 +11,7 @@ import {
     MAP_TAG_LOADING,
 } from "../../../../signalR/actions/JobStatusUpdateActions";
 import { JobStage } from "../../../../signalR/init";
-import { IMapTagJobStatus } from "../../../../signalR/reducer";
+import { IMapTagJobStatusLookup, MapTagJobStatus } from "../../../../signalR/reducer";
 import { SocketStatus } from "../../../../ui/uiReducer";
 import { IFacade } from "../../../projects/ui/selectors";
 import { FacadeIds } from "../../tagsTransferListReducer";
@@ -67,7 +67,7 @@ function getErrorStatus(tagId: string, errorInfo: string) {
     };
 }
 
-function handleJobDone(status: IMapTagJobStatus, dispatch: EnhancedStore["dispatch"]) {
+function handleJobDone(status: IMapTagJobStatusLookup, dispatch: EnhancedStore["dispatch"]) {
     const currentTag = status.item;
     if (currentTag) {
         dispatch(getTransferListFacadesLoadingAction(currentTag.data.tagId));
@@ -81,7 +81,11 @@ function* mapTag(action: IMapTagLoadingAction) {
         // start job
         const facadeIdsToBeMapped: FacadeIds = yield select((state: IApplicationState) => state.tagsTransferList.left);
         const facadesToBeMapped: IFacade[] = yield select(facadeItemsFromIdsSelector(facadeIdsToBeMapped));
-        const response: AxiosResponse<IMapTagJobStatus> = yield call(dashboardTagsApi.mapTag, facadesToBeMapped, tagId);
+        const response: AxiosResponse<IMapTagJobStatusLookup> = yield call(
+            dashboardTagsApi.mapTag,
+            facadesToBeMapped,
+            tagId,
+        );
         yield put(handleMapTagJobStatusUpdateAction(response.data));
         // =============================================================================== //
         // warning timeout
@@ -97,7 +101,7 @@ function* mapTag(action: IMapTagLoadingAction) {
 }
 
 export const registerMapTagSagaEvents = (connection: HubConnection, dispatch: EnhancedStore["dispatch"]) => {
-    connection.on("pushMapTagJobStatusUpdate", (status: IMapTagJobStatus) => {
+    connection.on("pushMapTagJobStatusUpdate", (status: MapTagJobStatus) => {
         // =============================================================================== //
         // job update
         dispatch(handleMapTagJobStatusUpdateAction(status));
