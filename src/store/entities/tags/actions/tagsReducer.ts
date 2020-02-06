@@ -31,9 +31,9 @@ export const tagsReducer = (state = INITIAL_STATE, action: TagsActionTypes): ITa
     switch (action.type) {
         case TAG_RENAME_JOB_DONE: {
             const besidesNew = state.tagsData.filter((tag) => {
-                return tag.tagId !== action.payload?.details.message;
+                return tag.tagId !== action.payload.uniqueKey;
             });
-            const newTag = action.payload?.data;
+            const newTag = action.payload?.item?.data;
             if (newTag) {
                 return { ...state, tagsData: [newTag, ...besidesNew] };
             } else {

@@ -43,7 +43,7 @@ export const TagRenameDialog = (props: {}) => {
     const handleSave = () => {
         if (existingTagId) {
             dispatch(closeTagRenameDialogAction());
-            dispatch(renameTagLoadingAction(existingTagId, newTagId));
+            dispatch(renameTagLoadingAction(existingTagId, existingTagId, newTagId));
         }
     };
 

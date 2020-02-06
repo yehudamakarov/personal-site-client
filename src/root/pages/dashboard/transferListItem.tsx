@@ -16,8 +16,8 @@ import NotesRoundedIcon from "@material-ui/icons/NotesRounded";
 import WorkIcon from "@material-ui/icons/Work";
 import React from "react";
 import { useSelector } from "react-redux";
+import { JobButtonStatus, jobSuccessfulSelector } from "../../../logic/dashboard/tags/rename/saga";
 import { FacadeType } from "../../../store/entities/projects/ui/selectors";
-import { mapTagInProgressSelector } from "../../../store/entities/tagsTransferList/actions/sagas/saveMappedTagsSaga";
 import { TransferListFacadeId } from "../../../store/entities/tagsTransferList/tagsTransferListReducer";
 import { IApplicationState } from "../../../store/rootReducer";
 
@@ -46,10 +46,22 @@ export const TransferListItem = (props: {
 }) => {
     const classes = useStyles();
     const element = useSelector(facadeItemSelector(props.searchElement));
-    const jobInProgress = useSelector(mapTagInProgressSelector);
+    const currentTagIdBeingMapped = useSelector((state: IApplicationState) => state.jobStatus.currentTagIdBeingMapped);
+    const jobStatus = useSelector(
+        jobSuccessfulSelector(currentTagIdBeingMapped ? currentTagIdBeingMapped : "", (state) => {
+            debugger;
+            return state.jobStatus.mapTagStatus;
+        }),
+    );
 
     return (
-        <ListItem role="listitem" button onClick={props.onClick} alignItems={"flex-start"} disabled={jobInProgress}>
+        <ListItem
+            role="listitem"
+            button
+            onClick={props.onClick}
+            alignItems={"flex-start"}
+            disabled={jobStatus !== JobButtonStatus.Default}
+        >
             <ListItemAvatar>
                 <Avatar className={props.avatarColorClassName}>
                     {element.type === FacadeType.BlogPost && <NotesRoundedIcon />}

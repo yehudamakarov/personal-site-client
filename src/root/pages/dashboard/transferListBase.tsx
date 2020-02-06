@@ -12,10 +12,8 @@ import _ from "lodash";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TransferListHelpers } from "../../../helpers/transferListHelpers";
-import {
-    mapTagInProgressSelector,
-    mapTagJobSuccessfulSelector,
-} from "../../../store/entities/tagsTransferList/actions/sagas/saveMappedTagsSaga";
+import { JobButtonStatus } from "../../../logic/dashboard/tags/rename/saga";
+import { mapTagJobSuccessfulSelector } from "../../../store/entities/tagsTransferList/actions/sagas/saveMappedTagsSaga";
 import {
     openTagMapSaveDialogAction,
     setCheckedAction,
@@ -24,7 +22,6 @@ import {
 } from "../../../store/entities/tagsTransferList/actions/tagsTransferListActions";
 import { FacadeIds } from "../../../store/entities/tagsTransferList/tagsTransferListReducer";
 import { IApplicationState } from "../../../store/rootReducer";
-import { JobStage } from "../../../store/signalR/init";
 import { TransferList } from "./transferList";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -73,7 +70,7 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 );
 
-export const TransferListBase = () => {
+export const TransferListBase = (props: { tagId?: string }) => {
     const classes = useStyles();
     const isXs = useMediaQuery((theme: Theme) => theme.breakpoints.down("xs"));
     const dispatch = useDispatch();
@@ -93,11 +90,8 @@ export const TransferListBase = () => {
     const initialLeft = useSelector((state: IApplicationState) => state.tagsTransferList.initialLeft);
     const initialRight = useSelector((state: IApplicationState) => state.tagsTransferList.initialRight);
 
-    const mapTagsCanBeStarted = useSelector(mapTagJobSuccessfulSelector);
-    const mapTagIsInProgress = useSelector(mapTagInProgressSelector);
-    const mapTagIsWarning = useSelector(
-        (state: IApplicationState) => state.jobStatus.mapTagStatus.jobStage === JobStage.Warning
-    );
+    const tagIdKey = props.tagId ? props.tagId : "";
+    const jobStatus = useSelector(mapTagJobSuccessfulSelector(tagIdKey, (state) => state.jobStatus.mapTagStatus));
 
     const leftChecked = TransferListHelpers.intersection(checked, left);
     const rightChecked = TransferListHelpers.intersection(checked, right);
@@ -184,17 +178,20 @@ export const TransferListBase = () => {
         </Button>
     );
     const saveButton = (
+        // todo this component should be reusable and pass the JobButtonStatus as a prop
         <Fab
             onClick={handleSave}
             classes={{ label: classes.fabSpan }}
             variant={isXs ? "round" : "extended"}
             color={"secondary"}
             size={"small"}
-            disabled={noChangesToLeftSide || !mapTagsCanBeStarted}
+            disabled={noChangesToLeftSide || jobStatus !== JobButtonStatus.Default}
         >
-            {!mapTagIsInProgress && !mapTagIsWarning && <SaveOutlinedIcon className={classes.fabIcon} />}
-            {mapTagIsInProgress && <CircularProgress color={"inherit"} size={20} className={classes.fabIcon} />}
-            {mapTagIsWarning && <WarningIcon className={classes.fabIcon} />}
+            {jobStatus === JobButtonStatus.Default && <SaveOutlinedIcon className={classes.fabIcon} />}
+            {jobStatus === JobButtonStatus.InProgress && (
+                <CircularProgress color={"inherit"} size={20} className={classes.fabIcon} />
+            )}
+            {jobStatus === JobButtonStatus.Warning && <WarningIcon className={classes.fabIcon} />}
             {isXs ? "" : "Save Changes"}
         </Fab>
     );

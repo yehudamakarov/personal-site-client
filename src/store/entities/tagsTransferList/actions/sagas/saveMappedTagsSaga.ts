@@ -2,6 +2,8 @@ import { HubConnection } from "@microsoft/signalr";
 import { EnhancedStore } from "@reduxjs/toolkit";
 import { AxiosResponse } from "axios";
 import { call, delay, put, select, takeEvery } from "redux-saga/effects";
+import { mapTagJobDoneAction } from "../../../../../logic/dashboard/tags/rename/actions";
+import { JobButtonStatus, JobStates, jobSuccessfulSelector } from "../../../../../logic/dashboard/tags/rename/saga";
 import { dashboardTagsApi } from "../../../../../logic/dashboard/tags/tagsJobsApi";
 import { ResultStatus } from "../../../../baseTypes/ResultStatus";
 import { IApplicationState } from "../../../../rootReducer";
@@ -11,8 +13,7 @@ import {
     MAP_TAG_LOADING,
 } from "../../../../signalR/actions/JobStatusUpdateActions";
 import { JobStage } from "../../../../signalR/init";
-import { IMapTagJobStatusLookup, MapTagJobStatus } from "../../../../signalR/reducer";
-import { SocketStatus } from "../../../../ui/uiReducer";
+import { MapTagJobStatus } from "../../../../signalR/reducer";
 import { IFacade } from "../../../projects/ui/selectors";
 import { FacadeIds } from "../../tagsTransferListReducer";
 import { getTransferListFacadesLoadingAction } from "../tagsTransferListActions";
@@ -25,23 +26,18 @@ const facadeItemsFromIdsSelector = (facadeIds: FacadeIds) => (state: IApplicatio
     return results;
 };
 
-export const mapTagJobSuccessfulSelector = (state: IApplicationState) => {
-    const jobStage = state.jobStatus.mapTagStatus.jobStage;
-    const socketStatus = state.ui.socketStatus;
+export const mapTagJobSuccessfulSelector = (key: string, statusSelector: (state: IApplicationState) => JobStates) => (
+    state: IApplicationState,
+): JobButtonStatus => {
     const facadesAreLoading = state.tagsTransferList.allIsLoading;
-    return (
-        (jobStage === JobStage.Done || jobStage === JobStage.None) &&
-        socketStatus === SocketStatus.connected &&
-        !facadesAreLoading
-    );
+    if (facadesAreLoading) {
+        return JobButtonStatus.InProgress;
+    } else {
+        return jobSuccessfulSelector(key, statusSelector)(state);
+    }
 };
 
-export const mapTagInProgressSelector = (state: IApplicationState) => {
-    const jobStage = state.jobStatus.mapTagStatus.jobStage;
-    return jobStage !== JobStage.Done && jobStage !== JobStage.None && jobStage !== JobStage.Warning;
-};
-
-function getWarningStatus(tagId: string) {
+function getWarningStatus(tagId: string): MapTagJobStatus {
     return {
         item: {
             data: { tagId },
@@ -51,10 +47,11 @@ function getWarningStatus(tagId: string) {
             },
         },
         jobStage: JobStage.Warning,
+        uniqueKey: tagId,
     };
 }
 
-function getErrorStatus(tagId: string, errorInfo: string) {
+function getErrorStatus(tagId: string, errorInfo: string): MapTagJobStatus {
     return {
         item: {
             data: { tagId },
@@ -64,10 +61,12 @@ function getErrorStatus(tagId: string, errorInfo: string) {
             },
         },
         jobStage: JobStage.Error,
+        uniqueKey: tagId,
     };
 }
 
-function handleJobDone(status: IMapTagJobStatusLookup, dispatch: EnhancedStore["dispatch"]) {
+function handleJobDone(status: MapTagJobStatus, dispatch: EnhancedStore["dispatch"]) {
+    dispatch(mapTagJobDoneAction(status.uniqueKey, status.item));
     const currentTag = status.item;
     if (currentTag) {
         dispatch(getTransferListFacadesLoadingAction(currentTag.data.tagId));
@@ -81,8 +80,9 @@ function* mapTag(action: IMapTagLoadingAction) {
         // start job
         const facadeIdsToBeMapped: FacadeIds = yield select((state: IApplicationState) => state.tagsTransferList.left);
         const facadesToBeMapped: IFacade[] = yield select(facadeItemsFromIdsSelector(facadeIdsToBeMapped));
-        const response: AxiosResponse<IMapTagJobStatusLookup> = yield call(
+        const response: AxiosResponse<MapTagJobStatus> = yield call(
             dashboardTagsApi.mapTag,
+            tagId,
             facadesToBeMapped,
             tagId,
         );
@@ -90,8 +90,10 @@ function* mapTag(action: IMapTagLoadingAction) {
         // =============================================================================== //
         // warning timeout
         yield delay(10000);
-        const jobIsStartableAgain = yield select(mapTagJobSuccessfulSelector);
-        if (!jobIsStartableAgain) {
+        const jobStatus: JobButtonStatus = yield select(
+            mapTagJobSuccessfulSelector(tagId, (state) => state.jobStatus.mapTagStatus),
+        );
+        if (jobStatus === JobButtonStatus.InProgress) {
             yield put(handleMapTagJobStatusUpdateAction(getWarningStatus(tagId)));
         }
     } catch (error) {

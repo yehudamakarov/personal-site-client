@@ -1,3 +1,7 @@
+import {
+    ISetCurrentTagIdBeingMappedAction,
+    SET_CURRENT_TAG_ID_BEING_MAPPED,
+} from "../../logic/dashboard/tags/map/actions";
 import { IResult } from "../baseTypes/IResult";
 import { Tag } from "../entities/tags/actions/api";
 import {
@@ -11,31 +15,33 @@ import {
 } from "./actions/JobStatusUpdateActions";
 import { JobStage } from "./init";
 
-interface IJobStatus<T> {
-    uniqueKey?: string;
+interface IJobStatusUpdate<T> {
+    uniqueKey: string;
     item: T | null;
     jobStage: JobStage;
 }
 
-export interface IGithubRepoFetcherStatus extends IJobStatus<{ [index: string]: JobStage }> {
+export interface IGithubRepoFetcherStatus extends IJobStatusUpdate<{ [index: string]: JobStage }> {
 }
 
-export interface ICalculateTagCountsStatus extends IJobStatus<IResult<Tag>> {
+export interface ICalculateTagCountsStatus extends IJobStatusUpdate<IResult<Tag>> {
 }
 
-export type MapTagJobStatus = IJobStatus<IResult<Tag>>;
+export type MapTagJobStatus = IJobStatusUpdate<IResult<Tag>>;
 
 export interface IMapTagJobStatusLookup {
     [indexer: string]: MapTagJobStatus;
 }
 
-export type RenameTagJobStatus = IJobStatus<IResult<Tag>>;
+export type RenameTagJobStatus = IJobStatusUpdate<IResult<Tag>>;
 
 export interface IRenameTagJobStatusLookup {
     [indexer: string]: RenameTagJobStatus;
 }
 
+// todo for the ones that are not lookups, make them lookups. there will just be 1 at a time.
 export interface IJobStatusState {
+    currentTagIdBeingMapped: Tag["tagId"] | null;
     githubRepoFetcherStatus: IGithubRepoFetcherStatus;
     calculateTagCountsStatus: ICalculateTagCountsStatus;
     mapTagStatus: IMapTagJobStatusLookup;
@@ -46,29 +52,41 @@ const INITIAL_STATE: IJobStatusState = {
     calculateTagCountsStatus: {
         item: null,
         jobStage: JobStage.None,
+        // todo not in use yet. restructure job status updates to use
+        uniqueKey: "",
     },
+    currentTagIdBeingMapped: null,
     githubRepoFetcherStatus: {
         item: {},
         jobStage: JobStage.None,
+        // todo not in use yet. restructure job status updates to use
+        uniqueKey: "",
     },
     mapTagStatus: {},
     renameTagStatus: {},
 };
 
-export const jobStatusReducer = (state = INITIAL_STATE, action: JobStatusUpdateActions): IJobStatusState => {
+export const jobStatusReducer = (
+    state = INITIAL_STATE,
+    action: JobStatusUpdateActions | ISetCurrentTagIdBeingMappedAction,
+): IJobStatusState => {
     switch (action.type) {
+        case SET_CURRENT_TAG_ID_BEING_MAPPED: {
+            return { ...state, currentTagIdBeingMapped: action.payload };
+        }
         // =============================================================================== //
         // Triggered
         // =============================================================================== //
         case RENAME_TAG_LOADING: {
-            const { existingTagId } = action.payload;
+            const { uniqueKey } = action.payload;
             return {
                 ...state,
                 renameTagStatus: {
                     ...state.renameTagStatus,
-                    [existingTagId]: {
+                    [uniqueKey]: {
                         item: null,
                         jobStage: JobStage.InProgress,
+                        uniqueKey,
                     },
                 },
             };
@@ -78,18 +96,19 @@ export const jobStatusReducer = (state = INITIAL_STATE, action: JobStatusUpdateA
             if (uniqueKey) {
                 return {
                     ...state,
-                    renameTagStatus: { ...state.renameTagStatus, [uniqueKey]: { item, jobStage } },
+                    renameTagStatus: { ...state.renameTagStatus, [uniqueKey]: { item, jobStage, uniqueKey } },
                 };
             } else {
                 return state;
             }
         }
         case MAP_TAG_LOADING: {
+            const tagId = action.payload;
             return {
                 ...state,
                 mapTagStatus: {
                     ...state.mapTagStatus,
-                    [action.payload]: { jobStage: JobStage.InProgress, item: null },
+                    [tagId]: { jobStage: JobStage.InProgress, item: null, uniqueKey: tagId },
                 },
             };
         }
@@ -100,7 +119,7 @@ export const jobStatusReducer = (state = INITIAL_STATE, action: JobStatusUpdateA
                     ...state,
                     mapTagStatus: {
                         ...state.mapTagStatus,
-                        [uniqueKey]: { item, jobStage },
+                        [uniqueKey]: { item, jobStage, uniqueKey },
                     },
                 };
             } else {

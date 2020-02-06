@@ -28,7 +28,6 @@ export interface IHandleMapTagJobStatusUpdateAction {
     type: typeof HANDLE_MAP_TAG_JOB_STATUS_UPDATE;
     payload: MapTagJobStatus;
 }
-
 export const handleMapTagJobStatusUpdateAction = (status: MapTagJobStatus): IHandleMapTagJobStatusUpdateAction => ({
     payload: status,
     type: HANDLE_MAP_TAG_JOB_STATUS_UPDATE,
@@ -50,13 +49,14 @@ export const handleCalculateTagCountsJobStatusUpdateAction = (
 export const RENAME_TAG_LOADING = "RENAME_TAG_LOADING";
 export interface IRenameTagLoadingAction {
     type: typeof RENAME_TAG_LOADING;
-    payload: { existingTagId: Tag["tagId"]; newTagId: Tag["tagId"] };
+    payload: { uniqueKey: string; existingTagId: Tag["tagId"]; newTagId: Tag["tagId"] };
 }
 export const renameTagLoadingAction = (
+    uniqueKey: string,
     existingTagId: Tag["tagId"],
     newTagId: Tag["tagId"],
 ): IRenameTagLoadingAction => ({
-    payload: { existingTagId, newTagId },
+    payload: { uniqueKey, existingTagId, newTagId },
     type: RENAME_TAG_LOADING,
 });
 // =============================================================================== //
