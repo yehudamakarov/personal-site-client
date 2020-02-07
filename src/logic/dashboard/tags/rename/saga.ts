@@ -75,7 +75,7 @@ function* renameTagLoading(action: IRenameTagLoadingAction) {
             handleRenameTagJobStatusUpdateAction({
                 ...{ uniqueKey: action.payload.uniqueKey, item: null },
                 jobStage: JobStage.Error,
-            }),
+            })
         );
     }
 }

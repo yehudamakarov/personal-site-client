@@ -49,9 +49,8 @@ export const TransferListItem = (props: {
     const currentTagIdBeingMapped = useSelector((state: IApplicationState) => state.jobStatus.currentTagIdBeingMapped);
     const jobStatus = useSelector(
         jobSuccessfulSelector(currentTagIdBeingMapped ? currentTagIdBeingMapped : "", (state) => {
-            debugger;
             return state.jobStatus.mapTagStatus;
-        }),
+        })
     );
 
     return (

@@ -8,7 +8,7 @@ export const Navigation = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getTagsLoadingAction());
-    }, []);
+    }, [dispatch]);
 
     return (
         <React.Fragment>

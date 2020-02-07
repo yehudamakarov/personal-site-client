@@ -66,7 +66,7 @@ function getErrorStatus(tagId: string, errorInfo: string): MapTagJobStatus {
 }
 
 function handleJobDone(status: MapTagJobStatus, dispatch: EnhancedStore["dispatch"]) {
-    dispatch(mapTagJobDoneAction(status.uniqueKey, status.item));
+    dispatch(mapTagJobDoneAction(status));
     const currentTag = status.item;
     if (currentTag) {
         dispatch(getTransferListFacadesLoadingAction(currentTag.data.tagId));
@@ -75,6 +75,7 @@ function handleJobDone(status: MapTagJobStatus, dispatch: EnhancedStore["dispatc
 
 function* mapTag(action: IMapTagLoadingAction) {
     const tagId = action.payload;
+    console.log("payload: ", tagId);
     try {
         // =============================================================================== //
         // start job
@@ -90,6 +91,7 @@ function* mapTag(action: IMapTagLoadingAction) {
         // =============================================================================== //
         // warning timeout
         yield delay(10000);
+
         const jobStatus: JobButtonStatus = yield select(
             mapTagJobSuccessfulSelector(tagId, (state) => state.jobStatus.mapTagStatus),
         );

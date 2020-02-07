@@ -4,11 +4,9 @@ import { Tag } from "../api";
 /*                          getTagsLoadingAction                          */
 /* -------------------------------------------------------------------------- */
 export const GET_TAGS_LOADING = "GET_TAGS_LOADING";
-
 export interface IGetTagsLoadingAction {
     type: typeof GET_TAGS_LOADING;
 }
-
 export const getTagsLoadingAction = (): IGetTagsLoadingAction => ({
     type: GET_TAGS_LOADING,
 });

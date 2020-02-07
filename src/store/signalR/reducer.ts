@@ -2,6 +2,7 @@ import {
     ISetCurrentTagIdBeingMappedAction,
     SET_CURRENT_TAG_ID_BEING_MAPPED,
 } from "../../logic/dashboard/tags/map/actions";
+import { IMapTagJobDoneAction, MAP_TAG_JOB_DONE } from "../../logic/dashboard/tags/rename/actions";
 import { IResult } from "../baseTypes/IResult";
 import { Tag } from "../entities/tags/actions/api";
 import {
@@ -68,9 +69,19 @@ const INITIAL_STATE: IJobStatusState = {
 
 export const jobStatusReducer = (
     state = INITIAL_STATE,
-    action: JobStatusUpdateActions | ISetCurrentTagIdBeingMappedAction,
+    action: JobStatusUpdateActions | ISetCurrentTagIdBeingMappedAction | IMapTagJobDoneAction,
 ): IJobStatusState => {
     switch (action.type) {
+        case MAP_TAG_JOB_DONE: {
+            const { uniqueKey } = action.payload;
+            return {
+                ...state,
+                mapTagStatus: {
+                    ...state.mapTagStatus,
+                    [uniqueKey]: action.payload,
+                },
+            };
+        }
         case SET_CURRENT_TAG_ID_BEING_MAPPED: {
             return { ...state, currentTagIdBeingMapped: action.payload };
         }

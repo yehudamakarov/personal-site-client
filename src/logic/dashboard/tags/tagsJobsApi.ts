@@ -5,9 +5,9 @@ import { IMapTagJobStatusLookup, IRenameTagJobStatusLookup } from "../../../stor
 
 export const dashboardTagsApi = {
     mapTag: (uniqueKey: string, facadesToMap: IFacade[], tagId: Tag["tagId"]) => {
-        return axios.post<IMapTagJobStatusLookup>("/tags/mapTag", { facadesToMap, tagId });
+        return axios.post<IMapTagJobStatusLookup>("/tags/mapTag", { uniqueKey, facadesToMap, tagId });
     },
     renameTag: (uniqueKey: string, existingTagId: Tag["tagId"], newTagId: Tag["tagId"]) => {
-        return axios.post<IRenameTagJobStatusLookup>("/tags/renameTag", { existingTagId, newTagId });
+        return axios.post<IRenameTagJobStatusLookup>("/tags/renameTag", { uniqueKey, existingTagId, newTagId });
     },
 };
