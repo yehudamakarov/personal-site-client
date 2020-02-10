@@ -42,6 +42,7 @@ export const TagsManagementTagListItem = (props: { tagId: Tag["tagId"] }) => {
         await navigate(Routes.dashboardTagsMap + props.tagId);
     };
 
+    // todo how can this immediately link to the dialog
     const handleRenameSelect = () => {
         dispatch(openTagRenameDialogAction(props.tagId));
         handleMenuClose();

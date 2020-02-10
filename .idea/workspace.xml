@@ -8,16 +8,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d8740122-1867-4951-894c-e08193b5228c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/dashboard/tags/rename/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/dashboard/tags/rename/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/dashboard/tags/rename/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/dashboard/tags/rename/saga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/dashboard/tags/tagsJobsApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/dashboard/tags/tagsJobsApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/navigation/navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/navigation/navigation.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/tagsManagementPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/tagsManagementPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/tagsMapPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/tagsMapPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/transferListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/transferListItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/entities/tags/actions/getTags/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tags/actions/getTags/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/pages/dashboard/tagsManagementTagListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/pages/dashboard/tagsManagementTagListItem.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/sagas/saveMappedTagsSaga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/entities/tagsTransferList/actions/sagas/saveMappedTagsSaga.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/signalR/reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/signalR/reducer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,14 +159,8 @@
       <workItem from="1579491215587" duration="8717000" />
       <workItem from="1580449069370" duration="28000" />
       <workItem from="1580785757823" duration="28099000" />
-      <workItem from="1580964936326" duration="4802000" />
-    </task>
-    <task id="LOCAL-00025" summary="can edit project, need to update">
-      <created>1574020325538</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1574020325539</updated>
+      <workItem from="1580964936326" duration="5375000" />
+      <workItem from="1581292467474" duration="2565000" />
     </task>
     <task id="LOCAL-00026" summary="can edit project, need to update">
       <created>1574023783586</created>
@@ -511,7 +498,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581000205890</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="map tag works">
+      <created>1581044489248</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1581044489248</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -548,7 +542,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="working on fixing transfer list architecture" />
     <MESSAGE value="cache" />
     <MESSAGE value="no cache for now, cleaned up transfer list selectors etc" />
     <MESSAGE value="transfer list is responsive" />
@@ -573,7 +566,8 @@
     <MESSAGE value="..." />
     <MESSAGE value="changin to send and receive key" />
     <MESSAGE value="changing to send and receive key" />
-    <option name="LAST_COMMIT_MESSAGE" value="changing to send and receive key" />
+    <MESSAGE value="map tag works" />
+    <option name="LAST_COMMIT_MESSAGE" value="map tag works" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -620,13 +614,13 @@
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="1206" y="680" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1578211402187" />
-    <state x="296" y="242" width="1723" height="1400" key="CommitChangelistDialog2" timestamp="1581000205633">
-      <screen x="0" y="0" width="1920" height="1200" />
+    <state x="252" y="51" width="1723" height="1400" key="CommitChangelistDialog2" timestamp="1581044489096">
+      <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="1593" y="383" key="CommitChangelistDialog2/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575848306443" />
     <state x="252" y="51" key="CommitChangelistDialog2/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1578579357762" />
     <state x="296" y="242" key="CommitChangelistDialog2/0.0.1920.1200@0.0.1920.1200" timestamp="1581000205633" />
-    <state x="252" y="51" width="1292" height="1314" key="CommitChangelistDialog2/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1580800851550" />
+    <state x="252" y="51" width="1292" height="1314" key="CommitChangelistDialog2/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1581044489096" />
     <state x="252" y="51" key="CommitChangelistDialog2/0.0.3008.1692/-1920.268.1920.1177@0.0.3008.1692" timestamp="1578210951521" />
     <state x="804" y="289" key="CommitChangelistDialog2/0.23.1874.1177@0.23.1874.1177" timestamp="1575900332338" />
     <state x="-2165" y="0" width="1723" height="1400" key="CommitChangelistDialog2/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@-2560.0.2560.1400" timestamp="1577654560303" />
@@ -674,13 +668,13 @@
     </state>
     <state x="1100" y="399" key="run.anything.popup/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1580957489223" />
     <state x="936" y="330" key="run.anything.popup/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575823471946" />
-    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup" timestamp="1581044200051">
+    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup" timestamp="1581307075152">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="848" y="237" width="1313" height="1456" key="search.everywhere.popup/-1680.245.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1575607900405" />
     <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup/-1920.245.1920.1200/0.0.3008.1692@0.0.3008.1692" timestamp="1579064479801" />
     <state x="541" y="168" width="838" height="1032" key="search.everywhere.popup/0.0.1920.1200@0.0.1920.1200" timestamp="1580104412871" />
-    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1581044200051" />
+    <state x="848" y="237" width="1314" height="1457" key="search.everywhere.popup/0.0.3008.1692/-1920.245.1920.1200@0.0.3008.1692" timestamp="1581307075152" />
     <state x="-1379" y="433" width="858" height="1014" key="search.everywhere.popup/0.23.2953.1669/-1920.268.1920.1177@-1920.268.1920.1177" timestamp="1578034882455" />
     <state x="-1391" y="433" width="838" height="1014" key="search.everywhere.popup/0.23.3008.1669/-1920.268.1877.1177@-1920.268.1877.1177" timestamp="1578022308246" />
     <state x="722" y="196" width="1118" height="1205" key="search.everywhere.popup/2560.561.1920.1040/-2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1575832342693" />

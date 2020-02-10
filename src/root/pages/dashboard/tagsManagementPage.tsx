@@ -43,6 +43,7 @@ export const TagsManagementPage = (props: { path: string }) => {
                     </Grid>
                 </Grid>
             )}
+            {/* todo looking at this, how can i see right away how this opend? */}
             <TagRenameDialog />
             <TagDeleteDialog />
         </BasePage>

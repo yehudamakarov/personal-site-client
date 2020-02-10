@@ -37,6 +37,7 @@ export const mapTagJobSuccessfulSelector = (key: string, statusSelector: (state:
     }
 };
 
+// (2) todo this should be for ANY job status update. control the required return type with the type of job state as a type parameter
 function getWarningStatus(tagId: string): MapTagJobStatus {
     return {
         item: {
@@ -51,6 +52,7 @@ function getWarningStatus(tagId: string): MapTagJobStatus {
     };
 }
 
+// todo this should be for ANY job status update. control the required return type with the type of job state as a type parameter
 function getErrorStatus(tagId: string, errorInfo: string): MapTagJobStatus {
     return {
         item: {
@@ -75,7 +77,6 @@ function handleJobDone(status: MapTagJobStatus, dispatch: EnhancedStore["dispatc
 
 function* mapTag(action: IMapTagLoadingAction) {
     const tagId = action.payload;
-    console.log("payload: ", tagId);
     try {
         // =============================================================================== //
         // start job
@@ -109,6 +110,9 @@ export const registerMapTagSagaEvents = (connection: HubConnection, dispatch: En
         // =============================================================================== //
         // job update
         dispatch(handleMapTagJobStatusUpdateAction(status));
+        // todo or deleted and only handled in the reducer.
+        // todo this should be handled in an epic
+        // filter(status.jobStage === JobStage.Done) in an epic to dispatch the done action
         // =============================================================================== //
         // job done
         if (status.jobStage === JobStage.Done) {
