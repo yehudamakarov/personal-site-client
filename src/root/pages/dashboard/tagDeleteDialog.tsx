@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
         root: {
             margin: theme.spacing(1),
         },
-    }),
+    })
 );
 
 export const TagDeleteDialog = (props: {}) => {

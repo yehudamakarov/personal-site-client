@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setCurrentTagIdBeingMappedAction } from "../../../logic/dashboard/tags/map/actions";
+import { setCurrentTagIdBeingMappedAction } from "../../../logic/dashboard/tags/map";
 
 import { Tag } from "../../../store/entities/tags/actions/api";
 import { getTransferListFacadesLoadingAction } from "../../../store/entities/tagsTransferList/actions/tagsTransferListActions";

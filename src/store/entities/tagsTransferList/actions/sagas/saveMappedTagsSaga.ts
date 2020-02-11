@@ -2,8 +2,12 @@ import { HubConnection } from "@microsoft/signalr";
 import { EnhancedStore } from "@reduxjs/toolkit";
 import { AxiosResponse } from "axios";
 import { call, delay, put, select, takeEvery } from "redux-saga/effects";
-import { mapTagJobDoneAction } from "../../../../../logic/dashboard/tags/rename/actions";
-import { JobButtonStatus, JobStates, jobSuccessfulSelector } from "../../../../../logic/dashboard/tags/rename/saga";
+import {
+    JobButtonStatus,
+    JobStates,
+    jobSuccessfulSelector,
+    mapTagJobDoneAction,
+} from "../../../../../logic/dashboard/tags/rename";
 import { dashboardTagsApi } from "../../../../../logic/dashboard/tags/tagsJobsApi";
 import { ResultStatus } from "../../../../baseTypes/ResultStatus";
 import { IApplicationState } from "../../../../rootReducer";

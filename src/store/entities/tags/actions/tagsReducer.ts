@@ -1,4 +1,4 @@
-import { ITagRenameJobDoneAction, TAG_RENAME_JOB_DONE } from "../../../../logic/dashboard/tags/rename/actions";
+import { ITagRenameJobDoneAction, TAG_RENAME_JOB_DONE } from "../../../../logic/dashboard/tags/rename";
 import { IBaseCollectionUiState } from "../../../baseTypes/IBaseCollectionUiState";
 import {
     HANDLE_MAP_TAG_JOB_STATUS_UPDATE,

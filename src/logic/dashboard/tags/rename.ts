@@ -2,22 +2,24 @@ import { HubConnection } from "@microsoft/signalr";
 import { EnhancedStore } from "@reduxjs/toolkit";
 import { AxiosResponse } from "axios";
 import { call, delay, put, select, takeEvery } from "redux-saga/effects";
-
-import { IApplicationState } from "../../../../store/rootReducer";
+import { IResult } from "../../../store/baseTypes/IResult";
+import { Tag } from "../../../store/entities/tags/actions/api";
+import { IApplicationState } from "../../../store/rootReducer";
 import {
     handleRenameTagJobStatusUpdateAction,
     IRenameTagLoadingAction,
     RENAME_TAG_LOADING,
-} from "../../../../store/signalR/actions/JobStatusUpdateActions";
-import { JobStage } from "../../../../store/signalR/init";
+} from "../../../store/signalR/actions/JobStatusUpdateActions";
+import { JobStage } from "../../../store/signalR/init";
 import {
+    IDeleteTagJobStatusLookup,
     IMapTagJobStatusLookup,
     IRenameTagJobStatusLookup,
+    MapTagJobStatus,
     RenameTagJobStatus,
-} from "../../../../store/signalR/reducer";
-import { SocketStatus } from "../../../../store/ui/uiReducer";
-import { dashboardTagsApi } from "../tagsJobsApi";
-import { tagRenameJobDoneAction } from "./actions";
+} from "../../../store/signalR/reducer";
+import { SocketStatus } from "../../../store/ui/uiReducer";
+import { dashboardTagsApi } from "./tagsJobsApi";
 
 export enum JobButtonStatus {
     Default,
@@ -28,7 +30,7 @@ export enum JobButtonStatus {
 export type JobStates =
 // IGithubRepoFetcherStatus|
 // ICalculateTagCountsStatus|
-    IMapTagJobStatusLookup | IRenameTagJobStatusLookup;
+    IMapTagJobStatusLookup | IRenameTagJobStatusLookup | IDeleteTagJobStatusLookup;
 
 export const jobSuccessfulSelector = (key: string, statusSelector: (state: IApplicationState) => JobStates) => (
     state: IApplicationState,
@@ -75,7 +77,7 @@ function* renameTagLoading(action: IRenameTagLoadingAction) {
             handleRenameTagJobStatusUpdateAction({
                 ...{ uniqueKey: action.payload.uniqueKey, item: null },
                 jobStage: JobStage.Error,
-            })
+            }),
         );
     }
 }
@@ -92,3 +94,28 @@ export const registerRenameTagSagaEvents = (connection: HubConnection, dispatch:
 export function* watchRenameTagLoading() {
     yield takeEvery(RENAME_TAG_LOADING, renameTagLoading);
 }
+
+export const TAG_RENAME_JOB_DONE = "TAG_RENAME_JOB_DONE";
+
+export interface ITagRenameJobDoneAction {
+    type: typeof TAG_RENAME_JOB_DONE;
+    payload: { item: IResult<Tag> | null; uniqueKey: string };
+}
+
+export const tagRenameJobDoneAction = (uniqueKey: string, item: IResult<Tag> | null): ITagRenameJobDoneAction => ({
+    payload: { item, uniqueKey },
+    type: TAG_RENAME_JOB_DONE,
+});
+// =============================================================================== //
+export const MAP_TAG_JOB_DONE = "MAP_TAG_JOB_DONE";
+
+export interface IMapTagJobDoneAction {
+    type: typeof MAP_TAG_JOB_DONE;
+    payload: MapTagJobStatus;
+}
+
+export const mapTagJobDoneAction = (status: MapTagJobStatus): IMapTagJobDoneAction => ({
+    payload: status,
+    type: MAP_TAG_JOB_DONE,
+});
+// =============================================================================== //

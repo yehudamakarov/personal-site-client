@@ -12,7 +12,7 @@ import _ from "lodash";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TransferListHelpers } from "../../../helpers/transferListHelpers";
-import { JobButtonStatus } from "../../../logic/dashboard/tags/rename/saga";
+import { JobButtonStatus } from "../../../logic/dashboard/tags/rename";
 import { mapTagJobSuccessfulSelector } from "../../../store/entities/tagsTransferList/actions/sagas/saveMappedTagsSaga";
 import {
     openTagMapSaveDialogAction,

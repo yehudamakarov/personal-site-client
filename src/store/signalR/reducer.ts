@@ -1,8 +1,5 @@
-import {
-    ISetCurrentTagIdBeingMappedAction,
-    SET_CURRENT_TAG_ID_BEING_MAPPED,
-} from "../../logic/dashboard/tags/map/actions";
-import { IMapTagJobDoneAction, MAP_TAG_JOB_DONE } from "../../logic/dashboard/tags/rename/actions";
+import { ISetCurrentTagIdBeingMappedAction, SET_CURRENT_TAG_ID_BEING_MAPPED } from "../../logic/dashboard/tags/map";
+import { IMapTagJobDoneAction, MAP_TAG_JOB_DONE } from "../../logic/dashboard/tags/rename";
 import { IResult } from "../baseTypes/IResult";
 import { Tag } from "../entities/tags/actions/api";
 import {
@@ -25,20 +22,32 @@ interface IJobStatusUpdate<T> {
 export interface IGithubRepoFetcherStatus extends IJobStatusUpdate<{ [index: string]: JobStage }> {
 }
 
+// =============================================================================== //
 export interface ICalculateTagCountsStatus extends IJobStatusUpdate<IResult<Tag>> {
 }
 
+// =============================================================================== //
 export type MapTagJobStatus = IJobStatusUpdate<IResult<Tag>>;
 
 export interface IMapTagJobStatusLookup {
     [indexer: string]: MapTagJobStatus;
 }
 
+// =============================================================================== //
 export type RenameTagJobStatus = IJobStatusUpdate<IResult<Tag>>;
 
 export interface IRenameTagJobStatusLookup {
     [indexer: string]: RenameTagJobStatus;
 }
+
+// =============================================================================== //
+export type DeleteTagJobStatus = IJobStatusUpdate<IResult<Tag["tagId"]>>;
+
+export interface IDeleteTagJobStatusLookup {
+    [indexer: string]: DeleteTagJobStatus;
+}
+
+// =============================================================================== //
 
 // todo for the ones that are not lookups, make them lookups. there will just be 1 at a time.
 export interface IJobStatusState {

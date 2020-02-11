@@ -1,6 +1,7 @@
 import * as signalR from "@microsoft/signalr";
 import { EnhancedStore } from "@reduxjs/toolkit";
-import { registerRenameTagSagaEvents } from "../../logic/dashboard/tags/rename/saga";
+import { registerDeleteTagSagaEvents } from "../../logic/dashboard/tags/delete";
+import { registerRenameTagSagaEvents } from "../../logic/dashboard/tags/rename";
 import { ITokenState } from "../entities/auth/actions/authReducer";
 import { registerMapTagSagaEvents } from "../entities/tagsTransferList/actions/sagas/saveMappedTagsSaga";
 import { socketConnectedAction, socketConnectingAction, socketDisconnectedAction } from "../ui/uiActions";
@@ -32,6 +33,7 @@ const registerServerMethods = (connection: signalR.HubConnection, dispatch: Enha
     });
     registerMapTagSagaEvents(connection, dispatch);
     registerRenameTagSagaEvents(connection, dispatch);
+    registerDeleteTagSagaEvents(connection, dispatch);
 };
 
 let existingConnection: signalR.HubConnection;

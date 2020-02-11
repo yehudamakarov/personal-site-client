@@ -16,7 +16,7 @@ import NotesRoundedIcon from "@material-ui/icons/NotesRounded";
 import WorkIcon from "@material-ui/icons/Work";
 import React from "react";
 import { useSelector } from "react-redux";
-import { JobButtonStatus, jobSuccessfulSelector } from "../../../logic/dashboard/tags/rename/saga";
+import { JobButtonStatus, jobSuccessfulSelector } from "../../../logic/dashboard/tags/rename";
 import { FacadeType } from "../../../store/entities/projects/ui/selectors";
 import { TransferListFacadeId } from "../../../store/entities/tagsTransferList/tagsTransferListReducer";
 import { IApplicationState } from "../../../store/rootReducer";
