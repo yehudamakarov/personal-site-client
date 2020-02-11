@@ -15,6 +15,8 @@ export type DashboardTagsRoute = "/dashboard/tags/";
 export type DashboardTagsMapRoute = "/dashboard/tags/map/";
 export type DashboardTagsMapParamRoute = "/dashboard/tags/map/:tagId/";
 
+export type DashboardAddBlogPostRoute = "/dashboard/blogPosts/add/";
+
 export type IndexTypeRoute = ProjectsRoute | BlogPostsRoute | TagsTagIdParamRoute | TagsRoute;
 export type Route = IndexTypeRoute | HomeRoute | AboutRoute | ProjectsProjectNameParamRoute;
 
@@ -33,6 +35,8 @@ export class Routes {
     public static dashboardTags: DashboardTagsRoute = "/dashboard/tags/";
     public static dashboardTagsMap: DashboardTagsMapRoute = "/dashboard/tags/map/";
     public static dashboardTagsMapTagIdParam: DashboardTagsMapParamRoute = "/dashboard/tags/map/:tagId/";
+
+    public static dashboardAddBlogPost: DashboardAddBlogPostRoute = "/dashboard/blogPosts/add/";
 }
 
 export interface IFilterListingTypes {
@@ -55,6 +59,12 @@ export interface IUiState {
     filter: IFilter;
     socketStatus: SocketStatus;
     tagRenameDialog: ITagRenameDialogSlice;
+    tagDeleteDialog: ITagDeleteDialogSlice;
+}
+
+export interface ITagDeleteDialogSlice {
+    tagDeleteDialogOpen: boolean;
+    existingTagId: Tag["tagId"] | null;
 }
 
 export interface ITagRenameDialogSlice {

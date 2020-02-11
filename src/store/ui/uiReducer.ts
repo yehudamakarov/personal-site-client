@@ -1,4 +1,10 @@
-import { CLOSE_TAG_RENAME_DIALOG, OPEN_TAG_RENAME_DIALOG, TagRenameActions } from "../../root/pages/dashboard/actions";
+import {
+    CLOSE_TAG_DELETE_DIALOG,
+    CLOSE_TAG_RENAME_DIALOG,
+    OPEN_TAG_DELETE_DIALOG,
+    OPEN_TAG_RENAME_DIALOG,
+    TagManagementActions,
+} from "../../root/pages/dashboard/actions";
 import { IUiState } from "./IUiState";
 import {
     CLOSE_DRAWER,
@@ -31,16 +37,23 @@ export const INITIAL_STATE: IUiState = {
     },
     route: "/",
     socketStatus: SocketStatus.disconnected,
+    tagDeleteDialog: { tagDeleteDialogOpen: false, existingTagId: null },
     tagRenameDialog: { tagRenameDialogOpen: false, existingTagId: null },
     uri: "/",
 };
 
-export const uiReducer = (state = INITIAL_STATE, action: UiActionTypes | TagRenameActions): IUiState => {
+export const uiReducer = (state = INITIAL_STATE, action: UiActionTypes | TagManagementActions): IUiState => {
     switch (action.type) {
+        case OPEN_TAG_DELETE_DIALOG: {
+            return { ...state, tagDeleteDialog: { tagDeleteDialogOpen: true, existingTagId: action.payload } };
+        }
+        case CLOSE_TAG_DELETE_DIALOG: {
+            return { ...state, tagDeleteDialog: { ...state.tagDeleteDialog, tagDeleteDialogOpen: false } };
+        }
         case OPEN_TAG_RENAME_DIALOG: {
             return {
                 ...state,
-                tagRenameDialog: { ...state.tagRenameDialog, tagRenameDialogOpen: true, existingTagId: action.payload },
+                tagRenameDialog: { tagRenameDialogOpen: true, existingTagId: action.payload },
             };
         }
         case CLOSE_TAG_RENAME_DIALOG: {

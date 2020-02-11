@@ -3,6 +3,7 @@ import React from "react";
 import { Routes } from "../store/ui/IUiState";
 import { Navigation } from "./navigation/navigation";
 import { AboutPage } from "./pages/about/aboutPage";
+import { AddBlogPostPage } from "./pages/dashboard/addBlogPostPage";
 import { DashboardPage } from "./pages/dashboard/dashboardPage";
 import { TagsManagementPage } from "./pages/dashboard/tagsManagementPage";
 import { TagsMapPage } from "./pages/dashboard/tagsMapPage";
@@ -22,6 +23,7 @@ export const Root = () => {
                 <DashboardPage path={Routes.dashboard} />
                 <TagsManagementPage path={Routes.dashboardTags} />
                 <TagsMapPage path={Routes.dashboardTagsMapTagIdParam} />
+                <AddBlogPostPage path={Routes.dashboardAddBlogPost} />
                 <AboutPage path={Routes.about} />
                 <ProjectPage path={Routes.projectsProjectNameParam} />
                 <IndexViewPage path={Routes.projects} />

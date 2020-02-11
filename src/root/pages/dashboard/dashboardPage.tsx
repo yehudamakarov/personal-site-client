@@ -12,10 +12,11 @@ import {
     Typography,
 } from "@material-ui/core";
 import LabelTwoToneIcon from "@material-ui/icons/LabelTwoTone";
+import NotesRoundedIcon from "@material-ui/icons/NotesRounded";
 import { Link } from "@reach/router";
 import React from "react";
 import { roleType } from "../../../store/entities/auth/actions/authReducer";
-import { Routes } from "../../../store/ui/IUiState";
+import { DashboardAddBlogPostRoute, DashboardTagsRoute, Routes } from "../../../store/ui/IUiState";
 
 import { BasePage } from "../basePage";
 
@@ -36,6 +37,25 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 );
 
+function ManagementListItem(props: {
+    to: DashboardTagsRoute | DashboardAddBlogPostRoute;
+    title: string;
+    icon: React.ReactElement;
+}) {
+    return (
+        <ListItem button component={Link} to={props.to}>
+            <ListItemIcon>{props.icon}</ListItemIcon>
+            <ListItemText
+                primaryTypographyProps={{
+                    variant: "subtitle2",
+                }}
+            >
+                {props.title}
+            </ListItemText>
+        </ListItem>
+    );
+}
+
 export const DashboardPage = (props: { path: string }) => {
     const classes = useStyles();
     return (
@@ -51,18 +71,16 @@ export const DashboardPage = (props: { path: string }) => {
                         </Typography>
                         <Divider />
                         <List dense>
-                            <ListItem button component={Link} to={Routes.dashboardTags}>
-                                <ListItemIcon>
-                                    <LabelTwoToneIcon />
-                                </ListItemIcon>
-                                <ListItemText
-                                    primaryTypographyProps={{
-                                        variant: "subtitle2",
-                                    }}
-                                >
-                                    Manage Tags
-                                </ListItemText>
-                            </ListItem>
+                            <ManagementListItem
+                                title={"Manage Tags"}
+                                to={Routes.dashboardTags}
+                                icon={<LabelTwoToneIcon />}
+                            />
+                            <ManagementListItem
+                                title={"Add Blog Post"}
+                                to={Routes.dashboardAddBlogPost}
+                                icon={<NotesRoundedIcon />}
+                            />
                         </List>
                     </Card>
                 </Grid>

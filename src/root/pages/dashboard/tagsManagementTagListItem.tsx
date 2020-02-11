@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Tag } from "../../../store/entities/tags/actions/api";
 import { IApplicationState } from "../../../store/rootReducer";
 import { Routes } from "../../../store/ui/IUiState";
-import { openTagRenameDialogAction } from "./actions";
+import { openTagDeleteDialogAction, openTagRenameDialogAction } from "./actions";
 import { TagListItemActionButton } from "./tagListItemActionButton";
 
 const tagSelector = (tagId: Tag["tagId"]) => (state: IApplicationState) =>
@@ -49,6 +49,7 @@ export const TagsManagementTagListItem = (props: { tagId: Tag["tagId"] }) => {
     };
 
     const handleDeleteSelect = () => {
+        dispatch(openTagDeleteDialogAction(props.tagId));
         handleMenuClose();
     };
 

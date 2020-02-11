@@ -42,8 +42,7 @@ export const HomePinnedRepositories = () => {
             {isError && (
                 <Grid item xs={12} sm={8} md={6}>
                     <Typography variant="subtitle2" color="error">
-                        There was a problem fetching the information that is
-                        supposed to be displayed here.
+                        There was a problem fetching the information that is supposed to be displayed here.
                     </Typography>
                 </Grid>
             )}

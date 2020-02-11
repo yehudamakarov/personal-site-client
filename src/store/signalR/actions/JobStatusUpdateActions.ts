@@ -65,11 +65,24 @@ export interface IHandleRenameTagJobStatusUpdateAction {
     type: typeof HANDLE_RENAME_TAG_JOB_STATUS_UPDATE;
     payload: RenameTagJobStatus;
 }
+
 export const handleRenameTagJobStatusUpdateAction = (
     status: RenameTagJobStatus,
 ): IHandleRenameTagJobStatusUpdateAction => ({
     payload: status,
     type: HANDLE_RENAME_TAG_JOB_STATUS_UPDATE,
+});
+// =============================================================================== //
+export const DELETE_TAG_LOADING = "DELETE_TAG_LOADING";
+
+export interface IDeleteTagLoadingAction {
+    type: typeof DELETE_TAG_LOADING;
+    payload: Tag["tagId"];
+}
+
+export const deleteTagLoadingAction = (tagId: Tag["tagId"]): IDeleteTagLoadingAction => ({
+    payload: tagId,
+    type: DELETE_TAG_LOADING,
 });
 // =============================================================================== //
 

@@ -1,5 +1,6 @@
-import { Button, createStyles, Grid, makeStyles, Theme, Typography, useMediaQuery } from "@material-ui/core";
+import { Button, Chip, createStyles, Grid, makeStyles, Theme, Typography, useMediaQuery } from "@material-ui/core";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import LabelIcon from "@material-ui/icons/Label";
 import { Link, RouteComponentProps } from "@reach/router";
 import React from "react";
 import { TagTitleHelpers } from "../../../helpers/tagTitleHelpers";
@@ -41,7 +42,8 @@ export const TagsMapPage = (props: RouteComponentProps<{ tagId: Tag["tagId"] }>)
             </Grid>
 
             <div className={classes.tag}>
-                <Typography variant={isXs ? "button" : "subtitle2"}>{tagTitle}</Typography>
+                {/*<Typography variant={isXs ? "button" : "subtitle2"}>{tagTitle}</Typography>*/}
+                <Chip component={"span"} size={isXs ? "small" : "medium"} icon={<LabelIcon />} label={tagTitle} />
             </div>
 
             <TransferListForProjectsAndBlogPosts tagId={tagTitle} />

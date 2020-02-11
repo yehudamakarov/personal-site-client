@@ -1,4 +1,5 @@
 import { CircularProgress, createStyles, Grid, List, makeStyles, Theme, Typography } from "@material-ui/core";
+import { RouteComponentProps } from "@reach/router";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { roleType } from "../../../store/entities/auth/actions/authReducer";
@@ -15,9 +16,9 @@ const useStyles = makeStyles((theme: Theme) =>
             marginTop: theme.spacing(3),
             textAlign: "center",
         },
-    })
+    }),
 );
-export const TagsManagementPage = (props: { path: string }) => {
+export const TagsManagementPage = (props: RouteComponentProps) => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const tagIds = useSelector((state: IApplicationState) => state.tags.tagsData.map((tag) => tag.tagId));
