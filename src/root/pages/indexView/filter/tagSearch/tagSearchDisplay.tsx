@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme: Theme) =>
         noOptionsMessage: {
             padding: theme.spacing(1, 2),
         },
-        paper: {
+        list: {
             left: 0,
             marginTop: theme.spacing(1),
             position: "absolute",

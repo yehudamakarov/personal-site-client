@@ -1,7 +1,7 @@
 import axios from "axios";
-import { IApiResponse } from "../../../baseTypes/IApiResponse";
+import { IResult } from "../../../baseTypes/IResult";
 
-export type IPinnedReposResponse = IApiResponse<IPinnedRepository[]>;
+export type IPinnedReposResponse = IResult<IPinnedRepository[]>;
 
 export interface IPinnedRepository {
     databaseId: string;
@@ -17,6 +17,6 @@ export interface IPinnedRepository {
 export const pinnedRepositoriesApi = {
     getPinnedRepositoriesRequest: () =>
         axios.get<IPinnedReposResponse>(
-            `${process.env.REACT_APP_API_URL}repos/pinnedrepos`
+            `/repos/pinnedrepos`,
         ),
 };

@@ -3,10 +3,16 @@ import { ThemeProvider } from "@material-ui/styles";
 import React from "react";
 import { Provider } from "react-redux";
 import { Root } from "./root/root";
+import { SnackBarService } from "./root/snackBarService";
 import { store } from "./store/storeConfig";
 
 // https://coolors.co/dce6ea-0e3b43-1e4571-3e505b-357266
 const theme = createMuiTheme({
+    overrides: {
+        // MuiCheckbox: {
+        //     root: { color: "#F0F2EF" },
+        // },
+    },
     palette: {
         action: {
             active: "rgba(0, 0, 0, 0.54)",
@@ -17,12 +23,12 @@ const theme = createMuiTheme({
             selected: "rgba(0, 0, 0, 0.14)",
         },
         background: {
-            default: "#EDEFF0",
-            paper: "#EDEFF0",
+            default: "#F2F7F2",
+            paper: "#F6F7F6",
         },
         common: {
-            black: "#0B2B31",
-            white: "#EDEFF0",
+            black: "#212121",
+            white: "#FAFCFD",
         },
         contrastThreshold: 3,
         divider: "rgba(0, 0, 0, 0.12)",
@@ -33,12 +39,12 @@ const theme = createMuiTheme({
             main: "#f44336",
         },
         grey: {
-            50: "#fafafa",
-            100: "#f5f5f5",
-            200: "#eeeeee",
-            300: "#e0e0e0",
-            400: "#bdbdbd",
-            500: "#9e9e9e",
+            50: "#F7F8F9",
+            100: "#EEF0F2",
+            200: "#E9EBEE",
+            300: "#E1E4E8",
+            400: "#B9BBBE",
+            500: "#94999E",
             600: "#757575",
             700: "#616161",
             800: "#424242",
@@ -49,24 +55,21 @@ const theme = createMuiTheme({
             A700: "#616161",
         },
         primary: {
-            // dark: "rgb(17, 82, 147)",
-            contrastText: "#F4F7F8",
-            // light: "rgb(71, 145, 219)",
-            main: "#1E4571",
+            contrastText: "#f0f6fb",
+            // light: "#445D77",
+            main: "#19395D",
         },
         secondary: {
-            // dark: "rgb(154, 0, 54)",
-            contrastText: "#F4F7F8",
-            // light: "rgb(227, 51, 113)",
-            main: "#177269",
+            // main: "#3F5642",
+            main: "#367C40",
         },
         text: {
-            disabled: "#959FA5",
-            hint: "#959FA5",
-            primary: "#3E505B",
-            secondary: "#616F78",
+            // disabled: "#959FA5",
+            // hint: "#959FA5",
+            // primary: "#232323",
+            // secondary: "#616F78",
         },
-        tonalOffset: 0.3,
+        // tonalOffset: 0.3,
         type: "light",
     },
     typography: {
@@ -105,6 +108,7 @@ export const App = () => {
                 <React.Fragment>
                     <CssBaseline />
                     {/* <Background /> */}
+                    <SnackBarService />
                     <Root />
                 </React.Fragment>
             </Provider>

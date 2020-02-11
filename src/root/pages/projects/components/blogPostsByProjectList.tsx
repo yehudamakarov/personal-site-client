@@ -35,7 +35,6 @@ export const BlogPostsByProjectList = withSize({
     monitorWidth: true,
 })(
     React.memo((props: IOwnProps) => {
-        console.count("cards");
         const { project, size } = props;
         const dispatch = useDispatch();
         const classes = useStyles();
@@ -63,7 +62,7 @@ export const BlogPostsByProjectList = withSize({
                 dispatch(
                     getBlogPostsByProjectIdLoadingAction(
                         project.githubRepoDatabaseId,
-                    ),
+                    )
                 );
             }
         }, [project]);
@@ -75,7 +74,7 @@ export const BlogPostsByProjectList = withSize({
                     return result;
                 },
                 {} as { [index: string]: number },
-            ),
+            )
         );
 
         const setSingleHeight = (blogPostId: string, height: number) => {
@@ -140,5 +139,5 @@ export const BlogPostsByProjectList = withSize({
                 </div>
             </div>
         );
-    }),
+    })
 );

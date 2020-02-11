@@ -1,8 +1,8 @@
-import { IErrorMap } from "./IErrorMap";
+import { IBooleanMap } from "./IBooleanMap";
 
 export interface IBaseCollectionUiState {
     allIsLoading: boolean;
     allIsError: boolean;
-    singleIsError: IErrorMap;
-    singleIsLoading: IErrorMap;
+    singleIsError: IBooleanMap;
+    singleIsLoading: IBooleanMap;
 }

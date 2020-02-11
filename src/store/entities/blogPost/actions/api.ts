@@ -1,8 +1,8 @@
 import axios from "axios";
-import { IApiResponse } from "../../../baseTypes/IApiResponse";
+import { IResult } from "../../../baseTypes/IResult";
 
-export type IBlogPostResponse = IApiResponse<IBlogPost>;
-export type IBlogPostsResponse = IApiResponse<IBlogPost[]>;
+export type IBlogPostResponse = IResult<IBlogPost>;
+export type IBlogPostsResponse = IResult<IBlogPost[]>;
 
 export interface IBlogPost {
     id: string;
@@ -16,17 +16,12 @@ export interface IBlogPost {
 
 export const blogPostsApi = {
     getBlogPostById: (blogPostId: string) =>
-        axios.get<IBlogPostResponse>(
-            `${process.env.REACT_APP_API_URL}blogPosts/blogPostById`,
-            { params: { blogPostId } }
-        ),
-    getBlogPosts: () =>
-        axios.get<IBlogPostsResponse>(
-            `${process.env.REACT_APP_API_URL}blogPosts/allBlogPosts`
-        ),
+        axios.get<IBlogPostResponse>(`/blogPosts/blogPostById`, {
+            params: { blogPostId },
+        }),
+    getBlogPosts: () => axios.get<IBlogPostsResponse>(`/blogPosts/allBlogPosts`),
     getBlogPostsByProjectId: (projectId: string) =>
-        axios.get<IBlogPostsResponse>(
-            `${process.env.REACT_APP_API_URL}blogPosts/BlogPostsByProjectId`,
-            { params: { projectId } }
-        ),
+        axios.get<IBlogPostsResponse>(`/blogPosts/BlogPostsByProjectId`, {
+            params: { projectId },
+        }),
 };

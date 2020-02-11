@@ -23,9 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 );
 
-export const ProjectActionButtons = (props: {
-    project: undefined | IProject;
-}) => {
+export const ProjectActionButtons = (props: { project: undefined | IProject }) => {
     const { project } = props;
     const classes = useStyles();
 
@@ -37,12 +35,7 @@ export const ProjectActionButtons = (props: {
 
     return (
         <div className={classes.root}>
-            <Grid
-                alignItems="center"
-                justify="space-between"
-                container
-                spacing={2}
-            >
+            <Grid alignItems="center" justify="space-between" container spacing={2}>
                 <Grid item>
                     <ButtonGroup>
                         <Button
@@ -68,14 +61,10 @@ export const ProjectActionButtons = (props: {
                 <Grid item>
                     <Grid container spacing={2}>
                         <Grid item>
-                            <EditProjectButton
-                                project={project}
-                            />
+                            <EditableDeployUrlDisplay project={project} />
                         </Grid>
                         <Grid item>
-                            <EditableDeployUrlDisplay
-                                project={project}
-                            />
+                            <EditProjectButton project={project} />
                         </Grid>
                     </Grid>
                 </Grid>

@@ -1,8 +1,6 @@
 import { IFilterListingTypes, IndexTypeRoute, Routes } from "../../../../../store/ui/IUiState";
 
-export const getArrayOfListingTypesSelected = (
-    filterListingTypes: IFilterListingTypes,
-) => {
+export const getArrayOfListingTypesSelected = (filterListingTypes: IFilterListingTypes) => {
     const listingTypeKeys: string[] = Object.keys(filterListingTypes);
     return listingTypeKeys.reduce((agg, el) => {
         if (filterListingTypes[el]) {
@@ -31,10 +29,7 @@ export const getSelectedAsDisplayString = (selected: any) => {
     return (selected as Selected).map(beautifyListingType).join(", ");
 };
 
-export const getFilterListTypesFromPath = (
-    path: IndexTypeRoute,
-    filterListingTypes: IFilterListingTypes,
-) => {
+export const getFilterListTypesFromPath = (path: IndexTypeRoute, filterListingTypes: IFilterListingTypes) => {
     if (path === Routes.tagsTagIdParam || path === Routes.tags) {
         return {
             blogPosts: true,
@@ -43,7 +38,7 @@ export const getFilterListTypesFromPath = (
     }
     const cleanedFilterListTypes: any = {};
     const clearListingTypesNotSelected = (listingTypeKey: string) => {
-        if (listingTypeKey !== path) {
+        if (listingTypeKey !== path.replace(/\//g, "")) {
             cleanedFilterListTypes[listingTypeKey] = false;
         }
     };
@@ -51,14 +46,11 @@ export const getFilterListTypesFromPath = (
     Object.keys(filterListingTypes).forEach(clearListingTypesNotSelected);
     return {
         ...cleanedFilterListTypes,
-        [path]: true,
+        [path.replace(/\//g, "")]: true,
     };
 };
 
-export const getNewListingTypes = (
-    selectedValues: string[],
-    filterListingTypes: IFilterListingTypes,
-) => {
+export const getNewListingTypes = (selectedValues: string[], filterListingTypes: IFilterListingTypes) => {
     const newListingTypes: IFilterListingTypes = { ...filterListingTypes };
     for (const listingType in filterListingTypes) {
         if (filterListingTypes.hasOwnProperty(listingType)) {

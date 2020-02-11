@@ -1,3 +1,3 @@
-export interface IErrorMap {
+export interface IBooleanMap {
     [index: string]: boolean;
 }

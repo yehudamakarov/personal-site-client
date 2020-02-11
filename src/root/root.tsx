@@ -3,6 +3,9 @@ import React from "react";
 import { Routes } from "../store/ui/IUiState";
 import { Navigation } from "./navigation/navigation";
 import { AboutPage } from "./pages/about/aboutPage";
+import { DashboardPage } from "./pages/dashboard/dashboardPage";
+import { TagsManagementPage } from "./pages/dashboard/tagsManagementPage";
+import { TagsMapPage } from "./pages/dashboard/tagsMapPage";
 import { Homepage } from "./pages/home/homepage";
 import { IndexViewPage } from "./pages/indexView/indexViewPage";
 import { LoginPage } from "./pages/login/loginPage";
@@ -16,6 +19,9 @@ export const Root = () => {
             <Router>
                 <Homepage path={Routes.home} />
                 <LoginPage path={Routes.login} />
+                <DashboardPage path={Routes.dashboard} />
+                <TagsManagementPage path={Routes.dashboardTags} />
+                <TagsMapPage path={Routes.dashboardTagsMapTagIdParam} />
                 <AboutPage path={Routes.about} />
                 <ProjectPage path={Routes.projectsProjectNameParam} />
                 <IndexViewPage path={Routes.projects} />

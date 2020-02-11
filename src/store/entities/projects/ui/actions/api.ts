@@ -1,30 +1,22 @@
-import axios from "axios";
-import { IApiResponse } from "../../../../baseTypes/IApiResponse";
+import axios, { AxiosResponse } from "axios";
+import { IResult } from "../../../../baseTypes/IResult";
 
-export type IProjectResponse = IApiResponse<IProject>;
-export type IProjectsResponse = IApiResponse<IProject[]>;
+export type IProjectResponse = IResult<IProject>;
+export type IProjectsResponse = IResult<IProject[]>;
 
 export const projectsApi = {
     getProjectById: (projectId: string) =>
-        axios.get<IProjectResponse>(
-            `${process.env.REACT_APP_API_URL}projects/projectByName`,
-            { params: { projectId } }
-        ),
+        axios.get<IProjectResponse>(`/projects/projectByName`, {
+            params: { projectId },
+        }),
     getProjectByName: (projectName: string) =>
-        axios.get<IProjectResponse>(
-            `${process.env.REACT_APP_API_URL}projects/projectByName`,
-            { params: { projectName } }
-        ),
-    getProjects: () => {
-        return axios.get<IProjectsResponse>(
-            `${process.env.REACT_APP_API_URL}projects/allProjects`
-        );
+        axios.get<IProjectResponse>(`/projects/projectByName`, {
+            params: { projectName },
+        }),
+    getProjects: (): Promise<AxiosResponse<IProjectsResponse>> => {
+        return axios.get<IProjectsResponse>(`/projects/allProjects`);
     },
-    updateProject: (project: IProject) =>
-        axios.post(
-            `${process.env.REACT_APP_API_URL}projects/updateProject`,
-            project,
-        ),
+    updateProject: (project: IProject) => axios.post(`/projects/updateProject`, project),
 };
 
 export interface IProjectHighlight {
@@ -39,10 +31,10 @@ export interface IProject {
     projectDescription: string;
     projectOverview: string;
     githubUrl: string | null;
-    tagIds: string[] | null;
+    tagIds: string[];
     isPinnedRepo: boolean;
-    projectHighlights: IProjectHighlight[] | null;
-    projectPictures: IProjectPicture[] | null;
+    projectHighlights: IProjectHighlight[];
+    projectPictures: IProjectPicture[];
     slug: string;
     deploymentUrl: string | null;
 }

@@ -1,3 +1,4 @@
+import { CLOSE_TAG_RENAME_DIALOG, OPEN_TAG_RENAME_DIALOG, TagRenameActions } from "../../root/pages/dashboard/actions";
 import { IUiState } from "./IUiState";
 import {
     CLOSE_DRAWER,
@@ -6,8 +7,17 @@ import {
     SET_LISTING_TYPES_FOR_FILTER,
     SET_ROUTE,
     SET_TAGS_FOR_FILTER,
+    SOCKET_CONNECTED,
+    SOCKET_CONNECTING,
+    SOCKET_DISCONNECTED,
     UiActionTypes,
 } from "./uiActions";
+
+export enum SocketStatus {
+    connected,
+    connecting,
+    disconnected,
+}
 
 export const INITIAL_STATE: IUiState = {
     drawerOpen: false,
@@ -20,14 +30,31 @@ export const INITIAL_STATE: IUiState = {
         tagIds: [],
     },
     route: "/",
+    socketStatus: SocketStatus.disconnected,
+    tagRenameDialog: { tagRenameDialogOpen: false, existingTagId: null },
     uri: "/",
 };
 
-export const uiReducer = (
-    state = INITIAL_STATE,
-    action: UiActionTypes
-): IUiState => {
+export const uiReducer = (state = INITIAL_STATE, action: UiActionTypes | TagRenameActions): IUiState => {
     switch (action.type) {
+        case OPEN_TAG_RENAME_DIALOG: {
+            return {
+                ...state,
+                tagRenameDialog: { ...state.tagRenameDialog, tagRenameDialogOpen: true, existingTagId: action.payload },
+            };
+        }
+        case CLOSE_TAG_RENAME_DIALOG: {
+            return { ...state, tagRenameDialog: { ...state.tagRenameDialog, tagRenameDialogOpen: false } };
+        }
+        case SOCKET_CONNECTED: {
+            return { ...state, socketStatus: SocketStatus.connected };
+        }
+        case SOCKET_DISCONNECTED: {
+            return { ...state, socketStatus: SocketStatus.disconnected };
+        }
+        case SOCKET_CONNECTING: {
+            return { ...state, socketStatus: SocketStatus.connecting };
+        }
         case OPEN_DRAWER: {
             return { ...state, drawerOpen: true };
         }

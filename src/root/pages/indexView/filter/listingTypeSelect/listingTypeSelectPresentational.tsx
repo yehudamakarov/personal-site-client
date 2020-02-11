@@ -24,9 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
 interface IOwnProps {
     path: IndexTypeRoute;
     listingTypeValues: string[];
-    handleListingTypesChange: (
-        event: React.ChangeEvent<{ value: unknown }>,
-    ) => void;
+    handleListingTypesChange: (event: React.ChangeEvent<{ value: unknown }>) => void;
     getSelectedAsDisplayString: (selected: any) => string;
     filterListingTypes: IFilterListingTypes;
 }
@@ -48,11 +46,11 @@ export const ListingTypeSelectPresentational = (props: IOwnProps) => {
                 displayEmpty
             >
                 <MenuItem value="projects">
-                    <Checkbox checked={props.filterListingTypes.projects} />
+                    <Checkbox color={"primary"} checked={props.filterListingTypes.projects} />
                     <ListItemText primary="Projects" />
                 </MenuItem>
                 <MenuItem value="blogPosts">
-                    <Checkbox checked={props.filterListingTypes.blogPosts} />
+                    <Checkbox color={"primary"} checked={props.filterListingTypes.blogPosts} />
                     <ListItemText primary="Blog Posts" />
                 </MenuItem>
             </Select>
