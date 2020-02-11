@@ -12,7 +12,8 @@ export const SnackBarService = (props: {}) => {
     };
     const mapTagJobSelector = (state: IApplicationState) => {
         const currentTagId = state.jobStatus.currentTagIdBeingMapped ? state.jobStatus.currentTagIdBeingMapped : "";
-        return state.jobStatus.mapTagStatus[currentTagId]?.jobStage;
+        const mapTagStatus = state.jobStatus.mapTagStatus[currentTagId]?.jobStage;
+        return mapTagStatus ? mapTagStatus : JobStage.None;
     };
 
     return (
