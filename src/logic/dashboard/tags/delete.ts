@@ -1,21 +1,25 @@
 import { HubConnection } from "@microsoft/signalr";
 import { EnhancedStore } from "@reduxjs/toolkit";
 import { AxiosResponse } from "axios";
-import { DELETE_TAG_LOADING } from "../../../store/signalR/actions/JobStatusUpdateActions";
-import { IDeleteTagJobStatusLookup } from "../../../store/signalR/reducer";
+import { call, put, takeEvery } from "redux-saga/effects";
+import {
+    DELETE_TAG_LOADING,
+    handleDeleteTagJobStatusUpdateAction,
+    IDeleteTagLoadingAction,
+} from "../../../store/signalR/actions/JobStatusUpdateActions";
+import { DeleteTagJobStatus } from "../../../store/signalR/reducer";
 import { dashboardTagsApi } from "./tagsJobsApi";
 
 export const registerDeleteTagSagaEvents = (connection: HubConnection, dispatch: EnhancedStore["dispatch"]) => {
+    connection.on("");
 };
 
-function* deleteTag() {
+function* deleteTag(action: IDeleteTagLoadingAction) {
     try {
-        const response: AxiosResponse<IDeleteTagJobStatusLookup> = yield call(
-            dashboardTagsApi.deleteTag,
-        );
-        yield put(deleteTagSuccessAction(response.data.data));
+        const response: AxiosResponse<DeleteTagJobStatus> = yield call(dashboardTagsApi.deleteTag, action.payload);
+        yield put(handleDeleteTagJobStatusUpdateAction(response.data));
     } catch (error) {
-        yield put(deleteTagErrorAction(JSON.parse(error)));
+        // yield put(deleteTagErrorAction(JSON.parse(error)));
     }
 }
 

@@ -1,5 +1,11 @@
 import { Tag } from "../../entities/tags/actions/api";
-import { ICalculateTagCountsStatus, IGithubRepoFetcherStatus, MapTagJobStatus, RenameTagJobStatus } from "../reducer";
+import {
+    DeleteTagJobStatus,
+    ICalculateTagCountsStatus,
+    IGithubRepoFetcherStatus,
+    MapTagJobStatus,
+    RenameTagJobStatus,
+} from "../reducer";
 // =============================================================================== //
 export const HANDLE_GITHUB_REPO_FETCHER_JOB_STATUS_UPDATE = "HANDLE_GITHUB_REPO_FETCHER_JOB_STATUS_UPDATE";
 export interface IHandleGithubRepoFetcherJobStatusUpdateAction {
@@ -85,7 +91,20 @@ export const deleteTagLoadingAction = (tagId: Tag["tagId"]): IDeleteTagLoadingAc
     type: DELETE_TAG_LOADING,
 });
 // =============================================================================== //
+export const HANDLE_DELETE_TAG_JOB_STATUS_UPDATE = "HANDLE_DELETE_TAG_JOB_STATUS_UPDATE";
 
+export interface IHandleDeleteTagJobStatusUpdateAction {
+    type: typeof HANDLE_DELETE_TAG_JOB_STATUS_UPDATE;
+    payload: DeleteTagJobStatus;
+}
+
+export const handleDeleteTagJobStatusUpdateAction = (
+    status: DeleteTagJobStatus,
+): IHandleDeleteTagJobStatusUpdateAction => ({
+    payload: status,
+    type: HANDLE_DELETE_TAG_JOB_STATUS_UPDATE,
+});
+// =============================================================================== //
 export type JobStatusUpdateActions =
     | IHandleRenameTagJobStatusUpdateAction
     | IRenameTagLoadingAction
