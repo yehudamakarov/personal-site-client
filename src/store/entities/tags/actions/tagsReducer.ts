@@ -1,7 +1,9 @@
 import { ITagRenameJobDoneAction, TAG_RENAME_JOB_DONE } from "../../../../logic/dashboard/tags/rename";
 import { IBaseCollectionUiState } from "../../../baseTypes/IBaseCollectionUiState";
 import {
+    HANDLE_DELETE_TAG_JOB_STATUS_UPDATE,
     HANDLE_MAP_TAG_JOB_STATUS_UPDATE,
+    IHandleDeleteTagJobStatusUpdateAction,
     IHandleMapTagJobStatusUpdateAction,
 } from "../../../signalR/actions/JobStatusUpdateActions";
 import { JobStage } from "../../../signalR/init";
@@ -25,10 +27,25 @@ const INITIAL_STATE: ITagsState = {
     },
 };
 
-type TagsActionTypes = GetTagsActionTypes | IHandleMapTagJobStatusUpdateAction | ITagRenameJobDoneAction;
+type TagsActionTypes =
+    | GetTagsActionTypes
+    | IHandleMapTagJobStatusUpdateAction
+    | ITagRenameJobDoneAction
+    | IHandleDeleteTagJobStatusUpdateAction;
 
 export const tagsReducer = (state = INITIAL_STATE, action: TagsActionTypes): ITagsState => {
     switch (action.type) {
+        case HANDLE_DELETE_TAG_JOB_STATUS_UPDATE: {
+            const { payload } = action;
+            if (payload.jobStage === JobStage.Done) {
+                const besidesDeleted = state.tagsData.filter((tag) => {
+                    return tag.tagId !== payload.item;
+                });
+                return { ...state, tagsData: [...besidesDeleted] };
+            }
+            return state;
+        }
+
         case TAG_RENAME_JOB_DONE: {
             const besidesNew = state.tagsData.filter((tag) => {
                 return tag.tagId !== action.payload.uniqueKey;

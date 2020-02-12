@@ -1,9 +1,16 @@
-import { ISetCurrentTagIdBeingMappedAction, SET_CURRENT_TAG_ID_BEING_MAPPED } from "../../logic/dashboard/tags/map";
+import {
+    ISetCurrentTagIdBeingDeletedAction,
+    ISetCurrentTagIdBeingMappedAction,
+    SET_CURRENT_TAG_ID_BEING_DELETED,
+    SET_CURRENT_TAG_ID_BEING_MAPPED,
+} from "../../logic/dashboard/tags/map";
 import { IMapTagJobDoneAction, MAP_TAG_JOB_DONE } from "../../logic/dashboard/tags/rename";
 import { IResult } from "../baseTypes/IResult";
 import { Tag } from "../entities/tags/actions/api";
 import {
+    DELETE_TAG_LOADING,
     HANDLE_CALCULATE_TAG_COUNTS_JOB_STATUS_UPDATE,
+    HANDLE_DELETE_TAG_JOB_STATUS_UPDATE,
     HANDLE_GITHUB_REPO_FETCHER_JOB_STATUS_UPDATE,
     HANDLE_MAP_TAG_JOB_STATUS_UPDATE,
     HANDLE_RENAME_TAG_JOB_STATUS_UPDATE,
@@ -19,12 +26,10 @@ interface IJobStatusUpdate<T> {
     jobStage: JobStage;
 }
 
-export interface IGithubRepoFetcherStatus extends IJobStatusUpdate<{ [index: string]: JobStage }> {
-}
+export interface IGithubRepoFetcherStatus extends IJobStatusUpdate<{ [index: string]: JobStage }> {}
 
 // =============================================================================== //
-export interface ICalculateTagCountsStatus extends IJobStatusUpdate<IResult<Tag>> {
-}
+export interface ICalculateTagCountsStatus extends IJobStatusUpdate<IResult<Tag>> {}
 
 // =============================================================================== //
 export type MapTagJobStatus = IJobStatusUpdate<IResult<Tag>>;
@@ -41,7 +46,7 @@ export interface IRenameTagJobStatusLookup {
 }
 
 // =============================================================================== //
-export type DeleteTagJobStatus = IJobStatusUpdate<IResult<Tag["tagId"]>>;
+export type DeleteTagJobStatus = IJobStatusUpdate<Tag["tagId"]>;
 
 export interface IDeleteTagJobStatusLookup {
     [indexer: string]: DeleteTagJobStatus;
@@ -51,11 +56,13 @@ export interface IDeleteTagJobStatusLookup {
 
 // todo for the ones that are not lookups, make them lookups. there will just be 1 at a time.
 export interface IJobStatusState {
+    currentTagIdBeingDeleted: Tag["tagId"] | null;
     currentTagIdBeingMapped: Tag["tagId"] | null;
     githubRepoFetcherStatus: IGithubRepoFetcherStatus;
     calculateTagCountsStatus: ICalculateTagCountsStatus;
     mapTagStatus: IMapTagJobStatusLookup;
     renameTagStatus: IRenameTagJobStatusLookup;
+    deleteTagStatus: IDeleteTagJobStatusLookup;
 }
 
 const INITIAL_STATE: IJobStatusState = {
@@ -65,7 +72,9 @@ const INITIAL_STATE: IJobStatusState = {
         // todo not in use yet. restructure job status updates to use
         uniqueKey: "",
     },
+    currentTagIdBeingDeleted: null,
     currentTagIdBeingMapped: null,
+    deleteTagStatus: {},
     githubRepoFetcherStatus: {
         item: {},
         jobStage: JobStage.None,
@@ -78,9 +87,29 @@ const INITIAL_STATE: IJobStatusState = {
 
 export const jobStatusReducer = (
     state = INITIAL_STATE,
-    action: JobStatusUpdateActions | ISetCurrentTagIdBeingMappedAction | IMapTagJobDoneAction,
+    action:
+        | JobStatusUpdateActions
+        | ISetCurrentTagIdBeingMappedAction
+        | IMapTagJobDoneAction
+        | ISetCurrentTagIdBeingDeletedAction
 ): IJobStatusState => {
     switch (action.type) {
+        case SET_CURRENT_TAG_ID_BEING_DELETED: {
+            return { ...state, currentTagIdBeingDeleted: action.payload };
+        }
+
+        case DELETE_TAG_LOADING: {
+            return { ...state };
+        }
+
+        case HANDLE_DELETE_TAG_JOB_STATUS_UPDATE: {
+            const { payload } = action;
+            return {
+                ...state,
+                deleteTagStatus: { ...state.deleteTagStatus, [payload.uniqueKey]: payload },
+            };
+        }
+
         case MAP_TAG_JOB_DONE: {
             const { uniqueKey } = action.payload;
             return {
@@ -112,11 +141,11 @@ export const jobStatusReducer = (
             };
         }
         case HANDLE_RENAME_TAG_JOB_STATUS_UPDATE: {
-            const { jobStage, item, uniqueKey } = action.payload;
-            if (uniqueKey) {
+            const { payload } = action;
+            if (payload.uniqueKey) {
                 return {
                     ...state,
-                    renameTagStatus: { ...state.renameTagStatus, [uniqueKey]: { item, jobStage, uniqueKey } },
+                    renameTagStatus: { ...state.renameTagStatus, [payload.uniqueKey]: payload },
                 };
             } else {
                 return state;

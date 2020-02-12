@@ -111,4 +111,6 @@ export type JobStatusUpdateActions =
     | IHandleGithubRepoFetcherJobStatusUpdateAction
     | IHandleCalculateTagCountsJobStatusUpdateAction
     | IHandleMapTagJobStatusUpdateAction
-    | IMapTagLoadingAction;
+    | IMapTagLoadingAction
+    | IDeleteTagLoadingAction
+    | IHandleDeleteTagJobStatusUpdateAction;

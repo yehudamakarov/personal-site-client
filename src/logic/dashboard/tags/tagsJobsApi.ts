@@ -8,8 +8,8 @@ import {
 } from "../../../store/signalR/reducer";
 
 export const dashboardTagsApi = {
-    deleteTag: (tagId: Tag["tagId"]) => {
-        return axios.post<IDeleteTagJobStatusLookup>("/tags/deleteTag", { tagId });
+    deleteTag: (uniqueKey: Tag["tagId"], tagId: Tag["tagId"]) => {
+        return axios.post<IDeleteTagJobStatusLookup>("/tags/deleteTag", { uniqueKey, tagId });
     },
     mapTag: (uniqueKey: string, facadesToMap: IFacade[], tagId: Tag["tagId"]) => {
         return axios.post<IMapTagJobStatusLookup>("/tags/mapTag", { uniqueKey, facadesToMap, tagId });

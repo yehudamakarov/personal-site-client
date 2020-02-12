@@ -15,6 +15,7 @@ import SyncAltIcon from "@material-ui/icons/SyncAlt";
 import { navigate } from "@reach/router";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { setCurrentTagIdBeingDeletedAction } from "../../../logic/dashboard/tags/map";
 import { Tag } from "../../../store/entities/tags/actions/api";
 import { IApplicationState } from "../../../store/rootReducer";
 import { Routes } from "../../../store/ui/IUiState";
@@ -50,6 +51,7 @@ export const TagsManagementTagListItem = (props: { tagId: Tag["tagId"] }) => {
 
     const handleDeleteSelect = () => {
         dispatch(openTagDeleteDialogAction(props.tagId));
+        dispatch(setCurrentTagIdBeingDeletedAction(props.tagId));
         handleMenuClose();
     };
 

@@ -11,12 +11,15 @@ import { DeleteTagJobStatus } from "../../../store/signalR/reducer";
 import { dashboardTagsApi } from "./tagsJobsApi";
 
 export const registerDeleteTagSagaEvents = (connection: HubConnection, dispatch: EnhancedStore["dispatch"]) => {
-    connection.on("");
+    connection.on("pushDeleteTagJobStatusUpdate", (status: DeleteTagJobStatus) => {
+        dispatch(handleDeleteTagJobStatusUpdateAction(status));
+    });
 };
 
 function* deleteTag(action: IDeleteTagLoadingAction) {
     try {
-        const response: AxiosResponse<DeleteTagJobStatus> = yield call(dashboardTagsApi.deleteTag, action.payload);
+        const { payload: tagId } = action;
+        const response: AxiosResponse<DeleteTagJobStatus> = yield call(dashboardTagsApi.deleteTag, tagId, tagId);
         yield put(handleDeleteTagJobStatusUpdateAction(response.data));
     } catch (error) {
         // yield put(deleteTagErrorAction(JSON.parse(error)));

@@ -11,11 +11,23 @@ export const SnackBarService = (props: {}) => {
         return state.jobStatus.calculateTagCountsStatus.jobStage;
     };
     const mapTagJobSelector = (state: IApplicationState) => {
-        const currentTagId = state.jobStatus.currentTagIdBeingMapped ? state.jobStatus.currentTagIdBeingMapped : "";
-        const mapTagStatus = state.jobStatus.mapTagStatus[currentTagId]?.jobStage;
-        return mapTagStatus ? mapTagStatus : JobStage.None;
+        const currentTagId = state.jobStatus.currentTagIdBeingMapped;
+        if (currentTagId) {
+            const jobStatus = state.jobStatus.mapTagStatus[currentTagId];
+            return jobStatus ? jobStatus.jobStage : JobStage.None;
+        }
+
+        return JobStage.None;
     };
 
+    const deleteTagJobSelector = (state: IApplicationState) => {
+        const currentTagId = state.jobStatus.currentTagIdBeingDeleted;
+        if (currentTagId) {
+            const jobStatus = state.jobStatus.deleteTagStatus[currentTagId];
+            return jobStatus ? jobStatus.jobStage : JobStage.None;
+        }
+        return JobStage.None;
+    };
     return (
         <React.Fragment>
             <GenericJobStatusSnackbar
@@ -32,6 +44,11 @@ export const SnackBarService = (props: {}) => {
                 currentJobStateSelector={mapTagJobSelector}
                 baseCase={JobStage.None}
                 title={"Mapping Tag"}
+            />
+            <GenericJobStatusSnackbar
+                currentJobStateSelector={deleteTagJobSelector}
+                baseCase={JobStage.None}
+                title={"Deleting Tag"}
             />
         </React.Fragment>
     );
