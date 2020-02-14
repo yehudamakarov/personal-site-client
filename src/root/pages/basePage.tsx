@@ -13,8 +13,11 @@ const useStyles = makeStyles((theme: Theme) =>
                 marginTop: theme.spacing(1),
             },
             [theme.breakpoints.up("sm")]: {
-                marginTop: theme.spacing(3),
+                marginTop: theme.spacing(2),
             },
+        },
+        titleBottom: {
+            marginBottom: theme.spacing(2),
         },
     })
 );
@@ -30,27 +33,28 @@ export const BasePage = (props: {
     const { children } = props;
     const classes = useStyles();
     const isAuthorized = useAuth(props.redirectIfNot);
-    if (!props.redirectIfNot) {
-        return <Container className={classes.container}>{children}</Container>;
-    }
-    if (!isAuthorized && !props.isLoginPage) {
+    if (props.redirectIfNot && !isAuthorized) {
         return <Redirect noThrow to={Routes.login} />;
     } else {
         return (
             <Container className={classes.container}>
-                <Grid container spacing={1} justify={"space-between"}>
-                    <Grid item>
-                        <Typography gutterBottom={false} variant={isXs ? "h6" : "h4"}>
-                            {props.title}
-                        </Typography>
-                    </Grid>
-                    <Grid item>
-                        <Button component={Link} to={props.backTo} startIcon={<ArrowBackIcon />}>
-                            back
-                        </Button>
-                    </Grid>
-                </Grid>
-                {children}
+                <div>
+                    <div className={classes.titleBottom}>
+                        <Grid container spacing={1} justify={"space-between"} alignItems={"flex-end"}>
+                            <Grid item>
+                                <Typography gutterBottom={false} variant={isXs ? "h6" : "h5"}>
+                                    {props.title}
+                                </Typography>
+                            </Grid>
+                            <Grid item>
+                                <Button component={Link} to={props.backTo} startIcon={<ArrowBackIcon />}>
+                                    back
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </div>
+                    <div>{children}</div>
+                </div>
             </Container>
         );
     }

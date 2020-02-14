@@ -9,7 +9,7 @@ import { TextSearch } from "./filter/textSearch";
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
-            margin: theme.spacing(1),
+            margin: theme.spacing(0.1),
         },
         search: {
             height: "auto",

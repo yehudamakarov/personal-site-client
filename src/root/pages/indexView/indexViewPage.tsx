@@ -17,7 +17,7 @@ export const IndexViewPage = (props: IOwnProps) => {
         dispatch(setRouteAction({ route: props.path, uri: props.uri }));
     }, [props.uri]);
     return (
-        <BasePage backTo={Routes.home} title={"Projects and Blog Posts<"}>
+        <BasePage backTo={Routes.home} title={"Projects and Blog Posts"}>
             <IndexViewFilter {...props} />
             <IndexViewList />
         </BasePage>

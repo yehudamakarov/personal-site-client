@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         alignItems: "center",
         display: "flex",
         flexDirection: "column",
-        marginTop: theme.spacing(8),
+        [theme.breakpoints.up("sm")]: { marginTop: theme.spacing(8) },
     },
     form: {
         marginTop: theme.spacing(1),
@@ -86,7 +86,7 @@ export const LoginPage = (props: { path: string }) => {
     };
 
     return (
-        <BasePage backTo={Routes.home} title={"Login to your dashboard"} isLoginPage={true}>
+        <BasePage backTo={Routes.home} title={"Login to your dashboard"}>
             {isLoggedIn ? (
                 <Container className={classes.container} maxWidth={"xs"}>
                     <Typography variant={"subtitle2"}> You are already logged in.</Typography>
@@ -165,7 +165,7 @@ export const LoginPage = (props: { path: string }) => {
                             Sign In
                         </Button>
                     </form>
-                    <Box mt={8}>
+                    <Box mt={4}>
                         <Copyright />
                     </Box>
                 </Container>
