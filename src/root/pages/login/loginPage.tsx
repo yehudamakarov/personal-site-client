@@ -86,7 +86,7 @@ export const LoginPage = (props: { path: string }) => {
     };
 
     return (
-        <BasePage isLoginPage={true}>
+        <BasePage backTo={Routes.home} title={"Login to your dashboard"} isLoginPage={true}>
             {isLoggedIn ? (
                 <Container className={classes.container} maxWidth={"xs"}>
                     <Typography variant={"subtitle2"}> You are already logged in.</Typography>

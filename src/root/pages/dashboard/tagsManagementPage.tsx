@@ -1,10 +1,11 @@
-import { CircularProgress, createStyles, Grid, List, makeStyles, Theme, Typography } from "@material-ui/core";
+import { CircularProgress, createStyles, Grid, List, makeStyles, Theme } from "@material-ui/core";
 import { RouteComponentProps } from "@reach/router";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { roleType } from "../../../store/entities/auth/actions/authReducer";
 import { getTagsLoadingAction } from "../../../store/entities/tags/actions/getTags/actions";
 import { IApplicationState } from "../../../store/rootReducer";
+import { Routes } from "../../../store/ui/IUiState";
 import { BasePage } from "../basePage";
 import { TagDeleteDialog } from "./tagDeleteDialog";
 import { TagRenameDialog } from "./tagRenameDialog";
@@ -16,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) =>
             marginTop: theme.spacing(3),
             textAlign: "center",
         },
-    }),
+    })
 );
 export const TagsManagementPage = (props: RouteComponentProps) => {
     const classes = useStyles();
@@ -27,8 +28,7 @@ export const TagsManagementPage = (props: RouteComponentProps) => {
         dispatch(getTagsLoadingAction());
     }, [dispatch]);
     return (
-        <BasePage redirectIfNot={[roleType.administrator]}>
-            <Typography variant={"h4"}>Tags Management</Typography>
+        <BasePage backTo={Routes.dashboard} title={"Tag Management"} redirectIfNot={[roleType.administrator]}>
             {tagsAreLoading ? (
                 <div className={classes.progress}>
                     <CircularProgress variant={"indeterminate"} />

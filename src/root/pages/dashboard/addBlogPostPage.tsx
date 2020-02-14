@@ -1,6 +1,9 @@
 import { createStyles, makeStyles, Theme } from "@material-ui/core";
 import { RouteComponentProps } from "@reach/router";
 import React from "react";
+import { roleType } from "../../../store/entities/auth/actions/authReducer";
+import { Routes } from "../../../store/ui/IUiState";
+import { BasePage } from "../basePage";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -13,9 +16,5 @@ const useStyles = makeStyles((theme: Theme) =>
 export const AddBlogPostPage = (props: RouteComponentProps) => {
     const classes = useStyles();
 
-    return (
-        <div className={classes.root}>
-            <h4>AddBlogPost</h4>
-        </div>
-    );
+    return <BasePage backTo={Routes.dashboard} title={"Add Blog Post"} redirectIfNot={[roleType.administrator]} />;
 };

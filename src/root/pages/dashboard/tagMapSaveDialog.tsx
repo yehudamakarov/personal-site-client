@@ -34,6 +34,7 @@ export const TagMapSaveDialog = (props: { tagId?: Tag["tagId"] }) => {
     };
 
     const handleSave = () => {
+        // todo take out if
         if (props.tagId) {
             dispatch(mapTagLoadingAction(props.tagId));
         }

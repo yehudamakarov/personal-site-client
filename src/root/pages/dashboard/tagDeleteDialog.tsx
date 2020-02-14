@@ -40,6 +40,7 @@ export const TagDeleteDialog = (props: {}) => {
     };
 
     const handleSave = () => {
+        // todo if there is an if there is logic, take it out
         if (tagId) {
             dispatch(closeTagDeleteDialogAction());
             dispatch(deleteTagLoadingAction(tagId));

@@ -59,10 +59,7 @@ function ManagementListItem(props: {
 export const DashboardPage = (props: { path: string }) => {
     const classes = useStyles();
     return (
-        <BasePage redirectIfNot={[roleType.administrator]}>
-            <Typography className={classes.title} variant={"h4"}>
-                Dashboard
-            </Typography>
+        <BasePage backTo={Routes.home} title={"Dashboard"} redirectIfNot={[roleType.administrator]}>
             <Grid container>
                 <Grid item xs={12} sm={6}>
                     <Card square className={classes.card}>

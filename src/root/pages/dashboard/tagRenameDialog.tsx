@@ -47,6 +47,8 @@ export const TagRenameDialog = (props: {}) => {
         }
     };
 
+    // todo take out existingTagId ? existingTagId : undefined
+
     return (
         <Dialog open={renameDialogIsOpen}>
             <DialogTitle>Rename current Tag?</DialogTitle>

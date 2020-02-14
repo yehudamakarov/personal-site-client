@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProjectByNameLoadingAction } from "../../../store/entities/projects/data/actions/getProjectByName/actions";
 import { IProject } from "../../../store/entities/projects/ui/actions/api";
 import { IApplicationState } from "../../../store/rootReducer";
+import { Routes } from "../../../store/ui/IUiState";
 import { BasePage } from "../basePage";
 import { BlogPostsByProjectList } from "./components/blogPostsByProjectList";
 import { ProjectPageTitleCard } from "./components/projectTitleCard";
@@ -32,7 +33,7 @@ const ProjectPage = (props: RouteComponentProps<{ projectName?: string }>) => {
     }, [props.projectName]);
 
     return (
-        <BasePage>
+        <BasePage backTo={Routes.projects} title={"View Project:"}>
             <Grid container spacing={2}>
                 <Grid item xs={12}>
                     <ProjectPageTitleCard projectNameFromRoute={props.projectName} project={projectFromRoute} />
